@@ -65,14 +65,14 @@ final class Navigation {
     var lastFamily: String?
     /// The search text handed over by a link.
     var pendingSearch: String?
-    /// iPhone has no Search tab (five tabs fill its bar): search opens on the wiki's stack.
-    var searchInWiki = false
+    /// iPhone has no Family tab (four tabs and Search fill its bar): trees open on the wiki's stack.
+    var hasFamilyTab = true
 
     func navigator(_ s: AppSection) -> Navigator { stacks[s]! }
 
     /// Opens a route in its own section's stack (shared links, F-11.2).
     func show(_ route: Route) {
-        if case .search = route, searchInWiki {
+        if case .family = route, !hasFamilyTab {
             section = .wiki
             navigator(.wiki).open(route)
             return
