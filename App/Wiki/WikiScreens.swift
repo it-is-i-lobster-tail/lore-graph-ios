@@ -4,6 +4,7 @@ import SwiftUI
 /// The wiki home: continue reading, browse by type, trails and saved views (F-4.1 to F-4.3).
 struct HomeView: View {
     @Environment(AppModel.self) private var app
+    @Environment(Navigation.self) private var nav
 
     var body: some View {
         ContextModel(make: { $0.loader(API.views()) }, load: { await $0.load() }) { views in
@@ -23,12 +24,16 @@ struct HomeView: View {
                         .listRowBackground(Color.clear)
                     }
                 }
-                Section {
-                    NavigationLink(value: Route.search("")) {
-                        Label("Search \(app.world?.name ?? "the wiki")", systemImage: "magnifyingglass")
-                            .foregroundStyle(.secondary)
+                // only where there is no Search tab: pushed on the wiki's stack, the search field
+                // would hide iPad's tab bar and back button
+                if nav.searchInWiki {
+                    Section {
+                        NavigationLink(value: Route.search("")) {
+                            Label("Search \(app.world?.name ?? "the wiki")", systemImage: "magnifyingglass")
+                                .foregroundStyle(.secondary)
+                        }
+                        .accessibilityIdentifier("homeSearch")
                     }
-                    .accessibilityIdentifier("homeSearch")
                 }
                 if let error = app.worldError, app.about == nil {
                     Section { ErrorState(error: error) { await app.refresh() } }
