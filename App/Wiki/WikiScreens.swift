@@ -87,12 +87,14 @@ struct HomeView: View {
     }
 }
 
-/// Pages by type, fifty at a time (F-4.2).
+/// Pages by type or in a category, fifty at a time (F-4.2).
 struct BrowseView: View {
     let type: EntityType?
+    var category: String?
+    var categoryTitle: String?
 
     var body: some View {
-        ContextModel(make: { BrowseModel(type: type, context: $0) }, load: { await $0.load() }) { model in
+        ContextModel(make: { BrowseModel(type: type, category: category, context: $0) }, load: { await $0.load() }) { model in
             List {
                 Section {
                     Picker("Sort", selection: Binding(get: { model.sort }, set: { s in Task { await model.set(type: model.type, sort: s) } })) {
@@ -125,7 +127,7 @@ struct BrowseView: View {
             }
             .refreshable { await model.refresh() }
             .staleBanner(model.first)
-            .navigationTitle(type?.plural ?? "All pages")
+            .navigationTitle(category.map { categoryTitle ?? $0 } ?? type?.plural ?? "All pages")
         }
     }
 }

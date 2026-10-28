@@ -111,6 +111,24 @@ extension FakeServer {
         #expect(BrowseModel.Sort.allCases.map(\.id) == ["title", "updated"])
     }
 
+    @Test func browsesACategory() async {
+        let stack = Stack()
+        let model = BrowseModel(type: nil, category: "river", context: stack.context())
+        await model.load()
+        #expect(model.category == "river" && model.items.count == 28)
+        #expect(stack.server.requests.last?.query["category"] == ["river"])
+        await model.set(type: .individual, sort: .updated)
+        #expect(stack.server.requests.last?.query["category"] == ["river"])
+        #expect(stack.server.requests.last?.query["sort"] == ["updated"])
+        await model.loadMore()
+        #expect(stack.server.requests.last?.query["category"] == ["river"])
+        #expect(stack.server.requests.last?.query["cursor"] == ["eyJvIjo1fQ"])
+        // browsing by type alone sends no category
+        let all = BrowseModel(type: .event, context: stack.context())
+        await all.load()
+        #expect(all.category == nil && stack.server.requests.last?.query["category"] == nil)
+    }
+
     @Test func aFailedPageIsShownAndCanBeRetried() async {
         let stack = Stack()
         stack.server.status("/entities", 500, query: ["cursor": "eyJvIjo1fQ"])
