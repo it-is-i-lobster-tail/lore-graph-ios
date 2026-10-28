@@ -121,6 +121,7 @@ struct RouteView: View {
         switch route {
         case .home: HomeView()
         case .browse(let type): BrowseView(type: type)
+        case .category(let slug, let title): BrowseView(type: nil, category: slug, categoryTitle: title)
         case .page(let ref), .history(let ref): PageView(ref: ref)
         case .records(let ref): RecordsView(ref: ref)
         case .links(let ref): LinksView(ref: ref)

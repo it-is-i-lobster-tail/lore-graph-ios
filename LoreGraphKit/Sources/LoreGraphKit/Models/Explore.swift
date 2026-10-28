@@ -306,9 +306,10 @@ public struct MapLayers: Codable, Hashable, Sendable {
         public var isBaseGeometry: Bool { source?["features"] != nil }
         public var isCurrent: Bool { generation == nil || generation == "current" }
 
-        /// Which base map a raster stands for, from its key or title (as the web app reads it).
+        /// Which base map of today's world a raster stands for, from its key or title (as the web
+        /// app reads it). A rebuilt world's images (`next-*`) stand for none until it is activated.
         public var baseMap: BaseMap? {
-            guard isRaster, group == "Base maps" else { return nil }
+            guard isRaster, isCurrent, group == "Base maps" else { return nil }
             let text = "\(key) \(title)".lowercased()
             if text.contains("relief") || text.contains("hillshade") { return .relief }
             if text.contains("atlas") || text.contains("painted") { return .atlas }
