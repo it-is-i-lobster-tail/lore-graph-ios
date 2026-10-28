@@ -65,11 +65,18 @@ final class Navigation {
     var lastFamily: String?
     /// The search text handed over by a link.
     var pendingSearch: String?
+    /// iPhone has no Search tab (five tabs fill its bar): search opens on the wiki's stack.
+    var searchInWiki = false
 
     func navigator(_ s: AppSection) -> Navigator { stacks[s]! }
 
     /// Opens a route in its own section's stack (shared links, F-11.2).
     func show(_ route: Route) {
+        if case .search = route, searchInWiki {
+            section = .wiki
+            navigator(.wiki).open(route)
+            return
+        }
         let s = AppSection.of(route)
         section = s
         switch route {
@@ -127,7 +134,7 @@ struct RouteView: View {
         case .graph(let options): GraphScreen(options: options)
         case .timeline(let options): TimelineScreen(options: options)
         case .map(let options): MapScreen(options: options)
-        case .search(let text): SearchScreen(initial: text)
+        case .search(let text): SearchScreen(initial: text, pushed: true)
         case .trail(let slug): TrailView(slug: slug)
         case .savedView(let slug): SavedViewView(slug: slug)
         }

@@ -23,6 +23,13 @@ struct HomeView: View {
                         .listRowBackground(Color.clear)
                     }
                 }
+                Section {
+                    NavigationLink(value: Route.search("")) {
+                        Label("Search \(app.world?.name ?? "the wiki")", systemImage: "magnifyingglass")
+                            .foregroundStyle(.secondary)
+                    }
+                    .accessibilityIdentifier("homeSearch")
+                }
                 if let error = app.worldError, app.about == nil {
                     Section { ErrorState(error: error) { await app.refresh() } }
                 }
