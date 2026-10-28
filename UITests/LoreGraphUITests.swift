@@ -69,6 +69,7 @@ final class LoreGraphUITests: XCTestCase {
         app.buttons["signInWithToken"].tap()
         chooseWorldIfAsked()
         XCTAssertTrue(app.buttons["browse-individual"].waitForExistence(timeout: 30), "the wiki home never loaded")
+        XCTAssertFalse(app.tabBars.buttons["More"].exists, "every tab should fit the tab bar")
         snapshot("03-token-wiki-home")
 
         // a page
@@ -94,7 +95,7 @@ final class LoreGraphUITests: XCTestCase {
             sleep(4)
             snapshot(name)
         }
-        openTab("Search")
+        openSearch()
         let field = app.searchFields.firstMatch
         if field.waitForExistence(timeout: 10) {
             field.tap()
@@ -212,6 +213,22 @@ final class LoreGraphUITests: XCTestCase {
         } else {
             app.buttons[title].firstMatch.tap()
         }
+    }
+
+    /// The Search tab on iPad; on iPhone, the search row at the top of the wiki home.
+    @MainActor
+    func openSearch() {
+        let tab = app.tabBars.buttons["Search"].firstMatch
+        if tab.waitForExistence(timeout: 3) {
+            tab.tap()
+            return
+        }
+        openTab("Wiki")
+        let row = app.buttons["homeSearch"].firstMatch
+        let back = app.navigationBars.buttons["BackButton"].firstMatch
+        for _ in 0..<5 where !row.waitForExistence(timeout: 2) && back.exists { back.tap() }
+        XCTAssertTrue(row.waitForExistence(timeout: 10), "the wiki home has no search row")
+        row.tap()
     }
 
     @MainActor

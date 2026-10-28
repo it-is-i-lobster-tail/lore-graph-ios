@@ -4,6 +4,7 @@ import SwiftUI
 /// The tabs (iPhone) or sidebar (iPad), each with its own stack (F-11.1).
 struct MainView: View {
     @Environment(AppModel.self) private var app
+    @Environment(\.horizontalSizeClass) private var sizeClass
     @State private var nav = Navigation()
 
     var body: some View {
@@ -13,11 +14,19 @@ struct MainView: View {
                     SectionStack(section: s)
                 }
             }
-            Tab(value: AppSection.search, role: .search) {
-                SectionStack(section: .search)
+            // an iPhone tab bar holds five items and Search would be a sixth (pushing two tabs into
+            // More), so on iPhone search sits at the top of the wiki home instead
+            if sizeClass == .regular {
+                Tab(value: AppSection.search, role: .search) {
+                    SectionStack(section: .search)
+                }
             }
         }
         .tabViewStyle(.sidebarAdaptable)
+        .onChange(of: sizeClass, initial: true) { _, size in
+            nav.searchInWiki = size != .regular
+            if nav.searchInWiki, nav.section == .search { nav.section = .wiki }
+        }
         .environment(nav)
         .onOpenURL { url in
             Task { if let route = await app.open(url) { nav.show(route) } }

@@ -81,6 +81,8 @@ struct MapContent: View {
         }
         .navigationTitle("Map")
         .navigationBarTitleDisplayMode(.inline)
+        // the tab says Map; four buttons leave the title room only for "…"
+        .toolbar(removing: .title)
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
                 Button("Find a place", systemImage: "magnifyingglass") { findPlace = true }

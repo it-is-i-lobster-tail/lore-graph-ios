@@ -58,6 +58,12 @@ struct InfoboxView: View {
 struct InfoboxValue: View {
     let value: EntityDetail.InfoboxRow.Value
 
+    /// "court_poet" → "Court poet".
+    static func humanise(_ key: String) -> String {
+        let s = key.split(whereSeparator: { "_.-".contains($0) }).joined(separator: " ")
+        return s.prefix(1).uppercased() + s.dropFirst()
+    }
+
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: 6) {
             if let ref = value.ref {
@@ -67,7 +73,8 @@ struct InfoboxValue: View {
             } else {
                 Text(value.text).font(.reading())
             }
-            if let role = value.role { Text(role).font(.caption).foregroundStyle(.secondary) }
+            // as the web app shows it: "(Marshal)", nothing for the main role
+            if let role = value.role, role != "main" { Text("(\(Self.humanise(role)))").font(.caption).foregroundStyle(.secondary) }
             if let when = value.when { Text(when).font(.caption).foregroundStyle(.secondary) }
             VisibilityChip(visibility: value.visibility, compact: true)
         }
