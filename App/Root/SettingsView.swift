@@ -29,7 +29,7 @@ struct SettingsView: View {
                     Text("Privacy")
                 } footer: {
                     Text(app.hidesInSwitcher
-                         ? "You can see designer pages, so the app switcher shows a blurred picture of the app."
+                         ? "You can see more than public pages, so the app switcher shows a blurred picture of the app."
                          : "Ask for Face ID or your passcode whenever the app opens.")
                 }
                 Section {

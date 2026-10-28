@@ -106,6 +106,7 @@ struct BrowseView: View {
                             NavigationLink(value: Route.page(item.ref)) {
                                 EntityRow(card: item.card, detail: item.shortDescription ?? kindLabel(item.kind))
                             }
+                            .accessibilityIdentifier("pageRow")
                         }
                         if model.canLoadMore {
                             Button {

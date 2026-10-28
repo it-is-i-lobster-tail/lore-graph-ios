@@ -109,6 +109,10 @@ private let tokenAnswer = Data(#"{"access_token": "a-1", "token_type": "Bearer",
         #expect(try AppModel.serverURL("lore.example.test") == testServer)
         #expect(try AppModel.serverURL("http://localhost:8000").absoluteString == "http://localhost:8000")
         #expect(try AppModel.serverURL("http://mac.local").host == "mac.local")
+        // a bare local address is this device's own server, which serves plain http
+        #expect(try AppModel.serverURL("localhost:8000").absoluteString == "http://localhost:8000")
+        #expect(try AppModel.serverURL("mac.local").scheme == "http")
+        #expect(try AppModel.serverURL("https://localhost:8443").scheme == "https")
         #expect(throws: APIError.self) { try AppModel.serverURL("http://lore.example.test") }
         #expect(throws: APIError.self) { try AppModel.serverURL("") }
         #expect(AppModel.isLocal(URL(string: "http://127.0.0.1")!) && AppModel.isLocal(URL(string: "http://[::1]")!))
