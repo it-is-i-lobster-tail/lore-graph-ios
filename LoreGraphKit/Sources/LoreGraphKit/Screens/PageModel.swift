@@ -129,6 +129,8 @@ public final class BrowseModel {
     }
 
     public private(set) var type: EntityType?
+    /// Only the pages in this category (slug).
+    public let category: String?
     public private(set) var sort: Sort = .title
     public private(set) var first: Loader<Page<EntityListItem>>
     public private(set) var more: [EntityListItem] = []
@@ -137,10 +139,11 @@ public final class BrowseModel {
     public private(set) var moreError: APIError?
     @ObservationIgnored public let context: ReadContext
 
-    public init(type: EntityType?, context: ReadContext) {
+    public init(type: EntityType?, category: String? = nil, context: ReadContext) {
         self.type = type
+        self.category = category
         self.context = context
-        first = context.loader(API.entities(type: type, sort: Sort.title.wire))
+        first = context.loader(API.entities(type: type, category: category, sort: Sort.title.wire))
     }
 
     public var items: [EntityListItem] { (first.value?.items ?? []) + more }
@@ -163,7 +166,7 @@ public final class BrowseModel {
         self.sort = sort
         more = []
         nextCursor = nil
-        first = context.loader(API.entities(type: type, sort: sort.wire))
+        first = context.loader(API.entities(type: type, category: category, sort: sort.wire))
         await first.load()
     }
 
@@ -172,7 +175,7 @@ public final class BrowseModel {
         isLoadingMore = true
         defer { isLoadingMore = false }
         do {
-            let next = try await context.repository.fetch(API.entities(type: type, sort: sort.wire, cursor: cursor),
+            let next = try await context.repository.fetch(API.entities(type: type, category: category, sort: sort.wire, cursor: cursor),
                                                           world: context.world, view: context.view).value
             more += next.items
             nextCursor = next.nextCursor

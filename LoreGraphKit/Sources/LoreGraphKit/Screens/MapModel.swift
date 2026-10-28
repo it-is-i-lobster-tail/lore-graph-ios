@@ -231,8 +231,9 @@ public final class MapModel {
     public var neededRasters: [TileRequest] {
         guard let layer = (layers.value?.layers ?? []).first(where: { $0.baseMap == baseMap && baseMap != .plain }),
               let key = layer.raster?.key else { return [] }
+        // past its native zoom the image has no more detail: its native tiles are drawn enlarged,
+        // as the web app does (ADR D-77)
         let native = layer.raster?.nativeZoom ?? layers.value?.map?.rasterMaxZoom ?? 10
-        guard viewport.zoom <= Double(native) + 2 else { return [] }
         let z = viewport.tileZoom(limit: native)
         return viewport.tiles(at: z).map {
             TileRequest(kind: .raster, layer: key, tile: $0, version: version, world: context.world)
