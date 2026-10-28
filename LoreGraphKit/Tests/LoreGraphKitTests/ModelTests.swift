@@ -406,6 +406,8 @@ import Testing
         #expect(parse("https://lore.example.test/factions/testmark")?.route == .faction("testmark"))
         #expect(parse("https://lore.example.test/trails/start-here")?.route == .trail("start-here"))
         #expect(parse("https://lore.example.test/v/my-view")?.route == .savedView("my-view"))
+        #expect(parse("https://lore.example.test/categories/river")?.route == .category("river", title: nil))
+        #expect(parse("https://lore.example.test/categories") == nil)
         #expect(parse("https://lore.example.test/family")?.route == .home)
         #expect(parse("https://lore.example.test/search?q=ford")?.route == .search("ford"))
         #expect(parse("https://lore.example.test/search")?.route == .search(""))
@@ -456,7 +458,7 @@ import Testing
             .family("dirk", FamilyOptions()), .family("dirk", FamilyOptions(up: 3, down: 1, mode: .descendants, account: "x")),
             .graph(GraphOptions()), .graph(GraphOptions(focus: ["a", "b"], depth: 2, path: ["a", "b"])),
             .timeline(TimelineOptions()), .timeline(TimelineOptions(about: ["dirk"], from: "1000", to: "1100", lanes: "type", claims: true)),
-            .map(MapOptions()), .search(""), .search("ford"), .trail("t"), .savedView("v"),
+            .map(MapOptions()), .search(""), .search("ford"), .trail("t"), .savedView("v"), .category("river", title: nil),
         ]
         for r in routes {
             let view = ViewState(asOf: 1020, viewpoint: .init(ref: "aldo", title: "aldo"), calendar: "lc", viewAs: .public)
@@ -479,6 +481,9 @@ import Testing
         #expect(url.contains("sel=lampton"))
         #expect(!url.contains("sel=other"))
         #expect(WebLink(route: .home).url(server: testServer).absoluteString == "https://lore.example.test/")
+        // a category's title is only the heading: its link is the slug, as the web app's
+        #expect(WebLink(route: .category("river", title: "Rivers")).url(server: testServer).absoluteString
+            == "https://lore.example.test/categories/river")
         #expect(WebLink(route: .home, view: ViewState(viewAs: .designer)).url(server: testServer).query == nil)
     }
 }

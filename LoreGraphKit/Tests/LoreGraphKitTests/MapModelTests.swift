@@ -2,11 +2,16 @@ import Foundation
 import Testing
 @testable import LoreGraphKit
 
-/// The Testmark layers plus a painted atlas, a relief without tiles, and layers that test the
-/// zoom bands, the "Other" group and the next map generation.
+/// A rebuilt world's painted atlas, waiting to be activated (listed before today's, as the
+/// server's key order puts `next-painted` first).
+private let nextAtlas = #"{"id": "r-next-atlas", "key": "next-painted", "title": "Painted atlas", "kind": "raster", "group": "Base maps", "generation": "next", "raster": {"key": "next-atlas-1", "native_zoom": 6}}"#
+
+/// The Testmark layers plus a painted atlas (and the rebuilt world's), a relief without tiles,
+/// and layers that test the zoom bands, the "Other" group and the next map generation.
 private func layersWithRasters() throws -> MapLayers {
     var layers = try Fixture.decode(MapLayers.self, "map-layers")
     for json in [
+        nextAtlas,
         #"{"id": "r-atlas", "key": "atlas", "title": "Painted atlas", "kind": "raster", "group": "Base maps", "raster": {"key": "atlas-1", "native_zoom": 6}}"#,
         #"{"id": "r-relief", "key": "relief", "title": "Relief", "kind": "raster", "group": "Base maps", "raster": {}}"#,
         #"{"id": "v-loose", "key": "loose", "title": "Loose", "kind": "vector", "source": {"shapes": {}}, "default_visible": true}"#,
@@ -221,11 +226,27 @@ private func tileZ(_ piece: ScenePiece) -> Int? {
         #expect(await eventually { m.neededRasters.allSatisfy { m.rasters[$0] != nil } })
         #expect(m.rasterList.allSatisfy { $0.tile.z == 5 })
 
-        v.zoom = 9
+        // past the native zoom the native tiles are drawn enlarged, however far in
+        v.zoom = 11
         m.setViewport(v)
-        #expect(m.neededRasters.isEmpty)
+        #expect(!m.neededRasters.isEmpty && m.neededRasters.allSatisfy { $0.layer == "atlas-1" && $0.tile.z == 6 })
         m.setBaseMap(.plain)
         #expect(m.baseMap == .plain && m.neededRasters.isEmpty && m.rasterList.isEmpty)
+    }
+
+    @Test func aRebuiltWorldsImagesAreNotTodaysBaseMap() async throws {
+        // a world whose only map is still the rebuilt one: today's map has no images
+        let stack = Stack()
+        var layers = try Fixture.decode(MapLayers.self, "map-layers")
+        layers.layers.append(try JSONCoding.decoder.decode(MapLayers.Layer.self, from: Data(nextAtlas.utf8)))
+        stack.server.json("/map/layers", value: layers)
+        let m = MapModel(context: stack.context())
+        await m.load()
+        #expect(layers.layers.last?.baseMap == nil)
+        #expect(m.baseMap == .plain && m.availableBaseMaps == [.plain])
+        m.setBaseMap(.atlas)
+        #expect(m.neededRasters.isEmpty)
+        #expect(!m.layerGroups.flatMap(\.layers).contains { $0.key == "next-painted" })
     }
 
     @Test func togglesLayersAndLoadsDerivedFeatures() async throws {

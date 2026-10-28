@@ -43,7 +43,7 @@ struct PageContent: View {
                             SectionView(section: s, blocks: model.blocks(s)).id(s.id)
                         }
                         if let cats = page.categories, !cats.isEmpty {
-                            FlowChips(items: cats.map(\.title))
+                            CategoryChips(categories: cats)
                         }
                     }
                     .padding()
@@ -196,13 +196,21 @@ struct ItemRow: View {
     }
 }
 
-/// Chips that wrap onto new lines (categories).
-struct FlowChips: View {
-    let items: [String]
+/// A page's categories as chips that wrap onto new lines; each opens the pages in it.
+struct CategoryChips: View {
+    let categories: [EntityDetail.Category]
 
     var body: some View {
         FlowLayout(spacing: 6) {
-            ForEach(items, id: \.self) { Chip(text: $0) }
+            ForEach(categories, id: \.self) { c in
+                if let slug = c.slug {
+                    NavigationLink(value: Route.category(slug, title: c.title)) { Chip(text: c.title, tint: .accentColor) }
+                        .buttonStyle(.plain)
+                        .accessibilityIdentifier("category-\(slug)")
+                } else {
+                    Chip(text: c.title)
+                }
+            }
         }
     }
 }

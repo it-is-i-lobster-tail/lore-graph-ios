@@ -73,6 +73,8 @@ public struct MapOptions: Hashable, Sendable, Codable {
 public enum Route: Hashable, Sendable, Codable {
     case home
     case browse(type: EntityType?)
+    /// The pages in a category, by slug; the title is for the screen's heading when it is known.
+    case category(String, title: String?)
     case page(String)
     case records(String)
     case links(String)
@@ -181,6 +183,7 @@ public struct WebLink: Hashable, Sendable {
                                                   down: q["down"].flatMap(Int.init).map { max(0, min(10, $0)) } ?? 2,
                                                   mode: mode, account: q["account"]))
             case "trails": return .trail(ref)
+            case "categories": return .category(ref, title: nil)
             case "v": return .savedView(ref)
             default: return nil
             }
@@ -209,6 +212,7 @@ public struct WebLink: Hashable, Sendable {
         case .browse(let type):
             path = "/wiki"
             if let type { q.append(("type", type.rawValue)) }
+        case .category(let slug, _): path = "/categories/\(esc(slug))"
         case .page(let r): path = "/wiki/\(esc(r))"
         case .records(let r): path = "/wiki/\(esc(r))/records"
         case .links(let r): path = "/wiki/\(esc(r))/links"
