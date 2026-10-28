@@ -99,7 +99,7 @@ extension View {
 struct ContextModel<Model: AnyObject, Content: View>: View {
     @Environment(AppModel.self) private var app
     let make: (ReadContext) -> Model
-    let load: (Model) async -> Void
+    let load: @MainActor (Model) async -> Void
     @ViewBuilder let content: (Model) -> Content
     @State private var model: Model?
     @State private var key: String?

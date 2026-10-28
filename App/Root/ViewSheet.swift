@@ -51,7 +51,7 @@ struct ViewSheet: View {
                 if let ceiling = app.reader?.ceiling, ceiling > .public {
                     Section {
                         Picker("Show as", selection: Binding(get: { draft.viewAs ?? ceiling }, set: { draft.viewAs = $0 == ceiling ? nil : $0 })) {
-                            ForEach(Visibility.allCases.filter { $0 <= ceiling }, id: \.self) { Text($0.label).tag($0) }
+                            ForEach(LoreGraphKit.Visibility.allCases.filter { $0 <= ceiling }, id: \.self) { Text($0.label).tag($0) }
                         }
                     } header: {
                         Text("Show as")

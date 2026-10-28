@@ -71,6 +71,11 @@ public struct TimelineLayout: Sendable {
         public var id: String { title }
         public var title: String
         public var items: [Timeline.Item]
+
+        public init(title: String, items: [Timeline.Item]) {
+            self.title = title
+            self.items = items
+        }
     }
 
     public let items: [Timeline.Item]
