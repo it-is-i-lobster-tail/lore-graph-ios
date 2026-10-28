@@ -1,0 +1,121 @@
+{
+ "items": [
+  {
+   "ref": "aldo",
+   "id": "00000000-0000-7000-8000-000000000020",
+   "title": "Aldo",
+   "type": "individual",
+   "kind": "individual.person",
+   "short_description": "Lord of Lampton, remembered as the victor of the Ford.",
+   "visibility": "public",
+   "canon": "approved",
+   "version": 1,
+   "updated_at": "2026-10-28T07:15:16.903645Z",
+   "placement": null,
+   "edit_tag": null,
+   "deleted": false,
+   "lifespan": {
+    "from": 1000.0,
+    "to": 1060.0,
+    "precision": "year",
+    "label": "YV 1000 to 1059",
+    "formatted": "YV 1000 to 1059"
+   },
+   "ui_url": "https://lore.example.test/wiki/aldo"
+  },
+  {
+   "ref": "bera",
+   "id": "00000000-0000-7000-8000-000000000021",
+   "title": "Bera",
+   "type": "individual",
+   "kind": "individual.person",
+   "short_description": "Aldo's second wife, mother of Cato and Dana.",
+   "visibility": "public",
+   "canon": "approved",
+   "version": 1,
+   "updated_at": "2026-10-28T07:15:16.903645Z",
+   "placement": null,
+   "edit_tag": null,
+   "deleted": false,
+   "lifespan": {
+    "from": 1005.0,
+    "to": 1070.0,
+    "precision": "year",
+    "label": "YV 1005 to 1069",
+    "formatted": "YV 1005 to 1069"
+   },
+   "ui_url": "https://lore.example.test/wiki/bera"
+  },
+  {
+   "ref": "cato",
+   "id": "00000000-0000-7000-8000-000000000022",
+   "title": "Cato",
+   "type": "individual",
+   "kind": "individual.person",
+   "short_description": "Novice of the Order of the Lamp.",
+   "visibility": "public",
+   "canon": "approved",
+   "version": 1,
+   "updated_at": "2026-10-28T07:15:16.903645Z",
+   "placement": null,
+   "edit_tag": null,
+   "deleted": false,
+   "lifespan": {
+    "from": 1030.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1030",
+    "formatted": "since YV 1030"
+   },
+   "ui_url": "https://lore.example.test/wiki/cato"
+  },
+  {
+   "ref": "dana",
+   "id": "00000000-0000-7000-8000-000000000024",
+   "title": "Dana",
+   "type": "individual",
+   "kind": "individual.person",
+   "short_description": "Daughter of Aldo and Bera, later of Eastbrook.",
+   "visibility": "public",
+   "canon": "approved",
+   "version": 1,
+   "updated_at": "2026-10-28T07:15:16.903645Z",
+   "placement": null,
+   "edit_tag": null,
+   "deleted": false,
+   "lifespan": {
+    "from": 1032.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1032",
+    "formatted": "since YV 1032"
+   },
+   "ui_url": "https://lore.example.test/wiki/dana"
+  },
+  {
+   "ref": "dirk",
+   "id": "00000000-0000-7000-8000-000000000023",
+   "title": "Dirk",
+   "type": "individual",
+   "kind": "individual.person",
+   "short_description": "Marshal of Testmark who led the host at the Ford.",
+   "visibility": "public",
+   "canon": "approved",
+   "version": 1,
+   "updated_at": "2026-10-28T07:15:16.903645Z",
+   "placement": null,
+   "edit_tag": null,
+   "deleted": false,
+   "lifespan": {
+    "from": 1002.0,
+    "to": 1050.0,
+    "precision": "year",
+    "label": "YV 1002 to 1049",
+    "formatted": "YV 1002 to 1049"
+   },
+   "ui_url": "https://lore.example.test/wiki/dirk"
+  }
+ ],
+ "next_cursor": "eyJvIjo1fQ",
+ "total": 10
+}

@@ -1,0 +1,55 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     11,
+     45.5
+    ]
+   },
+   "properties": {
+    "layer": "pages",
+    "kind_of": "shape",
+    "shape_id": "01a1815c-fb58-7cc5-a1df-7ae51b5ab98f",
+    "entity": {
+     "ref": "lampton",
+     "id": "00000000-0000-7000-8000-000000000031",
+     "title": "Lampton",
+     "type": "location",
+     "kind": "location.settlement",
+     "canon": "approved"
+    },
+    "label": "Lampton",
+    "role": "point",
+    "precision": "exact",
+    "uncertainty_m": null,
+    "canon": "approved",
+    "visibility": "public",
+    "claimed": false,
+    "according_to": null,
+    "rank": 2,
+    "min_zoom": 4.0,
+    "max_zoom": null,
+    "valid": null,
+    "generation": "current"
+   },
+   "id": "shape:01a1815c-fb58-7cc5-a1df-7ae51b5ab98f"
+  }
+ ],
+ "layers": [
+  {
+   "key": "pages",
+   "kind": "vector",
+   "count": 1
+  }
+ ],
+ "year": 1131.0,
+ "viewpoint": null,
+ "map_version": 67,
+ "truncated": false,
+ "warnings": [],
+ "ui_url": "https://lore.example.test/map?y=1131&sel=lampton"
+}

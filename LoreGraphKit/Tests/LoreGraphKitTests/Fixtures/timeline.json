@@ -1,0 +1,547 @@
+{
+ "items": [
+  {
+   "kind": "link",
+   "id": "00000000-0000-7000-8000-000000000120",
+   "ref": "dirk",
+   "title": "Dirk member of Kingdom of Testmark as marshal",
+   "predicate": "member_of",
+   "family": "membership",
+   "date": {
+    "from": 1015.0,
+    "to": 1050.0,
+    "precision": "year",
+    "label": "YV 1015 to 1049",
+    "formatted": "YV 1015 to 1049"
+   },
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "according_to": null,
+   "claim_relation": null,
+   "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000120",
+   "lanes": {
+    "type": "membership",
+    "place": null,
+    "faction": "testmark",
+    "person": "dirk"
+   }
+  },
+  {
+   "kind": "event",
+   "id": "00000000-0000-7000-8000-000000000041",
+   "ref": "war-of-the-ford",
+   "title": "War of the Ford",
+   "entity_kind": "event.war",
+   "date": {
+    "from": 1019.0,
+    "to": 1022.0,
+    "precision": "year",
+    "label": "YV 1019 to 1021",
+    "formatted": "YV 1019 to 1021"
+   },
+   "parent_event_id": null,
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "ui_url": "https://lore.example.test/wiki/war-of-the-ford",
+   "lanes": {
+    "type": "event.war",
+    "place": "test-vale",
+    "faction": null,
+    "person": null
+   }
+  },
+  {
+   "kind": "link",
+   "id": "00000000-0000-7000-8000-000000000117",
+   "ref": "testmark",
+   "title": "Kingdom of Testmark at war with The Eastmarch",
+   "predicate": "at_war_with",
+   "family": "political",
+   "date": {
+    "from": 1019.0,
+    "to": 1022.0,
+    "precision": "year",
+    "label": "YV 1019 to 1021",
+    "formatted": "YV 1019 to 1021"
+   },
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "according_to": null,
+   "claim_relation": null,
+   "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000117",
+   "lanes": {
+    "type": "political",
+    "place": null,
+    "faction": "eastmarch",
+    "person": null
+   }
+  },
+  {
+   "kind": "link",
+   "id": "00000000-0000-7000-8000-000000000112",
+   "ref": "aldo",
+   "title": "Aldo married to Gilda",
+   "predicate": "married_to",
+   "family": "kinship",
+   "date": {
+    "from": 1020.0,
+    "to": 1024.0,
+    "precision": "year",
+    "label": "YV 1020 to 1023",
+    "formatted": "YV 1020 to 1023"
+   },
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "according_to": null,
+   "claim_relation": null,
+   "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000112",
+   "lanes": {
+    "type": "kinship",
+    "place": null,
+    "faction": null,
+    "person": "aldo"
+   }
+  },
+  {
+   "kind": "event",
+   "id": "00000000-0000-7000-8000-000000000040",
+   "ref": "battle-at-the-ford",
+   "title": "Battle at the Ford",
+   "entity_kind": "event.battle",
+   "date": {
+    "from": 1020.414,
+    "to": 1020.666,
+    "precision": "season",
+    "label": "summer YV 1020",
+    "formatted": "summer YV 1020"
+   },
+   "parent_event_id": "00000000-0000-7000-8000-000000000041",
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "ui_url": "https://lore.example.test/wiki/battle-at-the-ford",
+   "lanes": {
+    "type": "event.battle",
+    "place": "lampton",
+    "faction": "testmark",
+    "person": "aldo"
+   }
+  },
+  {
+   "kind": "event",
+   "id": "00000000-0000-7000-8000-000000000042",
+   "ref": "siege-of-eastbrook",
+   "title": "Siege of Eastbrook",
+   "entity_kind": "event.siege",
+   "date": {
+    "from": 1021.162,
+    "to": 1021.414,
+    "precision": "season",
+    "label": "spring YV 1021",
+    "formatted": "spring YV 1021"
+   },
+   "parent_event_id": "00000000-0000-7000-8000-000000000041",
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "ui_url": "https://lore.example.test/wiki/siege-of-eastbrook",
+   "lanes": {
+    "type": "event.siege",
+    "place": "eastbrook",
+    "faction": "testmark",
+    "person": "dirk"
+   }
+  },
+  {
+   "kind": "telling",
+   "id": "00000000-0000-7000-8000-000000000050",
+   "ref": "testmark-chronicle",
+   "title": "Testmark Chronicle told",
+   "entity_kind": "story.chronicle",
+   "date": {
+    "from": 1022.0,
+    "to": 1023.0,
+    "precision": "year",
+    "label": "YV 1022",
+    "formatted": "YV 1022"
+   },
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "ui_url": "https://lore.example.test/wiki/testmark-chronicle",
+   "lanes": {
+    "type": "story.chronicle",
+    "place": "lampton",
+    "person": "testmark",
+    "faction": "testmark"
+   }
+  },
+  {
+   "kind": "link",
+   "id": "00000000-0000-7000-8000-000000000101",
+   "ref": "aldo",
+   "title": "Aldo married to Bera",
+   "predicate": "married_to",
+   "family": "kinship",
+   "date": {
+    "from": 1025.0,
+    "to": 1060.0,
+    "precision": "year",
+    "label": "YV 1025 to 1059",
+    "formatted": "YV 1025 to 1059"
+   },
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "according_to": null,
+   "claim_relation": null,
+   "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000101",
+   "lanes": {
+    "type": "kinship",
+    "place": null,
+    "faction": null,
+    "person": "aldo"
+   }
+  },
+  {
+   "kind": "link",
+   "id": "00000000-0000-7000-8000-000000000128",
+   "ref": "fenn",
+   "title": "Fenn lives in Lampton",
+   "predicate": "resides_in",
+   "family": "life",
+   "date": {
+    "from": 1030.0,
+    "to": 1075.0,
+    "precision": "year",
+    "label": "YV 1030 to 1074",
+    "formatted": "YV 1030 to 1074"
+   },
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "according_to": null,
+   "claim_relation": null,
+   "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000128",
+   "lanes": {
+    "type": "life",
+    "place": null,
+    "faction": null,
+    "person": "fenn"
+   }
+  },
+  {
+   "kind": "telling",
+   "id": "00000000-0000-7000-8000-000000000051",
+   "ref": "ballad-of-the-ford",
+   "title": "Ballad of the Ford told",
+   "entity_kind": "story.song",
+   "date": {
+    "from": 1030.0,
+    "to": 1040.0,
+    "precision": "decade",
+    "label": "the 1030s",
+    "formatted": "the 1030s"
+   },
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "ui_url": "https://lore.example.test/wiki/ballad-of-the-ford",
+   "lanes": {
+    "type": "story.song",
+    "place": null,
+    "person": null,
+    "faction": null
+   }
+  },
+  {
+   "kind": "link",
+   "id": "00000000-0000-7000-8000-000000000107",
+   "ref": "cato",
+   "title": "Cato member of Order of the Lamp as novice",
+   "predicate": "member_of",
+   "family": "membership",
+   "date": {
+    "from": 1045.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1045",
+    "formatted": "since YV 1045"
+   },
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "according_to": null,
+   "claim_relation": null,
+   "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000107",
+   "lanes": {
+    "type": "membership",
+    "place": null,
+    "faction": "order-of-the-lamp",
+    "person": "cato"
+   }
+  },
+  {
+   "kind": "link",
+   "id": "00000000-0000-7000-8000-000000000126",
+   "ref": "dana",
+   "title": "Dana lives in Eastbrook",
+   "predicate": "resides_in",
+   "family": "life",
+   "date": {
+    "from": 1048.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1048",
+    "formatted": "since YV 1048"
+   },
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "according_to": null,
+   "claim_relation": null,
+   "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000126",
+   "lanes": {
+    "type": "life",
+    "place": null,
+    "faction": null,
+    "person": "dana"
+   }
+  },
+  {
+   "kind": "telling",
+   "id": "00000000-0000-7000-8000-00000000c002",
+   "ref": "canary-designer-letter",
+   "title": "CANARY-DESIGNER-LETTER-TITLE told",
+   "entity_kind": "story.letter",
+   "date": {
+    "from": 1050.0,
+    "to": 1051.0,
+    "precision": "year",
+    "label": "CANARY-DESIGNER-TOLD-LABEL",
+    "formatted": "YV 1050"
+   },
+   "visibility": "designer",
+   "canon": "approved",
+   "claim": false,
+   "ui_url": "https://lore.example.test/wiki/canary-designer-letter",
+   "lanes": {
+    "type": "story.letter",
+    "place": null,
+    "person": "dirk",
+    "faction": "dirk"
+   }
+  },
+  {
+   "kind": "event",
+   "id": "00000000-0000-7000-8000-000000000043",
+   "ref": "catos-road",
+   "title": "Cato's road to Eastbrook",
+   "entity_kind": "event.journey",
+   "date": {
+    "from": 1050.162,
+    "to": 1050.915,
+    "precision": "year",
+    "label": "YV 1050",
+    "formatted": "spring YV 1050 to autumn YV 1050"
+   },
+   "parent_event_id": null,
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "ui_url": "https://lore.example.test/wiki/catos-road",
+   "lanes": {
+    "type": "event.journey",
+    "place": null,
+    "faction": null,
+    "person": "cato"
+   }
+  },
+  {
+   "kind": "link",
+   "id": "00000000-0000-7000-8000-000000000122",
+   "ref": "cato",
+   "title": "Cato was at Lampton",
+   "predicate": "present_at",
+   "family": "life",
+   "date": {
+    "from": 1050.162,
+    "to": 1050.3,
+    "precision": "season",
+    "label": "spring YV 1050 to 1050.3",
+    "formatted": "spring YV 1050 to 1050.3"
+   },
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "according_to": null,
+   "claim_relation": null,
+   "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000122",
+   "lanes": {
+    "type": "life",
+    "place": null,
+    "faction": null,
+    "person": "cato"
+   }
+  },
+  {
+   "kind": "link",
+   "id": "00000000-0000-7000-8000-000000000123",
+   "ref": "cato",
+   "title": "Cato was at Eastbrook",
+   "predicate": "present_at",
+   "family": "life",
+   "date": {
+    "from": 1050.45,
+    "to": 1050.62,
+    "precision": "season",
+    "label": "1050.45 to 1050.62",
+    "formatted": "1050.45 to 1050.62"
+   },
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "according_to": null,
+   "claim_relation": null,
+   "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000123",
+   "lanes": {
+    "type": "life",
+    "place": null,
+    "faction": null,
+    "person": "cato"
+   }
+  },
+  {
+   "kind": "link",
+   "id": "00000000-0000-7000-8000-000000000124",
+   "ref": "cato",
+   "title": "Cato was at Lampton",
+   "predicate": "present_at",
+   "family": "life",
+   "date": {
+    "from": 1050.7,
+    "to": 1050.915,
+    "precision": "season",
+    "label": "1050.7 to autumn YV 1050",
+    "formatted": "1050.7 to autumn YV 1050"
+   },
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "according_to": null,
+   "claim_relation": null,
+   "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000124",
+   "lanes": {
+    "type": "life",
+    "place": null,
+    "faction": null,
+    "person": "cato"
+   }
+  },
+  {
+   "kind": "telling",
+   "id": "00000000-0000-7000-8000-000000000052",
+   "ref": "ferrymans-rumour",
+   "title": "The ferryman's rumour told",
+   "entity_kind": "tale.rumour",
+   "date": {
+    "from": 1052.0,
+    "to": 1053.0,
+    "precision": "year",
+    "label": "YV 1052",
+    "formatted": "YV 1052"
+   },
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "ui_url": "https://lore.example.test/wiki/ferrymans-rumour",
+   "lanes": {
+    "type": "tale.rumour",
+    "place": "eastbrook",
+    "person": "fenn",
+    "faction": "fenn"
+   }
+  },
+  {
+   "kind": "link",
+   "id": "00000000-0000-7000-8000-000000000114",
+   "ref": "cato",
+   "title": "Cato married to Mira",
+   "predicate": "married_to",
+   "family": "kinship",
+   "date": {
+    "from": 1056.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1056",
+    "formatted": "since YV 1056"
+   },
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "according_to": null,
+   "claim_relation": null,
+   "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000114",
+   "lanes": {
+    "type": "kinship",
+    "place": null,
+    "faction": null,
+    "person": "cato"
+   }
+  }
+ ],
+ "eras": [
+  {
+   "id": "01a1815c-fb8c-704a-b763-b8b49da59ccd",
+   "name": "The founding",
+   "scheme": "wiki",
+   "span": {
+    "from": 900.0,
+    "to": 1000.0,
+    "precision": "year",
+    "label": "YV 900 to 999",
+    "formatted": "YV 900 to 999"
+   },
+   "defined_by": null,
+   "description": "From the founding of Testmark to the new walls of Lampton.",
+   "visibility": "public"
+  },
+  {
+   "id": "01a1815c-fb8c-7474-91d7-3eb3b1533e1d",
+   "name": "The age of the lamp",
+   "scheme": "wiki",
+   "span": {
+    "from": 1000.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1000",
+    "formatted": "since YV 1000"
+   },
+   "defined_by": null,
+   "description": "From the new walls to the present.",
+   "visibility": "public"
+  },
+  {
+   "id": "01a1815c-fba0-72ec-ab49-d5370547ab25",
+   "name": "CANARY-DESIGNER-ERA",
+   "scheme": "wiki",
+   "span": {
+    "from": 1040.0,
+    "to": 1050.0,
+    "precision": "year",
+    "label": "YV 1040 to 1049",
+    "formatted": "YV 1040 to 1049"
+   },
+   "defined_by": null,
+   "description": "CANARY-DESIGNER-ERA-DESCRIPTION",
+   "visibility": "designer"
+  }
+ ],
+ "window": null,
+ "next_cursor": null,
+ "ui_url": "https://lore.example.test/timeline"
+}

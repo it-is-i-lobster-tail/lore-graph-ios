@@ -1,0 +1,162 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      11.5,
+      45.75
+     ]
+    ]
+   },
+   "properties": {
+    "layer": "events",
+    "kind_of": "event",
+    "entity": {
+     "ref": "war-of-the-ford",
+     "id": "00000000-0000-7000-8000-000000000041",
+     "title": "War of the Ford",
+     "kind": "event.war"
+    },
+    "label": "War of the Ford",
+    "when": {
+     "from": 1019.0,
+     "to": 1022.0,
+     "precision": "year",
+     "label": "YV 1019 to 1021",
+     "formatted": "YV 1019 to 1021"
+    }
+   },
+   "id": "event:00000000-0000-7000-8000-000000000041"
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      11.2,
+      45.6
+     ]
+    ]
+   },
+   "properties": {
+    "layer": "events",
+    "kind_of": "event",
+    "entity": {
+     "ref": "battle-at-the-ford",
+     "id": "00000000-0000-7000-8000-000000000040",
+     "title": "Battle at the Ford",
+     "kind": "event.battle"
+    },
+    "label": "Battle at the Ford",
+    "when": {
+     "from": 1020.414,
+     "to": 1020.666,
+     "precision": "year",
+     "label": "summer YV 1020",
+     "formatted": "summer YV 1020"
+    }
+   },
+   "id": "event:00000000-0000-7000-8000-000000000040"
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiPoint",
+    "coordinates": [
+     [
+      12,
+      45.5
+     ]
+    ]
+   },
+   "properties": {
+    "layer": "events",
+    "kind_of": "event",
+    "entity": {
+     "ref": "siege-of-eastbrook",
+     "id": "00000000-0000-7000-8000-000000000042",
+     "title": "Siege of Eastbrook",
+     "kind": "event.siege"
+    },
+    "label": "Siege of Eastbrook",
+    "when": {
+     "from": 1021.162,
+     "to": 1021.414,
+     "precision": "year",
+     "label": "spring YV 1021",
+     "formatted": "spring YV 1021"
+    }
+   },
+   "id": "event:00000000-0000-7000-8000-000000000042"
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+     [
+      [
+       11,
+       45.5
+      ],
+      [
+       11.5,
+       45.45
+      ],
+      [
+       12,
+       45.5
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "layer": "events",
+    "kind_of": "event",
+    "entity": {
+     "ref": "catos-road",
+     "id": "00000000-0000-7000-8000-000000000043",
+     "title": "Cato's road to Eastbrook",
+     "kind": "event.journey"
+    },
+    "label": "Cato's road to Eastbrook",
+    "when": {
+     "from": 1050.162,
+     "to": 1050.915,
+     "precision": "year",
+     "label": "YV 1050",
+     "formatted": "spring YV 1050 to autumn YV 1050"
+    }
+   },
+   "id": "event:00000000-0000-7000-8000-000000000043"
+  }
+ ],
+ "layers": [
+  {
+   "key": "events",
+   "kind": "derived",
+   "count": 4
+  },
+  {
+   "key": "journeys",
+   "kind": "derived",
+   "count": 0
+  },
+  {
+   "key": "tellings",
+   "kind": "derived",
+   "count": 0
+  }
+ ],
+ "year": 1020.0,
+ "viewpoint": null,
+ "map_version": 67,
+ "truncated": false,
+ "warnings": [],
+ "ui_url": "https://lore.example.test/map?y=1020&l=events,journeys,tellings"
+}

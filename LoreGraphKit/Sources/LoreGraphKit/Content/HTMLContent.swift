@@ -270,6 +270,7 @@ public enum HTMLContent {
     }
 
     static let voidElements: Set<String> = ["br", "hr", "img", "input", "meta", "link", "col", "wbr"]
+    static let blockElements: Set<String> = ["ul", "ol", "table", "blockquote", "pre", "hr", "div", "h1", "h2", "h3", "h4", "h5", "h6"]
 
     enum TreeBuilder {
         static func build(_ tokens: [Token]) -> Element {
@@ -285,6 +286,11 @@ public enum HTMLContent {
                 case .start(let name, let attrs, let selfClosing):
                     // a new paragraph or list item ends an open one, as browsers do
                     if ["p", "li", "tr", "td", "th"].contains(name), let i = stack.lastIndex(where: { $0.name == name }),
+                       stack[(i + 1)...].allSatisfy({ !["ul", "ol", "table", "blockquote"].contains($0.name) }) {
+                        while stack.count > i { close() }
+                    }
+                    // and a block inside an open paragraph ends the paragraph
+                    if blockElements.contains(name), let i = stack.lastIndex(where: { $0.name == "p" }),
                        stack[(i + 1)...].allSatisfy({ !["ul", "ol", "table", "blockquote"].contains($0.name) }) {
                         while stack.count > i { close() }
                     }

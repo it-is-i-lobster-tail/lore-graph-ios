@@ -1,0 +1,39 @@
+{
+ "paths": [
+  {
+   "length": 3,
+   "steps": [
+    {
+     "from": "fenn",
+     "statement_id": "00000000-0000-7000-8000-00000000c103",
+     "predicate": "knows",
+     "label": "knows",
+     "to": "dirk",
+     "visibility": "restricted",
+     "according_to": null
+    },
+    {
+     "from": "dirk",
+     "statement_id": "00000000-0000-7000-8000-000000000120",
+     "predicate": "member_of",
+     "label": "member of",
+     "to": "testmark",
+     "visibility": "public",
+     "according_to": null
+    },
+    {
+     "from": "testmark",
+     "statement_id": "00000000-0000-7000-8000-000000000117",
+     "predicate": "at_war_with",
+     "label": "at war with",
+     "to": "eastmarch",
+     "visibility": "public",
+     "according_to": null
+    }
+   ],
+   "sentence": "Fenn, knows Dirk (restricted), member of Kingdom of Testmark, at war with The Eastmarch."
+  }
+ ],
+ "length": 3,
+ "ui_url": "https://lore.example.test/graph?focus=fenn,eastmarch&path=fenn,eastmarch"
+}

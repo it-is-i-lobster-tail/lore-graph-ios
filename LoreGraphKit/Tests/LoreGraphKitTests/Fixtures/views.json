@@ -1,0 +1,76 @@
+{
+ "views": [
+  {
+   "id": "00000000-0000-7000-8000-00000000c703",
+   "kind": "graph",
+   "slug": "canary-designer-view",
+   "title": "CANARY-DESIGNER-VIEW",
+   "description": "CANARY-DESIGNER-VIEW-DESCRIPTION",
+   "state": {
+    "note": "CANARY-DESIGNER-VIEW-STATE",
+    "route": "/graph"
+   },
+   "visibility": "designer",
+   "updated_at": "2026-10-28T07:15:16.903645Z",
+   "url": "https://lore.example.test/v/canary-designer-view"
+  }
+ ],
+ "trails": [
+  {
+   "id": "00000000-0000-7000-8000-00000000c601",
+   "slug": "canary-designer-trail",
+   "title": "CANARY-DESIGNER-TRAIL",
+   "description_md": "CANARY-DESIGNER-TRAIL-DESCRIPTION",
+   "visibility": "designer",
+   "steps": [
+    {
+     "position": 1.0,
+     "ref": "lampton",
+     "title": "Lampton",
+     "section_key": null,
+     "note_md": "CANARY-DESIGNER-TRAIL-STEP"
+    }
+   ],
+   "url": "https://lore.example.test/trails/canary-designer-trail"
+  },
+  {
+   "id": "00000000-0000-7000-8000-00000000c602",
+   "slug": "start-here",
+   "title": "Start here",
+   "description_md": "The kingdom in four pages.",
+   "visibility": "public",
+   "steps": [
+    {
+     "position": 1.0,
+     "ref": "testmark",
+     "title": "Kingdom of Testmark",
+     "section_key": null,
+     "note_md": "Where it all happens."
+    },
+    {
+     "position": 2.0,
+     "ref": "lampton",
+     "title": "Lampton",
+     "section_key": null,
+     "note_md": null
+    },
+    {
+     "position": 3.0,
+     "ref": "hidden-hamlet",
+     "title": "Hidden Hamlet",
+     "section_key": null,
+     "note_md": "CANARY-DESIGNER-STEP-NOTE"
+    },
+    {
+     "position": 4.0,
+     "ref": "battle-at-the-ford",
+     "title": "Battle at the Ford",
+     "section_key": null,
+     "note_md": null
+    }
+   ],
+   "url": "https://lore.example.test/trails/start-here"
+  }
+ ],
+ "next_cursor": null
+}

@@ -1,0 +1,111 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       10,
+       45
+      ],
+      [
+       12.5,
+       45
+      ],
+      [
+       12.5,
+       46.5
+      ],
+      [
+       10,
+       46.5
+      ],
+      [
+       10,
+       45
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "layer": "territories",
+    "kind_of": "territory",
+    "ruler": {
+     "ref": "testmark",
+     "id": "00000000-0000-7000-8000-000000000010",
+     "title": "Kingdom of Testmark",
+     "type": "faction",
+     "kind": "faction.realm",
+     "visibility": "public",
+     "canon": "approved",
+     "short_description": "The realm of the Test Vale, ruled from Lampton."
+    },
+    "label": "Kingdom of Testmark",
+    "source": "drawn",
+    "places": [],
+    "how": [],
+    "disputed": false,
+    "overlaps": [],
+    "area_km2": 32428.0
+   },
+   "id": "territory:00000000-0000-7000-8000-000000000010"
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       12.5,
+       45
+      ],
+      [
+       14,
+       45
+      ],
+      [
+       14,
+       46.5
+      ],
+      [
+       12.5,
+       46.5
+      ],
+      [
+       12.5,
+       45
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "layer": "territories",
+    "kind_of": "territory",
+    "ruler": {
+     "ref": "eastmarch",
+     "id": "00000000-0000-7000-8000-000000000012",
+     "title": "The Eastmarch",
+     "type": "faction",
+     "kind": "faction.realm",
+     "visibility": "public",
+     "canon": "approved",
+     "short_description": "The march beyond Eastbrook, Testmark's old rival."
+    },
+    "label": "The Eastmarch",
+    "source": "drawn",
+    "places": [],
+    "how": [],
+    "disputed": false,
+    "overlaps": [],
+    "area_km2": 19457.9
+   },
+   "id": "territory:00000000-0000-7000-8000-000000000012"
+  }
+ ],
+ "year": 1020.0,
+ "ui_url": "https://lore.example.test/map?l=territories&y=1020"
+}

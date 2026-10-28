@@ -1,0 +1,192 @@
+{
+ "page": {
+  "ref": "dirk",
+  "id": "00000000-0000-7000-8000-000000000023",
+  "title": "Dirk",
+  "type": "individual",
+  "kind": "individual.person",
+  "visibility": "public",
+  "canon": "approved"
+ },
+ "prose": [
+  {
+   "page": {
+    "ref": "battle-at-the-ford",
+    "id": "00000000-0000-7000-8000-000000000040",
+    "title": "Battle at the Ford",
+    "type": "event",
+    "kind": "event.battle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+   },
+   "section": "lead",
+   "heading": null,
+   "mentions": 1,
+   "anchor_text": null
+  },
+  {
+   "page": {
+    "ref": "cato",
+    "id": "00000000-0000-7000-8000-000000000022",
+    "title": "Cato",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Novice of the Order of the Lamp."
+   },
+   "section": "secret-history",
+   "heading": "Secret history",
+   "mentions": 1,
+   "anchor_text": null
+  },
+  {
+   "page": {
+    "ref": "hidden-hamlet",
+    "id": "00000000-0000-7000-8000-000000000032",
+    "title": "Hidden Hamlet",
+    "type": "location",
+    "kind": "location.settlement",
+    "visibility": "designer",
+    "canon": "draft",
+    "short_description": "Where Dirk kept what he could not say."
+   },
+   "section": "lead",
+   "heading": null,
+   "mentions": 1,
+   "anchor_text": null
+  }
+ ],
+ "statements": [
+  {
+   "page": {
+    "ref": "battle-at-the-ford",
+    "id": "00000000-0000-7000-8000-000000000040",
+    "title": "Battle at the Ford",
+    "type": "event",
+    "kind": "event.battle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+   },
+   "label": "commanded at",
+   "direction": "out",
+   "statement_id": "00000000-0000-7000-8000-000000000108",
+   "claim": false
+  },
+  {
+   "page": {
+    "ref": "siege-of-eastbrook",
+    "id": "00000000-0000-7000-8000-000000000042",
+    "title": "Siege of Eastbrook",
+    "type": "event",
+    "kind": "event.siege",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The Eastmarch's failed siege, spring YV 1021."
+   },
+   "label": "commanded at",
+   "direction": "out",
+   "statement_id": "00000000-0000-7000-8000-000000000119",
+   "claim": false
+  },
+  {
+   "page": {
+    "ref": "battle-at-the-ford",
+    "id": "00000000-0000-7000-8000-000000000040",
+    "title": "Battle at the Ford",
+    "type": "event",
+    "kind": "event.battle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+   },
+   "label": "commanded at",
+   "direction": "out",
+   "statement_id": "00000000-0000-7000-8000-000000000129",
+   "claim": true
+  },
+  {
+   "page": {
+    "ref": "cato",
+    "id": "00000000-0000-7000-8000-000000000022",
+    "title": "Cato",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Novice of the Order of the Lamp."
+   },
+   "label": "parent of",
+   "direction": "out",
+   "statement_id": "00000000-0000-7000-8000-00000000c104",
+   "claim": true
+  },
+  {
+   "page": {
+    "ref": "cato",
+    "id": "00000000-0000-7000-8000-000000000022",
+    "title": "Cato",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Novice of the Order of the Lamp."
+   },
+   "label": "parent of",
+   "direction": "out",
+   "statement_id": "00000000-0000-7000-8000-000000000104",
+   "claim": false
+  },
+  {
+   "page": {
+    "ref": "testmark",
+    "id": "00000000-0000-7000-8000-000000000010",
+    "title": "Kingdom of Testmark",
+    "type": "faction",
+    "kind": "faction.realm",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The realm of the Test Vale, ruled from Lampton."
+   },
+   "label": "member of",
+   "direction": "out",
+   "statement_id": "00000000-0000-7000-8000-000000000120",
+   "claim": false
+  },
+  {
+   "page": {
+    "ref": "fenn",
+    "id": "00000000-0000-7000-8000-000000000029",
+    "title": "Fenn",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "A ferryman at the ford below Lampton."
+   },
+   "label": "knows",
+   "direction": "out",
+   "statement_id": "00000000-0000-7000-8000-00000000c103",
+   "claim": false
+  },
+  {
+   "page": {
+    "ref": "bera",
+    "id": "00000000-0000-7000-8000-000000000021",
+    "title": "Bera",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Aldo's second wife, mother of Cato and Dana."
+   },
+   "label": "knows",
+   "direction": "out",
+   "statement_id": "00000000-0000-7000-8000-00000000c101",
+   "claim": false
+  }
+ ],
+ "next_cursor": null
+}

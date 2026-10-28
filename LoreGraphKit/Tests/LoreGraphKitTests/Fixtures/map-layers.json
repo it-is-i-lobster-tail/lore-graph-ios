@@ -1,0 +1,363 @@
+{
+ "layers": [
+  {
+   "id": "00000000-0000-7000-8000-000000000300",
+   "key": "base-rivers",
+   "title": "Rivers (generator)",
+   "kind": "vector",
+   "group": "Base maps",
+   "generation": "current",
+   "description": null,
+   "source": {
+    "features": true
+   },
+   "style": {},
+   "default_visible": false,
+   "z_order": 0,
+   "min_zoom": null,
+   "max_zoom": null,
+   "visibility": "public",
+   "sort": 0,
+   "version": 1,
+   "updated_at": "2026-10-28T07:15:16.903645Z",
+   "valid": null
+  },
+  {
+   "id": "00000000-0000-7000-8000-00000000c301",
+   "key": "canary-designer-layer",
+   "title": "CANARY-DESIGNER-LAYER-TITLE",
+   "kind": "vector",
+   "group": "CANARY-DESIGNER-LAYER-GROUP",
+   "generation": "current",
+   "description": "CANARY-DESIGNER-LAYER-DESCRIPTION",
+   "source": {
+    "features": true
+   },
+   "style": {},
+   "default_visible": false,
+   "z_order": 0,
+   "min_zoom": null,
+   "max_zoom": null,
+   "visibility": "designer",
+   "sort": 0,
+   "version": 1,
+   "updated_at": "2026-10-28T07:15:16.903645Z",
+   "valid": null
+  },
+  {
+   "id": "01a1815c-f95e-701d-9494-77dceb7143d0",
+   "key": "places",
+   "title": "Places",
+   "kind": "vector",
+   "group": "Places",
+   "generation": "current",
+   "description": "Every placed location as a point or footprint.",
+   "source": {
+    "shapes": {
+     "roles": [
+      "point",
+      "footprint"
+     ],
+     "types": [
+      "location"
+     ]
+    }
+   },
+   "style": {
+    "circle-radius": 4
+   },
+   "default_visible": true,
+   "z_order": 50,
+   "min_zoom": null,
+   "max_zoom": null,
+   "visibility": "public",
+   "sort": 10,
+   "version": 1,
+   "updated_at": "2026-10-28T07:15:15.803948Z",
+   "valid": null
+  },
+  {
+   "id": "01a1815c-f95e-72aa-9975-d9ca5f713d04",
+   "key": "regions",
+   "title": "Regions",
+   "kind": "vector",
+   "group": "Places",
+   "generation": "current",
+   "description": "Areas of regions, forests, seas.",
+   "source": {
+    "shapes": {
+     "roles": [
+      "extent"
+     ],
+     "types": [
+      "location"
+     ]
+    }
+   },
+   "style": {
+    "fill-color": "rgba(0,0,0,0)",
+    "stroke-width": 1.5
+   },
+   "default_visible": true,
+   "z_order": 20,
+   "min_zoom": null,
+   "max_zoom": null,
+   "visibility": "public",
+   "sort": 20,
+   "version": 1,
+   "updated_at": "2026-10-28T07:15:15.803948Z",
+   "valid": null
+  },
+  {
+   "id": "01a1815c-f95e-72c9-90b3-52d0a4e44896",
+   "key": "routes",
+   "title": "Routes and rivers",
+   "kind": "vector",
+   "group": "Places",
+   "generation": "current",
+   "description": "Roads, rivers, passes, marches.",
+   "source": {
+    "shapes": {
+     "roles": [
+      "route"
+     ]
+    }
+   },
+   "style": {
+    "stroke-width": 2
+   },
+   "default_visible": true,
+   "z_order": 30,
+   "min_zoom": null,
+   "max_zoom": null,
+   "visibility": "public",
+   "sort": 30,
+   "version": 1,
+   "updated_at": "2026-10-28T07:15:15.803948Z",
+   "valid": null
+  },
+  {
+   "id": "01a1815c-f95e-72d7-a970-049df0c5ed5e",
+   "key": "territories",
+   "title": "Who rules where",
+   "kind": "derived",
+   "group": "Political",
+   "generation": "current",
+   "description": "Territories at the chosen year, from rules links and territory shapes.",
+   "source": {
+    "query": "territory_at"
+   },
+   "style": {
+    "fill-opacity": 0.25
+   },
+   "default_visible": false,
+   "z_order": 10,
+   "min_zoom": null,
+   "max_zoom": null,
+   "visibility": "public",
+   "sort": 40,
+   "version": 1,
+   "updated_at": "2026-10-28T07:15:15.803948Z",
+   "valid": null
+  },
+  {
+   "id": "01a1815c-f95e-72e7-865d-0388fa72f39d",
+   "key": "fronts",
+   "title": "Fronts and lines",
+   "kind": "vector",
+   "group": "Political",
+   "generation": "current",
+   "description": "Battle lines, beacon chains, borders under dispute.",
+   "source": {
+    "shapes": {
+     "roles": [
+      "front"
+     ]
+    }
+   },
+   "style": {
+    "stroke-dash": [
+     6,
+     4
+    ]
+   },
+   "default_visible": false,
+   "z_order": 35,
+   "min_zoom": null,
+   "max_zoom": null,
+   "visibility": "public",
+   "sort": 50,
+   "version": 1,
+   "updated_at": "2026-10-28T07:15:15.803948Z",
+   "valid": null
+  },
+  {
+   "id": "01a1815c-f95e-72f4-8e9c-2505fcdf4079",
+   "key": "events",
+   "title": "Events",
+   "kind": "derived",
+   "group": "Events",
+   "generation": "current",
+   "description": "Events in the year range, at their places and shapes.",
+   "source": {
+    "query": "events_at"
+   },
+   "style": {},
+   "default_visible": false,
+   "z_order": 60,
+   "min_zoom": null,
+   "max_zoom": null,
+   "visibility": "public",
+   "sort": 60,
+   "version": 1,
+   "updated_at": "2026-10-28T07:15:15.803948Z",
+   "valid": null
+  },
+  {
+   "id": "01a1815c-f95e-7301-8957-45569d307eb1",
+   "key": "journeys",
+   "title": "Journeys",
+   "kind": "derived",
+   "group": "Events",
+   "generation": "current",
+   "description": "Who went where: present_at links in order, and journey events.",
+   "source": {
+    "query": "journeys"
+   },
+   "style": {},
+   "default_visible": false,
+   "z_order": 55,
+   "min_zoom": null,
+   "max_zoom": null,
+   "visibility": "public",
+   "sort": 70,
+   "version": 1,
+   "updated_at": "2026-10-28T07:15:15.803948Z",
+   "valid": null
+  },
+  {
+   "id": "01a1815c-f95e-730d-8fd6-dfa48b7760b8",
+   "key": "tellings",
+   "title": "Where stories are told",
+   "kind": "derived",
+   "group": "Stories",
+   "generation": "current",
+   "description": "Stories and tales at the places they are told.",
+   "source": {
+    "query": "tellings"
+   },
+   "style": {},
+   "default_visible": false,
+   "z_order": 65,
+   "min_zoom": null,
+   "max_zoom": null,
+   "visibility": "public",
+   "sort": 80,
+   "version": 1,
+   "updated_at": "2026-10-28T07:15:15.803948Z",
+   "valid": null
+  },
+  {
+   "id": "01a1815c-f95e-731a-9d49-6f6f984d8836",
+   "key": "beliefs",
+   "title": "Who believes it",
+   "kind": "derived",
+   "group": "Stories",
+   "generation": "current",
+   "description": "For one belief or question: holders by place, shaded by stance.",
+   "source": {
+    "query": "belief_map"
+   },
+   "style": {},
+   "default_visible": false,
+   "z_order": 15,
+   "min_zoom": null,
+   "max_zoom": null,
+   "visibility": "public",
+   "sort": 90,
+   "version": 1,
+   "updated_at": "2026-10-28T07:15:15.803948Z",
+   "valid": null
+  },
+  {
+   "id": "01a1815c-f95e-7326-b7f0-ca837b65c5ef",
+   "key": "claims",
+   "title": "Places as claimed",
+   "kind": "vector",
+   "group": "Stories",
+   "generation": "current",
+   "description": "Shapes that a story or an old map claims (according to set).",
+   "source": {
+    "shapes": {
+     "claims": true
+    }
+   },
+   "style": {
+    "stroke-dash": [
+     2,
+     3
+    ]
+   },
+   "default_visible": false,
+   "z_order": 40,
+   "min_zoom": null,
+   "max_zoom": null,
+   "visibility": "public",
+   "sort": 100,
+   "version": 1,
+   "updated_at": "2026-10-28T07:15:15.803948Z",
+   "valid": null
+  },
+  {
+   "id": "01a1815c-f95e-7332-bdd8-e9d7096105f1",
+   "key": "labels",
+   "title": "Labels",
+   "kind": "vector",
+   "group": "Places",
+   "generation": "current",
+   "description": "Label lines and points for names.",
+   "source": {
+    "shapes": {
+     "roles": [
+      "label"
+     ]
+    }
+   },
+   "style": {},
+   "default_visible": true,
+   "z_order": 90,
+   "min_zoom": null,
+   "max_zoom": null,
+   "visibility": "public",
+   "sort": 110,
+   "version": 1,
+   "updated_at": "2026-10-28T07:15:15.803948Z",
+   "valid": null
+  }
+ ],
+ "groups": [
+  "Base maps",
+  "Places",
+  "Political",
+  "Events",
+  "Stories",
+  "CANARY-DESIGNER-LAYER-GROUP"
+ ],
+ "map": {
+  "max_zoom": 16,
+  "min_zoom": 0,
+  "tile_size": 256,
+  "mvt_extent": 4096,
+  "projection": "+proj=eqc +lat_ts=45 +lat_0=0 +lon_0=0 +x_0=0 +y_0=0 +R=6371008.8 +units=m +no_defs",
+  "raster_max_zoom": 10,
+  "home": {
+   "zoom": 5,
+   "center": [
+    26.06,
+    45.13
+   ]
+  },
+  "tile_url": "/api/v1/map/tiles/{layer}/{z}/{x}/{y}.mvt?year={year}&v={version}"
+ },
+ "map_version": 67
+}

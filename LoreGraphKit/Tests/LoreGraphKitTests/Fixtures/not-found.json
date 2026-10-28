@@ -1,0 +1,16 @@
+{
+ "type": "/api/v1/problems/not_found",
+ "title": "Not found",
+ "status": 404,
+ "code": "not_found",
+ "detail": "no page 'no-such-page' (or it is not visible to you)",
+ "hint": "Use find_entity or search to find the page first.",
+ "errors": [
+  {
+   "field": "ref",
+   "message": "not found"
+  }
+ ],
+ "suggestions": [],
+ "request_id": "1F5292BCA0CD46C3A90558818E"
+}

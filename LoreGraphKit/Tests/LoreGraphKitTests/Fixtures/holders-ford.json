@@ -1,0 +1,329 @@
+{
+ "question": {
+  "key": "ford:commander"
+ },
+ "beliefs": [
+  {
+   "id": "00000000-0000-7000-8000-000000000202",
+   "proposition": "Aldo won the Ford.",
+   "proposition_key": "ford:commander",
+   "kind": "opinion",
+   "holder": "testmark",
+   "holder_title": "Kingdom of Testmark",
+   "stance": "believes",
+   "conviction": 2,
+   "openness": "open",
+   "held": {
+    "from": 1022.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1022",
+    "formatted": "since YV 1022"
+   },
+   "acquisition": "told",
+   "acquired_from": {
+    "ref": "testmark-chronicle",
+    "id": "00000000-0000-7000-8000-000000000050",
+    "title": "Testmark Chronicle",
+    "type": "story",
+    "kind": "story.chronicle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The court's history of the Ford, written for Aldo's house."
+   },
+   "formed_by_event": null,
+   "derived_from_belief_id": null,
+   "statement_id": "00000000-0000-7000-8000-000000000110",
+   "about": [],
+   "inheritable": true,
+   "shows_as": null,
+   "visibility": "public",
+   "canon": "approved",
+   "version": 1,
+   "retired_at": null,
+   "sentence": "Kingdom of Testmark believes: Aldo won the Ford.",
+   "truth": "false",
+   "truth_note": "Dirk led; the chronicle flatters Aldo."
+  },
+  {
+   "id": "00000000-0000-7000-8000-000000000204",
+   "proposition": "Dirk won the Ford.",
+   "proposition_key": "ford:commander",
+   "kind": "knowledge",
+   "holder": "cato",
+   "holder_title": "Cato",
+   "stance": "believes",
+   "conviction": 2,
+   "openness": "secret",
+   "held": {
+    "from": 1050.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1050",
+    "formatted": "since YV 1050"
+   },
+   "acquisition": "told",
+   "acquired_from": {
+    "ref": "dirk",
+    "id": "00000000-0000-7000-8000-000000000023",
+    "title": "Dirk",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Marshal of Testmark who led the host at the Ford."
+   },
+   "formed_by_event": null,
+   "derived_from_belief_id": null,
+   "statement_id": "00000000-0000-7000-8000-000000000108",
+   "about": [],
+   "inheritable": false,
+   "shows_as": null,
+   "visibility": "designer",
+   "canon": "approved",
+   "version": 1,
+   "retired_at": null,
+   "sentence": "Cato believes: Dirk won the Ford."
+  },
+  {
+   "id": "00000000-0000-7000-8000-000000000205",
+   "proposition": "Bera led the host at the Ford.",
+   "proposition_key": "ford:commander",
+   "kind": "opinion",
+   "holder": "dana",
+   "holder_title": "Dana",
+   "stance": "suspects",
+   "conviction": 2,
+   "openness": "among_own",
+   "held": {
+    "from": 1052.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1052",
+    "formatted": "since YV 1052"
+   },
+   "acquisition": "told",
+   "acquired_from": {
+    "ref": "ferrymans-rumour",
+    "id": "00000000-0000-7000-8000-000000000052",
+    "title": "The ferryman's rumour",
+    "type": "tale",
+    "kind": "tale.rumour",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Fenn's story that Bera led the host."
+   },
+   "formed_by_event": null,
+   "derived_from_belief_id": null,
+   "statement_id": "00000000-0000-7000-8000-000000000131",
+   "about": [],
+   "inheritable": false,
+   "shows_as": null,
+   "visibility": "public",
+   "canon": "approved",
+   "version": 1,
+   "retired_at": null,
+   "sentence": "Dana suspects: Bera led the host at the Ford.",
+   "truth": "false",
+   "truth_note": "Bera was at Lampton that summer."
+  }
+ ],
+ "holders": [
+  {
+   "holder": {
+    "ref": "testmark",
+    "id": "00000000-0000-7000-8000-000000000010",
+    "title": "Kingdom of Testmark",
+    "type": "faction",
+    "kind": "faction.realm",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The realm of the Test Vale, ruled from Lampton."
+   },
+   "belief_id": "00000000-0000-7000-8000-000000000202",
+   "proposition": "Aldo won the Ford.",
+   "stance": "believes",
+   "openness": "open",
+   "held": {
+    "from": 1022.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1022",
+    "formatted": "since YV 1022"
+   },
+   "own": true,
+   "visibility": "public"
+  },
+  {
+   "holder": {
+    "ref": "cato",
+    "id": "00000000-0000-7000-8000-000000000022",
+    "title": "Cato",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Novice of the Order of the Lamp."
+   },
+   "belief_id": "00000000-0000-7000-8000-000000000204",
+   "proposition": "Dirk won the Ford.",
+   "stance": "believes",
+   "openness": "secret",
+   "held": {
+    "from": 1050.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1050",
+    "formatted": "since YV 1050"
+   },
+   "own": true,
+   "visibility": "designer"
+  },
+  {
+   "holder": {
+    "ref": "dana",
+    "id": "00000000-0000-7000-8000-000000000024",
+    "title": "Dana",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Daughter of Aldo and Bera, later of Eastbrook."
+   },
+   "belief_id": "00000000-0000-7000-8000-000000000205",
+   "proposition": "Bera led the host at the Ford.",
+   "stance": "suspects",
+   "openness": "among_own",
+   "held": {
+    "from": 1052.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1052",
+    "formatted": "since YV 1052"
+   },
+   "own": true,
+   "visibility": "public"
+  },
+  {
+   "holder": {
+    "ref": "order-of-the-lamp",
+    "id": "00000000-0000-7000-8000-000000000011",
+    "title": "Order of the Lamp",
+    "type": "faction",
+    "kind": "faction.order",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Keepers of the lamps of Lampton."
+   },
+   "belief_id": "00000000-0000-7000-8000-000000000202",
+   "proposition": "Aldo won the Ford.",
+   "stance": "believes",
+   "openness": "open",
+   "held": {
+    "from": 1022.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1022",
+    "formatted": "since YV 1022"
+   },
+   "own": false,
+   "inherited_from": {
+    "ref": "testmark",
+    "id": "00000000-0000-7000-8000-000000000010",
+    "title": "Kingdom of Testmark",
+    "type": "faction",
+    "kind": "faction.realm",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The realm of the Test Vale, ruled from Lampton."
+   },
+   "via": "part_of",
+   "depth": 1,
+   "overridden": false,
+   "visibility": "public"
+  },
+  {
+   "holder": {
+    "ref": "dirk",
+    "id": "00000000-0000-7000-8000-000000000023",
+    "title": "Dirk",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Marshal of Testmark who led the host at the Ford."
+   },
+   "belief_id": "00000000-0000-7000-8000-000000000202",
+   "proposition": "Aldo won the Ford.",
+   "stance": "believes",
+   "openness": "open",
+   "held": {
+    "from": 1022.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1022",
+    "formatted": "since YV 1022"
+   },
+   "own": false,
+   "inherited_from": {
+    "ref": "testmark",
+    "id": "00000000-0000-7000-8000-000000000010",
+    "title": "Kingdom of Testmark",
+    "type": "faction",
+    "kind": "faction.realm",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The realm of the Test Vale, ruled from Lampton."
+   },
+   "via": "member_of",
+   "depth": 1,
+   "overridden": false,
+   "visibility": "public"
+  },
+  {
+   "holder": {
+    "ref": "cato",
+    "id": "00000000-0000-7000-8000-000000000022",
+    "title": "Cato",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Novice of the Order of the Lamp."
+   },
+   "belief_id": "00000000-0000-7000-8000-000000000202",
+   "proposition": "Aldo won the Ford.",
+   "stance": "believes",
+   "openness": "open",
+   "held": {
+    "from": 1022.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1022",
+    "formatted": "since YV 1022"
+   },
+   "own": false,
+   "inherited_from": {
+    "ref": "testmark",
+    "id": "00000000-0000-7000-8000-000000000010",
+    "title": "Kingdom of Testmark",
+    "type": "faction",
+    "kind": "faction.realm",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The realm of the Test Vale, ruled from Lampton."
+   },
+   "via": "member_of > part_of",
+   "depth": 2,
+   "overridden": true,
+   "visibility": "public"
+  }
+ ],
+ "by_stance": {
+  "believes": 4,
+  "suspects": 1
+ },
+ "members_truncated": false,
+ "next_cursor": null,
+ "ui_url": "https://lore.example.test/beliefs/q/ford:commander"
+}

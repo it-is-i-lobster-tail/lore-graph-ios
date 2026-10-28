@@ -1,0 +1,19 @@
+{
+ "id": "00000000-0000-7000-8000-00000000a001",
+ "email": "owner@example.test",
+ "display_name": "Owner",
+ "role": "owner",
+ "scopes": [
+  "lore:read"
+ ],
+ "ceiling": "public",
+ "write_mode": "propose",
+ "preferences": {},
+ "csrf_token": null,
+ "via": "personal_token",
+ "version": "1.0.0",
+ "features": {
+  "ask": false,
+  "game_data": false
+ }
+}

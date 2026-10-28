@@ -1,0 +1,158 @@
+{
+ "accounts": [
+  {
+   "account": {
+    "ref": "testmark-chronicle",
+    "id": "00000000-0000-7000-8000-000000000050",
+    "title": "Testmark Chronicle",
+    "type": "story",
+    "kind": "story.chronicle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The court's history of the Ford, written for Aldo's house."
+   },
+   "telling": {
+    "teller": {
+     "ref": "testmark",
+     "id": "00000000-0000-7000-8000-000000000010",
+     "title": "Kingdom of Testmark",
+     "type": "faction",
+     "kind": "faction.realm",
+     "visibility": "public",
+     "canon": "approved",
+     "short_description": "The realm of the Test Vale, ruled from Lampton."
+    },
+    "teller_label": null,
+    "medium": "written",
+    "medium_item": null,
+    "told": {
+     "from": 1022.0,
+     "to": 1023.0,
+     "precision": "year",
+     "label": "YV 1022",
+     "formatted": "YV 1022"
+    },
+    "told_in_teller_calendar": "LC 1595",
+    "told_at": {
+     "ref": "lampton",
+     "id": "00000000-0000-7000-8000-000000000031",
+     "title": "Lampton",
+     "type": "location",
+     "kind": "location.settlement",
+     "visibility": "public",
+     "canon": "approved",
+     "short_description": "A city of lamps at the ford of the Test River."
+    },
+    "audience": null,
+    "calendar": "lc",
+    "bias": "The scribe was paid by Aldo's house.",
+    "listed": true,
+    "reliability": 1
+   },
+   "claims": {
+    "contradicts": 1
+   },
+   "claim_count": 1,
+   "omissions": 1,
+   "believers": 1,
+   "ui_url": "https://lore.example.test/wiki/testmark-chronicle"
+  },
+  {
+   "account": {
+    "ref": "ballad-of-the-ford",
+    "id": "00000000-0000-7000-8000-000000000051",
+    "title": "Ballad of the Ford",
+    "type": "story",
+    "kind": "story.song",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "A song of the vale that remembers who led."
+   },
+   "telling": {
+    "teller": null,
+    "teller_label": "the people of Test Vale",
+    "medium": "sung",
+    "medium_item": null,
+    "told": {
+     "from": 1030.0,
+     "to": 1040.0,
+     "precision": "decade",
+     "label": "the 1030s",
+     "formatted": "the 1030s"
+    },
+    "told_in_teller_calendar": "the 1030s",
+    "told_at": null,
+    "audience": null,
+    "calendar": "yv",
+    "bias": "Sung by those who marched with Dirk.",
+    "listed": true,
+    "reliability": 2
+   },
+   "claims": {
+    "agrees": 1
+   },
+   "claim_count": 1,
+   "omissions": 0,
+   "believers": 0,
+   "ui_url": "https://lore.example.test/wiki/ballad-of-the-ford"
+  },
+  {
+   "account": {
+    "ref": "ferrymans-rumour",
+    "id": "00000000-0000-7000-8000-000000000052",
+    "title": "The ferryman's rumour",
+    "type": "tale",
+    "kind": "tale.rumour",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Fenn's story that Bera led the host."
+   },
+   "telling": {
+    "teller": {
+     "ref": "fenn",
+     "id": "00000000-0000-7000-8000-000000000029",
+     "title": "Fenn",
+     "type": "individual",
+     "kind": "individual.person",
+     "visibility": "public",
+     "canon": "approved",
+     "short_description": "A ferryman at the ford below Lampton."
+    },
+    "teller_label": null,
+    "medium": "oral",
+    "medium_item": null,
+    "told": {
+     "from": 1052.0,
+     "to": 1053.0,
+     "precision": "year",
+     "label": "YV 1052",
+     "formatted": "YV 1052"
+    },
+    "told_in_teller_calendar": "YV 1052",
+    "told_at": {
+     "ref": "eastbrook",
+     "id": "00000000-0000-7000-8000-000000000033",
+     "title": "Eastbrook",
+     "type": "location",
+     "kind": "location.settlement",
+     "visibility": "public",
+     "canon": "approved",
+     "short_description": "A walled town on the eastern road."
+    },
+    "audience": null,
+    "calendar": "yv",
+    "bias": "Fenn tells it at the Eastbrook market to anyone who buys him a drink.",
+    "listed": true,
+    "reliability": 0
+   },
+   "claims": {
+    "invents": 1
+   },
+   "claim_count": 1,
+   "omissions": 1,
+   "believers": 1,
+   "ui_url": "https://lore.example.test/wiki/ferrymans-rumour"
+  }
+ ],
+ "ui_url": "https://lore.example.test/compare/battle-at-the-ford"
+}

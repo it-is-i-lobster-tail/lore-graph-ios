@@ -1,0 +1,15 @@
+{
+ "type": "/api/v1/problems/validation",
+ "title": "The request breaks a rule",
+ "status": 422,
+ "code": "validation",
+ "detail": "cannot read the date 'the day after never'",
+ "hint": "Examples: '1020', 'summer 1020', 'c. 900', '1020 to 1025', 'LC 1595', 'the 319th spring', '@battle-at-the-ford +2y'.",
+ "errors": [
+  {
+   "field": "text",
+   "message": "cannot read the date 'the day after never'"
+  }
+ ],
+ "request_id": "C39915F2F17443EFBDB99C3217"
+}

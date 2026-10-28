@@ -108,7 +108,7 @@ public actor TileStore {
     }
 
     let client: APIClient
-    let cache: DiskCache
+    nonisolated let cache: DiskCache
     private var memory: LRU<TileRequest, Tile>
     private var inFlight: [TileRequest: Task<Tile, Error>] = [:]
 

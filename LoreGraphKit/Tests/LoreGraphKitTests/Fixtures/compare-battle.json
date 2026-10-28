@@ -1,0 +1,744 @@
+{
+ "subject": {
+  "ref": "battle-at-the-ford",
+  "id": "00000000-0000-7000-8000-000000000040",
+  "title": "Battle at the Ford",
+  "type": "event",
+  "kind": "event.battle",
+  "visibility": "public",
+  "canon": "approved"
+ },
+ "record": [
+  {
+   "id": "00000000-0000-7000-8000-000000000109",
+   "subject": {
+    "ref": "battle-at-the-ford",
+    "id": "00000000-0000-7000-8000-000000000040",
+    "title": "Battle at the Ford",
+    "type": "event",
+    "kind": "event.battle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+   },
+   "predicate": "occurred_at",
+   "label": "happened at",
+   "object": {
+    "ref": "lampton",
+    "id": "00000000-0000-7000-8000-000000000031",
+    "title": "Lampton",
+    "type": "location",
+    "kind": "location.settlement",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "A city of lamps at the ford of the Test River."
+   },
+   "value": null,
+   "qualifiers": {},
+   "role": "main",
+   "side": null,
+   "stance": null,
+   "place": null,
+   "valid": null,
+   "according_to": null,
+   "claim_relation": null,
+   "record_statement_id": null,
+   "certainty": "certain",
+   "visibility": "public",
+   "canon": "approved",
+   "rank": 0,
+   "source_quote": null,
+   "source_ref": null,
+   "note": null,
+   "recorded_at": "2026-10-28T07:15:16.903645Z",
+   "retired_at": null,
+   "version": 1,
+   "sentence": "Battle at the Ford happened at Lampton as main.",
+   "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000109"
+  },
+  {
+   "id": "00000000-0000-7000-8000-000000000121",
+   "subject": {
+    "ref": "aldo",
+    "id": "00000000-0000-7000-8000-000000000020",
+    "title": "Aldo",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Lord of Lampton, remembered as the victor of the Ford."
+   },
+   "predicate": "participant_in",
+   "label": "took part in",
+   "object": {
+    "ref": "battle-at-the-ford",
+    "id": "00000000-0000-7000-8000-000000000040",
+    "title": "Battle at the Ford",
+    "type": "event",
+    "kind": "event.battle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+   },
+   "value": null,
+   "qualifiers": {},
+   "role": null,
+   "side": {
+    "ref": "testmark",
+    "id": "00000000-0000-7000-8000-000000000010",
+    "title": "Kingdom of Testmark",
+    "type": "faction",
+    "kind": "faction.realm",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The realm of the Test Vale, ruled from Lampton."
+   },
+   "stance": null,
+   "place": null,
+   "valid": null,
+   "according_to": null,
+   "claim_relation": null,
+   "record_statement_id": null,
+   "certainty": "certain",
+   "visibility": "public",
+   "canon": "approved",
+   "rank": 0,
+   "source_quote": null,
+   "source_ref": null,
+   "note": null,
+   "recorded_at": "2026-10-28T07:15:16.903645Z",
+   "retired_at": null,
+   "version": 1,
+   "sentence": "Aldo took part in Battle at the Ford for Kingdom of Testmark.",
+   "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000121"
+  },
+  {
+   "id": "00000000-0000-7000-8000-000000000108",
+   "subject": {
+    "ref": "dirk",
+    "id": "00000000-0000-7000-8000-000000000023",
+    "title": "Dirk",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Marshal of Testmark who led the host at the Ford."
+   },
+   "predicate": "commanded_at",
+   "label": "commanded at",
+   "object": {
+    "ref": "battle-at-the-ford",
+    "id": "00000000-0000-7000-8000-000000000040",
+    "title": "Battle at the Ford",
+    "type": "event",
+    "kind": "event.battle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+   },
+   "value": null,
+   "qualifiers": {},
+   "role": null,
+   "side": {
+    "ref": "testmark",
+    "id": "00000000-0000-7000-8000-000000000010",
+    "title": "Kingdom of Testmark",
+    "type": "faction",
+    "kind": "faction.realm",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The realm of the Test Vale, ruled from Lampton."
+   },
+   "stance": null,
+   "place": null,
+   "valid": null,
+   "according_to": null,
+   "claim_relation": null,
+   "record_statement_id": null,
+   "certainty": "certain",
+   "visibility": "public",
+   "canon": "approved",
+   "rank": 0,
+   "source_quote": null,
+   "source_ref": null,
+   "note": null,
+   "recorded_at": "2026-10-28T07:15:16.903645Z",
+   "retired_at": null,
+   "version": 1,
+   "sentence": "Dirk commanded at Battle at the Ford for Kingdom of Testmark.",
+   "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000108"
+  },
+  {
+   "id": "00000000-0000-7000-8000-000000000111",
+   "subject": {
+    "ref": "testmark-chronicle",
+    "id": "00000000-0000-7000-8000-000000000050",
+    "title": "Testmark Chronicle",
+    "type": "story",
+    "kind": "story.chronicle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The court's history of the Ford, written for Aldo's house."
+   },
+   "predicate": "tells_of",
+   "label": "tells of",
+   "object": {
+    "ref": "battle-at-the-ford",
+    "id": "00000000-0000-7000-8000-000000000040",
+    "title": "Battle at the Ford",
+    "type": "event",
+    "kind": "event.battle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+   },
+   "value": null,
+   "qualifiers": {},
+   "role": null,
+   "side": null,
+   "stance": null,
+   "place": null,
+   "valid": null,
+   "according_to": null,
+   "claim_relation": null,
+   "record_statement_id": null,
+   "certainty": "certain",
+   "visibility": "public",
+   "canon": "approved",
+   "rank": 0,
+   "source_quote": null,
+   "source_ref": null,
+   "note": null,
+   "recorded_at": "2026-10-28T07:15:16.903645Z",
+   "retired_at": null,
+   "version": 1,
+   "sentence": "Testmark Chronicle tells of Battle at the Ford.",
+   "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000111"
+  },
+  {
+   "id": "00000000-0000-7000-8000-000000000130",
+   "subject": {
+    "ref": "ballad-of-the-ford",
+    "id": "00000000-0000-7000-8000-000000000051",
+    "title": "Ballad of the Ford",
+    "type": "story",
+    "kind": "story.song",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "A song of the vale that remembers who led."
+   },
+   "predicate": "tells_of",
+   "label": "tells of",
+   "object": {
+    "ref": "battle-at-the-ford",
+    "id": "00000000-0000-7000-8000-000000000040",
+    "title": "Battle at the Ford",
+    "type": "event",
+    "kind": "event.battle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+   },
+   "value": null,
+   "qualifiers": {},
+   "role": null,
+   "side": null,
+   "stance": null,
+   "place": null,
+   "valid": null,
+   "according_to": null,
+   "claim_relation": null,
+   "record_statement_id": null,
+   "certainty": "certain",
+   "visibility": "public",
+   "canon": "approved",
+   "rank": 0,
+   "source_quote": null,
+   "source_ref": null,
+   "note": null,
+   "recorded_at": "2026-10-28T07:15:16.903645Z",
+   "retired_at": null,
+   "version": 1,
+   "sentence": "Ballad of the Ford tells of Battle at the Ford.",
+   "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000130"
+  },
+  {
+   "id": "00000000-0000-7000-8000-000000000132",
+   "subject": {
+    "ref": "ferrymans-rumour",
+    "id": "00000000-0000-7000-8000-000000000052",
+    "title": "The ferryman's rumour",
+    "type": "tale",
+    "kind": "tale.rumour",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Fenn's story that Bera led the host."
+   },
+   "predicate": "tells_of",
+   "label": "tells of",
+   "object": {
+    "ref": "battle-at-the-ford",
+    "id": "00000000-0000-7000-8000-000000000040",
+    "title": "Battle at the Ford",
+    "type": "event",
+    "kind": "event.battle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+   },
+   "value": null,
+   "qualifiers": {},
+   "role": null,
+   "side": null,
+   "stance": null,
+   "place": null,
+   "valid": null,
+   "according_to": null,
+   "claim_relation": null,
+   "record_statement_id": null,
+   "certainty": "certain",
+   "visibility": "public",
+   "canon": "approved",
+   "rank": 0,
+   "source_quote": null,
+   "source_ref": null,
+   "note": null,
+   "recorded_at": "2026-10-28T07:15:16.903645Z",
+   "retired_at": null,
+   "version": 1,
+   "sentence": "The ferryman's rumour tells of Battle at the Ford.",
+   "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000132"
+  }
+ ],
+ "accounts": [
+  {
+   "account": {
+    "ref": "testmark-chronicle",
+    "id": "00000000-0000-7000-8000-000000000050",
+    "title": "Testmark Chronicle",
+    "type": "story",
+    "kind": "story.chronicle",
+    "visibility": "public",
+    "canon": "approved"
+   },
+   "telling": {
+    "teller": {
+     "ref": "testmark",
+     "id": "00000000-0000-7000-8000-000000000010",
+     "title": "Kingdom of Testmark",
+     "type": "faction",
+     "kind": "faction.realm",
+     "visibility": "public",
+     "canon": "approved",
+     "short_description": "The realm of the Test Vale, ruled from Lampton."
+    },
+    "teller_label": null,
+    "medium": "written",
+    "medium_item": null,
+    "told": {
+     "from": 1022.0,
+     "to": 1023.0,
+     "precision": "year",
+     "label": "YV 1022",
+     "formatted": "YV 1022"
+    },
+    "told_in_teller_calendar": "LC 1595",
+    "told_at": {
+     "ref": "lampton",
+     "id": "00000000-0000-7000-8000-000000000031",
+     "title": "Lampton",
+     "type": "location",
+     "kind": "location.settlement",
+     "visibility": "public",
+     "canon": "approved",
+     "short_description": "A city of lamps at the ford of the Test River."
+    },
+    "audience": null,
+    "calendar": "lc",
+    "bias": "The scribe was paid by Aldo's house.",
+    "listed": true,
+    "reliability": 1
+   },
+   "rows": [
+    {
+     "record_statement_id": "00000000-0000-7000-8000-000000000109",
+     "claims": []
+    },
+    {
+     "record_statement_id": "00000000-0000-7000-8000-000000000121",
+     "claims": []
+    },
+    {
+     "record_statement_id": "00000000-0000-7000-8000-000000000108",
+     "claims": [
+      {
+       "id": "00000000-0000-7000-8000-000000000110",
+       "subject": {
+        "ref": "aldo",
+        "id": "00000000-0000-7000-8000-000000000020",
+        "title": "Aldo",
+        "type": "individual",
+        "kind": "individual.person",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "Lord of Lampton, remembered as the victor of the Ford."
+       },
+       "predicate": "commanded_at",
+       "label": "commanded at",
+       "object": {
+        "ref": "battle-at-the-ford",
+        "id": "00000000-0000-7000-8000-000000000040",
+        "title": "Battle at the Ford",
+        "type": "event",
+        "kind": "event.battle",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+       },
+       "value": null,
+       "qualifiers": {},
+       "role": null,
+       "side": {
+        "ref": "testmark",
+        "id": "00000000-0000-7000-8000-000000000010",
+        "title": "Kingdom of Testmark",
+        "type": "faction",
+        "kind": "faction.realm",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "The realm of the Test Vale, ruled from Lampton."
+       },
+       "stance": null,
+       "place": null,
+       "valid": null,
+       "according_to": {
+        "ref": "testmark-chronicle",
+        "id": "00000000-0000-7000-8000-000000000050",
+        "title": "Testmark Chronicle",
+        "type": "story",
+        "kind": "story.chronicle",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "The court's history of the Ford, written for Aldo's house."
+       },
+       "claim_relation": "contradicts",
+       "record_statement_id": "00000000-0000-7000-8000-000000000108",
+       "certainty": "certain",
+       "visibility": "public",
+       "canon": "approved",
+       "rank": 0,
+       "source_quote": null,
+       "source_ref": null,
+       "note": null,
+       "recorded_at": "2026-10-28T07:15:16.903645Z",
+       "retired_at": null,
+       "version": 1,
+       "sentence": "According to Testmark Chronicle, Aldo commanded at Battle at the Ford for Kingdom of Testmark.",
+       "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000110",
+       "symbol": "✗"
+      }
+     ],
+     "left_out": true,
+     "omission_note": "Leaves out who really led."
+    },
+    {
+     "record_statement_id": "00000000-0000-7000-8000-000000000111",
+     "claims": []
+    },
+    {
+     "record_statement_id": "00000000-0000-7000-8000-000000000130",
+     "claims": []
+    },
+    {
+     "record_statement_id": "00000000-0000-7000-8000-000000000132",
+     "claims": []
+    }
+   ],
+   "unaligned": [],
+   "believers_url": "https://lore.example.test/wiki/testmark-chronicle"
+  },
+  {
+   "account": {
+    "ref": "ballad-of-the-ford",
+    "id": "00000000-0000-7000-8000-000000000051",
+    "title": "Ballad of the Ford",
+    "type": "story",
+    "kind": "story.song",
+    "visibility": "public",
+    "canon": "approved"
+   },
+   "telling": {
+    "teller": null,
+    "teller_label": "the people of Test Vale",
+    "medium": "sung",
+    "medium_item": null,
+    "told": {
+     "from": 1030.0,
+     "to": 1040.0,
+     "precision": "decade",
+     "label": "the 1030s",
+     "formatted": "the 1030s"
+    },
+    "told_in_teller_calendar": "the 1030s",
+    "told_at": null,
+    "audience": null,
+    "calendar": "yv",
+    "bias": "Sung by those who marched with Dirk.",
+    "listed": true,
+    "reliability": 2
+   },
+   "rows": [
+    {
+     "record_statement_id": "00000000-0000-7000-8000-000000000109",
+     "claims": []
+    },
+    {
+     "record_statement_id": "00000000-0000-7000-8000-000000000121",
+     "claims": []
+    },
+    {
+     "record_statement_id": "00000000-0000-7000-8000-000000000108",
+     "claims": [
+      {
+       "id": "00000000-0000-7000-8000-000000000129",
+       "subject": {
+        "ref": "dirk",
+        "id": "00000000-0000-7000-8000-000000000023",
+        "title": "Dirk",
+        "type": "individual",
+        "kind": "individual.person",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "Marshal of Testmark who led the host at the Ford."
+       },
+       "predicate": "commanded_at",
+       "label": "commanded at",
+       "object": {
+        "ref": "battle-at-the-ford",
+        "id": "00000000-0000-7000-8000-000000000040",
+        "title": "Battle at the Ford",
+        "type": "event",
+        "kind": "event.battle",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+       },
+       "value": null,
+       "qualifiers": {},
+       "role": null,
+       "side": {
+        "ref": "testmark",
+        "id": "00000000-0000-7000-8000-000000000010",
+        "title": "Kingdom of Testmark",
+        "type": "faction",
+        "kind": "faction.realm",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "The realm of the Test Vale, ruled from Lampton."
+       },
+       "stance": null,
+       "place": null,
+       "valid": null,
+       "according_to": {
+        "ref": "ballad-of-the-ford",
+        "id": "00000000-0000-7000-8000-000000000051",
+        "title": "Ballad of the Ford",
+        "type": "story",
+        "kind": "story.song",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "A song of the vale that remembers who led."
+       },
+       "claim_relation": "agrees",
+       "record_statement_id": "00000000-0000-7000-8000-000000000108",
+       "certainty": "certain",
+       "visibility": "public",
+       "canon": "approved",
+       "rank": 0,
+       "source_quote": null,
+       "source_ref": null,
+       "note": null,
+       "recorded_at": "2026-10-28T07:15:16.903645Z",
+       "retired_at": null,
+       "version": 1,
+       "sentence": "According to Ballad of the Ford, Dirk commanded at Battle at the Ford for Kingdom of Testmark.",
+       "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000129",
+       "symbol": "="
+      }
+     ]
+    },
+    {
+     "record_statement_id": "00000000-0000-7000-8000-000000000111",
+     "claims": []
+    },
+    {
+     "record_statement_id": "00000000-0000-7000-8000-000000000130",
+     "claims": []
+    },
+    {
+     "record_statement_id": "00000000-0000-7000-8000-000000000132",
+     "claims": []
+    }
+   ],
+   "unaligned": [],
+   "believers_url": "https://lore.example.test/wiki/ballad-of-the-ford"
+  },
+  {
+   "account": {
+    "ref": "ferrymans-rumour",
+    "id": "00000000-0000-7000-8000-000000000052",
+    "title": "The ferryman's rumour",
+    "type": "tale",
+    "kind": "tale.rumour",
+    "visibility": "public",
+    "canon": "approved"
+   },
+   "telling": {
+    "teller": {
+     "ref": "fenn",
+     "id": "00000000-0000-7000-8000-000000000029",
+     "title": "Fenn",
+     "type": "individual",
+     "kind": "individual.person",
+     "visibility": "public",
+     "canon": "approved",
+     "short_description": "A ferryman at the ford below Lampton."
+    },
+    "teller_label": null,
+    "medium": "oral",
+    "medium_item": null,
+    "told": {
+     "from": 1052.0,
+     "to": 1053.0,
+     "precision": "year",
+     "label": "YV 1052",
+     "formatted": "YV 1052"
+    },
+    "told_in_teller_calendar": "YV 1052",
+    "told_at": {
+     "ref": "eastbrook",
+     "id": "00000000-0000-7000-8000-000000000033",
+     "title": "Eastbrook",
+     "type": "location",
+     "kind": "location.settlement",
+     "visibility": "public",
+     "canon": "approved",
+     "short_description": "A walled town on the eastern road."
+    },
+    "audience": null,
+    "calendar": "yv",
+    "bias": "Fenn tells it at the Eastbrook market to anyone who buys him a drink.",
+    "listed": true,
+    "reliability": 0
+   },
+   "rows": [
+    {
+     "record_statement_id": "00000000-0000-7000-8000-000000000109",
+     "claims": []
+    },
+    {
+     "record_statement_id": "00000000-0000-7000-8000-000000000121",
+     "claims": []
+    },
+    {
+     "record_statement_id": "00000000-0000-7000-8000-000000000108",
+     "claims": [
+      {
+       "id": "00000000-0000-7000-8000-000000000131",
+       "subject": {
+        "ref": "bera",
+        "id": "00000000-0000-7000-8000-000000000021",
+        "title": "Bera",
+        "type": "individual",
+        "kind": "individual.person",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "Aldo's second wife, mother of Cato and Dana."
+       },
+       "predicate": "commanded_at",
+       "label": "commanded at",
+       "object": {
+        "ref": "battle-at-the-ford",
+        "id": "00000000-0000-7000-8000-000000000040",
+        "title": "Battle at the Ford",
+        "type": "event",
+        "kind": "event.battle",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+       },
+       "value": null,
+       "qualifiers": {},
+       "role": null,
+       "side": {
+        "ref": "testmark",
+        "id": "00000000-0000-7000-8000-000000000010",
+        "title": "Kingdom of Testmark",
+        "type": "faction",
+        "kind": "faction.realm",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "The realm of the Test Vale, ruled from Lampton."
+       },
+       "stance": null,
+       "place": null,
+       "valid": null,
+       "according_to": {
+        "ref": "ferrymans-rumour",
+        "id": "00000000-0000-7000-8000-000000000052",
+        "title": "The ferryman's rumour",
+        "type": "tale",
+        "kind": "tale.rumour",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "Fenn's story that Bera led the host."
+       },
+       "claim_relation": "invents",
+       "record_statement_id": null,
+       "certainty": "certain",
+       "visibility": "public",
+       "canon": "approved",
+       "rank": 0,
+       "source_quote": null,
+       "source_ref": null,
+       "note": null,
+       "recorded_at": "2026-10-28T07:15:16.903645Z",
+       "retired_at": null,
+       "version": 1,
+       "sentence": "According to The ferryman's rumour, Bera commanded at Battle at the Ford for Kingdom of Testmark.",
+       "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000131",
+       "symbol": "+",
+       "aligned_by": "link type"
+      }
+     ],
+     "left_out": true,
+     "omission_note": "CANARY-DESIGNER-OMISSION"
+    },
+    {
+     "record_statement_id": "00000000-0000-7000-8000-000000000111",
+     "claims": []
+    },
+    {
+     "record_statement_id": "00000000-0000-7000-8000-000000000130",
+     "claims": []
+    },
+    {
+     "record_statement_id": "00000000-0000-7000-8000-000000000132",
+     "claims": []
+    }
+   ],
+   "unaligned": [],
+   "believers_url": "https://lore.example.test/wiki/ferrymans-rumour"
+  }
+ ],
+ "legend": {
+  "agrees": "=",
+  "contradicts": "✗",
+  "exaggerates": "↑",
+  "minimizes": "↓",
+  "distorts": "~",
+  "invents": "+",
+  "unverifiable": "?"
+ },
+ "ui_url": "https://lore.example.test/compare/battle-at-the-ford"
+}

@@ -1,0 +1,142 @@
+{
+ "point": {
+  "lon": 11.0,
+  "lat": 45.5,
+  "map_x": 697.7,
+  "map_y": 723.22,
+  "atlas_x": 693.9,
+  "atlas_y": 668.4
+ },
+ "year": 1020.0,
+ "inside": [
+  {
+   "entity": {
+    "ref": "testmark",
+    "id": "00000000-0000-7000-8000-000000000010",
+    "title": "Kingdom of Testmark",
+    "type": "faction",
+    "kind": "faction.realm",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The realm of the Test Vale, ruled from Lampton."
+   },
+   "role": "territory",
+   "shape_id": "01a1815c-fb59-7954-9c8b-8b54b4f3d8ff",
+   "precision": "approximate"
+  },
+  {
+   "entity": {
+    "ref": "test-vale",
+    "id": "00000000-0000-7000-8000-000000000030",
+    "title": "Test Vale",
+    "type": "location",
+    "kind": "location.region",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The vale of the Test River, heart of the kingdom."
+   },
+   "role": "extent",
+   "shape_id": "01a1815c-fb57-792a-bf5f-70fe9baabbf1",
+   "precision": "approximate"
+  }
+ ],
+ "nearest": [
+  {
+   "entity": {
+    "ref": "lampton",
+    "id": "00000000-0000-7000-8000-000000000031",
+    "title": "Lampton",
+    "type": "location",
+    "kind": "location.settlement",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "A city of lamps at the ford of the Test River."
+   },
+   "role": "point",
+   "shape_id": "01a1815c-fb58-7cc5-a1df-7ae51b5ab98f",
+   "distance_km": 0.0,
+   "direction": "north",
+   "precision": "exact"
+  },
+  {
+   "entity": {
+    "ref": "test-river",
+    "id": "00000000-0000-7000-8000-000000000034",
+    "title": "Test River",
+    "type": "location",
+    "kind": "location.river",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The river that runs through the Test Vale."
+   },
+   "role": "route",
+   "shape_id": "01a1815c-fb59-7393-9b44-24c2da83e1e7",
+   "distance_km": 0.0,
+   "direction": "north",
+   "precision": "approximate"
+  },
+  {
+   "entity": {
+    "ref": "battle-at-the-ford",
+    "id": "00000000-0000-7000-8000-000000000040",
+    "title": "Battle at the Ford",
+    "type": "event",
+    "kind": "event.battle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+   },
+   "role": "site",
+   "shape_id": "01a1815c-fb59-7546-931b-57ea9e3d4349",
+   "distance_km": 19.14,
+   "direction": "north-east",
+   "precision": "approximate"
+  },
+  {
+   "entity": {
+    "ref": "hidden-hamlet",
+    "id": "00000000-0000-7000-8000-000000000032",
+    "title": "Hidden Hamlet",
+    "type": "location",
+    "kind": "location.settlement",
+    "visibility": "designer",
+    "canon": "draft",
+    "short_description": "Where Dirk kept what he could not say."
+   },
+   "role": "point",
+   "shape_id": "01a1815c-fb9c-7252-939d-c1427f997ffa",
+   "distance_km": 57.34,
+   "direction": "north-east",
+   "precision": "approximate"
+  },
+  {
+   "entity": {
+    "ref": "eastbrook",
+    "id": "00000000-0000-7000-8000-000000000033",
+    "title": "Eastbrook",
+    "type": "location",
+    "kind": "location.settlement",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "A walled town on the eastern road."
+   },
+   "role": "footprint",
+   "shape_id": "01a1815c-fb9c-7688-8d63-0f93262b9868",
+   "distance_km": 76.38,
+   "direction": "east",
+   "precision": "approximate"
+  }
+ ],
+ "features": [
+  {
+   "feature_id": "01a1815c-fb8b-70f3-903b-0414932971bf",
+   "class": "river",
+   "layer": "base-rivers",
+   "name": null,
+   "entity_id": "00000000-0000-7000-8000-000000000034",
+   "distance_km": 0.33
+  }
+ ],
+ "elevation_m": null,
+ "ui_url": "https://lore.example.test/map?c=11.0000,45.5000&z=9&y=1020"
+}

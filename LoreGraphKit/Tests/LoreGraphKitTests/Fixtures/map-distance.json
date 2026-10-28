@@ -1,0 +1,83 @@
+{
+ "waypoints": [
+  {
+   "label": "Lampton",
+   "entity": {
+    "ref": "lampton",
+    "id": "00000000-0000-7000-8000-000000000031",
+    "title": "Lampton",
+    "type": "location",
+    "kind": "location.settlement",
+    "visibility": "public",
+    "canon": "approved"
+   },
+   "lon": 11.0,
+   "lat": 45.5,
+   "precision": "exact"
+  },
+  {
+   "label": "Eastbrook",
+   "entity": {
+    "ref": "eastbrook",
+    "id": "00000000-0000-7000-8000-000000000033",
+    "title": "Eastbrook",
+    "type": "location",
+    "kind": "location.settlement",
+    "visibility": "public",
+    "canon": "approved"
+   },
+   "lon": 12.0,
+   "lat": 45.5,
+   "precision": "exact"
+  }
+ ],
+ "legs": [
+  {
+   "from": "Lampton",
+   "to": "Eastbrook",
+   "km": 77.9,
+   "bearing": 90,
+   "direction": "east"
+  }
+ ],
+ "total_km": 77.9,
+ "travel": {
+  "cart": {
+   "km_per_day": 20.0,
+   "days": 3.9,
+   "hours": 93.5
+  },
+  "foot": {
+   "km_per_day": 25.0,
+   "days": 3.1,
+   "hours": 74.8
+  },
+  "ship": {
+   "km_per_day": 110.0,
+   "days": 0.7,
+   "hours": 17.0
+  },
+  "horse": {
+   "km_per_day": 45.0,
+   "days": 1.7,
+   "hours": 41.6
+  },
+  "march": {
+   "km_per_day": 18.0,
+   "days": 4.3,
+   "hours": 103.9
+  },
+  "barge_up": {
+   "km_per_day": 20.0,
+   "days": 3.9,
+   "hours": 93.5
+  },
+  "barge_down": {
+   "km_per_day": 60.0,
+   "days": 1.3,
+   "hours": 31.2
+  }
+ },
+ "warnings": [],
+ "ui_url": "https://lore.example.test/map?tool=measure&pts=11.0000,45.5000%3B12.0000,45.5000&y=1131"
+}

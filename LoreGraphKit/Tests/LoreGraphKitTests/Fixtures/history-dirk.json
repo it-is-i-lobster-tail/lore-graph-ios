@@ -1,0 +1,403 @@
+{
+ "page": {
+  "ref": "dirk",
+  "id": "00000000-0000-7000-8000-000000000023",
+  "title": "Dirk",
+  "type": "individual",
+  "kind": "individual.person",
+  "visibility": "public",
+  "canon": "approved"
+ },
+ "revision": null,
+ "groups": [
+  {
+   "change_set": null,
+   "revisions": [
+    {
+     "id": 196,
+     "at": "2026-10-28T07:15:16.903645Z",
+     "table": "page_section",
+     "row_key": "01a1815c-fbf3-7fac-b784-358e3383f461",
+     "op": "insert",
+     "entity": {
+      "ref": "dirk",
+      "id": "00000000-0000-7000-8000-000000000023",
+      "title": "Dirk",
+      "type": "individual",
+      "kind": "individual.person",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "Marshal of Testmark who led the host at the Ford."
+     },
+     "actor": "Owner",
+     "actor_kind": "import",
+     "client_id": "fixtures",
+     "edit_level": "minor",
+     "visibility": "public",
+     "diff": {
+      "fields": [
+       {
+        "field": "body_md",
+        "words": []
+       },
+       {
+        "field": "canon",
+        "before": null,
+        "after": "draft"
+       },
+       {
+        "field": "entity_id",
+        "before": null,
+        "after": "00000000-0000-7000-8000-000000000023"
+       },
+       {
+        "field": "id",
+        "before": null,
+        "after": "01a1815c-fbf3-7fac-b784-358e3383f461"
+       },
+       {
+        "field": "key",
+        "before": null,
+        "after": "rumours"
+       },
+       {
+        "field": "level",
+        "before": null,
+        "after": 2
+       },
+       {
+        "field": "position",
+        "before": null,
+        "after": 68
+       },
+       {
+        "field": "section_type",
+        "before": null,
+        "after": "rumours"
+       },
+       {
+        "field": "visibility",
+        "before": null,
+        "after": "public"
+       }
+      ]
+     }
+    },
+    {
+     "id": 195,
+     "at": "2026-10-28T07:15:16.903645Z",
+     "table": "page_section",
+     "row_key": "01a1815c-fbf3-7f84-8e5a-6347211ce507",
+     "op": "insert",
+     "entity": {
+      "ref": "dirk",
+      "id": "00000000-0000-7000-8000-000000000023",
+      "title": "Dirk",
+      "type": "individual",
+      "kind": "individual.person",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "Marshal of Testmark who led the host at the Ford."
+     },
+     "actor": "Owner",
+     "actor_kind": "import",
+     "client_id": "fixtures",
+     "edit_level": "minor",
+     "visibility": "public",
+     "diff": {
+      "fields": [
+       {
+        "field": "body_md",
+        "words": []
+       },
+       {
+        "field": "canon",
+        "before": null,
+        "after": "draft"
+       },
+       {
+        "field": "entity_id",
+        "before": null,
+        "after": "00000000-0000-7000-8000-000000000023"
+       },
+       {
+        "field": "id",
+        "before": null,
+        "after": "01a1815c-fbf3-7f84-8e5a-6347211ce507"
+       },
+       {
+        "field": "key",
+        "before": null,
+        "after": "beliefs"
+       },
+       {
+        "field": "level",
+        "before": null,
+        "after": 2
+       },
+       {
+        "field": "position",
+        "before": null,
+        "after": 64
+       },
+       {
+        "field": "section_type",
+        "before": null,
+        "after": "beliefs"
+       },
+       {
+        "field": "visibility",
+        "before": null,
+        "after": "public"
+       }
+      ]
+     }
+    },
+    {
+     "id": 194,
+     "at": "2026-10-28T07:15:16.903645Z",
+     "table": "page_section",
+     "row_key": "01a1815c-fbf3-7f5e-b0d4-be39d95a2928",
+     "op": "insert",
+     "entity": {
+      "ref": "dirk",
+      "id": "00000000-0000-7000-8000-000000000023",
+      "title": "Dirk",
+      "type": "individual",
+      "kind": "individual.person",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "Marshal of Testmark who led the host at the Ford."
+     },
+     "actor": "Owner",
+     "actor_kind": "import",
+     "client_id": "fixtures",
+     "edit_level": "minor",
+     "visibility": "public",
+     "diff": {
+      "fields": [
+       {
+        "field": "body_md",
+        "words": []
+       },
+       {
+        "field": "canon",
+        "before": null,
+        "after": "draft"
+       },
+       {
+        "field": "entity_id",
+        "before": null,
+        "after": "00000000-0000-7000-8000-000000000023"
+       },
+       {
+        "field": "id",
+        "before": null,
+        "after": "01a1815c-fbf3-7f5e-b0d4-be39d95a2928"
+       },
+       {
+        "field": "key",
+        "before": null,
+        "after": "family"
+       },
+       {
+        "field": "level",
+        "before": null,
+        "after": 2
+       },
+       {
+        "field": "position",
+        "before": null,
+        "after": 66
+       },
+       {
+        "field": "section_type",
+        "before": null,
+        "after": "family"
+       },
+       {
+        "field": "visibility",
+        "before": null,
+        "after": "public"
+       }
+      ]
+     }
+    },
+    {
+     "id": 193,
+     "at": "2026-10-28T07:15:16.903645Z",
+     "table": "page_section",
+     "row_key": "01a1815c-fbf3-7f35-9c1e-51c50fc1e259",
+     "op": "insert",
+     "entity": {
+      "ref": "dirk",
+      "id": "00000000-0000-7000-8000-000000000023",
+      "title": "Dirk",
+      "type": "individual",
+      "kind": "individual.person",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "Marshal of Testmark who led the host at the Ford."
+     },
+     "actor": "Owner",
+     "actor_kind": "import",
+     "client_id": "fixtures",
+     "edit_level": "minor",
+     "visibility": "public",
+     "diff": {
+      "fields": [
+       {
+        "field": "body_md",
+        "words": []
+       },
+       {
+        "field": "canon",
+        "before": null,
+        "after": "draft"
+       },
+       {
+        "field": "entity_id",
+        "before": null,
+        "after": "00000000-0000-7000-8000-000000000023"
+       },
+       {
+        "field": "id",
+        "before": null,
+        "after": "01a1815c-fbf3-7f35-9c1e-51c50fc1e259"
+       },
+       {
+        "field": "key",
+        "before": null,
+        "after": "relationships"
+       },
+       {
+        "field": "level",
+        "before": null,
+        "after": 2
+       },
+       {
+        "field": "position",
+        "before": null,
+        "after": 65
+       },
+       {
+        "field": "section_type",
+        "before": null,
+        "after": "relationships"
+       },
+       {
+        "field": "visibility",
+        "before": null,
+        "after": "public"
+       }
+      ]
+     }
+    },
+    {
+     "id": 162,
+     "at": "2026-10-28T07:15:16.903645Z",
+     "table": "statement",
+     "row_key": "00000000-0000-7000-8000-00000000c104",
+     "op": "insert",
+     "entity": {
+      "ref": "dirk",
+      "id": "00000000-0000-7000-8000-000000000023",
+      "title": "Dirk",
+      "type": "individual",
+      "kind": "individual.person",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "Marshal of Testmark who led the host at the Ford."
+     },
+     "actor": "Owner",
+     "actor_kind": "import",
+     "client_id": "fixtures",
+     "edit_level": "minor",
+     "visibility": "designer",
+     "diff": {
+      "fields": [
+       {
+        "field": "according_to_id",
+        "before": null,
+        "after": "00000000-0000-7000-8000-00000000c002"
+       },
+       {
+        "field": "canon",
+        "before": null,
+        "after": "approved"
+       },
+       {
+        "field": "certainty",
+        "before": null,
+        "after": "certain"
+       },
+       {
+        "field": "claim_relation",
+        "before": null,
+        "after": "agrees"
+       },
+       {
+        "field": "date_precision",
+        "before": null,
+        "after": "unknown"
+       },
+       {
+        "field": "id",
+        "before": null,
+        "after": "00000000-0000-7000-8000-00000000c104"
+       },
+       {
+        "field": "note",
+        "before": null,
+        "after": "CANARY-DESIGNER-CLAIM-NOTE"
+       },
+       {
+        "field": "object_id",
+        "before": null,
+        "after": "00000000-0000-7000-8000-000000000022"
+       },
+       {
+        "field": "predicate_key",
+        "before": null,
+        "after": "parent_of"
+       },
+       {
+        "field": "qualifiers",
+        "before": null,
+        "after": {
+         "kind": "biological"
+        }
+       },
+       {
+        "field": "rank",
+        "before": null,
+        "after": 0
+       },
+       {
+        "field": "record_statement_id",
+        "before": null,
+        "after": "00000000-0000-7000-8000-000000000104"
+       },
+       {
+        "field": "role",
+        "before": null,
+        "after": "father"
+       },
+       {
+        "field": "subject_id",
+        "before": null,
+        "after": "00000000-0000-7000-8000-000000000023"
+       },
+       {
+        "field": "visibility",
+        "before": null,
+        "after": "designer"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "next_cursor": "eyJvIjo1fQ"
+}

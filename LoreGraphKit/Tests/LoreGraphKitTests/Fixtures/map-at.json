@@ -1,0 +1,108 @@
+{
+ "point": {
+  "lon": 11.1,
+  "lat": 45.55,
+  "map_x": 699.5,
+  "map_y": 721.95,
+  "atlas_x": 696.1,
+  "atlas_y": 666.8
+ },
+ "year": 1131.0,
+ "inside": [
+  {
+   "entity": {
+    "ref": "testmark",
+    "id": "00000000-0000-7000-8000-000000000010",
+    "title": "Kingdom of Testmark",
+    "type": "faction",
+    "kind": "faction.realm",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The realm of the Test Vale, ruled from Lampton."
+   },
+   "role": "territory",
+   "shape_id": "01a1815c-fb59-7954-9c8b-8b54b4f3d8ff",
+   "precision": "approximate"
+  },
+  {
+   "entity": {
+    "ref": "test-vale",
+    "id": "00000000-0000-7000-8000-000000000030",
+    "title": "Test Vale",
+    "type": "location",
+    "kind": "location.region",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The vale of the Test River, heart of the kingdom."
+   },
+   "role": "extent",
+   "shape_id": "01a1815c-fb57-792a-bf5f-70fe9baabbf1",
+   "precision": "approximate"
+  }
+ ],
+ "nearest": [
+  {
+   "entity": {
+    "ref": "test-river",
+    "id": "00000000-0000-7000-8000-000000000034",
+    "title": "Test River",
+    "type": "location",
+    "kind": "location.river",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The river that runs through the Test Vale."
+   },
+   "role": "route",
+   "shape_id": "01a1815c-fb59-7393-9b44-24c2da83e1e7",
+   "distance_km": 4.18,
+   "direction": "south",
+   "precision": "approximate"
+  },
+  {
+   "entity": {
+    "ref": "battle-at-the-ford",
+    "id": "00000000-0000-7000-8000-000000000040",
+    "title": "Battle at the Ford",
+    "type": "event",
+    "kind": "event.battle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+   },
+   "role": "site",
+   "shape_id": "01a1815c-fb59-7546-931b-57ea9e3d4349",
+   "distance_km": 9.57,
+   "direction": "north-east",
+   "precision": "approximate"
+  },
+  {
+   "entity": {
+    "ref": "lampton",
+    "id": "00000000-0000-7000-8000-000000000031",
+    "title": "Lampton",
+    "type": "location",
+    "kind": "location.settlement",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "A city of lamps at the ford of the Test River."
+   },
+   "role": "point",
+   "shape_id": "01a1815c-fb58-7cc5-a1df-7ae51b5ab98f",
+   "distance_km": 9.57,
+   "direction": "south-west",
+   "precision": "exact"
+  }
+ ],
+ "features": [
+  {
+   "feature_id": "01a1815c-fb8b-70f3-903b-0414932971bf",
+   "class": "river",
+   "layer": "base-rivers",
+   "name": null,
+   "entity_id": "00000000-0000-7000-8000-000000000034",
+   "distance_km": 4.47
+  }
+ ],
+ "elevation_m": null,
+ "ui_url": "https://lore.example.test/map?c=11.1000,45.5500&z=9&y=1131"
+}

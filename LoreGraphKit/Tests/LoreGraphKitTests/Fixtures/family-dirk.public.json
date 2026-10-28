@@ -1,0 +1,39 @@
+{
+ "root": {
+  "ref": "dirk",
+  "id": "00000000-0000-7000-8000-000000000023",
+  "title": "Dirk",
+  "type": "individual",
+  "kind": "individual.person",
+  "visibility": "public",
+  "canon": "approved"
+ },
+ "people": [
+  {
+   "ref": "dirk",
+   "id": "00000000-0000-7000-8000-000000000023",
+   "title": "Dirk",
+   "type": "individual",
+   "kind": "individual.person",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Marshal of Testmark who led the host at the Ford.",
+   "display_title": "Dirk",
+   "generation": 0,
+   "gender": null,
+   "lifespan": {
+    "from": 1002.0,
+    "to": 1050.0,
+    "precision": "year",
+    "label": "YV 1002 to 1049",
+    "formatted": "YV 1002 to 1049"
+   },
+   "at_year": null,
+   "root": true
+  }
+ ],
+ "parents": [],
+ "marriages": [],
+ "unions": [],
+ "ui_url": "https://lore.example.test/family/dirk?up=2"
+}

@@ -1,0 +1,20 @@
+{
+ "resource": "https://lore.example.test/api",
+ "authorization_servers": [
+  "https://lore.example.test"
+ ],
+ "scopes_supported": [
+  "lore:read",
+  "lore:secrets",
+  "lore:write",
+  "map:write",
+  "review",
+  "lore:approve",
+  "admin"
+ ],
+ "bearer_methods_supported": [
+  "header"
+ ],
+ "resource_name": "loregraph REST API",
+ "resource_documentation": "https://lore.example.test/api/docs"
+}

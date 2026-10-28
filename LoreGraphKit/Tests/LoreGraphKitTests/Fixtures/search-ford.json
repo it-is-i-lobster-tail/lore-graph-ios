@@ -1,0 +1,1093 @@
+{
+ "query": "ford",
+ "parsed": {
+  "words": [
+   "ford"
+  ],
+  "phrases": [],
+  "excluded": [],
+  "filters": {}
+ },
+ "filters": {
+  "canon": [
+   "approved",
+   "author_canon",
+   "draft",
+   "proposed"
+  ]
+ },
+ "results": [
+  {
+   "entity": {
+    "ref": "war-of-the-ford",
+    "id": "00000000-0000-7000-8000-000000000041",
+    "title": "War of the Ford",
+    "type": "event",
+    "kind": "event.war",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Testmark against the Eastmarch, YV 1019 to 1021."
+   },
+   "display_name": null,
+   "score": 0.06344,
+   "lanes": {
+    "names": 1,
+    "lexical": 3,
+    "vector": 2,
+    "graph": 13
+   },
+   "why": [
+    "name ‘War of the Ford’ is spelled like the query",
+    "the words appear in its text",
+    "its text is close in meaning",
+    "linked to a strong result (mentions)"
+   ],
+   "matched_name": {
+    "name": "War of the Ford",
+    "kind": "primary",
+    "match": "similar",
+    "pending": false,
+    "used_by_viewpoint": false
+   },
+   "snippet": "War of the Ford happened at Test Vale as main",
+   "snippet_parts": [
+    {
+     "text": "War of the ",
+     "hit": false
+    },
+    {
+     "text": "Ford",
+     "hit": true
+    },
+    {
+     "text": " happened at Test Vale as main",
+     "hit": false
+    }
+   ],
+   "passages": [
+    {
+     "id": "01a1815c-fe56-7c65-aea6-32eb206b3fa0",
+     "kind": "statement",
+     "heading_path": "War of the Ford > Records",
+     "snippet": "War of the Ford happened at Test Vale as main",
+     "snippet_parts": [
+      {
+       "text": "War of the ",
+       "hit": false
+      },
+      {
+       "text": "Ford",
+       "hit": true
+      },
+      {
+       "text": " happened at Test Vale as main",
+       "hit": false
+      }
+     ],
+     "citation": "statement:00000000-0000-7000-8000-000000000133",
+     "visibility": "public",
+     "canon": "approved",
+     "lanes": {
+      "lexical": 5,
+      "vector": 2
+     },
+     "valid": null
+    },
+    {
+     "id": "01a1815c-fe55-7265-be72-59c5a0e7f067",
+     "kind": "section",
+     "heading_path": "War of the Ford",
+     "snippet": "The War of the Ford set Kingdom of Testmark against the Eastmarch from YV 1019 to 1021. It turned at the Battle at the Ford and ended after the Siege of Eastbrook, when Eastbrook held",
+     "snippet_parts": [
+      {
+       "text": "The War of the ",
+       "hit": false
+      },
+      {
+       "text": "Ford",
+       "hit": true
+      },
+      {
+       "text": " set Kingdom of Testmark against the Eastmarch from YV 1019 to 1021. It turned at the Battle at the ",
+       "hit": false
+      },
+      {
+       "text": "Ford",
+       "hit": true
+      },
+      {
+       "text": " and ended after the Siege of Eastbrook, when Eastbrook held",
+       "hit": false
+      }
+     ],
+     "citation": "[[war-of-the-ford#lead]]",
+     "visibility": "public",
+     "canon": "approved",
+     "lanes": {
+      "lexical": 7,
+      "vector": 8
+     },
+     "valid": null
+    }
+   ],
+   "ui_url": "https://lore.example.test/wiki/war-of-the-ford",
+   "verdict": null
+  },
+  {
+   "entity": {
+    "ref": "battle-at-the-ford",
+    "id": "00000000-0000-7000-8000-000000000040",
+    "title": "Battle at the Ford",
+    "type": "event",
+    "kind": "event.battle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+   },
+   "display_name": null,
+   "score": 0.0402,
+   "lanes": {
+    "lexical": 2,
+    "vector": 3,
+    "graph": 1
+   },
+   "why": [
+    "the words appear in its text",
+    "its text is close in meaning",
+    "linked to a strong result (mentions)"
+   ],
+   "matched_name": null,
+   "snippet": "Battle at the Ford happened at Lampton as main",
+   "snippet_parts": [
+    {
+     "text": "Battle at the ",
+     "hit": false
+    },
+    {
+     "text": "Ford",
+     "hit": true
+    },
+    {
+     "text": " happened at Lampton as main",
+     "hit": false
+    }
+   ],
+   "passages": [
+    {
+     "id": "01a1815c-fe17-7205-9a86-a54974e88489",
+     "kind": "statement",
+     "heading_path": "Battle at the Ford > Records",
+     "snippet": "Battle at the Ford happened at Lampton as main",
+     "snippet_parts": [
+      {
+       "text": "Battle at the ",
+       "hit": false
+      },
+      {
+       "text": "Ford",
+       "hit": true
+      },
+      {
+       "text": " happened at Lampton as main",
+       "hit": false
+      }
+     ],
+     "citation": "statement:00000000-0000-7000-8000-000000000109",
+     "visibility": "public",
+     "canon": "approved",
+     "lanes": {
+      "lexical": 3,
+      "vector": 3
+     },
+     "valid": null
+    },
+    {
+     "id": "01a1815c-fe14-79e8-a659-11236355ae5d",
+     "kind": "section",
+     "heading_path": "Battle at the Ford",
+     "snippet": "The Battle at the Ford was fought in the summer of YV 1020 at the ford below Lampton, in the War of the Ford. The host of Kingdom of Testmark under Dirk broke the Eastmarch",
+     "snippet_parts": [
+      {
+       "text": "The Battle at the ",
+       "hit": false
+      },
+      {
+       "text": "Ford",
+       "hit": true
+      },
+      {
+       "text": " was fought in the summer of YV 1020 at the ",
+       "hit": false
+      },
+      {
+       "text": "ford",
+       "hit": true
+      },
+      {
+       "text": " below Lampton, in the War of the ",
+       "hit": false
+      },
+      {
+       "text": "Ford",
+       "hit": true
+      },
+      {
+       "text": ". The host of Kingdom of Testmark under Dirk broke the Eastmarch",
+       "hit": false
+      }
+     ],
+     "citation": "[[battle-at-the-ford#lead]]",
+     "visibility": "public",
+     "canon": "approved",
+     "lanes": {
+      "lexical": 2,
+      "vector": 5
+     },
+     "valid": null
+    }
+   ],
+   "ui_url": "https://lore.example.test/wiki/battle-at-the-ford",
+   "verdict": null
+  },
+  {
+   "entity": {
+    "ref": "ballad-of-the-ford",
+    "id": "00000000-0000-7000-8000-000000000051",
+    "title": "Ballad of the Ford",
+    "type": "story",
+    "kind": "story.song",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "A song of the vale that remembers who led."
+   },
+   "display_name": null,
+   "score": 0.03896,
+   "lanes": {
+    "lexical": 1,
+    "vector": 1,
+    "graph": 21
+   },
+   "why": [
+    "the words appear in its text",
+    "its text is close in meaning",
+    "linked to a strong result (tells of)"
+   ],
+   "matched_name": null,
+   "snippet": "Ballad of the Ford tells of Battle at the Ford",
+   "snippet_parts": [
+    {
+     "text": "Ballad of the ",
+     "hit": false
+    },
+    {
+     "text": "Ford",
+     "hit": true
+    },
+    {
+     "text": " tells of Battle at the ",
+     "hit": false
+    },
+    {
+     "text": "Ford",
+     "hit": true
+    }
+   ],
+   "passages": [
+    {
+     "id": "01a1815c-fdc8-7c80-af5f-5ac6cf4fbc74",
+     "kind": "statement",
+     "heading_path": "Ballad of the Ford > Records",
+     "snippet": "Ballad of the Ford tells of Battle at the Ford",
+     "snippet_parts": [
+      {
+       "text": "Ballad of the ",
+       "hit": false
+      },
+      {
+       "text": "Ford",
+       "hit": true
+      },
+      {
+       "text": " tells of Battle at the ",
+       "hit": false
+      },
+      {
+       "text": "Ford",
+       "hit": true
+      }
+     ],
+     "citation": "statement:00000000-0000-7000-8000-000000000130",
+     "visibility": "public",
+     "canon": "approved",
+     "lanes": {
+      "lexical": 1,
+      "vector": 1
+     },
+     "valid": null
+    },
+    {
+     "id": "01a1815c-fdc3-79b9-b206-9c3b76f417d0",
+     "kind": "summary",
+     "heading_path": "Ballad of the Ford",
+     "snippet": "Ballad of the Ford. A song. A song of the vale that remembers who led",
+     "snippet_parts": [
+      {
+       "text": "Ballad of the ",
+       "hit": false
+      },
+      {
+       "text": "Ford",
+       "hit": true
+      },
+      {
+       "text": ". A song. A song of the vale that remembers who led",
+       "hit": false
+      }
+     ],
+     "citation": "[[ballad-of-the-ford]]",
+     "visibility": "public",
+     "canon": "approved",
+     "lanes": {
+      "lexical": 4,
+      "vector": 6
+     },
+     "valid": null
+    }
+   ],
+   "ui_url": "https://lore.example.test/wiki/ballad-of-the-ford",
+   "verdict": null
+  },
+  {
+   "entity": {
+    "ref": "aldo",
+    "id": "00000000-0000-7000-8000-000000000020",
+    "title": "Aldo",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Lord of Lampton, remembered as the victor of the Ford."
+   },
+   "display_name": null,
+   "score": 0.0379,
+   "lanes": {
+    "lexical": 8,
+    "vector": 5,
+    "graph": 4
+   },
+   "why": [
+    "the words appear in its text",
+    "its text is close in meaning",
+    "linked to a strong result (took part in)"
+   ],
+   "matched_name": null,
+   "snippet": "Aldo took part in Battle at the Ford for Kingdom of Testmark",
+   "snippet_parts": [
+    {
+     "text": "Aldo took part in Battle at the ",
+     "hit": false
+    },
+    {
+     "text": "Ford",
+     "hit": true
+    },
+    {
+     "text": " for Kingdom of Testmark",
+     "hit": false
+    }
+   ],
+   "passages": [
+    {
+     "id": "01a1815c-fea8-797a-b796-2c20fd2ab5be",
+     "kind": "statement",
+     "heading_path": "Aldo > Records",
+     "snippet": "Aldo took part in Battle at the Ford for Kingdom of Testmark",
+     "snippet_parts": [
+      {
+       "text": "Aldo took part in Battle at the ",
+       "hit": false
+      },
+      {
+       "text": "Ford",
+       "hit": true
+      },
+      {
+       "text": " for Kingdom of Testmark",
+       "hit": false
+      }
+     ],
+     "citation": "statement:00000000-0000-7000-8000-000000000121",
+     "visibility": "public",
+     "canon": "approved",
+     "lanes": {
+      "lexical": 16,
+      "vector": 12
+     },
+     "valid": null
+    },
+    {
+     "id": "01a1815c-fe9a-7fcb-9a44-000cbcf28996",
+     "kind": "summary",
+     "heading_path": "Aldo",
+     "snippet": "Aldo. A person. Lord of Lampton, remembered as the victor of the Ford. Lived YV 1000 to 1059. gender: male",
+     "snippet_parts": [
+      {
+       "text": "Aldo. A person. Lord of Lampton, remembered as the victor of the ",
+       "hit": false
+      },
+      {
+       "text": "Ford",
+       "hit": true
+      },
+      {
+       "text": ". Lived YV 1000 to 1059. gender: male",
+       "hit": false
+      }
+     ],
+     "citation": "[[aldo]]",
+     "visibility": "public",
+     "canon": "approved",
+     "lanes": {
+      "lexical": 25,
+      "vector": 18
+     },
+     "valid": {
+      "from": 1000.0,
+      "to": 1060.0,
+      "precision": "year",
+      "label": "YV 1000 to 1059",
+      "formatted": "YV 1000 to 1059"
+     }
+    }
+   ],
+   "ui_url": "https://lore.example.test/wiki/aldo",
+   "verdict": null
+  },
+  {
+   "entity": {
+    "ref": "lampton",
+    "id": "00000000-0000-7000-8000-000000000031",
+    "title": "Lampton",
+    "type": "location",
+    "kind": "location.settlement",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "A city of lamps at the ford of the Test River."
+   },
+   "display_name": null,
+   "score": 0.03781,
+   "lanes": {
+    "lexical": 4,
+    "vector": 9,
+    "graph": 5
+   },
+   "why": [
+    "the words appear in its text",
+    "its text is close in meaning",
+    "linked to a strong result (happened at)"
+   ],
+   "matched_name": null,
+   "snippet": "all night. Loïse kept them. In the summer of YV 1020 the host of Testmark crossed the ford below the city and broke the Eastmarch at the Battle at the Ford",
+   "snippet_parts": [
+    {
+     "text": "all night. Loïse kept them. In the summer of YV 1020 the host of Testmark crossed the ",
+     "hit": false
+    },
+    {
+     "text": "ford",
+     "hit": true
+    },
+    {
+     "text": " below the city and broke the Eastmarch at the Battle at the ",
+     "hit": false
+    },
+    {
+     "text": "Ford",
+     "hit": true
+    }
+   ],
+   "passages": [
+    {
+     "id": "01a1815c-ff70-7d2f-8562-a71a40cedb19",
+     "kind": "section",
+     "heading_path": "Lampton > History",
+     "snippet": "all night. Loïse kept them. In the summer of YV 1020 the host of Testmark crossed the ford below the city and broke the Eastmarch at the Battle at the Ford",
+     "snippet_parts": [
+      {
+       "text": "all night. Loïse kept them. In the summer of YV 1020 the host of Testmark crossed the ",
+       "hit": false
+      },
+      {
+       "text": "ford",
+       "hit": true
+      },
+      {
+       "text": " below the city and broke the Eastmarch at the Battle at the ",
+       "hit": false
+      },
+      {
+       "text": "Ford",
+       "hit": true
+      }
+     ],
+     "citation": "[[lampton#history]]",
+     "visibility": "public",
+     "canon": "approved",
+     "lanes": {
+      "lexical": 12,
+      "vector": 16
+     },
+     "valid": null
+    },
+    {
+     "id": "01a1815c-ff6c-7e0a-ac5d-f660c869bd1b",
+     "kind": "summary",
+     "heading_path": "Lampton",
+     "snippet": "Lampton. A settlement in Test Vale. A city of lamps at the ford of the Test River. Also known as Lamptun, the Lamp City. size: city",
+     "snippet_parts": [
+      {
+       "text": "Lampton. A settlement in Test Vale. A city of lamps at the ",
+       "hit": false
+      },
+      {
+       "text": "ford",
+       "hit": true
+      },
+      {
+       "text": " of the Test River. Also known as Lamptun, the Lamp City. size: city",
+       "hit": false
+      }
+     ],
+     "citation": "[[lampton]]",
+     "visibility": "public",
+     "canon": "approved",
+     "lanes": {
+      "lexical": 32,
+      "vector": 27
+     },
+     "valid": null
+    }
+   ],
+   "ui_url": "https://lore.example.test/wiki/lampton#history",
+   "verdict": null
+  },
+  {
+   "entity": {
+    "ref": "testmark-chronicle",
+    "id": "00000000-0000-7000-8000-000000000050",
+    "title": "Testmark Chronicle",
+    "type": "story",
+    "kind": "story.chronicle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The court's history of the Ford, written for Aldo's house."
+   },
+   "display_name": null,
+   "score": 0.03759,
+   "lanes": {
+    "lexical": 5,
+    "vector": 4,
+    "graph": 16
+   },
+   "why": [
+    "the words appear in its text",
+    "its text is close in meaning",
+    "linked to a strong result (tells of)"
+   ],
+   "matched_name": null,
+   "snippet": "Testmark Chronicle tells of Battle at the Ford",
+   "snippet_parts": [
+    {
+     "text": "Testmark Chronicle tells of Battle at the ",
+     "hit": false
+    },
+    {
+     "text": "Ford",
+     "hit": true
+    }
+   ],
+   "passages": [
+    {
+     "id": "01a1815c-fdb4-7a45-bc34-049b3e73112e",
+     "kind": "statement",
+     "heading_path": "Testmark Chronicle > Records",
+     "snippet": "Testmark Chronicle tells of Battle at the Ford",
+     "snippet_parts": [
+      {
+       "text": "Testmark Chronicle tells of Battle at the ",
+       "hit": false
+      },
+      {
+       "text": "Ford",
+       "hit": true
+      }
+     ],
+     "citation": "statement:00000000-0000-7000-8000-000000000111",
+     "visibility": "public",
+     "canon": "approved",
+     "lanes": {
+      "lexical": 13,
+      "vector": 11
+     },
+     "valid": null
+    },
+    {
+     "id": "01a1815c-fdad-7307-a825-3733f8fb3fbe",
+     "kind": "summary",
+     "heading_path": "Testmark Chronicle",
+     "snippet": "Testmark Chronicle. A chronicle. The court's history of the Ford, written for Aldo's house",
+     "snippet_parts": [
+      {
+       "text": "Testmark Chronicle. A chronicle. The court's history of the ",
+       "hit": false
+      },
+      {
+       "text": "Ford",
+       "hit": true
+      },
+      {
+       "text": ", written for Aldo's house",
+       "hit": false
+      }
+     ],
+     "citation": "[[testmark-chronicle]]",
+     "visibility": "public",
+     "canon": "approved",
+     "lanes": {
+      "lexical": 17,
+      "vector": 19
+     },
+     "valid": null
+    }
+   ],
+   "ui_url": "https://lore.example.test/wiki/testmark-chronicle",
+   "verdict": null
+  },
+  {
+   "entity": {
+    "ref": "dirk",
+    "id": "00000000-0000-7000-8000-000000000023",
+    "title": "Dirk",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Marshal of Testmark who led the host at the Ford."
+   },
+   "display_name": null,
+   "score": 0.03743,
+   "lanes": {
+    "lexical": 7,
+    "vector": 6,
+    "graph": 8
+   },
+   "why": [
+    "the words appear in its text",
+    "its text is close in meaning",
+    "linked to a strong result (commanded at)"
+   ],
+   "matched_name": null,
+   "snippet": "Dirk commanded at Battle at the Ford for Kingdom of Testmark",
+   "snippet_parts": [
+    {
+     "text": "Dirk commanded at Battle at the ",
+     "hit": false
+    },
+    {
+     "text": "Ford",
+     "hit": true
+    },
+    {
+     "text": " for Kingdom of Testmark",
+     "hit": false
+    }
+   ],
+   "passages": [
+    {
+     "id": "01a1815c-fef7-7c37-9a5f-0bdd983f7b30",
+     "kind": "statement",
+     "heading_path": "Dirk > Records",
+     "snippet": "Dirk commanded at Battle at the Ford for Kingdom of Testmark",
+     "snippet_parts": [
+      {
+       "text": "Dirk commanded at Battle at the ",
+       "hit": false
+      },
+      {
+       "text": "Ford",
+       "hit": true
+      },
+      {
+       "text": " for Kingdom of Testmark",
+       "hit": false
+      }
+     ],
+     "citation": "statement:00000000-0000-7000-8000-000000000108",
+     "visibility": "public",
+     "canon": "approved",
+     "lanes": {
+      "lexical": 15,
+      "vector": 13
+     },
+     "valid": null
+    },
+    {
+     "id": "01a1815c-feea-7a78-8324-e26120c0e409",
+     "kind": "summary",
+     "heading_path": "Dirk",
+     "snippet": "Dirk. A person. Marshal of Testmark who led the host at the Ford. Also known as Grey Dirk. Lived",
+     "snippet_parts": [
+      {
+       "text": "Dirk. A person. Marshal of Testmark who led the host at the ",
+       "hit": false
+      },
+      {
+       "text": "Ford",
+       "hit": true
+      },
+      {
+       "text": ". Also known as Grey Dirk. Lived",
+       "hit": false
+      }
+     ],
+     "citation": "[[dirk]]",
+     "visibility": "public",
+     "canon": "approved",
+     "lanes": {
+      "lexical": 30,
+      "vector": 22
+     },
+     "valid": {
+      "from": 1002.0,
+      "to": 1050.0,
+      "precision": "year",
+      "label": "YV 1002 to 1049",
+      "formatted": "YV 1002 to 1049"
+     }
+    }
+   ],
+   "ui_url": "https://lore.example.test/wiki/dirk",
+   "verdict": null
+  },
+  {
+   "entity": {
+    "ref": "testmark",
+    "id": "00000000-0000-7000-8000-000000000010",
+    "title": "Kingdom of Testmark",
+    "type": "faction",
+    "kind": "faction.realm",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The realm of the Test Vale, ruled from Lampton."
+   },
+   "display_name": null,
+   "score": 0.03645,
+   "lanes": {
+    "lexical": 9,
+    "vector": 12,
+    "graph": 2
+   },
+   "why": [
+    "the words appear in its text",
+    "its text is close in meaning",
+    "linked to a strong result (mentions)"
+   ],
+   "matched_name": null,
+   "snippet": "Testmark rules the Test Vale from Lampton. It fought the Eastmarch in the War of the Ford",
+   "snippet_parts": [
+    {
+     "text": "Testmark rules the Test Vale from Lampton. It fought the Eastmarch in the War of the ",
+     "hit": false
+    },
+    {
+     "text": "Ford",
+     "hit": true
+    }
+   ],
+   "passages": [
+    {
+     "id": "01a1815c-fe7a-78c3-bada-649c977da73f",
+     "kind": "section",
+     "heading_path": "Kingdom of Testmark",
+     "snippet": "Testmark rules the Test Vale from Lampton. It fought the Eastmarch in the War of the Ford",
+     "snippet_parts": [
+      {
+       "text": "Testmark rules the Test Vale from Lampton. It fought the Eastmarch in the War of the ",
+       "hit": false
+      },
+      {
+       "text": "Ford",
+       "hit": true
+      }
+     ],
+     "citation": "[[testmark#lead]]",
+     "visibility": "public",
+     "canon": "approved",
+     "lanes": {
+      "lexical": 19,
+      "vector": 31
+     },
+     "valid": null
+    },
+    {
+     "id": "01a1815c-fe80-7167-9e28-70a8e875b276",
+     "kind": "belief",
+     "heading_path": "Kingdom of Testmark > Beliefs",
+     "snippet": "Kingdom of Testmark believes, openly, that aldo won the Ford (since YV 1022; told by Testmark Chronicle",
+     "snippet_parts": [
+      {
+       "text": "Kingdom of Testmark believes, openly, that aldo won the ",
+       "hit": false
+      },
+      {
+       "text": "Ford",
+       "hit": true
+      },
+      {
+       "text": " (since YV 1022; told by Testmark Chronicle",
+       "hit": false
+      }
+     ],
+     "citation": "belief:00000000-0000-7000-8000-000000000202",
+     "visibility": "public",
+     "canon": "approved",
+     "lanes": {
+      "lexical": 29,
+      "vector": 21
+     },
+     "valid": {
+      "from": 1022.0,
+      "to": null,
+      "precision": "year",
+      "label": "since YV 1022",
+      "formatted": "since YV 1022"
+     }
+    }
+   ],
+   "ui_url": "https://lore.example.test/wiki/testmark#lead",
+   "verdict": null
+  },
+  {
+   "entity": {
+    "ref": "cato",
+    "id": "00000000-0000-7000-8000-000000000022",
+    "title": "Cato",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Novice of the Order of the Lamp."
+   },
+   "display_name": null,
+   "score": 0.03609,
+   "lanes": {
+    "lexical": 13,
+    "vector": 7,
+    "graph": 7
+   },
+   "why": [
+    "the words appear in its text",
+    "its text is close in meaning",
+    "linked to a strong result (parent of)"
+   ],
+   "matched_name": null,
+   "snippet": "Cato believes, in secret, that dirk won the Ford (since YV 1050; told by Dirk",
+   "snippet_parts": [
+    {
+     "text": "Cato believes, in secret, that dirk won the ",
+     "hit": false
+    },
+    {
+     "text": "Ford",
+     "hit": true
+    },
+    {
+     "text": " (since YV 1050; told by Dirk",
+     "hit": false
+    }
+   ],
+   "passages": [
+    {
+     "id": "01a1815c-fedc-7ad0-b04e-6e3848334d02",
+     "kind": "belief",
+     "heading_path": "Cato > Beliefs",
+     "snippet": "Cato believes, in secret, that dirk won the Ford (since YV 1050; told by Dirk",
+     "snippet_parts": [
+      {
+       "text": "Cato believes, in secret, that dirk won the ",
+       "hit": false
+      },
+      {
+       "text": "Ford",
+       "hit": true
+      },
+      {
+       "text": " (since YV 1050; told by Dirk",
+       "hit": false
+      }
+     ],
+     "citation": "belief:00000000-0000-7000-8000-000000000204",
+     "visibility": "designer",
+     "canon": "approved",
+     "lanes": {
+      "lexical": 24,
+      "vector": 14
+     },
+     "valid": {
+      "from": 1050.0,
+      "to": null,
+      "precision": "year",
+      "label": "since YV 1050",
+      "formatted": "since YV 1050"
+     }
+    }
+   ],
+   "ui_url": "https://lore.example.test/wiki/cato",
+   "verdict": null
+  },
+  {
+   "entity": {
+    "ref": "eastmarch",
+    "id": "00000000-0000-7000-8000-000000000012",
+    "title": "The Eastmarch",
+    "type": "faction",
+    "kind": "faction.realm",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The march beyond Eastbrook, Testmark's old rival."
+   },
+   "display_name": null,
+   "score": 0.03595,
+   "lanes": {
+    "lexical": 10,
+    "vector": 11,
+    "graph": 6
+   },
+   "why": [
+    "the words appear in its text",
+    "its text is close in meaning",
+    "linked to a strong result (mentions)"
+   ],
+   "matched_name": null,
+   "snippet": "The Eastmarch believes, openly, that the Ford was lost to treachery, not to Testmark (since",
+   "snippet_parts": [
+    {
+     "text": "The Eastmarch believes, openly, that the ",
+     "hit": false
+    },
+    {
+     "text": "Ford",
+     "hit": true
+    },
+    {
+     "text": " was lost to treachery, not to Testmark (since",
+     "hit": false
+    }
+   ],
+   "passages": [
+    {
+     "id": "01a1815c-fe8d-7211-91af-75f83243338c",
+     "kind": "belief",
+     "heading_path": "The Eastmarch > Beliefs",
+     "snippet": "The Eastmarch believes, openly, that the Ford was lost to treachery, not to Testmark (since",
+     "snippet_parts": [
+      {
+       "text": "The Eastmarch believes, openly, that the ",
+       "hit": false
+      },
+      {
+       "text": "Ford",
+       "hit": true
+      },
+      {
+       "text": " was lost to treachery, not to Testmark (since",
+       "hit": false
+      }
+     ],
+     "citation": "belief:00000000-0000-7000-8000-000000000206",
+     "visibility": "public",
+     "canon": "approved",
+     "lanes": {
+      "lexical": 20,
+      "vector": 20
+     },
+     "valid": {
+      "from": 1021.0,
+      "to": null,
+      "precision": "year",
+      "label": "since YV 1021",
+      "formatted": "since YV 1021"
+     }
+    }
+   ],
+   "ui_url": "https://lore.example.test/wiki/eastmarch",
+   "verdict": null
+  }
+ ],
+ "total": 27,
+ "next_cursor": "eyJvIjoxMH0",
+ "lanes_run": [
+  "names",
+  "lexical",
+  "vector",
+  "graph"
+ ],
+ "lane_counts": {
+  "names": 1,
+  "lexical": 32,
+  "vector": 32,
+  "graph": 27
+ },
+ "took_ms": 21,
+ "warnings": [],
+ "facets": {
+  "type": {
+   "individual": 10,
+   "location": 5,
+   "event": 4,
+   "faction": 3,
+   "story": 3,
+   "misc": 1,
+   "tale": 1
+  },
+  "kind": {
+   "individual.person": 10,
+   "location.settlement": 3,
+   "faction.realm": 2,
+   "event.battle": 1,
+   "event.journey": 1,
+   "event.siege": 1,
+   "event.war": 1,
+   "faction.order": 1,
+   "location.region": 1,
+   "location.river": 1,
+   "misc.law": 1,
+   "story.chronicle": 1,
+   "story.letter": 1,
+   "story.song": 1,
+   "tale.rumour": 1
+  },
+  "canon": {
+   "approved": 26,
+   "draft": 1
+  },
+  "placed": {
+   "placed": 5
+  },
+  "tag": 0,
+  "category": [
+   {
+    "ref": "canary-designer-category",
+    "title": "CANARY-DESIGNER-CATEGORY",
+    "count": 1
+   }
+  ],
+  "years": {
+   "from": 900.0,
+   "to": 1075.0
+  }
+ },
+ "as_of": null,
+ "viewpoint": null,
+ "ui_url": "https://lore.example.test/search?q=ford"
+}
