@@ -86,6 +86,16 @@ final class LoreGraphUITests: XCTestCase {
         }
 
         for (tab, name) in [("Map", "06-map"), ("Timeline", "07-timeline"), ("Family", "08-family"), ("Graph", "09-graph")] {
+            if tab == "Family", !isPad {
+                // iPhone has no Family tab: open the tree from the page read above
+                openTab("Wiki")
+                let action = app.buttons["action-family"].firstMatch
+                XCTAssertTrue(action.waitForExistence(timeout: 10), "the page has no Family tree action")
+                action.tap()
+                sleep(4)
+                snapshot(name)
+                continue
+            }
             openTab(tab)
             if tab == "Family" || tab == "Graph" {
                 // these open on a picker; draw the page read above, from its recently read row
@@ -219,25 +229,23 @@ final class LoreGraphUITests: XCTestCase {
         }
     }
 
-    /// The Search tab on iPad; on iPhone, the search row at the top of the wiki home.
+    @MainActor var isPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
+
+    /// The Search tab: in the tab bar on iPhone, among the navigation bar's buttons on iPad.
     @MainActor
     func openSearch() {
-        // iPad's tab bar sits in the navigation bar, so look for the tab among all buttons
-        let tab = app.buttons.matching(NSPredicate(format: "label == 'Search' AND identifier == 'magnifyingglass'")).firstMatch
-        if tab.waitForExistence(timeout: 3) {
-            tab.tap()
-            // the field starts folded into a toolbar button
-            let field = app.searchFields.firstMatch
-            let expand = app.navigationBars["Search"].buttons["Search"].firstMatch
-            if !field.waitForExistence(timeout: 3), expand.exists { expand.tap() }
-            return
+        let phoneTab = app.tabBars.buttons["Search"].firstMatch
+        let padTab = app.buttons.matching(NSPredicate(format: "label == 'Search' AND identifier == 'magnifyingglass'")).firstMatch
+        if phoneTab.waitForExistence(timeout: 3) {
+            phoneTab.tap()
+        } else {
+            XCTAssertTrue(padTab.waitForExistence(timeout: 5), "there is no Search tab")
+            padTab.tap()
         }
-        openTab("Wiki")
-        let row = app.buttons["homeSearch"].firstMatch
-        let back = app.navigationBars.buttons["BackButton"].firstMatch
-        for _ in 0..<5 where !row.waitForExistence(timeout: 2) && back.exists { back.tap() }
-        XCTAssertTrue(row.waitForExistence(timeout: 10), "the wiki home has no search row")
-        row.tap()
+        // the field can start folded into a toolbar button
+        let field = app.searchFields.firstMatch
+        let expand = app.navigationBars["Search"].buttons["Search"].firstMatch
+        if !field.waitForExistence(timeout: 3), expand.exists { expand.tap() }
     }
 
     @MainActor

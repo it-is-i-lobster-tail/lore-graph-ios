@@ -9,23 +9,21 @@ struct MainView: View {
 
     var body: some View {
         TabView(selection: $nav.section) {
-            ForEach(AppSection.allCases.filter { $0 != .search }) { s in
+            ForEach(AppSection.allCases.filter { $0 != .search && (nav.hasFamilyTab || $0 != .family) }) { s in
                 Tab(s.title, systemImage: s.symbol, value: s) {
                     SectionStack(section: s)
                 }
             }
-            // an iPhone tab bar holds five items and Search would be a sixth (pushing two tabs into
-            // More), so on iPhone search sits at the top of the wiki home instead
-            if sizeClass == .regular {
-                Tab(value: AppSection.search, role: .search) {
-                    SectionStack(section: .search)
-                }
+            Tab(value: AppSection.search, role: .search) {
+                SectionStack(section: .search)
             }
         }
         .tabViewStyle(.sidebarAdaptable)
+        // an iPhone tab bar holds five items, Search included: there, family trees open from a
+        // person's page instead of a tab (the iPad sidebar keeps the Family tab)
         .onChange(of: sizeClass, initial: true) { _, size in
-            nav.searchInWiki = size != .regular
-            if nav.searchInWiki, nav.section == .search { nav.section = .wiki }
+            nav.hasFamilyTab = size == .regular
+            if !nav.hasFamilyTab, nav.section == .family { nav.section = .wiki }
         }
         .environment(nav)
         .onOpenURL { url in
