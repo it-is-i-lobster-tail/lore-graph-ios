@@ -12,7 +12,7 @@ extension Color {
     }
 
     /// The colour that goes with a visibility mark (always beside its words, never alone).
-    static func visibility(_ v: Visibility?) -> Color {
+    static func visibility(_ v: LoreGraphKit.Visibility?) -> Color {
         switch v {
         case .designer: .designer
         case .restricted: .restricted
@@ -28,7 +28,7 @@ extension Font {
 
 /// "Designer only" or "Restricted", with a lock: never colour alone (F-4.8).
 struct VisibilityChip: View {
-    let visibility: Visibility?
+    let visibility: LoreGraphKit.Visibility?
     var compact = false
 
     var body: some View {
@@ -77,7 +77,7 @@ struct Chip: View {
 
 /// A coloured edge down the side of designer-only and restricted material (F-4.8).
 struct VisibilityEdge: ViewModifier {
-    let visibility: Visibility?
+    let visibility: LoreGraphKit.Visibility?
 
     func body(content: Content) -> some View {
         if let v = visibility, v != .public {
@@ -93,7 +93,7 @@ struct VisibilityEdge: ViewModifier {
 }
 
 extension View {
-    func visibilityEdge(_ v: Visibility?) -> some View { modifier(VisibilityEdge(visibility: v)) }
+    func visibilityEdge(_ v: LoreGraphKit.Visibility?) -> some View { modifier(VisibilityEdge(visibility: v)) }
 }
 
 /// A row for a page: type symbol, title, kind and short description.
