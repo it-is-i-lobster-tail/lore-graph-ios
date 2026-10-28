@@ -5,7 +5,7 @@ import SwiftUI
 /// (F-10.1, F-10.2).
 struct SearchScreen: View {
     var initial = ""
-    /// Opened from the wiki home (iPhone) rather than as the Search tab: the field shows and
+    /// Pushed onto another tab's stack rather than shown as the Search tab: the field shows and
     /// takes the keyboard at once.
     var pushed = false
     @Environment(AppModel.self) private var app
@@ -23,6 +23,7 @@ struct SearchContent: View {
     @Bindable var model: SearchModel
     var pushed = false
     @Environment(AppModel.self) private var app
+    @Environment(\.horizontalSizeClass) private var sizeClass
     @FocusState private var fieldFocused: Bool
 
     var body: some View {
@@ -86,7 +87,8 @@ struct SearchContent: View {
                                        description: Text("Names, old spellings, and what pages say."))
             }
         }
-        .searchable(text: $model.text, placement: pushed ? .navigationBarDrawer(displayMode: .always) : .automatic,
+        // on iPhone the Search tab sits in the tab bar and .automatic showed no field at all
+        .searchable(text: $model.text, placement: pushed || sizeClass == .compact ? .navigationBarDrawer(displayMode: .always) : .automatic,
                     prompt: "Pages, names and passages")
         .searchFocused($fieldFocused)
         .onAppear { if pushed, model.text.isEmpty { fieldFocused = true } }
