@@ -107,14 +107,13 @@ final class LoreGraphUITests: XCTestCase {
         }
         openSearch()
         let field = app.searchFields.firstMatch
-        if field.waitForExistence(timeout: 10) {
-            field.tap()
-            field.typeText("a")
-            // submit: one letter is too short for suggestions, and the keyboard would cover the tab bar
-            field.typeText("\n")
-            _ = app.collectionViews.buttons.firstMatch.waitForExistence(timeout: 15)
-            snapshot("10-search")
-        }
+        XCTAssertTrue(field.waitForExistence(timeout: 10), "Search has no search field")
+        field.tap()
+        field.typeText("a")
+        // submit: one letter is too short for suggestions, and the keyboard would cover the tab bar
+        field.typeText("\n")
+        _ = app.collectionViews.buttons.firstMatch.waitForExistence(timeout: 15)
+        snapshot("10-search")
         openTab("Wiki")
         signOut()
     }
