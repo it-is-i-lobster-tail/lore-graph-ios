@@ -127,10 +127,10 @@ final class LoreGraphUITests: XCTestCase {
         let emailField = web.textFields.firstMatch
         XCTAssertTrue(emailField.waitForExistence(timeout: 20), "the server's sign-in page never appeared")
         snapshot("01b-server-sign-in")
-        emailField.tap()
+        emailField.focus()
         emailField.typeText(email)
         let passwordField = web.secureTextFields.firstMatch
-        passwordField.tap()
+        passwordField.focus()
         passwordField.typeText(password)
         web.buttons["Sign in"].firstMatch.tap()
 
@@ -211,16 +211,25 @@ final class LoreGraphUITests: XCTestCase {
             XCTAssertTrue(row.waitForExistence(timeout: 5), "\(title) isn't in More")
             row.tap()
         } else {
-            app.buttons[title].firstMatch.tap()
+            let button = app.buttons[title].firstMatch
+            // iPad hides the tabs while a search is open; clearing it brings them back
+            let clear = app.searchFields.buttons["Clear text"].firstMatch
+            if !button.exists, clear.exists { clear.tap() }
+            button.tap()
         }
     }
 
     /// The Search tab on iPad; on iPhone, the search row at the top of the wiki home.
     @MainActor
     func openSearch() {
-        let tab = app.tabBars.buttons["Search"].firstMatch
+        // iPad's tab bar sits in the navigation bar, so look for the tab among all buttons
+        let tab = app.buttons.matching(NSPredicate(format: "label == 'Search' AND identifier == 'magnifyingglass'")).firstMatch
         if tab.waitForExistence(timeout: 3) {
             tab.tap()
+            // the field starts folded into a toolbar button
+            let field = app.searchFields.firstMatch
+            let expand = app.navigationBars["Search"].buttons["Search"].firstMatch
+            if !field.waitForExistence(timeout: 3), expand.exists { expand.tap() }
             return
         }
         openTab("Wiki")
@@ -259,6 +268,16 @@ final class LoreGraphUITests: XCTestCase {
 }
 
 extension XCUIElement {
+    /// Taps a field until it has the keyboard: a tap while the keyboard is still moving can miss.
+    @MainActor
+    func focus() {
+        for _ in 0..<3 {
+            tap()
+            if (value(forKey: "hasKeyboardFocus") as? Bool) == true { return }
+            sleep(1)
+        }
+    }
+
     /// Clears a text field, types new text, checks the field holds exactly that text, and closes
     /// the keyboard so it doesn't cover the controls below. The check matters: a field that kept
     /// part of its old value (the default server) must never be signed in to.
