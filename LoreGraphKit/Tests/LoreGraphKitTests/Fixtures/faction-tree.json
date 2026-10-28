@@ -1,0 +1,48 @@
+{
+ "faction": {
+  "ref": "testmark",
+  "id": "00000000-0000-7000-8000-000000000010",
+  "title": "Kingdom of Testmark",
+  "type": "faction",
+  "kind": "faction.realm",
+  "visibility": "public",
+  "canon": "approved",
+  "leaders": [],
+  "members": 0,
+  "seat": {
+   "ref": "lampton",
+   "id": "00000000-0000-7000-8000-000000000031",
+   "title": "Lampton",
+   "type": "location",
+   "kind": "location.settlement",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "A city of lamps at the ford of the Test River."
+  }
+ },
+ "parents": [],
+ "parts": [
+  {
+   "ref": "order-of-the-lamp",
+   "id": "00000000-0000-7000-8000-000000000011",
+   "title": "Order of the Lamp",
+   "type": "faction",
+   "kind": "faction.order",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Keepers of the lamps of Lampton.",
+   "how": "stable",
+   "leaders": [],
+   "members": 1,
+   "parts": []
+  }
+ ],
+ "as_of": {
+  "from": 1131.25,
+  "to": null,
+  "precision": "year",
+  "label": "since 1131.25",
+  "formatted": "since 1131.25"
+ },
+ "ui_url": "https://lore.example.test/factions/testmark?y=1131.25"
+}

@@ -1,0 +1,91 @@
+{
+ "holder": {
+  "ref": "fenn",
+  "id": "00000000-0000-7000-8000-000000000029",
+  "title": "Fenn",
+  "type": "individual",
+  "kind": "individual.person",
+  "visibility": "public",
+  "canon": "approved"
+ },
+ "as_of": {
+  "from": 1060.0,
+  "to": 1061.0,
+  "precision": "year",
+  "label": "YV 1060",
+  "formatted": "YV 1060"
+ },
+ "groups": [
+  {
+   "ref": "lampton",
+   "id": "00000000-0000-7000-8000-000000000031",
+   "title": "Lampton",
+   "type": "location",
+   "via": "resides_in",
+   "depth": 1,
+   "since": 1030.0,
+   "since_formatted": "YV 1030",
+   "path": [
+    "lampton"
+   ]
+  },
+  {
+   "ref": "test-vale",
+   "id": "00000000-0000-7000-8000-000000000030",
+   "title": "Test Vale",
+   "type": "location",
+   "via": "resides_in > within",
+   "depth": 2,
+   "since": 1030.0,
+   "since_formatted": "YV 1030",
+   "path": [
+    "lampton",
+    "test-vale"
+   ]
+  }
+ ],
+ "beliefs": [
+  {
+   "id": "00000000-0000-7000-8000-00000000c202",
+   "proposition": "CANARY-RESTRICTED-BELIEF",
+   "proposition_key": "canary-restricted:belief",
+   "kind": "opinion",
+   "holder": "fenn",
+   "holder_title": "Fenn",
+   "stance": "believes",
+   "conviction": 2,
+   "openness": "open",
+   "held": {
+    "from": 1040.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1040",
+    "formatted": "since YV 1040"
+   },
+   "acquisition": "reasoned",
+   "acquired_from": null,
+   "formed_by_event": null,
+   "derived_from_belief_id": null,
+   "statement_id": null,
+   "about": [],
+   "inheritable": false,
+   "shows_as": null,
+   "visibility": "restricted",
+   "canon": "approved",
+   "version": 1,
+   "retired_at": null,
+   "sentence": "Fenn believes: CANARY-RESTRICTED-BELIEF.",
+   "inherited": false,
+   "depth": 0,
+   "via": null,
+   "overridden_by": null
+  }
+ ],
+ "counts": {
+  "own": 1,
+  "inherited": 0,
+  "overridden": 0,
+  "designer_only": 0
+ },
+ "ui_url": "https://lore.example.test/beliefs/fenn?y=1060"
+}

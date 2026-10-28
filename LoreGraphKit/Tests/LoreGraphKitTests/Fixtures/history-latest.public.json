@@ -1,0 +1,82 @@
+{
+ "page": null,
+ "revision": null,
+ "groups": [
+  {
+   "change_set": null,
+   "revisions": [
+    {
+     "id": 235,
+     "at": "2026-10-28T07:15:16.903645Z",
+     "table": "page_section",
+     "row_key": "01a1815c-fbf4-7931-991b-0f2425ae4d3c",
+     "op": "insert",
+     "entity": {
+      "ref": "eastbrook",
+      "id": "00000000-0000-7000-8000-000000000033",
+      "title": "Eastbrook",
+      "type": "location",
+      "kind": "location.settlement",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "A walled town on the eastern road."
+     },
+     "actor": "Owner",
+     "actor_kind": "import",
+     "client_id": "fixtures",
+     "edit_level": "minor",
+     "visibility": "public",
+     "diff": {
+      "fields": [
+       {
+        "field": "body_md",
+        "words": []
+       },
+       {
+        "field": "canon",
+        "before": null,
+        "after": "draft"
+       },
+       {
+        "field": "entity_id",
+        "before": null,
+        "after": "00000000-0000-7000-8000-000000000033"
+       },
+       {
+        "field": "id",
+        "before": null,
+        "after": "01a1815c-fbf4-7931-991b-0f2425ae4d3c"
+       },
+       {
+        "field": "key",
+        "before": null,
+        "after": "map"
+       },
+       {
+        "field": "level",
+        "before": null,
+        "after": 2
+       },
+       {
+        "field": "position",
+        "before": null,
+        "after": 22
+       },
+       {
+        "field": "section_type",
+        "before": null,
+        "after": "map"
+       },
+       {
+        "field": "visibility",
+        "before": null,
+        "after": "public"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "next_cursor": "eyJvIjoxfQ"
+}

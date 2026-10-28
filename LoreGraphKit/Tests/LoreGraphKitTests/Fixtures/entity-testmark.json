@@ -1,0 +1,192 @@
+{
+ "entity": {
+  "id": "00000000-0000-7000-8000-000000000010",
+  "ref": "testmark",
+  "slug": "testmark",
+  "title": "Kingdom of Testmark",
+  "display_title": "Kingdom of Testmark",
+  "type": "faction",
+  "kind": "faction.realm",
+  "kind_label": "Realm",
+  "short_description": "The realm of the Test Vale, ruled from Lampton.",
+  "visibility": "public",
+  "canon": "approved",
+  "version": 1,
+  "lifespan": {
+   "from": 900.0,
+   "to": null,
+   "precision": "year",
+   "label": "since YV 900",
+   "formatted": "since YV 900"
+  },
+  "attributes": {},
+  "canonical_key": null,
+  "deleted": false,
+  "breadcrumbs": []
+ },
+ "names": [
+  {
+   "id": "01a1815c-fb31-7ec1-a662-a1ff74dfd877",
+   "name": "Kingdom of Testmark",
+   "kind": "primary",
+   "used_by": null,
+   "used_by_label": null,
+   "language": null,
+   "valid": null,
+   "era_label": null,
+   "tone": null,
+   "approval": "approved",
+   "locked": false,
+   "visibility": "public",
+   "note": null,
+   "version": 1
+  },
+  {
+   "id": "01a1815c-fb6c-7841-a333-e8ac9d4f9ca1",
+   "name": "Testmark",
+   "kind": "abbreviation",
+   "used_by": null,
+   "used_by_label": null,
+   "language": null,
+   "valid": null,
+   "era_label": null,
+   "tone": null,
+   "approval": "approved",
+   "locked": false,
+   "visibility": "public",
+   "note": null,
+   "version": 1
+  }
+ ],
+ "details": {
+  "parent_faction": null,
+  "seat": {
+   "ref": "lampton",
+   "id": "00000000-0000-7000-8000-000000000031",
+   "title": "Lampton",
+   "type": "location",
+   "kind": "location.settlement",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "A city of lamps at the ford of the Test River."
+  },
+  "heraldry": null
+ },
+ "infobox": [],
+ "sections": [
+  {
+   "id": "00000000-0000-7000-8000-000000000413",
+   "key": "lead",
+   "section_type": "lead",
+   "heading": null,
+   "level": 2,
+   "position": 0.0,
+   "visibility": "public",
+   "canon": "approved",
+   "version": 1,
+   "word_count": 20,
+   "generated": false,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "body_md": "The Kingdom of Testmark rules the [[test-vale|Test Vale]] from [[lampton]]. It fought the [[eastmarch|Eastmarch]] in the [[war-of-the-ford|War of the Ford]].",
+   "html": "<p>The Kingdom of Testmark rules the <a class=\"wikilink\" href=\"/wiki/test-vale\" data-entity=\"00000000-0000-7000-8000-000000000030\" data-slug=\"test-vale\">Test Vale</a> from <a class=\"wikilink\" href=\"/wiki/lampton\" data-entity=\"00000000-0000-7000-8000-000000000031\" data-slug=\"lampton\">Lampton</a>. It fought the <a class=\"wikilink\" href=\"/wiki/eastmarch\" data-entity=\"00000000-0000-7000-8000-000000000012\" data-slug=\"eastmarch\">Eastmarch</a> in the <a class=\"wikilink\" href=\"/wiki/war-of-the-ford\" data-entity=\"00000000-0000-7000-8000-000000000041\" data-slug=\"war-of-the-ford\">War of the Ford</a>.</p>\n"
+  },
+  {
+   "id": "01a1815c-fbf3-7c77-beef-ec3a1c75d997",
+   "key": "beliefs",
+   "section_type": "beliefs",
+   "heading": "Beliefs",
+   "level": 2,
+   "position": 3.0,
+   "visibility": "public",
+   "canon": "draft",
+   "version": 1,
+   "word_count": 0,
+   "generated": true,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "items": [
+    {
+     "id": "00000000-0000-7000-8000-000000000202",
+     "kind": "opinion",
+     "proposition": "Aldo won the Ford.",
+     "stance": "believes",
+     "held": {
+      "from": 1022.0,
+      "to": null,
+      "precision": "year",
+      "label": "since YV 1022",
+      "formatted": "since YV 1022"
+     },
+     "visibility": "public"
+    }
+   ],
+   "markdown": "- Aldo won the Ford. (opinion, believes)",
+   "link": "https://lore.example.test/beliefs/testmark",
+   "html": "<ul>\n<li>Aldo won the Ford. (opinion, believes)</li>\n</ul>\n"
+  },
+  {
+   "id": "01a1815c-fbf3-7c51-a861-08dff0741a79",
+   "key": "members",
+   "section_type": "members",
+   "heading": "Members",
+   "level": 2,
+   "position": 4.0,
+   "visibility": "public",
+   "canon": "draft",
+   "version": 1,
+   "word_count": 0,
+   "generated": true,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "items": [
+    {
+     "label": "has member",
+     "other": {
+      "ref": "dirk",
+      "id": "00000000-0000-7000-8000-000000000023",
+      "title": "Dirk",
+      "type": "individual",
+      "kind": "individual.person",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "Marshal of Testmark who led the host at the Ford.",
+      "name_here": "Dirk"
+     },
+     "statement_id": "00000000-0000-7000-8000-000000000120",
+     "valid": {
+      "from": 1015.0,
+      "to": 1050.0,
+      "precision": "year",
+      "label": "YV 1015 to 1049",
+      "formatted": "YV 1015 to 1049"
+     },
+     "visibility": "public"
+    }
+   ],
+   "markdown": "- has member [[dirk|Dirk]] (YV 1015 to 1049)",
+   "link": "https://lore.example.test/factions/testmark",
+   "html": "<ul>\n<li>has member <a class=\"wikilink\" href=\"/wiki/dirk\" data-entity=\"00000000-0000-7000-8000-000000000023\" data-slug=\"dirk\">Dirk</a> (YV 1015 to 1049)</li>\n</ul>\n"
+  }
+ ],
+ "edit_tag": null,
+ "categories": [],
+ "statements": null,
+ "beliefs": null,
+ "accounts": null,
+ "shapes": null,
+ "history": null,
+ "media": null,
+ "external": null,
+ "pending": [],
+ "as_of": null,
+ "viewpoint": null,
+ "last_review": null,
+ "preview_change_set": null,
+ "preview": null,
+ "redirected_from": null,
+ "ui_url": "https://lore.example.test/wiki/testmark"
+}

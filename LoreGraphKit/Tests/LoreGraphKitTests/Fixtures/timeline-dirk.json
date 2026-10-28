@@ -1,0 +1,179 @@
+{
+ "items": [
+  {
+   "kind": "lifespan",
+   "id": "00000000-0000-7000-8000-000000000023",
+   "ref": "dirk",
+   "title": "Dirk",
+   "entity_kind": "individual.person",
+   "date": {
+    "from": 1002.0,
+    "to": 1050.0,
+    "precision": "year",
+    "label": "YV 1002 to 1049",
+    "formatted": "YV 1002 to 1049"
+   },
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "ui_url": "https://lore.example.test/wiki/dirk",
+   "lanes": {
+    "type": "individual.person",
+    "person": "dirk",
+    "faction": null,
+    "place": null
+   }
+  },
+  {
+   "kind": "link",
+   "id": "00000000-0000-7000-8000-000000000120",
+   "ref": "dirk",
+   "title": "Dirk member of Kingdom of Testmark as marshal",
+   "predicate": "member_of",
+   "family": "membership",
+   "date": {
+    "from": 1015.0,
+    "to": 1050.0,
+    "precision": "year",
+    "label": "YV 1015 to 1049",
+    "formatted": "YV 1015 to 1049"
+   },
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "according_to": null,
+   "claim_relation": null,
+   "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000120",
+   "lanes": {
+    "type": "membership",
+    "place": null,
+    "faction": "testmark",
+    "person": "dirk"
+   }
+  },
+  {
+   "kind": "event",
+   "id": "00000000-0000-7000-8000-000000000040",
+   "ref": "battle-at-the-ford",
+   "title": "Battle at the Ford",
+   "entity_kind": "event.battle",
+   "date": {
+    "from": 1020.414,
+    "to": 1020.666,
+    "precision": "season",
+    "label": "summer YV 1020",
+    "formatted": "summer YV 1020"
+   },
+   "parent_event_id": "00000000-0000-7000-8000-000000000041",
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "ui_url": "https://lore.example.test/wiki/battle-at-the-ford",
+   "lanes": {
+    "type": "event.battle",
+    "place": "lampton",
+    "faction": "testmark",
+    "person": "aldo"
+   }
+  },
+  {
+   "kind": "event",
+   "id": "00000000-0000-7000-8000-000000000042",
+   "ref": "siege-of-eastbrook",
+   "title": "Siege of Eastbrook",
+   "entity_kind": "event.siege",
+   "date": {
+    "from": 1021.162,
+    "to": 1021.414,
+    "precision": "season",
+    "label": "spring YV 1021",
+    "formatted": "spring YV 1021"
+   },
+   "parent_event_id": "00000000-0000-7000-8000-000000000041",
+   "visibility": "public",
+   "canon": "approved",
+   "claim": false,
+   "ui_url": "https://lore.example.test/wiki/siege-of-eastbrook",
+   "lanes": {
+    "type": "event.siege",
+    "place": "eastbrook",
+    "faction": "testmark",
+    "person": "dirk"
+   }
+  },
+  {
+   "kind": "telling",
+   "id": "00000000-0000-7000-8000-00000000c002",
+   "ref": "canary-designer-letter",
+   "title": "CANARY-DESIGNER-LETTER-TITLE told",
+   "entity_kind": "story.letter",
+   "date": {
+    "from": 1050.0,
+    "to": 1051.0,
+    "precision": "year",
+    "label": "CANARY-DESIGNER-TOLD-LABEL",
+    "formatted": "YV 1050"
+   },
+   "visibility": "designer",
+   "canon": "approved",
+   "claim": false,
+   "ui_url": "https://lore.example.test/wiki/canary-designer-letter",
+   "lanes": {
+    "type": "story.letter",
+    "place": null,
+    "person": "dirk",
+    "faction": "dirk"
+   }
+  }
+ ],
+ "eras": [
+  {
+   "id": "01a1815c-fb8c-704a-b763-b8b49da59ccd",
+   "name": "The founding",
+   "scheme": "wiki",
+   "span": {
+    "from": 900.0,
+    "to": 1000.0,
+    "precision": "year",
+    "label": "YV 900 to 999",
+    "formatted": "YV 900 to 999"
+   },
+   "defined_by": null,
+   "description": "From the founding of Testmark to the new walls of Lampton.",
+   "visibility": "public"
+  },
+  {
+   "id": "01a1815c-fb8c-7474-91d7-3eb3b1533e1d",
+   "name": "The age of the lamp",
+   "scheme": "wiki",
+   "span": {
+    "from": 1000.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1000",
+    "formatted": "since YV 1000"
+   },
+   "defined_by": null,
+   "description": "From the new walls to the present.",
+   "visibility": "public"
+  },
+  {
+   "id": "01a1815c-fba0-72ec-ab49-d5370547ab25",
+   "name": "CANARY-DESIGNER-ERA",
+   "scheme": "wiki",
+   "span": {
+    "from": 1040.0,
+    "to": 1050.0,
+    "precision": "year",
+    "label": "YV 1040 to 1049",
+    "formatted": "YV 1040 to 1049"
+   },
+   "defined_by": null,
+   "description": "CANARY-DESIGNER-ERA-DESCRIPTION",
+   "visibility": "designer"
+  }
+ ],
+ "window": null,
+ "next_cursor": null,
+ "ui_url": "https://lore.example.test/timeline?about=dirk"
+}

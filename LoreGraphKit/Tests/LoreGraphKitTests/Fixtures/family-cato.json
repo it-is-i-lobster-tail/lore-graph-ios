@@ -1,0 +1,382 @@
+{
+ "root": {
+  "ref": "cato",
+  "id": "00000000-0000-7000-8000-000000000022",
+  "title": "Cato",
+  "type": "individual",
+  "kind": "individual.person",
+  "visibility": "public",
+  "canon": "approved"
+ },
+ "people": [
+  {
+   "ref": "osric",
+   "id": "00000000-0000-7000-8000-000000000025",
+   "title": "Osric",
+   "type": "individual",
+   "kind": "individual.person",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Aldo's father, first lord of Lampton's new walls.",
+   "display_title": "Osric",
+   "generation": -2,
+   "gender": "male",
+   "lifespan": {
+    "from": 970.0,
+    "to": 1040.0,
+    "precision": "year",
+    "label": "YV 970 to 1039",
+    "formatted": "YV 970 to 1039"
+   },
+   "at_year": null,
+   "root": false
+  },
+  {
+   "ref": "aldo",
+   "id": "00000000-0000-7000-8000-000000000020",
+   "title": "Aldo",
+   "type": "individual",
+   "kind": "individual.person",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Lord of Lampton, remembered as the victor of the Ford.",
+   "display_title": "Aldo",
+   "generation": -1,
+   "gender": "male",
+   "lifespan": {
+    "from": 1000.0,
+    "to": 1060.0,
+    "precision": "year",
+    "label": "YV 1000 to 1059",
+    "formatted": "YV 1000 to 1059"
+   },
+   "at_year": null,
+   "root": false
+  },
+  {
+   "ref": "bera",
+   "id": "00000000-0000-7000-8000-000000000021",
+   "title": "Bera",
+   "type": "individual",
+   "kind": "individual.person",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Aldo's second wife, mother of Cato and Dana.",
+   "display_title": "Bera",
+   "generation": -1,
+   "gender": "female",
+   "lifespan": {
+    "from": 1005.0,
+    "to": 1070.0,
+    "precision": "year",
+    "label": "YV 1005 to 1069",
+    "formatted": "YV 1005 to 1069"
+   },
+   "at_year": null,
+   "root": false
+  },
+  {
+   "ref": "dirk",
+   "id": "00000000-0000-7000-8000-000000000023",
+   "title": "Dirk",
+   "type": "individual",
+   "kind": "individual.person",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Marshal of Testmark who led the host at the Ford.",
+   "display_title": "Dirk",
+   "generation": -1,
+   "gender": null,
+   "lifespan": {
+    "from": 1002.0,
+    "to": 1050.0,
+    "precision": "year",
+    "label": "YV 1002 to 1049",
+    "formatted": "YV 1002 to 1049"
+   },
+   "at_year": null,
+   "root": false
+  },
+  {
+   "ref": "gilda",
+   "id": "00000000-0000-7000-8000-000000000026",
+   "title": "Gilda",
+   "type": "individual",
+   "kind": "individual.person",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Aldo's first wife, who died young.",
+   "display_title": "Gilda",
+   "generation": -1,
+   "gender": "female",
+   "lifespan": {
+    "from": 1001.0,
+    "to": 1024.0,
+    "precision": "year",
+    "label": "YV 1001 to 1023",
+    "formatted": "YV 1001 to 1023"
+   },
+   "at_year": null,
+   "root": false
+  },
+  {
+   "ref": "cato",
+   "id": "00000000-0000-7000-8000-000000000022",
+   "title": "Cato",
+   "type": "individual",
+   "kind": "individual.person",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Novice of the Order of the Lamp.",
+   "display_title": "Cato",
+   "generation": 0,
+   "gender": null,
+   "lifespan": {
+    "from": 1030.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1030",
+    "formatted": "since YV 1030"
+   },
+   "at_year": null,
+   "root": true
+  },
+  {
+   "ref": "dana",
+   "id": "00000000-0000-7000-8000-000000000024",
+   "title": "Dana",
+   "type": "individual",
+   "kind": "individual.person",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Daughter of Aldo and Bera, later of Eastbrook.",
+   "display_title": "Dana",
+   "generation": 0,
+   "gender": null,
+   "lifespan": {
+    "from": 1032.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1032",
+    "formatted": "since YV 1032"
+   },
+   "at_year": null,
+   "root": false
+  },
+  {
+   "ref": "mira",
+   "id": "00000000-0000-7000-8000-000000000027",
+   "title": "Mira",
+   "type": "individual",
+   "kind": "individual.person",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Cato's wife, a lamp-maker of Lampton.",
+   "display_title": "Mira",
+   "generation": 0,
+   "gender": "female",
+   "lifespan": {
+    "from": 1035.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1035",
+    "formatted": "since YV 1035"
+   },
+   "at_year": null,
+   "root": false
+  },
+  {
+   "ref": "edwin",
+   "id": "00000000-0000-7000-8000-000000000028",
+   "title": "Edwin",
+   "type": "individual",
+   "kind": "individual.person",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Son of Cato and Mira.",
+   "display_title": "Edwin",
+   "generation": 1,
+   "gender": "male",
+   "lifespan": {
+    "from": 1058.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1058",
+    "formatted": "since YV 1058"
+   },
+   "at_year": null,
+   "root": false
+  }
+ ],
+ "parents": [
+  {
+   "statement_id": "00000000-0000-7000-8000-000000000102",
+   "parent": "aldo",
+   "child": "cato",
+   "role": "father",
+   "kind": "biological",
+   "disputed": true,
+   "visibility": "public",
+   "rank": 0,
+   "certainty": "certain",
+   "canon": "approved",
+   "according_to": null,
+   "valid": null
+  },
+  {
+   "statement_id": "00000000-0000-7000-8000-000000000103",
+   "parent": "bera",
+   "child": "cato",
+   "role": "mother",
+   "kind": "biological",
+   "disputed": false,
+   "visibility": "public",
+   "rank": 0,
+   "certainty": "certain",
+   "canon": "approved",
+   "according_to": null,
+   "valid": null
+  },
+  {
+   "statement_id": "00000000-0000-7000-8000-000000000104",
+   "parent": "dirk",
+   "child": "cato",
+   "role": "father",
+   "kind": "biological",
+   "disputed": true,
+   "visibility": "designer",
+   "rank": 1,
+   "certainty": "certain",
+   "canon": "approved",
+   "according_to": null,
+   "valid": null
+  },
+  {
+   "statement_id": "00000000-0000-7000-8000-000000000105",
+   "parent": "aldo",
+   "child": "dana",
+   "role": "father",
+   "kind": "biological",
+   "disputed": false,
+   "visibility": "public",
+   "rank": 0,
+   "certainty": "certain",
+   "canon": "approved",
+   "according_to": null,
+   "valid": null
+  },
+  {
+   "statement_id": "00000000-0000-7000-8000-000000000106",
+   "parent": "bera",
+   "child": "dana",
+   "role": "mother",
+   "kind": "biological",
+   "disputed": false,
+   "visibility": "public",
+   "rank": 0,
+   "certainty": "certain",
+   "canon": "approved",
+   "according_to": null,
+   "valid": null
+  },
+  {
+   "statement_id": "00000000-0000-7000-8000-000000000113",
+   "parent": "osric",
+   "child": "aldo",
+   "role": "father",
+   "kind": "biological",
+   "disputed": false,
+   "visibility": "public",
+   "rank": 0,
+   "certainty": "certain",
+   "canon": "approved",
+   "according_to": null,
+   "valid": null
+  },
+  {
+   "statement_id": "00000000-0000-7000-8000-000000000115",
+   "parent": "cato",
+   "child": "edwin",
+   "role": "father",
+   "kind": "biological",
+   "disputed": false,
+   "visibility": "public",
+   "rank": 0,
+   "certainty": "certain",
+   "canon": "approved",
+   "according_to": null,
+   "valid": null
+  }
+ ],
+ "marriages": [
+  {
+   "statement_id": "00000000-0000-7000-8000-000000000101",
+   "a": "aldo",
+   "b": "bera",
+   "kind": "marriage",
+   "visibility": "public",
+   "ended_by": null,
+   "according_to": null,
+   "valid": {
+    "from": 1025.0,
+    "to": 1060.0,
+    "precision": "year",
+    "label": "YV 1025 to 1059",
+    "formatted": "YV 1025 to 1059"
+   }
+  },
+  {
+   "statement_id": "00000000-0000-7000-8000-000000000112",
+   "a": "aldo",
+   "b": "gilda",
+   "kind": "marriage",
+   "visibility": "public",
+   "ended_by": "death",
+   "according_to": null,
+   "valid": {
+    "from": 1020.0,
+    "to": 1024.0,
+    "precision": "year",
+    "label": "YV 1020 to 1023",
+    "formatted": "YV 1020 to 1023"
+   }
+  },
+  {
+   "statement_id": "00000000-0000-7000-8000-000000000114",
+   "a": "cato",
+   "b": "mira",
+   "kind": "marriage",
+   "visibility": "public",
+   "ended_by": null,
+   "according_to": null,
+   "valid": {
+    "from": 1056.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1056",
+    "formatted": "since YV 1056"
+   }
+  }
+ ],
+ "unions": [
+  {
+   "a": "aldo",
+   "b": "bera",
+   "children": [
+    "cato",
+    "dana"
+   ]
+  },
+  {
+   "a": "aldo",
+   "b": "gilda",
+   "children": []
+  },
+  {
+   "a": "cato",
+   "b": "mira",
+   "children": []
+  }
+ ],
+ "ui_url": "https://lore.example.test/family/cato?up=2"
+}

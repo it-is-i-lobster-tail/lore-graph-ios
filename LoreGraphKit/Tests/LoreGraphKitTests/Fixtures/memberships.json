@@ -1,0 +1,45 @@
+{
+ "items": [
+  {
+   "statement_id": "00000000-0000-7000-8000-000000000120",
+   "member": {
+    "ref": "dirk",
+    "id": "00000000-0000-7000-8000-000000000023",
+    "title": "Dirk",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Marshal of Testmark who led the host at the Ford."
+   },
+   "group": {
+    "ref": "testmark",
+    "id": "00000000-0000-7000-8000-000000000010",
+    "title": "Kingdom of Testmark",
+    "type": "faction",
+    "kind": "faction.realm",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The realm of the Test Vale, ruled from Lampton."
+   },
+   "link": "member_of",
+   "role": "marshal",
+   "rank": null,
+   "ended_by": null,
+   "valid": {
+    "from": 1015.0,
+    "to": 1050.0,
+    "precision": "year",
+    "label": "YV 1015 to 1049",
+    "formatted": "YV 1015 to 1049"
+   },
+   "according_to": null,
+   "visibility": "public",
+   "canon": "approved",
+   "sentence": "Dirk member of Kingdom of Testmark as marshal (YV 1015 to 1049)."
+  }
+ ],
+ "nested": null,
+ "next_cursor": null,
+ "ui_url": "https://lore.example.test/factions/testmark?mode=members"
+}

@@ -1,0 +1,539 @@
+{
+ "entity": {
+  "id": "00000000-0000-7000-8000-000000000031",
+  "ref": "lampton",
+  "slug": "lampton",
+  "title": "Lampton",
+  "display_title": "Lampton",
+  "type": "location",
+  "kind": "location.settlement",
+  "kind_label": "Settlement",
+  "short_description": "A city of lamps at the ford of the Test River.",
+  "visibility": "public",
+  "canon": "approved",
+  "version": 1,
+  "lifespan": null,
+  "attributes": {
+   "size": "city"
+  },
+  "canonical_key": null,
+  "deleted": false,
+  "breadcrumbs": [
+   {
+    "ref": "test-vale",
+    "title": "Test Vale"
+   }
+  ]
+ },
+ "names": [
+  {
+   "id": "01a1815c-fb3f-7e59-83a5-0aedc05fa829",
+   "name": "Lampton",
+   "kind": "primary",
+   "used_by": null,
+   "used_by_label": null,
+   "language": null,
+   "valid": null,
+   "era_label": null,
+   "tone": null,
+   "approval": "approved",
+   "locked": false,
+   "visibility": "public",
+   "note": null,
+   "version": 1
+  },
+  {
+   "id": "01a1815c-fb95-7be8-bdf8-de036b9906a2",
+   "name": "CANARY-DESIGNER-ALIAS",
+   "kind": "alias",
+   "used_by": null,
+   "used_by_label": "CANARY-DESIGNER-USED-BY",
+   "language": null,
+   "valid": null,
+   "era_label": null,
+   "tone": null,
+   "approval": "approved",
+   "locked": false,
+   "visibility": "designer",
+   "note": "CANARY-DESIGNER-NAME-NOTE",
+   "version": 1
+  },
+  {
+   "id": "01a1815c-fb6c-7687-80f7-ee5dcc044dfe",
+   "name": "Lamptun",
+   "kind": "former",
+   "used_by": null,
+   "used_by_label": null,
+   "language": null,
+   "valid": {
+    "from": 900.0,
+    "to": 1000.0,
+    "precision": "year",
+    "label": "YV 900 to 999",
+    "formatted": "YV 900 to 999"
+   },
+   "era_label": "the old form",
+   "tone": "archaic",
+   "approval": "approved",
+   "locked": false,
+   "visibility": "public",
+   "note": null,
+   "version": 1
+  },
+  {
+   "id": "01a1815c-fb6c-738a-8f4c-12d79be19b1e",
+   "name": "the Lamp City",
+   "kind": "epithet",
+   "used_by": null,
+   "used_by_label": "river sailors",
+   "language": null,
+   "valid": null,
+   "era_label": null,
+   "tone": null,
+   "approval": "approved",
+   "locked": false,
+   "visibility": "public",
+   "note": null,
+   "version": 1
+  }
+ ],
+ "details": {
+  "placement": "placed",
+  "anchor": {
+   "lon": 11.0,
+   "lat": 45.5,
+   "precision": "exact"
+  },
+  "elevation_m": null,
+  "parent_location": {
+   "ref": "test-vale",
+   "id": "00000000-0000-7000-8000-000000000030",
+   "title": "Test Vale",
+   "type": "location",
+   "kind": "location.region",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "The vale of the Test River, heart of the kingdom."
+  },
+  "breadcrumbs": [
+   {
+    "ref": "test-vale",
+    "title": "Test Vale"
+   }
+  ]
+ },
+ "infobox": [],
+ "sections": [
+  {
+   "id": "00000000-0000-7000-8000-000000000401",
+   "key": "lead",
+   "section_type": "lead",
+   "heading": null,
+   "level": 2,
+   "position": 0.0,
+   "visibility": "public",
+   "canon": "approved",
+   "version": 1,
+   "word_count": 30,
+   "generated": false,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "body_md": "Lampton is a city on the [[test-river|Test River]] in the [[test-vale|Test Vale]], and the seat of the [[testmark|Kingdom of Testmark]]. Its lamps are kept by the [[order-of-the-lamp|Order of the Lamp]].",
+   "html": "<p>Lampton is a city on the <a class=\"wikilink\" href=\"/wiki/test-river\" data-entity=\"00000000-0000-7000-8000-000000000034\" data-slug=\"test-river\">Test River</a> in the <a class=\"wikilink\" href=\"/wiki/test-vale\" data-entity=\"00000000-0000-7000-8000-000000000030\" data-slug=\"test-vale\">Test Vale</a>, and the seat of the <a class=\"wikilink\" href=\"/wiki/testmark\" data-entity=\"00000000-0000-7000-8000-000000000010\" data-slug=\"testmark\">Kingdom of Testmark</a>. Its lamps are kept by the <a class=\"wikilink\" href=\"/wiki/order-of-the-lamp\" data-entity=\"00000000-0000-7000-8000-000000000011\" data-slug=\"order-of-the-lamp\">Order of the Lamp</a>.</p>\n"
+  },
+  {
+   "id": "00000000-0000-7000-8000-000000000402",
+   "key": "history",
+   "section_type": "history",
+   "heading": "History",
+   "level": 2,
+   "position": 10.0,
+   "visibility": "public",
+   "canon": "approved",
+   "version": 1,
+   "word_count": 36,
+   "generated": false,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "body_md": "The lamps of Lampton burn all night. Loïse kept them. In the summer of YV 1020 the host of Testmark crossed the ford below the city and broke the [[eastmarch|Eastmarch]] at the [[battle-at-the-ford|Battle at the Ford]].",
+   "html": "<p>The lamps of Lampton burn all night. Loïse kept them. In the summer of YV 1020 the host of Testmark crossed the ford below the city and broke the <a class=\"wikilink\" href=\"/wiki/eastmarch\" data-entity=\"00000000-0000-7000-8000-000000000012\" data-slug=\"eastmarch\">Eastmarch</a> at the <a class=\"wikilink\" href=\"/wiki/battle-at-the-ford\" data-entity=\"00000000-0000-7000-8000-000000000040\" data-slug=\"battle-at-the-ford\">Battle at the Ford</a>.</p>\n"
+  },
+  {
+   "id": "00000000-0000-7000-8000-00000000c405",
+   "key": "sources",
+   "section_type": "sources",
+   "heading": "Sources",
+   "level": 2,
+   "position": 220.0,
+   "visibility": "restricted",
+   "canon": "approved",
+   "version": 1,
+   "word_count": 1,
+   "generated": false,
+   "in_world": false,
+   "author_canon": false,
+   "source_ref": null,
+   "body_md": "CANARY-RESTRICTED-SOURCES.",
+   "html": "<p>CANARY-RESTRICTED-SOURCES.</p>\n"
+  },
+  {
+   "id": "00000000-0000-7000-8000-00000000c404",
+   "key": "designer-notes",
+   "section_type": "designer_notes",
+   "heading": "Designer notes",
+   "level": 2,
+   "position": 230.0,
+   "visibility": "designer",
+   "canon": "approved",
+   "version": 1,
+   "word_count": 3,
+   "generated": false,
+   "in_world": false,
+   "author_canon": false,
+   "source_ref": null,
+   "body_md": "CANARY-DESIGNER-NOTES about [[lampton]].",
+   "html": "<p>CANARY-DESIGNER-NOTES about <a class=\"wikilink\" href=\"/wiki/lampton\" data-entity=\"00000000-0000-7000-8000-000000000031\" data-slug=\"lampton\">Lampton</a>.</p>\n"
+  },
+  {
+   "id": "01a1815c-fbf4-7612-aabd-141cc45f5d8d",
+   "key": "map",
+   "section_type": "map",
+   "heading": "Map",
+   "level": 2,
+   "position": 232.0,
+   "visibility": "public",
+   "canon": "draft",
+   "version": 1,
+   "word_count": 0,
+   "generated": true,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "items": [
+    {
+     "shape_id": "01a1815c-fb58-7cc5-a1df-7ae51b5ab98f",
+     "role": "point",
+     "precision": "exact",
+     "lon": 11.0,
+     "lat": 45.5,
+     "visibility": "public"
+    }
+   ],
+   "markdown": "Map: 11.000° E, 45.500° N (exact)",
+   "link": "https://lore.example.test/map?c=11.0000,45.5000&z=7&sel=lampton",
+   "html": "<p>Map: 11.000° E, 45.500° N (exact)</p>\n"
+  },
+  {
+   "id": "01a1815c-fbf4-758e-a6ea-94a67574b026",
+   "key": "places",
+   "section_type": "places",
+   "heading": "Places",
+   "level": 2,
+   "position": 236.0,
+   "visibility": "public",
+   "canon": "draft",
+   "version": 1,
+   "word_count": 0,
+   "generated": true,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "items": [
+    {
+     "label": "home of",
+     "other": {
+      "ref": "fenn",
+      "id": "00000000-0000-7000-8000-000000000029",
+      "title": "Fenn",
+      "type": "individual",
+      "kind": "individual.person",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "A ferryman at the ford below Lampton.",
+      "name_here": "Fenn"
+     },
+     "statement_id": "00000000-0000-7000-8000-000000000128",
+     "valid": {
+      "from": 1030.0,
+      "to": 1075.0,
+      "precision": "year",
+      "label": "YV 1030 to 1074",
+      "formatted": "YV 1030 to 1074"
+     },
+     "visibility": "public"
+    },
+    {
+     "label": "visited by",
+     "other": {
+      "ref": "cato",
+      "id": "00000000-0000-7000-8000-000000000022",
+      "title": "Cato",
+      "type": "individual",
+      "kind": "individual.person",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "Novice of the Order of the Lamp.",
+      "name_here": "Cato"
+     },
+     "statement_id": "00000000-0000-7000-8000-000000000122",
+     "valid": {
+      "from": 1050.162,
+      "to": 1050.3,
+      "precision": "year",
+      "label": "spring YV 1050 to 1050.3",
+      "formatted": "spring YV 1050 to 1050.3"
+     },
+     "visibility": "public"
+    },
+    {
+     "label": "visited by",
+     "other": {
+      "ref": "cato",
+      "id": "00000000-0000-7000-8000-000000000022",
+      "title": "Cato",
+      "type": "individual",
+      "kind": "individual.person",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "Novice of the Order of the Lamp.",
+      "name_here": "Cato"
+     },
+     "statement_id": "00000000-0000-7000-8000-000000000124",
+     "valid": {
+      "from": 1050.7,
+      "to": 1050.915,
+      "precision": "year",
+      "label": "1050.7 to autumn YV 1050",
+      "formatted": "1050.7 to autumn YV 1050"
+     },
+     "visibility": "public"
+    },
+    {
+     "label": "lies on",
+     "other": {
+      "ref": "test-river",
+      "id": "00000000-0000-7000-8000-000000000034",
+      "title": "Test River",
+      "type": "location",
+      "kind": "location.river",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "The river that runs through the Test Vale.",
+      "name_here": "Test River"
+     },
+     "statement_id": "00000000-0000-7000-8000-000000000127",
+     "valid": null,
+     "visibility": "public"
+    }
+   ],
+   "markdown": "- home of [[fenn|Fenn]] (YV 1030 to 1074)\n- visited by [[cato|Cato]] (spring YV 1050 to 1050.3)\n- visited by [[cato|Cato]] (1050.7 to autumn YV 1050)\n- lies on [[test-river|Test River]]",
+   "link": null,
+   "html": "<ul>\n<li>home of <a class=\"wikilink\" href=\"/wiki/fenn\" data-entity=\"00000000-0000-7000-8000-000000000029\" data-slug=\"fenn\">Fenn</a> (YV 1030 to 1074)</li>\n<li>visited by <a class=\"wikilink\" href=\"/wiki/cato\" data-entity=\"00000000-0000-7000-8000-000000000022\" data-slug=\"cato\">Cato</a> (spring YV 1050 to 1050.3)</li>\n<li>visited by <a class=\"wikilink\" href=\"/wiki/cato\" data-entity=\"00000000-0000-7000-8000-000000000022\" data-slug=\"cato\">Cato</a> (1050.7 to autumn YV 1050)</li>\n<li>lies on <a class=\"wikilink\" href=\"/wiki/test-river\" data-entity=\"00000000-0000-7000-8000-000000000034\" data-slug=\"test-river\">Test River</a></li>\n</ul>\n"
+  },
+  {
+   "id": "01a1815c-fbf4-75dc-85a6-29c677ebed95",
+   "key": "events",
+   "section_type": "events",
+   "heading": "Events",
+   "level": 2,
+   "position": 237.0,
+   "visibility": "public",
+   "canon": "draft",
+   "version": 1,
+   "word_count": 0,
+   "generated": true,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "items": [
+    {
+     "label": "scene of",
+     "other": {
+      "ref": "battle-at-the-ford",
+      "id": "00000000-0000-7000-8000-000000000040",
+      "title": "Battle at the Ford",
+      "type": "event",
+      "kind": "event.battle",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "Testmark's victory over the Eastmarch, summer YV 1020.",
+      "name_here": "Battle at the Ford"
+     },
+     "statement_id": "00000000-0000-7000-8000-000000000109",
+     "valid": null,
+     "visibility": "public"
+    },
+    {
+     "label": "home of",
+     "other": {
+      "ref": "fenn",
+      "id": "00000000-0000-7000-8000-000000000029",
+      "title": "Fenn",
+      "type": "individual",
+      "kind": "individual.person",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "A ferryman at the ford below Lampton.",
+      "name_here": "Fenn"
+     },
+     "statement_id": "00000000-0000-7000-8000-000000000128",
+     "valid": {
+      "from": 1030.0,
+      "to": 1075.0,
+      "precision": "year",
+      "label": "YV 1030 to 1074",
+      "formatted": "YV 1030 to 1074"
+     },
+     "visibility": "public"
+    },
+    {
+     "label": "visited by",
+     "other": {
+      "ref": "cato",
+      "id": "00000000-0000-7000-8000-000000000022",
+      "title": "Cato",
+      "type": "individual",
+      "kind": "individual.person",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "Novice of the Order of the Lamp.",
+      "name_here": "Cato"
+     },
+     "statement_id": "00000000-0000-7000-8000-000000000122",
+     "valid": {
+      "from": 1050.162,
+      "to": 1050.3,
+      "precision": "year",
+      "label": "spring YV 1050 to 1050.3",
+      "formatted": "spring YV 1050 to 1050.3"
+     },
+     "visibility": "public"
+    },
+    {
+     "label": "visited by",
+     "other": {
+      "ref": "cato",
+      "id": "00000000-0000-7000-8000-000000000022",
+      "title": "Cato",
+      "type": "individual",
+      "kind": "individual.person",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "Novice of the Order of the Lamp.",
+      "name_here": "Cato"
+     },
+     "statement_id": "00000000-0000-7000-8000-000000000124",
+     "valid": {
+      "from": 1050.7,
+      "to": 1050.915,
+      "precision": "year",
+      "label": "1050.7 to autumn YV 1050",
+      "formatted": "1050.7 to autumn YV 1050"
+     },
+     "visibility": "public"
+    }
+   ],
+   "markdown": "- scene of [[battle-at-the-ford|Battle at the Ford]]\n- home of [[fenn|Fenn]] (YV 1030 to 1074)\n- visited by [[cato|Cato]] (spring YV 1050 to 1050.3)\n- visited by [[cato|Cato]] (1050.7 to autumn YV 1050)",
+   "link": "https://lore.example.test/timeline?about=lampton",
+   "html": "<ul>\n<li>scene of <a class=\"wikilink\" href=\"/wiki/battle-at-the-ford\" data-entity=\"00000000-0000-7000-8000-000000000040\" data-slug=\"battle-at-the-ford\">Battle at the Ford</a></li>\n<li>home of <a class=\"wikilink\" href=\"/wiki/fenn\" data-entity=\"00000000-0000-7000-8000-000000000029\" data-slug=\"fenn\">Fenn</a> (YV 1030 to 1074)</li>\n<li>visited by <a class=\"wikilink\" href=\"/wiki/cato\" data-entity=\"00000000-0000-7000-8000-000000000022\" data-slug=\"cato\">Cato</a> (spring YV 1050 to 1050.3)</li>\n<li>visited by <a class=\"wikilink\" href=\"/wiki/cato\" data-entity=\"00000000-0000-7000-8000-000000000022\" data-slug=\"cato\">Cato</a> (1050.7 to autumn YV 1050)</li>\n</ul>\n"
+  },
+  {
+   "id": "01a1815c-fbf4-7490-82f2-7b31d7357158",
+   "key": "rumours",
+   "section_type": "rumours",
+   "heading": "Rumours",
+   "level": 2,
+   "position": 238.0,
+   "visibility": "public",
+   "canon": "draft",
+   "version": 1,
+   "word_count": 0,
+   "generated": true,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "items": [],
+   "markdown": "",
+   "link": "https://lore.example.test/compare/lampton",
+   "html": ""
+  }
+ ],
+ "edit_tag": null,
+ "categories": [
+  {
+   "slug": "canary-designer-category",
+   "title": "CANARY-DESIGNER-CATEGORY"
+  }
+ ],
+ "statements": null,
+ "beliefs": null,
+ "accounts": null,
+ "shapes": [
+  {
+   "id": "01a1815c-fb58-7cc5-a1df-7ae51b5ab98f",
+   "entity": {
+    "ref": "lampton",
+    "id": "00000000-0000-7000-8000-000000000031",
+    "title": "Lampton",
+    "type": "location",
+    "kind": "location.settlement",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "A city of lamps at the ford of the Test River."
+   },
+   "role": "point",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     11,
+     45.5
+    ]
+   },
+   "valid": null,
+   "precision": "exact",
+   "uncertainty_m": null,
+   "according_to": null,
+   "generation": "current",
+   "replaces_id": null,
+   "label": null,
+   "min_zoom": null,
+   "max_zoom": null,
+   "rank": null,
+   "visibility": "public",
+   "canon": "approved",
+   "retired_at": null,
+   "version": 1,
+   "note": null,
+   "source_ref": null
+  }
+ ],
+ "history": null,
+ "media": [
+  {
+   "id": "00000000-0000-7000-8000-00000000c701",
+   "kind": "image",
+   "title": "CANARY-DESIGNER-MEDIA-TITLE",
+   "caption": "CANARY-DESIGNER-MEDIA-CAPTION",
+   "credit": "CANARY-DESIGNER-MEDIA-CREDIT",
+   "url": "https://assets.example.test/canary-designer-vault.png",
+   "storage_path": null,
+   "mime_type": null,
+   "width_px": null,
+   "height_px": null,
+   "role": "gallery",
+   "position": 1.0,
+   "visibility": "designer"
+  }
+ ],
+ "external": null,
+ "pending": [],
+ "as_of": null,
+ "viewpoint": null,
+ "last_review": null,
+ "preview_change_set": null,
+ "preview": null,
+ "redirected_from": null,
+ "ui_url": "https://lore.example.test/wiki/lampton"
+}

@@ -1,0 +1,15 @@
+{
+ "type": "/api/v1/problems/validation",
+ "title": "The request breaks a rule",
+ "status": 422,
+ "code": "validation",
+ "detail": "limit: Input should be a valid integer, unable to parse string as an integer",
+ "hint": "Check the field errors against the operation's schema in /api/docs.",
+ "errors": [
+  {
+   "field": "limit",
+   "message": "Input should be a valid integer, unable to parse string as an integer"
+  }
+ ],
+ "request_id": "8EC561C9D669469087AF0B3BBC"
+}

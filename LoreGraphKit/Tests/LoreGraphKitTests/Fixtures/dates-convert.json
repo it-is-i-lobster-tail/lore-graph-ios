@@ -1,0 +1,67 @@
+{
+ "parsed": {
+  "from": 1020.414,
+  "to": 1020.666,
+  "precision": "season",
+  "label": "summer YV 1020",
+  "formatted": "summer YV 1020"
+ },
+ "formatted": {
+  "yv": "summer YV 1020",
+  "canary_designer_cal": "summer CANARY-DESIGNER-CAL 1120",
+  "lc": "summer LC 1593",
+  "rivemer": "summer, the 208th spring",
+  "vignelle": "summer YV 1020"
+ },
+ "calendars": [
+  {
+   "key": "yv",
+   "name": "YV",
+   "kind": "offset",
+   "offset_years": 0.0,
+   "epoch_label": null,
+   "default": true,
+   "used_by": null
+  },
+  {
+   "key": "canary_designer_cal",
+   "name": "CANARY-DESIGNER-CALENDAR",
+   "kind": "offset",
+   "offset_years": 100.0,
+   "epoch_label": "CANARY-DESIGNER-EPOCH",
+   "default": false,
+   "used_by": null
+  },
+  {
+   "key": "lc",
+   "name": "The Flame's Long Count",
+   "kind": "offset",
+   "offset_years": 573.0,
+   "epoch_label": null,
+   "default": false,
+   "used_by": null
+  },
+  {
+   "key": "rivemer",
+   "name": "Rivemer's springs",
+   "kind": "ordinal",
+   "offset_years": -812.0,
+   "epoch_label": "from the Drowning",
+   "default": false,
+   "used_by": null
+  },
+  {
+   "key": "vignelle",
+   "name": "Vignelle's vintages",
+   "kind": "named_years",
+   "offset_years": 0.0,
+   "epoch_label": null,
+   "default": false,
+   "used_by": null
+  }
+ ],
+ "present": {
+  "year": 1131.25,
+  "label": "spring YV 1131"
+ }
+}

@@ -1,0 +1,161 @@
+{
+ "nodes": [
+  {
+   "ref": "dirk",
+   "id": "00000000-0000-7000-8000-000000000023",
+   "title": "Dirk",
+   "type": "individual",
+   "kind": "individual.person",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Marshal of Testmark who led the host at the Ford.",
+   "depth": 0,
+   "display_title": "Dirk",
+   "degree": 3,
+   "exists": true,
+   "span": {
+    "from": 1002.0,
+    "to": 1050.0
+   },
+   "anchor": null,
+   "more": null
+  },
+  {
+   "ref": "testmark",
+   "id": "00000000-0000-7000-8000-000000000010",
+   "title": "Kingdom of Testmark",
+   "type": "faction",
+   "kind": "faction.realm",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "The realm of the Test Vale, ruled from Lampton.",
+   "depth": 1,
+   "display_title": "Kingdom of Testmark",
+   "degree": 1,
+   "exists": true,
+   "span": {
+    "from": 900.0,
+    "to": null
+   },
+   "anchor": null,
+   "more": null
+  },
+  {
+   "ref": "battle-at-the-ford",
+   "id": "00000000-0000-7000-8000-000000000040",
+   "title": "Battle at the Ford",
+   "type": "event",
+   "kind": "event.battle",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Testmark's victory over the Eastmarch, summer YV 1020.",
+   "depth": 1,
+   "display_title": "Battle at the Ford",
+   "degree": 1,
+   "exists": true,
+   "span": {
+    "from": 1020.414,
+    "to": 1020.666
+   },
+   "anchor": {
+    "lon": 11.0,
+    "lat": 45.5
+   },
+   "more": null
+  },
+  {
+   "ref": "siege-of-eastbrook",
+   "id": "00000000-0000-7000-8000-000000000042",
+   "title": "Siege of Eastbrook",
+   "type": "event",
+   "kind": "event.siege",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "The Eastmarch's failed siege, spring YV 1021.",
+   "depth": 1,
+   "display_title": "Siege of Eastbrook",
+   "degree": 1,
+   "exists": true,
+   "span": {
+    "from": 1021.162,
+    "to": 1021.414
+   },
+   "anchor": {
+    "lon": 12.0,
+    "lat": 45.5
+   },
+   "more": null
+  }
+ ],
+ "edges": [
+  {
+   "id": "00000000-0000-7000-8000-000000000108",
+   "source": "00000000-0000-7000-8000-000000000023",
+   "target": "00000000-0000-7000-8000-000000000040",
+   "source_ref": "dirk",
+   "target_ref": "battle-at-the-ford",
+   "predicate": "commanded_at",
+   "label": "commanded at",
+   "inverse_label": "commanders",
+   "family": "event",
+   "symmetric": false,
+   "role": null,
+   "valid": null,
+   "according_to": null,
+   "claim_relation": null,
+   "certainty": "certain",
+   "visibility": "public",
+   "canon": "approved",
+   "rank": 0
+  },
+  {
+   "id": "00000000-0000-7000-8000-000000000119",
+   "source": "00000000-0000-7000-8000-000000000023",
+   "target": "00000000-0000-7000-8000-000000000042",
+   "source_ref": "dirk",
+   "target_ref": "siege-of-eastbrook",
+   "predicate": "commanded_at",
+   "label": "commanded at",
+   "inverse_label": "commanders",
+   "family": "event",
+   "symmetric": false,
+   "role": "defender",
+   "valid": null,
+   "according_to": null,
+   "claim_relation": null,
+   "certainty": "certain",
+   "visibility": "public",
+   "canon": "approved",
+   "rank": 0
+  },
+  {
+   "id": "00000000-0000-7000-8000-000000000120",
+   "source": "00000000-0000-7000-8000-000000000023",
+   "target": "00000000-0000-7000-8000-000000000010",
+   "source_ref": "dirk",
+   "target_ref": "testmark",
+   "predicate": "member_of",
+   "label": "member of",
+   "inverse_label": "has member",
+   "family": "membership",
+   "symmetric": false,
+   "role": "marshal",
+   "valid": {
+    "from": 1015.0,
+    "to": 1050.0,
+    "precision": "year",
+    "label": "YV 1015 to 1049",
+    "formatted": "YV 1015 to 1049"
+   },
+   "according_to": null,
+   "claim_relation": null,
+   "certainty": "certain",
+   "visibility": "public",
+   "canon": "approved",
+   "rank": 0
+  }
+ ],
+ "truncated": false,
+ "more": [],
+ "ui_url": "https://lore.example.test/graph?focus=dirk"
+}

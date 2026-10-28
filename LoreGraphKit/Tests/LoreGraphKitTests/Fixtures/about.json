@@ -1,0 +1,169 @@
+{
+ "user": {
+  "display_name": "Owner",
+  "email": "owner@example.test",
+  "role": "owner"
+ },
+ "client": {
+  "id": "token:01a1815c-fc03-7021-95bf-cd86367f16b4",
+  "name": "standard designer",
+  "via": "personal_token"
+ },
+ "scopes": [
+  "admin",
+  "lore:approve",
+  "lore:read",
+  "lore:secrets",
+  "lore:write",
+  "map:write",
+  "review"
+ ],
+ "ceiling": "designer",
+ "write_mode": "direct",
+ "default_change_set": null,
+ "world": {
+  "key": "main",
+  "name": "Main world",
+  "is_default": true
+ },
+ "worlds": [
+  {
+   "key": "main",
+   "name": "Main world",
+   "is_default": true
+  },
+  {
+   "key": "canary-designer-world",
+   "name": "CANARY-DESIGNER-WORLD-NAME",
+   "is_default": false
+  },
+  {
+   "key": "elsewhere",
+   "name": "Elsewhere",
+   "is_default": false
+  }
+ ],
+ "present": {
+  "from": 1131.25,
+  "to": 1131.502,
+  "precision": "season",
+  "label": "spring YV 1131",
+  "formatted": "1131.25 to 1131.5"
+ },
+ "calendars": [
+  {
+   "key": "yv",
+   "name": "YV",
+   "abbreviation": "YV",
+   "kind": "offset",
+   "default": true
+  },
+  {
+   "key": "canary_designer_cal",
+   "name": "CANARY-DESIGNER-CALENDAR",
+   "abbreviation": "CANARY-DESIGNER-CAL",
+   "kind": "offset",
+   "default": false
+  },
+  {
+   "key": "lc",
+   "name": "The Flame's Long Count",
+   "abbreviation": "LC",
+   "kind": "offset",
+   "default": false
+  },
+  {
+   "key": "rivemer",
+   "name": "Rivemer's springs",
+   "abbreviation": null,
+   "kind": "ordinal",
+   "default": false
+  },
+  {
+   "key": "vignelle",
+   "name": "Vignelle's vintages",
+   "abbreviation": null,
+   "kind": "named_years",
+   "default": false
+  }
+ ],
+ "counts": {
+  "pages": {
+   "event": 4,
+   "story": 3,
+   "tale": 1,
+   "faction": 3,
+   "individual": 10,
+   "location": 5,
+   "item": 1,
+   "misc": 1
+  },
+  "statements": 37,
+  "beliefs": 8,
+  "open_edit_tags": 0,
+  "pending_names": 0,
+  "open_questions": 3,
+  "change_sets_waiting": 2
+ },
+ "toolsets": [
+  "core",
+  "search",
+  "pages",
+  "graph",
+  "time",
+  "map",
+  "people",
+  "accounts",
+  "beliefs",
+  "review",
+  "changes",
+  "admin"
+ ],
+ "profile": null,
+ "links": {
+  "app": "https://lore.example.test/",
+  "swagger": "https://lore.example.test/api/docs",
+  "connect": "https://lore.example.test/connect",
+  "openapi": "https://lore.example.test/api/openapi.json",
+  "mcp": "https://lore.example.test/mcp"
+ },
+ "profiles": [
+  {
+   "path": "/mcp",
+   "url": "https://lore.example.test/mcp",
+   "title": "loregraph",
+   "description": "All 12 toolsets: The owner's main connector."
+  },
+  {
+   "path": "/mcp/read",
+   "url": "https://lore.example.test/mcp/read",
+   "title": "loregraph (read only)",
+   "description": "Every read-only tool: research and writing help."
+  },
+  {
+   "path": "/mcp/writer",
+   "url": "https://lore.example.test/mcp/writer",
+   "title": "loregraph (writer)",
+   "description": "Lore writing sessions."
+  },
+  {
+   "path": "/mcp/reviewer",
+   "url": "https://lore.example.test/mcp/reviewer",
+   "title": "loregraph (reviewer)",
+   "description": "Review passes."
+  },
+  {
+   "path": "/mcp/mapper",
+   "url": "https://lore.example.test/mcp/mapper",
+   "title": "loregraph (mapper)",
+   "description": "Map work."
+  },
+  {
+   "path": "/mcp/admin",
+   "url": "https://lore.example.test/mcp/admin",
+   "title": "loregraph (admin)",
+   "description": "Maintenance and approvals."
+  }
+ ],
+ "version": "1.0.0"
+}

@@ -1,0 +1,472 @@
+{
+ "entity": {
+  "id": "00000000-0000-7000-8000-000000000040",
+  "ref": "battle-at-the-ford",
+  "slug": "battle-at-the-ford",
+  "title": "Battle at the Ford",
+  "display_title": "Battle at the Ford",
+  "type": "event",
+  "kind": "event.battle",
+  "kind_label": "Battle",
+  "short_description": "Testmark's victory over the Eastmarch, summer YV 1020.",
+  "visibility": "public",
+  "canon": "approved",
+  "version": 1,
+  "lifespan": null,
+  "attributes": {},
+  "canonical_key": null,
+  "deleted": false,
+  "breadcrumbs": [
+   {
+    "ref": "war-of-the-ford",
+    "title": "War of the Ford"
+   }
+  ]
+ },
+ "names": [
+  {
+   "id": "01a1815c-fb41-7871-96d9-571329b1aaaf",
+   "name": "Battle at the Ford",
+   "kind": "primary",
+   "used_by": null,
+   "used_by_label": null,
+   "language": null,
+   "valid": null,
+   "era_label": null,
+   "tone": null,
+   "approval": "approved",
+   "locked": false,
+   "visibility": "public",
+   "note": null,
+   "version": 1
+  }
+ ],
+ "details": {
+  "happened": {
+   "from": 1020.414,
+   "to": 1020.666,
+   "precision": "season",
+   "label": "summer YV 1020",
+   "formatted": "summer YV 1020"
+  },
+  "parent_event": {
+   "ref": "war-of-the-ford",
+   "id": "00000000-0000-7000-8000-000000000041",
+   "title": "War of the Ford",
+   "type": "event",
+   "kind": "event.war",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Testmark against the Eastmarch, YV 1019 to 1021."
+  }
+ },
+ "infobox": [
+  {
+   "label": "When",
+   "from": "detail:happened",
+   "values": [
+    {
+     "text": "summer YV 1020"
+    }
+   ]
+  },
+  {
+   "label": "Where",
+   "from": "stmt:occurred_at:out",
+   "values": [
+    {
+     "text": "Lampton",
+     "ref": "lampton",
+     "statement_id": "00000000-0000-7000-8000-000000000109",
+     "visibility": "public",
+     "role": "main"
+    }
+   ]
+  },
+  {
+   "label": "Part of",
+   "from": "parent",
+   "values": [
+    {
+     "text": "War of the Ford",
+     "ref": "war-of-the-ford"
+    }
+   ]
+  },
+  {
+   "label": "Commanders",
+   "from": "stmt:commanded_at:in",
+   "values": [
+    {
+     "text": "Dirk",
+     "ref": "dirk",
+     "statement_id": "00000000-0000-7000-8000-000000000108",
+     "visibility": "public"
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "id": "00000000-0000-7000-8000-000000000409",
+   "key": "lead",
+   "section_type": "lead",
+   "heading": null,
+   "level": 2,
+   "position": 0.0,
+   "visibility": "public",
+   "canon": "approved",
+   "version": 1,
+   "word_count": 33,
+   "generated": false,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "body_md": "The Battle at the Ford was fought in the summer of YV 1020 at the ford below [[lampton]], in the [[war-of-the-ford|War of the Ford]]. The host of [[testmark]] under [[dirk]] broke the [[eastmarch|Eastmarch]].",
+   "html": "<p>The Battle at the Ford was fought in the summer of YV 1020 at the ford below <a class=\"wikilink\" href=\"/wiki/lampton\" data-entity=\"00000000-0000-7000-8000-000000000031\" data-slug=\"lampton\">Lampton</a>, in the <a class=\"wikilink\" href=\"/wiki/war-of-the-ford\" data-entity=\"00000000-0000-7000-8000-000000000041\" data-slug=\"war-of-the-ford\">War of the Ford</a>. The host of <a class=\"wikilink\" href=\"/wiki/testmark\" data-entity=\"00000000-0000-7000-8000-000000000010\" data-slug=\"testmark\">Kingdom of Testmark</a> under <a class=\"wikilink\" href=\"/wiki/dirk\" data-entity=\"00000000-0000-7000-8000-000000000023\" data-slug=\"dirk\">Dirk</a> broke the <a class=\"wikilink\" href=\"/wiki/eastmarch\" data-entity=\"00000000-0000-7000-8000-000000000012\" data-slug=\"eastmarch\">Eastmarch</a>.</p>\n"
+  },
+  {
+   "id": "00000000-0000-7000-8000-000000000410",
+   "key": "history",
+   "section_type": "history",
+   "heading": "History",
+   "level": 2,
+   "position": 10.0,
+   "visibility": "public",
+   "canon": "approved",
+   "version": 1,
+   "word_count": 30,
+   "generated": false,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "body_md": "The [[eastmarch|Eastmarch]] crossed at dawn. Dirk held the far bank until the river rose behind them. Accounts differ on who led: the court's chronicle names [[aldo]], the ballad names Dirk.",
+   "html": "<p>The <a class=\"wikilink\" href=\"/wiki/eastmarch\" data-entity=\"00000000-0000-7000-8000-000000000012\" data-slug=\"eastmarch\">Eastmarch</a> crossed at dawn. Dirk held the far bank until the river rose behind them. Accounts differ on who led: the court's chronicle names <a class=\"wikilink\" href=\"/wiki/aldo\" data-entity=\"00000000-0000-7000-8000-000000000020\" data-slug=\"aldo\">Aldo</a>, the ballad names Dirk.</p>\n"
+  },
+  {
+   "id": "01a1815c-fbf2-7f9e-b319-e3659618547e",
+   "key": "accounts",
+   "section_type": "accounts",
+   "heading": "Accounts differ",
+   "level": 2,
+   "position": 14.0,
+   "visibility": "public",
+   "canon": "draft",
+   "version": 1,
+   "word_count": 0,
+   "generated": true,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "items": [
+    {
+     "account": {
+      "ref": "testmark-chronicle",
+      "title": "Testmark Chronicle",
+      "type": "story",
+      "kind": "story.chronicle",
+      "visibility": "public"
+     },
+     "told": {
+      "from": 1022.0,
+      "to": 1023.0,
+      "precision": "year",
+      "label": "YV 1022",
+      "formatted": "YV 1022"
+     },
+     "claims": [
+      {
+       "id": "00000000-0000-7000-8000-000000000110",
+       "subject": {
+        "ref": "aldo",
+        "id": "00000000-0000-7000-8000-000000000020",
+        "title": "Aldo",
+        "type": "individual",
+        "kind": "individual.person",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "Lord of Lampton, remembered as the victor of the Ford."
+       },
+       "predicate": "commanded_at",
+       "label": "commanded at",
+       "object": {
+        "ref": "battle-at-the-ford",
+        "id": "00000000-0000-7000-8000-000000000040",
+        "title": "Battle at the Ford",
+        "type": "event",
+        "kind": "event.battle",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+       },
+       "value": null,
+       "qualifiers": {},
+       "role": null,
+       "side": {
+        "ref": "testmark",
+        "id": "00000000-0000-7000-8000-000000000010",
+        "title": "Kingdom of Testmark",
+        "type": "faction",
+        "kind": "faction.realm",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "The realm of the Test Vale, ruled from Lampton."
+       },
+       "stance": null,
+       "place": null,
+       "valid": null,
+       "according_to": {
+        "ref": "testmark-chronicle",
+        "id": "00000000-0000-7000-8000-000000000050",
+        "title": "Testmark Chronicle",
+        "type": "story",
+        "kind": "story.chronicle",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "The court's history of the Ford, written for Aldo's house."
+       },
+       "claim_relation": "contradicts",
+       "record_statement_id": "00000000-0000-7000-8000-000000000108",
+       "certainty": "certain",
+       "visibility": "public",
+       "canon": "approved",
+       "rank": 0,
+       "source_quote": null,
+       "source_ref": null,
+       "note": null,
+       "recorded_at": "2026-10-28T07:15:16.903645Z",
+       "retired_at": null,
+       "version": 1,
+       "sentence": "According to Testmark Chronicle, Aldo commanded at Battle at the Ford for Kingdom of Testmark.",
+       "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000110"
+      }
+     ]
+    },
+    {
+     "account": {
+      "ref": "ballad-of-the-ford",
+      "title": "Ballad of the Ford",
+      "type": "story",
+      "kind": "story.song",
+      "visibility": "public"
+     },
+     "told": {
+      "from": 1030.0,
+      "to": 1040.0,
+      "precision": "decade",
+      "label": "the 1030s",
+      "formatted": "the 1030s"
+     },
+     "claims": [
+      {
+       "id": "00000000-0000-7000-8000-000000000129",
+       "subject": {
+        "ref": "dirk",
+        "id": "00000000-0000-7000-8000-000000000023",
+        "title": "Dirk",
+        "type": "individual",
+        "kind": "individual.person",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "Marshal of Testmark who led the host at the Ford."
+       },
+       "predicate": "commanded_at",
+       "label": "commanded at",
+       "object": {
+        "ref": "battle-at-the-ford",
+        "id": "00000000-0000-7000-8000-000000000040",
+        "title": "Battle at the Ford",
+        "type": "event",
+        "kind": "event.battle",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+       },
+       "value": null,
+       "qualifiers": {},
+       "role": null,
+       "side": {
+        "ref": "testmark",
+        "id": "00000000-0000-7000-8000-000000000010",
+        "title": "Kingdom of Testmark",
+        "type": "faction",
+        "kind": "faction.realm",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "The realm of the Test Vale, ruled from Lampton."
+       },
+       "stance": null,
+       "place": null,
+       "valid": null,
+       "according_to": {
+        "ref": "ballad-of-the-ford",
+        "id": "00000000-0000-7000-8000-000000000051",
+        "title": "Ballad of the Ford",
+        "type": "story",
+        "kind": "story.song",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "A song of the vale that remembers who led."
+       },
+       "claim_relation": "agrees",
+       "record_statement_id": "00000000-0000-7000-8000-000000000108",
+       "certainty": "certain",
+       "visibility": "public",
+       "canon": "approved",
+       "rank": 0,
+       "source_quote": null,
+       "source_ref": null,
+       "note": null,
+       "recorded_at": "2026-10-28T07:15:16.903645Z",
+       "retired_at": null,
+       "version": 1,
+       "sentence": "According to Ballad of the Ford, Dirk commanded at Battle at the Ford for Kingdom of Testmark.",
+       "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000129"
+      }
+     ]
+    },
+    {
+     "account": {
+      "ref": "ferrymans-rumour",
+      "title": "The ferryman's rumour",
+      "type": "tale",
+      "kind": "tale.rumour",
+      "visibility": "public"
+     },
+     "told": {
+      "from": 1052.0,
+      "to": 1053.0,
+      "precision": "year",
+      "label": "YV 1052",
+      "formatted": "YV 1052"
+     },
+     "claims": [
+      {
+       "id": "00000000-0000-7000-8000-000000000131",
+       "subject": {
+        "ref": "bera",
+        "id": "00000000-0000-7000-8000-000000000021",
+        "title": "Bera",
+        "type": "individual",
+        "kind": "individual.person",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "Aldo's second wife, mother of Cato and Dana."
+       },
+       "predicate": "commanded_at",
+       "label": "commanded at",
+       "object": {
+        "ref": "battle-at-the-ford",
+        "id": "00000000-0000-7000-8000-000000000040",
+        "title": "Battle at the Ford",
+        "type": "event",
+        "kind": "event.battle",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+       },
+       "value": null,
+       "qualifiers": {},
+       "role": null,
+       "side": {
+        "ref": "testmark",
+        "id": "00000000-0000-7000-8000-000000000010",
+        "title": "Kingdom of Testmark",
+        "type": "faction",
+        "kind": "faction.realm",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "The realm of the Test Vale, ruled from Lampton."
+       },
+       "stance": null,
+       "place": null,
+       "valid": null,
+       "according_to": {
+        "ref": "ferrymans-rumour",
+        "id": "00000000-0000-7000-8000-000000000052",
+        "title": "The ferryman's rumour",
+        "type": "tale",
+        "kind": "tale.rumour",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "Fenn's story that Bera led the host."
+       },
+       "claim_relation": "invents",
+       "record_statement_id": null,
+       "certainty": "certain",
+       "visibility": "public",
+       "canon": "approved",
+       "rank": 0,
+       "source_quote": null,
+       "source_ref": null,
+       "note": null,
+       "recorded_at": "2026-10-28T07:15:16.903645Z",
+       "retired_at": null,
+       "version": 1,
+       "sentence": "According to The ferryman's rumour, Bera commanded at Battle at the Ford for Kingdom of Testmark.",
+       "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000131"
+      }
+     ]
+    }
+   ],
+   "markdown": "- [[testmark-chronicle|Testmark Chronicle]] (YV 1022)\n  - According to Testmark Chronicle, Aldo commanded at Battle at the Ford for Kingdom of Testmark. (contradicts)\n- [[ballad-of-the-ford|Ballad of the Ford]] (the 1030s)\n  - According to Ballad of the Ford, Dirk commanded at Battle at the Ford for Kingdom of Testmark. (agrees)\n- [[ferrymans-rumour|The ferryman's rumour]] (YV 1052)\n  - According to The ferryman's rumour, Bera commanded at Battle at the Ford for Kingdom of Testmark. (invents)",
+   "link": "https://lore.example.test/compare/battle-at-the-ford",
+   "html": "<ul>\n<li><a class=\"wikilink\" href=\"/wiki/testmark-chronicle\" data-entity=\"00000000-0000-7000-8000-000000000050\" data-slug=\"testmark-chronicle\">Testmark Chronicle</a> (YV 1022)\n<ul>\n<li>According to Testmark Chronicle, Aldo commanded at Battle at the Ford for Kingdom of Testmark. (contradicts)</li>\n</ul>\n</li>\n<li><a class=\"wikilink\" href=\"/wiki/ballad-of-the-ford\" data-entity=\"00000000-0000-7000-8000-000000000051\" data-slug=\"ballad-of-the-ford\">Ballad of the Ford</a> (the 1030s)\n<ul>\n<li>According to Ballad of the Ford, Dirk commanded at Battle at the Ford for Kingdom of Testmark. (agrees)</li>\n</ul>\n</li>\n<li><a class=\"wikilink\" href=\"/wiki/ferrymans-rumour\" data-entity=\"00000000-0000-7000-8000-000000000052\" data-slug=\"ferrymans-rumour\">The ferryman&#x27;s rumour</a> (YV 1052)\n<ul>\n<li>According to The ferryman's rumour, Bera commanded at Battle at the Ford for Kingdom of Testmark. (invents)</li>\n</ul>\n</li>\n</ul>\n"
+  }
+ ],
+ "edit_tag": null,
+ "categories": [],
+ "statements": null,
+ "beliefs": null,
+ "accounts": null,
+ "shapes": [
+  {
+   "id": "01a1815c-fb59-7546-931b-57ea9e3d4349",
+   "entity": {
+    "ref": "battle-at-the-ford",
+    "id": "00000000-0000-7000-8000-000000000040",
+    "title": "Battle at the Ford",
+    "type": "event",
+    "kind": "event.battle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+   },
+   "role": "site",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     11.2,
+     45.6
+    ]
+   },
+   "valid": null,
+   "precision": "approximate",
+   "uncertainty_m": null,
+   "according_to": null,
+   "generation": "current",
+   "replaces_id": null,
+   "label": null,
+   "min_zoom": null,
+   "max_zoom": null,
+   "rank": null,
+   "visibility": "public",
+   "canon": "approved",
+   "retired_at": null,
+   "version": 1,
+   "note": null,
+   "source_ref": null
+  }
+ ],
+ "history": null,
+ "media": null,
+ "external": null,
+ "pending": [],
+ "as_of": null,
+ "viewpoint": null,
+ "last_review": null,
+ "preview_change_set": null,
+ "preview": null,
+ "redirected_from": null,
+ "ui_url": "https://lore.example.test/wiki/battle-at-the-ford"
+}

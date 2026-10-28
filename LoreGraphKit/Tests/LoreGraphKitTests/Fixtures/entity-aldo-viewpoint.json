@@ -1,0 +1,380 @@
+{
+ "entity": {
+  "id": "00000000-0000-7000-8000-000000000020",
+  "ref": "aldo",
+  "slug": "aldo",
+  "title": "Aldo",
+  "display_title": "Aldo",
+  "type": "individual",
+  "kind": "individual.person",
+  "kind_label": "Person",
+  "short_description": "Lord of Lampton, remembered as the victor of the Ford.",
+  "visibility": "public",
+  "canon": "approved",
+  "version": 1,
+  "lifespan": {
+   "from": 1000.0,
+   "to": 1060.0,
+   "precision": "year",
+   "label": "LC 1573 to 1632",
+   "formatted": "LC 1573 to 1632"
+  },
+  "attributes": {
+   "gender": "male"
+  },
+  "canonical_key": null,
+  "deleted": false,
+  "breadcrumbs": []
+ },
+ "names": [
+  {
+   "id": "01a1815c-fb38-7fb5-8b72-6cd5d34a6b9b",
+   "name": "Aldo",
+   "kind": "primary",
+   "used_by": null,
+   "used_by_label": null,
+   "language": null,
+   "valid": null,
+   "era_label": null,
+   "tone": null,
+   "approval": "approved",
+   "locked": false,
+   "visibility": "public",
+   "note": null,
+   "version": 1
+  }
+ ],
+ "details": {},
+ "infobox": [
+  {
+   "label": "Born",
+   "from": "span.start",
+   "values": [
+    {
+     "text": "LC 1573"
+    }
+   ]
+  },
+  {
+   "label": "Died",
+   "from": "span.end",
+   "values": [
+    {
+     "text": "LC 1632"
+    }
+   ]
+  },
+  {
+   "label": "Parents",
+   "from": "stmt:parent_of:in",
+   "values": [
+    {
+     "text": "Osric",
+     "ref": "osric",
+     "statement_id": "00000000-0000-7000-8000-000000000113",
+     "visibility": "public",
+     "role": "father"
+    }
+   ]
+  },
+  {
+   "label": "Spouse",
+   "from": "stmt:married_to:out",
+   "values": [
+    {
+     "text": "Gilda",
+     "ref": "gilda",
+     "statement_id": "00000000-0000-7000-8000-000000000112",
+     "visibility": "public",
+     "when": "LC 1593 to 1596"
+    },
+    {
+     "text": "Bera",
+     "ref": "bera",
+     "statement_id": "00000000-0000-7000-8000-000000000101",
+     "visibility": "public",
+     "when": "LC 1598 to 1632"
+    }
+   ]
+  },
+  {
+   "label": "Children",
+   "from": "stmt:parent_of:out",
+   "values": [
+    {
+     "text": "Cato",
+     "ref": "cato",
+     "statement_id": "00000000-0000-7000-8000-000000000102",
+     "visibility": "public",
+     "role": "father"
+    },
+    {
+     "text": "Dana",
+     "ref": "dana",
+     "statement_id": "00000000-0000-7000-8000-000000000105",
+     "visibility": "public",
+     "role": "father"
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "id": "00000000-0000-7000-8000-000000000403",
+   "key": "lead",
+   "section_type": "lead",
+   "heading": null,
+   "level": 2,
+   "position": 0.0,
+   "visibility": "public",
+   "canon": "approved",
+   "version": 1,
+   "word_count": 23,
+   "generated": false,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "body_md": "Aldo was lord of [[lampton]] and the father of [[cato]] and [[dana]]. The [[testmark-chronicle|Testmark Chronicle]] remembers him as the victor of the [[battle-at-the-ford|Ford]].",
+   "html": "<p>Aldo was lord of <a class=\"wikilink\" href=\"/wiki/lampton\" data-entity=\"00000000-0000-7000-8000-000000000031\" data-slug=\"lampton\">Lampton</a> and the father of <a class=\"wikilink\" href=\"/wiki/cato\" data-entity=\"00000000-0000-7000-8000-000000000022\" data-slug=\"cato\">Cato</a> and <a class=\"wikilink\" href=\"/wiki/dana\" data-entity=\"00000000-0000-7000-8000-000000000024\" data-slug=\"dana\">Dana</a>. The <a class=\"wikilink\" href=\"/wiki/testmark-chronicle\" data-entity=\"00000000-0000-7000-8000-000000000050\" data-slug=\"testmark-chronicle\">Testmark Chronicle</a> remembers him as the victor of the <a class=\"wikilink\" href=\"/wiki/battle-at-the-ford\" data-entity=\"00000000-0000-7000-8000-000000000040\" data-slug=\"battle-at-the-ford\">Ford</a>.</p>\n"
+  },
+  {
+   "id": "00000000-0000-7000-8000-000000000404",
+   "key": "history",
+   "section_type": "history",
+   "heading": "History",
+   "level": 2,
+   "position": 10.0,
+   "visibility": "public",
+   "canon": "approved",
+   "version": 1,
+   "word_count": 27,
+   "generated": false,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "body_md": "Aldo married [[gilda]] in YV 1020; she died four years later. In YV 1025 he married [[bera]]. He ruled from [[lampton]] until his death in YV 1060.",
+   "html": "<p>Aldo married <a class=\"wikilink\" href=\"/wiki/gilda\" data-entity=\"00000000-0000-7000-8000-000000000026\" data-slug=\"gilda\">Gilda</a> in YV 1020; she died four years later. In YV 1025 he married <a class=\"wikilink\" href=\"/wiki/bera\" data-entity=\"00000000-0000-7000-8000-000000000021\" data-slug=\"bera\">Bera</a>. He ruled from <a class=\"wikilink\" href=\"/wiki/lampton\" data-entity=\"00000000-0000-7000-8000-000000000031\" data-slug=\"lampton\">Lampton</a> until his death in YV 1060.</p>\n"
+  },
+  {
+   "id": "00000000-0000-7000-8000-000000000405",
+   "key": "secret-history",
+   "section_type": "secret_history",
+   "heading": "Secret history",
+   "level": 2,
+   "position": 60.0,
+   "visibility": "designer",
+   "canon": "approved",
+   "version": 1,
+   "word_count": 28,
+   "generated": false,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "body_md": "Aldo knew that Cato was not his son and raised him as his own. He let the chronicle give him Dirk's victory as the price of his silence.",
+   "html": "<p>Aldo knew that Cato was not his son and raised him as his own. He let the chronicle give him Dirk's victory as the price of his silence.</p>\n"
+  },
+  {
+   "id": "01a1815c-fbf3-7d6e-bece-150b0f7760fd",
+   "key": "beliefs",
+   "section_type": "beliefs",
+   "heading": "Beliefs",
+   "level": 2,
+   "position": 64.0,
+   "visibility": "public",
+   "canon": "draft",
+   "version": 1,
+   "word_count": 0,
+   "generated": true,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "items": [],
+   "markdown": "",
+   "link": "https://lore.example.test/beliefs/aldo?cal=lc",
+   "html": ""
+  },
+  {
+   "id": "01a1815c-fbf3-7d12-bc98-4572410f5a7b",
+   "key": "relationships",
+   "section_type": "relationships",
+   "heading": "Relationships",
+   "level": 2,
+   "position": 65.0,
+   "visibility": "public",
+   "canon": "draft",
+   "version": 1,
+   "word_count": 0,
+   "generated": true,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "items": [],
+   "markdown": "",
+   "link": null,
+   "html": ""
+  },
+  {
+   "id": "01a1815c-fbf3-7d44-9cbb-98f16c403ceb",
+   "key": "family",
+   "section_type": "family",
+   "heading": "Family",
+   "level": 2,
+   "position": 66.0,
+   "visibility": "public",
+   "canon": "draft",
+   "version": 1,
+   "word_count": 0,
+   "generated": true,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "items": [
+    {
+     "label": "child of",
+     "other": {
+      "ref": "osric",
+      "id": "00000000-0000-7000-8000-000000000025",
+      "title": "Osric",
+      "type": "individual",
+      "kind": "individual.person",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "Aldo's father, first lord of Lampton's new walls.",
+      "name_here": "Osric"
+     },
+     "statement_id": "00000000-0000-7000-8000-000000000113",
+     "valid": null,
+     "visibility": "public"
+    },
+    {
+     "label": "married to",
+     "other": {
+      "ref": "gilda",
+      "id": "00000000-0000-7000-8000-000000000026",
+      "title": "Gilda",
+      "type": "individual",
+      "kind": "individual.person",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "Aldo's first wife, who died young.",
+      "name_here": "Gilda"
+     },
+     "statement_id": "00000000-0000-7000-8000-000000000112",
+     "valid": {
+      "from": 1020.0,
+      "to": 1024.0,
+      "precision": "year",
+      "label": "LC 1593 to 1596",
+      "formatted": "LC 1593 to 1596"
+     },
+     "visibility": "public"
+    },
+    {
+     "label": "married to",
+     "other": {
+      "ref": "bera",
+      "id": "00000000-0000-7000-8000-000000000021",
+      "title": "Bera",
+      "type": "individual",
+      "kind": "individual.person",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "Aldo's second wife, mother of Cato and Dana.",
+      "name_here": "Bera"
+     },
+     "statement_id": "00000000-0000-7000-8000-000000000101",
+     "valid": {
+      "from": 1025.0,
+      "to": 1060.0,
+      "precision": "year",
+      "label": "LC 1598 to 1632",
+      "formatted": "LC 1598 to 1632"
+     },
+     "visibility": "public"
+    },
+    {
+     "label": "parent of",
+     "other": {
+      "ref": "cato",
+      "id": "00000000-0000-7000-8000-000000000022",
+      "title": "Cato",
+      "type": "individual",
+      "kind": "individual.person",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "Novice of the Order of the Lamp.",
+      "name_here": "Cato"
+     },
+     "statement_id": "00000000-0000-7000-8000-000000000102",
+     "valid": null,
+     "visibility": "public"
+    },
+    {
+     "label": "parent of",
+     "other": {
+      "ref": "dana",
+      "id": "00000000-0000-7000-8000-000000000024",
+      "title": "Dana",
+      "type": "individual",
+      "kind": "individual.person",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "Daughter of Aldo and Bera, later of Eastbrook.",
+      "name_here": "Dana"
+     },
+     "statement_id": "00000000-0000-7000-8000-000000000105",
+     "valid": null,
+     "visibility": "public"
+    }
+   ],
+   "markdown": "- child of [[osric|Osric]]\n- married to [[gilda|Gilda]] (LC 1593 to 1596)\n- married to [[bera|Bera]] (LC 1598 to 1632)\n- parent of [[cato|Cato]]\n- parent of [[dana|Dana]]",
+   "link": "https://lore.example.test/family/aldo?cal=lc",
+   "html": "<ul>\n<li>child of <a class=\"wikilink\" href=\"/wiki/osric\" data-entity=\"00000000-0000-7000-8000-000000000025\" data-slug=\"osric\">Osric</a></li>\n<li>married to <a class=\"wikilink\" href=\"/wiki/gilda\" data-entity=\"00000000-0000-7000-8000-000000000026\" data-slug=\"gilda\">Gilda</a> (LC 1593 to 1596)</li>\n<li>married to <a class=\"wikilink\" href=\"/wiki/bera\" data-entity=\"00000000-0000-7000-8000-000000000021\" data-slug=\"bera\">Bera</a> (LC 1598 to 1632)</li>\n<li>parent of <a class=\"wikilink\" href=\"/wiki/cato\" data-entity=\"00000000-0000-7000-8000-000000000022\" data-slug=\"cato\">Cato</a></li>\n<li>parent of <a class=\"wikilink\" href=\"/wiki/dana\" data-entity=\"00000000-0000-7000-8000-000000000024\" data-slug=\"dana\">Dana</a></li>\n</ul>\n"
+  },
+  {
+   "id": "01a1815c-fbf3-7d97-8c2d-7dfd50b1be50",
+   "key": "rumours",
+   "section_type": "rumours",
+   "heading": "Rumours",
+   "level": 2,
+   "position": 68.0,
+   "visibility": "public",
+   "canon": "draft",
+   "version": 1,
+   "word_count": 0,
+   "generated": true,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "items": [],
+   "markdown": "",
+   "link": "https://lore.example.test/compare/aldo?cal=lc",
+   "html": ""
+  }
+ ],
+ "edit_tag": null,
+ "categories": [],
+ "statements": null,
+ "beliefs": null,
+ "accounts": null,
+ "shapes": null,
+ "history": null,
+ "media": null,
+ "external": null,
+ "pending": [],
+ "as_of": null,
+ "viewpoint": {
+  "ref": "eastmarch",
+  "id": "00000000-0000-7000-8000-000000000012",
+  "title": "The Eastmarch",
+  "type": "faction",
+  "kind": "faction.realm",
+  "visibility": "public",
+  "canon": "approved"
+ },
+ "last_review": null,
+ "preview_change_set": null,
+ "preview": null,
+ "redirected_from": null,
+ "ui_url": "https://lore.example.test/wiki/aldo?vp=eastmarch&cal=lc"
+}

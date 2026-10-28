@@ -1,0 +1,111 @@
+{
+ "belief": {
+  "id": "00000000-0000-7000-8000-000000000202",
+  "proposition": "Aldo won the Ford.",
+  "proposition_key": "ford:commander",
+  "kind": "opinion",
+  "holder": "testmark",
+  "holder_title": "Kingdom of Testmark",
+  "stance": "believes",
+  "conviction": 2,
+  "openness": "open",
+  "held": {
+   "from": 1022.0,
+   "to": null,
+   "precision": "year",
+   "label": "since YV 1022",
+   "formatted": "since YV 1022"
+  },
+  "acquisition": "told",
+  "acquired_from": {
+   "ref": "testmark-chronicle",
+   "id": "00000000-0000-7000-8000-000000000050",
+   "title": "Testmark Chronicle",
+   "type": "story",
+   "kind": "story.chronicle",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "The court's history of the Ford, written for Aldo's house."
+  },
+  "formed_by_event": null,
+  "derived_from_belief_id": null,
+  "statement_id": "00000000-0000-7000-8000-000000000110",
+  "about": [],
+  "inheritable": true,
+  "shows_as": null,
+  "visibility": "public",
+  "canon": "approved",
+  "version": 1,
+  "retired_at": null,
+  "sentence": "Kingdom of Testmark believes: Aldo won the Ford.",
+  "truth": "false",
+  "truth_note": "Dirk led; the chronicle flatters Aldo."
+ },
+ "chain": [
+  {
+   "step": "told_by_account",
+   "belief_id": "00000000-0000-7000-8000-000000000202",
+   "account": {
+    "ref": "testmark-chronicle",
+    "id": "00000000-0000-7000-8000-000000000050",
+    "title": "Testmark Chronicle",
+    "type": "story",
+    "kind": "story.chronicle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The court's history of the Ford, written for Aldo's house."
+   },
+   "told": {
+    "from": 1022.0,
+    "to": 1023.0,
+    "precision": "year",
+    "label": "YV 1022",
+    "formatted": "LC 1595"
+   },
+   "teller": "testmark",
+   "teller_card": {
+    "ref": "testmark",
+    "id": "00000000-0000-7000-8000-000000000010",
+    "title": "Kingdom of Testmark",
+    "type": "faction",
+    "kind": "faction.realm",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The realm of the Test Vale, ruled from Lampton."
+   },
+   "medium": "written",
+   "bias": "The scribe was paid by Aldo's house.",
+   "reliability": 1,
+   "text": "Kingdom of Testmark learned it from the Testmark Chronicle, told LC 1595 by Kingdom of Testmark. Bias: The scribe was paid by Aldo's house."
+  },
+  {
+   "step": "claim",
+   "statement_id": "00000000-0000-7000-8000-000000000110",
+   "says": "Aldo commanded at Battle at the Ford for Kingdom of Testmark (summer YV 1020).",
+   "relation": "contradicts",
+   "account": {
+    "ref": "testmark-chronicle",
+    "id": "00000000-0000-7000-8000-000000000050",
+    "title": "Testmark Chronicle",
+    "type": "story",
+    "kind": "story.chronicle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The court's history of the Ford, written for Aldo's house."
+   },
+   "record_statement_id": "00000000-0000-7000-8000-000000000108"
+  },
+  {
+   "step": "record",
+   "statement_id": "00000000-0000-7000-8000-000000000108",
+   "says": "Dirk commanded at Battle at the Ford for Kingdom of Testmark (summer YV 1020)."
+  }
+ ],
+ "inherited_by_example": "Members of the Kingdom of Testmark and its parts hold this belief while they belong.",
+ "sentences": [
+  "Kingdom of Testmark learned it from the Testmark Chronicle, told LC 1595 by Kingdom of Testmark. Bias: The scribe was paid by Aldo's house.",
+  "Testmark Chronicle claims: Aldo commanded at Battle at the Ford for Kingdom of Testmark (summer YV 1020). (contradicts the record)",
+  "The record says: Dirk commanded at Battle at the Ford for Kingdom of Testmark (summer YV 1020)."
+ ],
+ "ui_url": "https://lore.example.test/beliefs/trace/00000000-0000-7000-8000-000000000202"
+}

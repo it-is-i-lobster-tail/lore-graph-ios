@@ -1,0 +1,320 @@
+{
+ "entity": {
+  "id": "00000000-0000-7000-8000-000000000023",
+  "ref": "dirk",
+  "slug": "dirk",
+  "title": "Dirk",
+  "display_title": "Dirk",
+  "type": "individual",
+  "kind": "individual.person",
+  "kind_label": "Person",
+  "short_description": "Marshal of Testmark who led the host at the Ford.",
+  "visibility": "public",
+  "canon": "approved",
+  "version": 1,
+  "lifespan": {
+   "from": 1002.0,
+   "to": 1050.0,
+   "precision": "year",
+   "label": "YV 1002 to 1049",
+   "formatted": "YV 1002 to 1049"
+  },
+  "attributes": {},
+  "canonical_key": null,
+  "deleted": false,
+  "breadcrumbs": []
+ },
+ "names": [
+  {
+   "id": "01a1815c-fb3c-7a6c-969e-a453d31363ed",
+   "name": "Dirk",
+   "kind": "primary",
+   "used_by": null,
+   "used_by_label": null,
+   "language": null,
+   "valid": null,
+   "era_label": null,
+   "tone": null,
+   "approval": "approved",
+   "locked": false,
+   "visibility": "public",
+   "note": null,
+   "version": 1
+  },
+  {
+   "id": "01a1815c-fb6c-7751-9ddf-625931e19eff",
+   "name": "Grey Dirk",
+   "kind": "epithet",
+   "used_by": null,
+   "used_by_label": "the people of Test Vale",
+   "language": null,
+   "valid": null,
+   "era_label": null,
+   "tone": "affectionate",
+   "approval": "approved",
+   "locked": false,
+   "visibility": "public",
+   "note": null,
+   "version": 1
+  }
+ ],
+ "details": {},
+ "infobox": [
+  {
+   "label": "Born",
+   "from": "span.start",
+   "values": [
+    {
+     "text": "YV 1002"
+    }
+   ]
+  },
+  {
+   "label": "Died",
+   "from": "span.end",
+   "values": [
+    {
+     "text": "YV 1049"
+    }
+   ]
+  },
+  {
+   "label": "Children",
+   "from": "stmt:parent_of:out",
+   "values": [
+    {
+     "text": "Cato",
+     "ref": "cato",
+     "statement_id": "00000000-0000-7000-8000-000000000104",
+     "visibility": "designer",
+     "role": "father"
+    }
+   ]
+  },
+  {
+   "label": "Member of",
+   "from": "stmt:member_of:out",
+   "values": [
+    {
+     "text": "Kingdom of Testmark",
+     "ref": "testmark",
+     "statement_id": "00000000-0000-7000-8000-000000000120",
+     "visibility": "public",
+     "role": "marshal",
+     "when": "YV 1015 to 1049"
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "id": "00000000-0000-7000-8000-000000000408",
+   "key": "lead",
+   "section_type": "lead",
+   "heading": null,
+   "level": 2,
+   "position": 0.0,
+   "visibility": "public",
+   "canon": "approved",
+   "version": 1,
+   "word_count": 24,
+   "generated": false,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "body_md": "Dirk was marshal of [[testmark]]. He commanded the host at the [[battle-at-the-ford|Battle at the Ford]] and held [[eastbrook]] through the siege of YV 1021.",
+   "html": "<p>Dirk was marshal of <a class=\"wikilink\" href=\"/wiki/testmark\" data-entity=\"00000000-0000-7000-8000-000000000010\" data-slug=\"testmark\">Kingdom of Testmark</a>. He commanded the host at the <a class=\"wikilink\" href=\"/wiki/battle-at-the-ford\" data-entity=\"00000000-0000-7000-8000-000000000040\" data-slug=\"battle-at-the-ford\">Battle at the Ford</a> and held <a class=\"wikilink\" href=\"/wiki/eastbrook\" data-entity=\"00000000-0000-7000-8000-000000000033\" data-slug=\"eastbrook\">Eastbrook</a> through the siege of YV 1021.</p>\n"
+  },
+  {
+   "id": "00000000-0000-7000-8000-00000000c407",
+   "key": "secret-history",
+   "section_type": "secret_history",
+   "heading": "Secret history",
+   "level": 2,
+   "position": 60.0,
+   "visibility": "designer",
+   "canon": "approved",
+   "version": 1,
+   "word_count": 7,
+   "generated": false,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "body_md": "CANARY-DESIGNER-SECRET-HISTORY. Dirk wrote to [[cato]] from [[hidden-hamlet]].",
+   "html": "<p>CANARY-DESIGNER-SECRET-HISTORY. Dirk wrote to <a class=\"wikilink\" href=\"/wiki/cato\" data-entity=\"00000000-0000-7000-8000-000000000022\" data-slug=\"cato\">Cato</a> from <a class=\"wikilink\" href=\"/wiki/hidden-hamlet\" data-entity=\"00000000-0000-7000-8000-000000000032\" data-slug=\"hidden-hamlet\">Hidden Hamlet</a>.</p>\n"
+  },
+  {
+   "id": "01a1815c-fbf3-7f84-8e5a-6347211ce507",
+   "key": "beliefs",
+   "section_type": "beliefs",
+   "heading": "Beliefs",
+   "level": 2,
+   "position": 64.0,
+   "visibility": "public",
+   "canon": "draft",
+   "version": 1,
+   "word_count": 0,
+   "generated": true,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "items": [],
+   "markdown": "",
+   "link": "https://lore.example.test/beliefs/dirk",
+   "html": ""
+  },
+  {
+   "id": "01a1815c-fbf3-7f35-9c1e-51c50fc1e259",
+   "key": "relationships",
+   "section_type": "relationships",
+   "heading": "Relationships",
+   "level": 2,
+   "position": 65.0,
+   "visibility": "public",
+   "canon": "draft",
+   "version": 1,
+   "word_count": 0,
+   "generated": true,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "items": [
+    {
+     "label": "member of",
+     "other": {
+      "ref": "testmark",
+      "id": "00000000-0000-7000-8000-000000000010",
+      "title": "Kingdom of Testmark",
+      "type": "faction",
+      "kind": "faction.realm",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "The realm of the Test Vale, ruled from Lampton.",
+      "name_here": "Kingdom of Testmark"
+     },
+     "statement_id": "00000000-0000-7000-8000-000000000120",
+     "valid": {
+      "from": 1015.0,
+      "to": 1050.0,
+      "precision": "year",
+      "label": "YV 1015 to 1049",
+      "formatted": "YV 1015 to 1049"
+     },
+     "visibility": "public"
+    },
+    {
+     "label": "knows",
+     "other": {
+      "ref": "fenn",
+      "id": "00000000-0000-7000-8000-000000000029",
+      "title": "Fenn",
+      "type": "individual",
+      "kind": "individual.person",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "A ferryman at the ford below Lampton.",
+      "name_here": "Fenn"
+     },
+     "statement_id": "00000000-0000-7000-8000-00000000c103",
+     "valid": null,
+     "visibility": "restricted"
+    },
+    {
+     "label": "knows",
+     "other": {
+      "ref": "bera",
+      "id": "00000000-0000-7000-8000-000000000021",
+      "title": "Bera",
+      "type": "individual",
+      "kind": "individual.person",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "Aldo's second wife, mother of Cato and Dana.",
+      "name_here": "Bera"
+     },
+     "statement_id": "00000000-0000-7000-8000-00000000c101",
+     "valid": null,
+     "visibility": "designer"
+    }
+   ],
+   "markdown": "- member of [[testmark|Kingdom of Testmark]] (YV 1015 to 1049)\n- knows [[fenn|Fenn]]\n- knows [[bera|Bera]]",
+   "link": null,
+   "html": "<ul>\n<li>member of <a class=\"wikilink\" href=\"/wiki/testmark\" data-entity=\"00000000-0000-7000-8000-000000000010\" data-slug=\"testmark\">Kingdom of Testmark</a> (YV 1015 to 1049)</li>\n<li>knows <a class=\"wikilink\" href=\"/wiki/fenn\" data-entity=\"00000000-0000-7000-8000-000000000029\" data-slug=\"fenn\">Fenn</a></li>\n<li>knows <a class=\"wikilink\" href=\"/wiki/bera\" data-entity=\"00000000-0000-7000-8000-000000000021\" data-slug=\"bera\">Bera</a></li>\n</ul>\n"
+  },
+  {
+   "id": "01a1815c-fbf3-7f5e-b0d4-be39d95a2928",
+   "key": "family",
+   "section_type": "family",
+   "heading": "Family",
+   "level": 2,
+   "position": 66.0,
+   "visibility": "public",
+   "canon": "draft",
+   "version": 1,
+   "word_count": 0,
+   "generated": true,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "items": [
+    {
+     "label": "parent of",
+     "other": {
+      "ref": "cato",
+      "id": "00000000-0000-7000-8000-000000000022",
+      "title": "Cato",
+      "type": "individual",
+      "kind": "individual.person",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "Novice of the Order of the Lamp.",
+      "name_here": "Cato"
+     },
+     "statement_id": "00000000-0000-7000-8000-000000000104",
+     "valid": null,
+     "visibility": "designer"
+    }
+   ],
+   "markdown": "- parent of [[cato|Cato]]",
+   "link": "https://lore.example.test/family/dirk",
+   "html": "<ul>\n<li>parent of <a class=\"wikilink\" href=\"/wiki/cato\" data-entity=\"00000000-0000-7000-8000-000000000022\" data-slug=\"cato\">Cato</a></li>\n</ul>\n"
+  },
+  {
+   "id": "01a1815c-fbf3-7fac-b784-358e3383f461",
+   "key": "rumours",
+   "section_type": "rumours",
+   "heading": "Rumours",
+   "level": 2,
+   "position": 68.0,
+   "visibility": "public",
+   "canon": "draft",
+   "version": 1,
+   "word_count": 0,
+   "generated": true,
+   "in_world": true,
+   "author_canon": false,
+   "source_ref": null,
+   "items": [],
+   "markdown": "",
+   "link": "https://lore.example.test/compare/dirk",
+   "html": ""
+  }
+ ],
+ "edit_tag": null,
+ "categories": [],
+ "statements": null,
+ "beliefs": null,
+ "accounts": null,
+ "shapes": null,
+ "history": null,
+ "media": [],
+ "external": [],
+ "pending": [],
+ "as_of": null,
+ "viewpoint": null,
+ "last_review": null,
+ "preview_change_set": null,
+ "preview": null,
+ "redirected_from": null,
+ "ui_url": "https://lore.example.test/wiki/dirk"
+}

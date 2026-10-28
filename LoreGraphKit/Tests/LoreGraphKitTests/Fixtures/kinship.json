@@ -1,0 +1,63 @@
+{
+ "relationship": "parent's sibling",
+ "inverse": "nephew",
+ "sentence": "Dana is Edwin's parent's sibling.",
+ "via": "blood",
+ "common_ancestors": [
+  {
+   "ref": "aldo",
+   "id": "00000000-0000-7000-8000-000000000020",
+   "title": "Aldo",
+   "type": "individual",
+   "kind": "individual.person",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Lord of Lampton, remembered as the victor of the Ford.",
+   "depth_a": 2,
+   "depth_b": 1
+  }
+ ],
+ "path": [
+  {
+   "ref": "edwin",
+   "id": "00000000-0000-7000-8000-000000000028",
+   "title": "Edwin",
+   "type": "individual",
+   "kind": "individual.person",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Son of Cato and Mira."
+  },
+  {
+   "ref": "cato",
+   "id": "00000000-0000-7000-8000-000000000022",
+   "title": "Cato",
+   "type": "individual",
+   "kind": "individual.person",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Novice of the Order of the Lamp."
+  },
+  {
+   "ref": "aldo",
+   "id": "00000000-0000-7000-8000-000000000020",
+   "title": "Aldo",
+   "type": "individual",
+   "kind": "individual.person",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Lord of Lampton, remembered as the victor of the Ford."
+  },
+  {
+   "ref": "dana",
+   "id": "00000000-0000-7000-8000-000000000024",
+   "title": "Dana",
+   "type": "individual",
+   "kind": "individual.person",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Daughter of Aldo and Bera, later of Eastbrook."
+  }
+ ],
+ "ui_url": "https://lore.example.test/family/edwin?sel=dana"
+}

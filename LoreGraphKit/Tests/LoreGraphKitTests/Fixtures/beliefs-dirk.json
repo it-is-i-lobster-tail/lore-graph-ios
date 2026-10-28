@@ -1,0 +1,88 @@
+{
+ "holder": {
+  "ref": "dirk",
+  "id": "00000000-0000-7000-8000-000000000023",
+  "title": "Dirk",
+  "type": "individual",
+  "kind": "individual.person",
+  "visibility": "public",
+  "canon": "approved"
+ },
+ "as_of": {
+  "from": 1040.0,
+  "to": 1041.0,
+  "precision": "year",
+  "label": "YV 1040",
+  "formatted": "YV 1040"
+ },
+ "groups": [
+  {
+   "ref": "testmark",
+   "id": "00000000-0000-7000-8000-000000000010",
+   "title": "Kingdom of Testmark",
+   "type": "faction",
+   "via": "member_of",
+   "depth": 1,
+   "since": 1015.0,
+   "since_formatted": "YV 1015",
+   "path": [
+    "testmark"
+   ]
+  }
+ ],
+ "beliefs": [
+  {
+   "id": "00000000-0000-7000-8000-000000000202",
+   "proposition": "Aldo won the Ford.",
+   "proposition_key": "ford:commander",
+   "kind": "opinion",
+   "holder": "testmark",
+   "holder_title": "Kingdom of Testmark",
+   "stance": "believes",
+   "conviction": 2,
+   "openness": "open",
+   "held": {
+    "from": 1022.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1022",
+    "formatted": "since YV 1022"
+   },
+   "acquisition": "told",
+   "acquired_from": {
+    "ref": "testmark-chronicle",
+    "id": "00000000-0000-7000-8000-000000000050",
+    "title": "Testmark Chronicle",
+    "type": "story",
+    "kind": "story.chronicle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The court's history of the Ford, written for Aldo's house."
+   },
+   "formed_by_event": null,
+   "derived_from_belief_id": null,
+   "statement_id": "00000000-0000-7000-8000-000000000110",
+   "about": [],
+   "inheritable": true,
+   "shows_as": null,
+   "visibility": "public",
+   "canon": "approved",
+   "version": 1,
+   "retired_at": null,
+   "sentence": "Kingdom of Testmark believes: Aldo won the Ford.",
+   "truth": "false",
+   "truth_note": "Dirk led; the chronicle flatters Aldo.",
+   "inherited": true,
+   "depth": 1,
+   "via": "member_of",
+   "overridden_by": null
+  }
+ ],
+ "counts": {
+  "own": 0,
+  "inherited": 1,
+  "overridden": 0,
+  "designer_only": 0
+ },
+ "ui_url": "https://lore.example.test/beliefs/dirk?y=1040"
+}

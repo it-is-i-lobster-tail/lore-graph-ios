@@ -1,0 +1,317 @@
+{
+ "statement": {
+  "id": "00000000-0000-7000-8000-000000000108",
+  "subject": {
+   "ref": "dirk",
+   "id": "00000000-0000-7000-8000-000000000023",
+   "title": "Dirk",
+   "type": "individual",
+   "kind": "individual.person",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Marshal of Testmark who led the host at the Ford."
+  },
+  "predicate": "commanded_at",
+  "label": "commanded at",
+  "object": {
+   "ref": "battle-at-the-ford",
+   "id": "00000000-0000-7000-8000-000000000040",
+   "title": "Battle at the Ford",
+   "type": "event",
+   "kind": "event.battle",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+  },
+  "value": null,
+  "qualifiers": {},
+  "role": null,
+  "side": {
+   "ref": "testmark",
+   "id": "00000000-0000-7000-8000-000000000010",
+   "title": "Kingdom of Testmark",
+   "type": "faction",
+   "kind": "faction.realm",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "The realm of the Test Vale, ruled from Lampton."
+  },
+  "stance": null,
+  "place": null,
+  "valid": null,
+  "according_to": null,
+  "claim_relation": null,
+  "record_statement_id": null,
+  "certainty": "certain",
+  "visibility": "public",
+  "canon": "approved",
+  "rank": 0,
+  "source_quote": null,
+  "source_ref": null,
+  "note": null,
+  "recorded_at": "2026-10-28T07:15:16.903645Z",
+  "retired_at": null,
+  "version": 1,
+  "sentence": "Dirk commanded at Battle at the Ford for Kingdom of Testmark.",
+  "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000108"
+ },
+ "record": null,
+ "claims": [
+  {
+   "id": "00000000-0000-7000-8000-000000000110",
+   "subject": {
+    "ref": "aldo",
+    "id": "00000000-0000-7000-8000-000000000020",
+    "title": "Aldo",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Lord of Lampton, remembered as the victor of the Ford."
+   },
+   "predicate": "commanded_at",
+   "label": "commanded at",
+   "object": {
+    "ref": "battle-at-the-ford",
+    "id": "00000000-0000-7000-8000-000000000040",
+    "title": "Battle at the Ford",
+    "type": "event",
+    "kind": "event.battle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+   },
+   "value": null,
+   "qualifiers": {},
+   "role": null,
+   "side": {
+    "ref": "testmark",
+    "id": "00000000-0000-7000-8000-000000000010",
+    "title": "Kingdom of Testmark",
+    "type": "faction",
+    "kind": "faction.realm",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The realm of the Test Vale, ruled from Lampton."
+   },
+   "stance": null,
+   "place": null,
+   "valid": null,
+   "according_to": {
+    "ref": "testmark-chronicle",
+    "id": "00000000-0000-7000-8000-000000000050",
+    "title": "Testmark Chronicle",
+    "type": "story",
+    "kind": "story.chronicle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The court's history of the Ford, written for Aldo's house."
+   },
+   "claim_relation": "contradicts",
+   "record_statement_id": "00000000-0000-7000-8000-000000000108",
+   "certainty": "certain",
+   "visibility": "public",
+   "canon": "approved",
+   "rank": 0,
+   "source_quote": null,
+   "source_ref": null,
+   "note": null,
+   "recorded_at": "2026-10-28T07:15:16.903645Z",
+   "retired_at": null,
+   "version": 1,
+   "sentence": "According to Testmark Chronicle, Aldo commanded at Battle at the Ford for Kingdom of Testmark.",
+   "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000110"
+  },
+  {
+   "id": "00000000-0000-7000-8000-000000000129",
+   "subject": {
+    "ref": "dirk",
+    "id": "00000000-0000-7000-8000-000000000023",
+    "title": "Dirk",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Marshal of Testmark who led the host at the Ford."
+   },
+   "predicate": "commanded_at",
+   "label": "commanded at",
+   "object": {
+    "ref": "battle-at-the-ford",
+    "id": "00000000-0000-7000-8000-000000000040",
+    "title": "Battle at the Ford",
+    "type": "event",
+    "kind": "event.battle",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Testmark's victory over the Eastmarch, summer YV 1020."
+   },
+   "value": null,
+   "qualifiers": {},
+   "role": null,
+   "side": {
+    "ref": "testmark",
+    "id": "00000000-0000-7000-8000-000000000010",
+    "title": "Kingdom of Testmark",
+    "type": "faction",
+    "kind": "faction.realm",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "The realm of the Test Vale, ruled from Lampton."
+   },
+   "stance": null,
+   "place": null,
+   "valid": null,
+   "according_to": {
+    "ref": "ballad-of-the-ford",
+    "id": "00000000-0000-7000-8000-000000000051",
+    "title": "Ballad of the Ford",
+    "type": "story",
+    "kind": "story.song",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "A song of the vale that remembers who led."
+   },
+   "claim_relation": "agrees",
+   "record_statement_id": "00000000-0000-7000-8000-000000000108",
+   "certainty": "certain",
+   "visibility": "public",
+   "canon": "approved",
+   "rank": 0,
+   "source_quote": null,
+   "source_ref": null,
+   "note": null,
+   "recorded_at": "2026-10-28T07:15:16.903645Z",
+   "retired_at": null,
+   "version": 1,
+   "sentence": "According to Ballad of the Ford, Dirk commanded at Battle at the Ford for Kingdom of Testmark.",
+   "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000129"
+  }
+ ],
+ "omitted_by": [
+  {
+   "account": {
+    "ref": "testmark-chronicle",
+    "title": "Testmark Chronicle",
+    "id": "00000000-0000-7000-8000-000000000050"
+   },
+   "note": "Leaves out who really led.",
+   "visibility": "designer"
+  },
+  {
+   "account": {
+    "ref": "ferrymans-rumour",
+    "title": "The ferryman's rumour",
+    "id": "00000000-0000-7000-8000-000000000052"
+   },
+   "note": "CANARY-DESIGNER-OMISSION",
+   "visibility": "designer"
+  }
+ ],
+ "beliefs": [
+  {
+   "id": "00000000-0000-7000-8000-000000000204",
+   "holder": {
+    "ref": "cato",
+    "id": "00000000-0000-7000-8000-000000000022",
+    "title": "Cato",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Novice of the Order of the Lamp."
+   },
+   "kind": "knowledge",
+   "proposition": "Dirk won the Ford.",
+   "stance": "believes",
+   "openness": "secret",
+   "held": {
+    "from": 1050.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1050",
+    "formatted": "since YV 1050"
+   },
+   "visibility": "designer",
+   "canon": "approved"
+  }
+ ],
+ "who_knows": [
+  {
+   "holder": {
+    "ref": "cato",
+    "id": "00000000-0000-7000-8000-000000000022",
+    "title": "Cato",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Novice of the Order of the Lamp."
+   },
+   "stance": "believes",
+   "openness": "secret",
+   "acquisition": "told",
+   "belief_id": "00000000-0000-7000-8000-000000000204",
+   "since": {
+    "from": 1050.0,
+    "to": null,
+    "precision": "year",
+    "label": "since YV 1050",
+    "formatted": "since YV 1050"
+   },
+   "how": "belief"
+  },
+  {
+   "holder": {
+    "ref": "aldo",
+    "id": "00000000-0000-7000-8000-000000000020",
+    "title": "Aldo",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Lord of Lampton, remembered as the victor of the Ford."
+   },
+   "stance": "believes",
+   "openness": null,
+   "acquisition": "witnessed",
+   "belief_id": null,
+   "since": null,
+   "how": "took part in the event (inferred)"
+  },
+  {
+   "holder": {
+    "ref": "dirk",
+    "id": "00000000-0000-7000-8000-000000000023",
+    "title": "Dirk",
+    "type": "individual",
+    "kind": "individual.person",
+    "visibility": "public",
+    "canon": "approved",
+    "short_description": "Marshal of Testmark who led the host at the Ford."
+   },
+   "stance": "believes",
+   "openness": null,
+   "acquisition": "witnessed",
+   "belief_id": null,
+   "since": null,
+   "how": "took part in the event (inferred)"
+  }
+ ],
+ "source": null,
+ "history": [
+  {
+   "id": 107,
+   "at": "2026-10-28T07:15:16.903645Z",
+   "op": "insert",
+   "actor_kind": "import",
+   "client_id": "fixtures",
+   "change_set_id": null,
+   "edit_level": "minor",
+   "changed": {}
+  }
+ ],
+ "pending": [],
+ "preview": null,
+ "ui_url": "https://lore.example.test/records/00000000-0000-7000-8000-000000000108"
+}

@@ -1,0 +1,39 @@
+{
+ "query": "lam",
+ "mode": "suggest",
+ "match": null,
+ "ambiguous": false,
+ "candidates": [
+  {
+   "ref": "lampton",
+   "id": "00000000-0000-7000-8000-000000000031",
+   "title": "Lampton",
+   "type": "location",
+   "kind": "location.settlement",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "A city of lamps at the ford of the Test River.",
+   "matched": "Lampton",
+   "how": "prefix",
+   "pending": false,
+   "importance": 5,
+   "ui_url": "https://lore.example.test/wiki/lampton"
+  },
+  {
+   "ref": "order-of-the-lamp",
+   "id": "00000000-0000-7000-8000-000000000011",
+   "title": "Order of the Lamp",
+   "type": "faction",
+   "kind": "faction.order",
+   "visibility": "public",
+   "canon": "approved",
+   "short_description": "Keepers of the lamps of Lampton.",
+   "matched": "Order of the Lamp",
+   "how": "word",
+   "pending": false,
+   "importance": 1,
+   "ui_url": "https://lore.example.test/wiki/order-of-the-lamp"
+  }
+ ],
+ "ui_url": "https://lore.example.test/search?q=lam"
+}
