@@ -452,9 +452,11 @@ public final class AppModel {
     /// A typed server address, checked.
     public static func serverURL(_ text: String) throws -> URL {
         let t = text.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !t.isEmpty, let u = URL(string: t.contains("://") ? t : "https://" + t), u.host != nil else {
+        guard !t.isEmpty, var u = URL(string: t.contains("://") ? t : "https://" + t), u.host != nil else {
             throw APIError.notLoregraph("Type the address of your loregraph server, such as lore.example.com.")
         }
+        // a bare local address (localhost:8000) means this device's own server, which serves plain http
+        if !t.contains("://"), isLocal(u), let plain = URL(string: "http://" + t) { u = plain }
         let n = OAuthClient.normalised(u)
         guard n.scheme == "https" || (n.scheme == "http" && Self.isLocal(n)) else {
             throw APIError.notLoregraph("Use an https address. Plain http only works for this device's own network.")

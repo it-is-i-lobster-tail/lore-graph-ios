@@ -66,7 +66,7 @@ struct SignInView: View {
                     }
                 }
                 Section {
-                    DisclosureGroup("Use a personal token instead", isExpanded: $showToken) {
+                    DisclosureGroup(isExpanded: $showToken) {
                         SecureField("lgp_…", text: $token)
                             .textInputAutocapitalization(.never)
                             .autocorrectionDisabled()
@@ -77,8 +77,11 @@ struct SignInView: View {
                         Text("Make a read-only token in the web app under Settings, Connections.")
                             .font(.footnote)
                             .foregroundStyle(.secondary)
+                    } label: {
+                        // on the label only: on the group it would replace the identifiers inside it
+                        Text("Use a personal token instead")
+                            .accessibilityIdentifier("tokenDisclosure")
                     }
-                    .accessibilityIdentifier("tokenDisclosure")
                 }
             }
             .navigationTitle("loregraph")

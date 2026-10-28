@@ -73,7 +73,8 @@ final class LoreGraphUITests: XCTestCase {
 
         // a page
         app.buttons["browse-individual"].tap()
-        let firstPage = app.collectionViews.cells.element(boundBy: 0)
+        // the list's first cell is the sort picker; the page rows come after it
+        let firstPage = app.buttons.matching(identifier: "pageRow").firstMatch
         if firstPage.waitForExistence(timeout: 20) {
             snapshot("04-browse-individuals")
             firstPage.tap()
@@ -85,6 +86,11 @@ final class LoreGraphUITests: XCTestCase {
 
         for (tab, name) in [("Map", "06-map"), ("Timeline", "07-timeline"), ("Family", "08-family"), ("Graph", "09-graph")] {
             openTab(tab)
+            if tab == "Family" || tab == "Graph" {
+                // these open on a picker; draw the page read above, from its recently read row
+                let recent = app.collectionViews.buttons.firstMatch
+                if recent.waitForExistence(timeout: 5) { recent.tap() }
+            }
             sleep(4)
             snapshot(name)
         }
@@ -93,7 +99,9 @@ final class LoreGraphUITests: XCTestCase {
         if field.waitForExistence(timeout: 10) {
             field.tap()
             field.typeText("a")
-            sleep(2)
+            // submit: one letter is too short for suggestions, and the keyboard would cover the tab bar
+            field.typeText("\n")
+            _ = app.collectionViews.buttons.firstMatch.waitForExistence(timeout: 15)
             snapshot("10-search")
         }
         openTab("Wiki")
@@ -125,6 +133,10 @@ final class LoreGraphUITests: XCTestCase {
         passwordField.typeText(password)
         web.buttons["Sign in"].firstMatch.tap()
 
+        // the system offers to save the password over the next page; decline it
+        let notNow = app.buttons["Not Now"].firstMatch
+        if notNow.waitForExistence(timeout: 5) { notNow.tap() }
+
         let approve = web.buttons["Approve"].firstMatch
         XCTAssertTrue(approve.waitForExistence(timeout: 20), "the consent page never appeared")
         snapshot("01c-consent")
@@ -151,6 +163,9 @@ final class LoreGraphUITests: XCTestCase {
     @MainActor
     func openSettings() {
         let settings = app.buttons["settings"].firstMatch
+        // settings sits on a tab's first screen; go back up from a page opened earlier
+        let back = app.navigationBars.buttons["BackButton"].firstMatch
+        for _ in 0..<5 where !settings.waitForExistence(timeout: 2) && back.exists { back.tap() }
         XCTAssertTrue(settings.waitForExistence(timeout: 10))
         settings.tap()
         XCTAssertTrue(app.navigationBars["Settings"].waitForExistence(timeout: 10))
@@ -185,8 +200,15 @@ final class LoreGraphUITests: XCTestCase {
     @MainActor
     func openTab(_ title: String) {
         let tab = app.tabBars.buttons[title].firstMatch
+        let more = app.tabBars.buttons["More"].firstMatch
         if tab.waitForExistence(timeout: 3) {
             tab.tap()
+        } else if more.exists {
+            // iPhone: the tabs that don't fit sit in More's list
+            more.tap()
+            let row = app.cells.staticTexts[title].firstMatch
+            XCTAssertTrue(row.waitForExistence(timeout: 5), "\(title) isn't in More")
+            row.tap()
         } else {
             app.buttons[title].firstMatch.tap()
         }
@@ -220,12 +242,18 @@ final class LoreGraphUITests: XCTestCase {
 }
 
 extension XCUIElement {
-    /// Clears a text field and types new text.
-    func replaceText(_ text: String) {
-        tap()
+    /// Clears a text field, types new text, checks the field holds exactly that text, and closes
+    /// the keyboard so it doesn't cover the controls below. The check matters: a field that kept
+    /// part of its old value (the default server) must never be signed in to.
+    @MainActor
+    func replaceText(_ text: String, file: StaticString = #filePath, line: UInt = #line) {
+        // a plain tap puts the cursor where the finger lands, mid-text; start from the end instead
+        coordinate(withNormalizedOffset: CGVector(dx: 0.97, dy: 0.5)).tap()
         if let current = value as? String, !current.isEmpty, current != placeholderValue {
-            typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: current.count))
+            typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: current.count + 2))
         }
         typeText(text)
+        XCTAssertEqual(value as? String, text, "the field didn't take the new text", file: file, line: line)
+        typeText("\n")
     }
 }
