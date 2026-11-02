@@ -332,10 +332,12 @@ public final class MapModel {
     }
 
     /// What to draw, bottom first: for each needed tile its piece, or while it loads the
-    /// nearest level above that has one; then the derived layers and the selection.
+    /// nearest level above that has one, limited to the tiles it stands in for (so it never
+    /// doubles a loaded neighbour); then the derived layers and the selection.
     public var drawList: [ScenePiece] {
         var out: [ScenePiece] = []
-        var fallback = Set<TileRequest>()
+        var standIns: [ScenePiece] = []
+        var standInIndex: [TileRequest: Int] = [:]
         for r in neededTiles {
             if let p = pieces[r] {
                 out.append(p)
@@ -343,20 +345,39 @@ public final class MapModel {
             }
             var a = r.parent
             while let q = a {
-                if let p = pieces[q] {
-                    if fallback.insert(q).inserted { out.insert(p, at: 0) }
+                if var p = pieces[q] {
+                    if let i = standInIndex[q] {
+                        standIns[i].clip?.append(r.tile)
+                    } else {
+                        p.clip = [r.tile]
+                        standInIndex[q] = standIns.count
+                        standIns.append(p)
+                    }
                     break
                 }
                 a = q.parent
             }
         }
+        out = standIns + out
         for l in derivedLayers where visible.contains(l.key) {
             if let p = derived[l.key] { out.append(p) }
         }
         let sorted = out.enumerated().sorted { a, b in
             a.element.layerZ != b.element.layerZ ? a.element.layerZ < b.element.layerZ : a.offset < b.offset
         }.map(\.element)
-        return highlight.map { sorted + [$0] } ?? sorted
+        return sorted + highlights(over: sorted)
+    }
+
+    /// The selection outline. A feature cut across tiles is outlined in every tile that holds
+    /// it, each part limited to its tile, so the outline follows the whole shape.
+    func highlights(over pieces: [ScenePiece]) -> [ScenePiece] {
+        guard let highlight else { return [] }
+        guard case .tile = highlight.space, case .feature(let info, _) = selection else { return [highlight] }
+        let parts = pieces.compactMap { p -> ScenePiece? in
+            guard case .tile = p.space else { return nil }
+            return p.highlight(of: info, palette: palette)
+        }
+        return parts.isEmpty ? [highlight] : parts
     }
 
     /// The base map images to draw, with a parent standing in while a tile loads.
