@@ -166,17 +166,30 @@ struct MapCanvas: View {
         let t = piece.transform(in: vp)
         let scale = max(abs(t.a), 1e-12)
         let affine = CGAffineTransform(a: t.a, b: 0, c: 0, d: t.d, tx: t.tx, ty: t.ty)
+        // A tile's shapes run a little past its edges, cut straight there: limit areas and lines
+        // to the piece's tiles so the cuts never show and neighbours' fills never overlap.
+        // Markers and halos are drawn whole, by the one tile their point falls in.
+        let rects = piece.clipRects(in: vp)
+        var clipped = ctx
+        if let rects {
+            var area = Path()
+            for r in rects { area.addRect(CGRect(x: r.minX, y: r.minY, width: r.size.width, height: r.size.height)) }
+            clipped.clip(to: area)
+        }
+        let owned = { (p: Point) in piece.owns(Point(t.a * p.x + t.tx, t.d * p.y + t.ty), clipRects: rects) }
         for (i, g) in piece.groups.enumerated() {
             let (rings, lines) = paths.paths(piece.id.isEmpty ? nil : "\(piece.id)#\(i)", group: g)
             let st = g.style
-            if !g.rings.isEmpty || !g.lines.isEmpty || st.uncertaintyMetres != nil {
+            if let r = st.uncertaintyMetres, r > 0, !g.halos.isEmpty {
                 var c = ctx
                 c.concatenate(affine)
-                if let r = st.uncertaintyMetres, r > 0 {
-                    var halo = Path()
-                    for p in g.halos { halo.addEllipse(in: CGRect(x: p.x - r, y: p.y - r, width: 2 * r, height: 2 * r)) }
-                    c.fill(halo, with: .color(Color(pal.ink.opacity(0.08))))
-                }
+                var halo = Path()
+                for p in g.halos where owned(p) { halo.addEllipse(in: CGRect(x: p.x - r, y: p.y - r, width: 2 * r, height: 2 * r)) }
+                c.fill(halo, with: .color(Color(pal.ink.opacity(0.08))))
+            }
+            if !g.rings.isEmpty || !g.lines.isEmpty {
+                var c = clipped
+                c.concatenate(affine)
                 if let fill = st.fill, !g.rings.isEmpty {
                     c.fill(rings, with: .color(Color(fill)), style: FillStyle(eoFill: true))
                 }
@@ -190,7 +203,7 @@ struct MapCanvas: View {
             if let marker = st.marker, !g.points.isEmpty {
                 var m = Path()
                 let r = st.markerRadius
-                for p in g.points {
+                for p in g.points where owned(p) {
                     let s = CGPoint(x: t.a * p.x + t.tx, y: t.d * p.y + t.ty)
                     guard s.x > -r * 2, s.y > -r * 2, s.x < vp.size.width + r * 2, s.y < vp.size.height + r * 2 else { continue }
                     switch marker {

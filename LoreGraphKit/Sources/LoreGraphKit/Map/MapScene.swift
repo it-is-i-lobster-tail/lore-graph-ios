@@ -46,14 +46,22 @@ public struct ScenePiece: Hashable, Sendable {
     public var groups: [StyledGroup]
     public var labels: [LabelSeed]
     public var hits: [HitTarget]
+    /// The tiles this drawing may cover. A vector tile carries its features a little past its
+    /// edges (the server's buffer) with polygons cut there, so drawn unclipped the cut edges
+    /// show as straight lines and fills overlap the neighbours'. Nil means the piece's own tile
+    /// for a tile piece and no limit for one in metres; a parent standing in for children that
+    /// are still loading covers only those children.
+    public var clip: [TileID]?
 
-    public init(id: String = "", space: Space, layerZ: Int, groups: [StyledGroup], labels: [LabelSeed], hits: [HitTarget]) {
+    public init(id: String = "", space: Space, layerZ: Int, groups: [StyledGroup], labels: [LabelSeed], hits: [HitTarget],
+                clip: [TileID]? = nil) {
         self.id = id
         self.space = space
         self.layerZ = layerZ
         self.groups = groups
         self.labels = labels
         self.hits = hits
+        self.clip = clip
     }
 
     public static func empty(_ space: Space, layerZ: Int = 0, id: String = "") -> ScenePiece {
@@ -74,6 +82,37 @@ public struct ScenePiece: Hashable, Sendable {
         }
     }
 
+    /// The screen rectangles this piece is drawn in, or nil when it is not limited.
+    public func clipRects(in viewport: Viewport) -> [Rect]? {
+        switch space {
+        case .tile(let t, _): return (clip ?? [t]).map { viewport.frame(of: $0) }
+        case .metres: return clip.map { $0.map { viewport.frame(of: $0) } }
+        }
+    }
+
+    /// Whether a screen point is this piece's to draw: inside one of its tiles, counting each
+    /// shared edge once (left and top), so a point on the buffer is drawn by one tile only.
+    public func owns(_ s: Point, clipRects rects: [Rect]?) -> Bool {
+        guard let rects else { return true }
+        return rects.contains { s.x >= $0.minX && s.x < $0.maxX && s.y >= $0.minY && s.y < $0.maxY }
+    }
+
+    /// The selection outline of one feature as this piece holds it, limited like the piece.
+    public func highlight(of info: FeatureInfo, palette: MapPalette) -> ScenePiece? {
+        let mine = hits.filter { $0.info.id == info.id && $0.info.layer == info.layer }
+        guard !mine.isEmpty else { return nil }
+        var g = StyledGroup(style: MapStyler.selection(palette), rings: [], lines: [], points: [], halos: [])
+        for h in mine {
+            switch h.type {
+            case .polygon: g.rings += h.geometry
+            case .line: g.lines += h.geometry
+            case .point, .unknown: g.points += h.geometry.compactMap(\.first)
+            }
+        }
+        return ScenePiece(id: "highlight|\(info.id)|\(id)|\(space)", space: space, layerZ: 10_000, groups: [g], labels: [],
+                          hits: [], clip: clip)
+    }
+
     /// A point of this piece on the screen.
     public func toScreen(_ p: Point, in viewport: Viewport) -> Point {
         let t = transform(in: viewport)
@@ -87,16 +126,21 @@ public struct ScenePiece: Hashable, Sendable {
     }
 
     /// Label candidates on the screen, lines turned into anchors where they are long enough.
+    /// Labels whose anchor falls outside the piece's tiles are left to the tile that owns it.
     public func labelCandidates(in viewport: Viewport, selected: String? = nil) -> [LabelCandidate] {
-        labels.compactMap { seed in
+        let rects = clipRects(in: viewport)
+        return labels.compactMap { seed in
             let boosted = selected != nil && seed.id == selected
             if let line = seed.line {
                 let pts = line.map { toScreen($0, in: viewport) }
                 let width = LabelPlacer.size(of: seed.style).width
-                guard let (anchor, angle) = LabelPlacer.lineAnchor(pts, minLength: width * 1.1) else { return nil }
+                guard let (anchor, angle) = LabelPlacer.lineAnchor(pts, minLength: width * 1.1),
+                      owns(anchor, clipRects: rects) else { return nil }
                 return LabelCandidate(id: seed.id, style: seed.style, anchor: anchor, angle: angle, boosted: boosted)
             }
-            return LabelCandidate(id: seed.id, style: seed.style, anchor: toScreen(seed.anchor, in: viewport), boosted: boosted)
+            let anchor = toScreen(seed.anchor, in: viewport)
+            guard owns(anchor, clipRects: rects) else { return nil }
+            return LabelCandidate(id: seed.id, style: seed.style, anchor: anchor, boosted: boosted)
         }
     }
 }
@@ -299,7 +343,9 @@ public enum HitTester {
     /// The topmost feature under a screen point: markers first, then lines, then areas.
     public static func hit(_ pieces: [ScenePiece], at s: Point, in viewport: Viewport, tolerance: Double = 14) -> MapHit? {
         var best: (hit: MapHit, rank: Int, z: Int, d: Double)?
-        for piece in pieces {
+        // a tile's own buffer may answer a tap near its edge (it is the same feature), but a
+        // parent standing in for loading children answers only inside them
+        for piece in pieces where piece.clip == nil || piece.owns(s, clipRects: piece.clipRects(in: viewport)) {
             let p = piece.fromScreen(s, in: viewport)
             let scale = abs(piece.transform(in: viewport).a)
             let tol = tolerance / max(scale, 1e-12)
