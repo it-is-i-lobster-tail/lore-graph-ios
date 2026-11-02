@@ -661,4 +661,69 @@ func makeTile(layer: String = "places", extent: Int = 4096,
         #expect(HitTester.distance(Point(0, 1), toLine: [Point(0, 0), Point(0, 0)]) == 1)
         #expect(HitTester.inside(Point(0.5, 0.5), rings: [[Point(0, 0), Point(1, 0)]]) == false)
     }
+
+    /// A tile's polygons run past its edges into the server's buffer, cut straight there. The
+    /// piece is drawn only inside its own tile, so neither the cut nor a doubled fill shows.
+    @Test func tilePiecesKeepToTheirTile() throws {
+        let tile = TileID(z: 5, x: 16, y: 5)
+        var style = FeatureStyle()
+        style.fill = RGBA(0.5, 0.3, 0.3, 0.4)
+        style.stroke = RGBA(0.2, 0.2, 0.2)
+        // the whole tile and its 64-unit buffer, as the server cuts a region bigger than the tile
+        let square = [Point(-64, -64), Point(4160, -64), Point(4160, 4160), Point(-64, 4160)]
+        let info = FeatureInfo(layer: "regions", properties: ["id": .string("shape:r")])
+        let label = LabelStyle(text: "Region", rank: 3, alongLine: false, italic: false, serif: true,
+                               colour: RGBA(0, 0, 0), offsetY: 0, fontSize: 14, spacedCapitals: false)
+        let piece = ScenePiece(id: "t", space: .tile(tile, extent: 4096), layerZ: 1,
+                               groups: [StyledGroup(style: style, rings: [square], lines: [], points: [Point(4120, 10)], halos: [])],
+                               labels: [LabelSeed(id: "in", style: label, anchor: Point(2048, 2048), line: nil),
+                                        LabelSeed(id: "buffer", style: label, anchor: Point(4120, 2048), line: nil),
+                                        LabelSeed(id: "line", style: label, anchor: .zero, line: [Point(-60, 100), Point(-2, 100)])],
+                               hits: [HitTarget(info: info, type: .polygon, geometry: [square], zIndex: 0)])
+        let vp = Viewport(centre: MapProjection.toMap(LonLat(11.1, 45.5)), zoom: 5, size: Size(800, 800))
+        let frame = vp.frame(of: tile)
+        let rects = try #require(piece.clipRects(in: vp))
+        #expect(rects == [frame])
+        // each shared edge belongs to one tile: the left and top to this one
+        #expect(piece.owns(Point(frame.minX, frame.minY), clipRects: rects))
+        #expect(!piece.owns(Point(frame.maxX, frame.centre.y), clipRects: rects))
+        #expect(!piece.owns(Point(frame.centre.x, frame.maxY), clipRects: rects))
+        #expect(piece.owns(Point(-1e9, -1e9), clipRects: nil))
+        // labels anchored in the buffer are the neighbour's to place
+        #expect(piece.labelCandidates(in: vp).map(\.id) == ["in"])
+        // a tile's buffer still answers a tap near its edge
+        let justOutside = Point(frame.maxX + 1, frame.centre.y)
+        #expect(HitTester.hit([piece], at: justOutside, in: vp)?.target.info.id == "shape:r")
+        // pieces in metres are not limited unless they say so
+        var metres = ScenePiece.empty(.metres)
+        #expect(metres.clipRects(in: vp) == nil)
+        metres.clip = [tile]
+        #expect(metres.clipRects(in: vp) == [frame])
+
+        // a parent standing in for one loading child covers that child only
+        let child = TileID(z: 6, x: 33, y: 10)
+        var standIn = piece
+        standIn.clip = [child]
+        let childFrame = vp.frame(of: child)
+        #expect(standIn.clipRects(in: vp) == [childFrame])
+        #expect(HitTester.hit([standIn], at: childFrame.centre, in: vp) != nil)
+        let outsideChild = Point(childFrame.minX - 5, childFrame.centre.y)
+        #expect(frame.contains(outsideChild))
+        #expect(HitTester.hit([standIn], at: outsideChild, in: vp) == nil)
+        // the region's label sits at the parent's centre, the child's bottom-left corner: not its own
+        #expect(standIn.labelCandidates(in: vp).isEmpty)
+
+        // the selection outline of a feature, as one tile holds it, kept to the same tiles
+        let h = try #require(standIn.highlight(of: info, palette: .light))
+        #expect(h.layerZ == 10_000 && h.clip == [child] && h.space == standIn.space)
+        #expect(h.groups.first?.rings == [square])
+        #expect(piece.highlight(of: FeatureInfo(layer: "regions", properties: ["id": .string("other")]), palette: .light) == nil)
+        #expect(piece.highlight(of: FeatureInfo(layer: "routes", properties: ["id": .string("shape:r")]), palette: .light) == nil)
+        let mixed = ScenePiece(space: .tile(tile, extent: 4096), layerZ: 0, groups: [], labels: [], hits: [
+            HitTarget(info: info, type: .line, geometry: [[Point(0, 0), Point(5, 5)]], zIndex: 0),
+            HitTarget(info: info, type: .point, geometry: [[Point(9, 9)]], zIndex: 0),
+        ])
+        let g = try #require(mixed.highlight(of: info, palette: .light)?.groups.first)
+        #expect(g.lines.count == 1 && g.points == [Point(9, 9)])
+    }
 }

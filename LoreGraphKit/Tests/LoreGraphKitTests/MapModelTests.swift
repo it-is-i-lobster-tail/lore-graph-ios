@@ -174,8 +174,14 @@ private func tileZ(_ piece: ScenePiece) -> Int? {
         #expect(await eventually { m.pieces.count >= m.neededTiles.count && m.neededTiles.allSatisfy { m.pieces[$0] != nil } })
         v.zoom = 6
         m.setViewport(v)
-        // while level 6 loads, level 5 stands in
-        #expect(m.drawList.contains { tileZ($0) == 5 })
+        // while level 6 loads, level 5 stands in, only where level 6 is still missing
+        let loading = m.drawList
+        #expect(loading.contains { tileZ($0) == 5 })
+        for standIn in loading where tileZ(standIn) == 5 {
+            let clip = try #require(standIn.clip)
+            #expect(!clip.isEmpty && clip.allSatisfy { $0.z == 6 })
+            #expect(clip.allSatisfy { t in m.neededTiles.contains { $0.tile == t && m.pieces[$0] == nil } })
+        }
         #expect(await eventually { m.neededTiles.allSatisfy { m.pieces[$0] != nil } })
         #expect(!m.drawList.contains { tileZ($0) == 5 })
 
@@ -314,6 +320,33 @@ private func tileZ(_ piece: ScenePiece) -> Int? {
         for key in m.visible { m.toggle(key) }
         await m.tap(at: centre)
         #expect(m.selection == nil)
+    }
+
+    /// A shape cut across tiles is outlined in every tile that holds it, not just the tapped one.
+    @Test func outlinesTheWholeShapeAcrossTiles() async throws {
+        let stack = Stack()
+        let m = MapModel(context: stack.context())
+        await m.load()
+        let info = FeatureInfo(layer: "regions", properties: ["id": "shape:r"])
+        let ring = [Point(0, 0), Point(4160, 0), Point(4160, 4096)]
+        func tilePiece(_ x: Int, holds: Bool) -> ScenePiece {
+            let other = FeatureInfo(layer: "regions", properties: ["id": "shape:other"])
+            return ScenePiece(id: "t\(x)", space: .tile(TileID(z: 5, x: x, y: 5), extent: 4096), layerZ: 1, groups: [], labels: [],
+                              hits: [HitTarget(info: holds ? info : other, type: .polygon, geometry: [ring], zIndex: 0)])
+        }
+        let pieces = [tilePiece(16, holds: true), tilePiece(17, holds: true), tilePiece(18, holds: false), .empty(.metres)]
+        await m.select(MapHit(target: pieces[0].hits[0], space: pieces[0].space))
+        let outlines = m.highlights(over: pieces)
+        #expect(outlines.map(\.space) == [pieces[0].space, pieces[1].space])
+        #expect(outlines.allSatisfy { $0.layerZ == 10_000 && $0.clip == nil })
+
+        // a tapped tile that has since gone keeps its own outline
+        #expect(m.highlights(over: []) == [try #require(m.highlight)])
+        // so does a shape in metres, and a spot
+        await m.select(MapHit(target: pieces[0].hits[0], space: .metres))
+        #expect(m.highlights(over: pieces) == [try #require(m.highlight)])
+        m.clearSelection()
+        #expect(m.highlights(over: pieces).isEmpty)
     }
 
     @Test func selectsFeaturesWithoutAPage() async {
