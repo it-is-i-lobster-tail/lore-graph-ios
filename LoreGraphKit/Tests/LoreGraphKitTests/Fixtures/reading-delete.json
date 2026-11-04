@@ -1,0 +1,12 @@
+{
+  "change_set_id": null,
+  "revision_ids": [],
+  "edit_tags_opened": [],
+  "checks_failing": [],
+  "live": true,
+  "dry_run": false,
+  "ui_url": "https://lore.example.test/reading",
+  "warnings": [],
+  "reading_list": null,
+  "added": 0
+}

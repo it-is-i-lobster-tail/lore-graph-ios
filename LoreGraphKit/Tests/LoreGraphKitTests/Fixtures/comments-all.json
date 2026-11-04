@@ -1,0 +1,209 @@
+{
+  "comments": [
+    {
+      "id": "01a1a84f-ce63-73b1-b45f-bff4b7fffbbe",
+      "page": {
+        "ref": "lampton",
+        "id": "00000000-0000-7000-8000-000000000031",
+        "title": "Lampton",
+        "type": "location",
+        "kind": "location.settlement",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "A city of lamps at the ford of the Test River."
+      },
+      "section": {
+        "id": "00000000-0000-7000-8000-000000000402",
+        "key": "history",
+        "heading": "History",
+        "exists": true,
+        "generated": false
+      },
+      "anchor": {
+        "status": "changed",
+        "quote": "broke the Eastmarch",
+        "text": "and met the Eastmarch",
+        "prefix": "crossed the ford below the city ",
+        "suffix": " at the Battle at the Ford.",
+        "occurrence": 0
+      },
+      "status": "open",
+      "visibility": "restricted",
+      "body_md": "Too strong?",
+      "author": {
+        "name": "Owner",
+        "via": "Owner",
+        "mine": true
+      },
+      "created_at": "2026-11-04T20:46:04.890103Z",
+      "edited_at": null,
+      "updated_at": "2026-11-04T20:46:04.890103Z",
+      "resolved_at": null,
+      "resolved_by": null,
+      "replies": [],
+      "version": 1,
+      "can_edit": true,
+      "can_delete": true,
+      "ui_url": "https://lore.example.test/wiki/lampton?comment=01a1a84f-ce63-73b1-b45f-bff4b7fffbbe"
+    },
+    {
+      "id": "01a1a84f-cd4e-73a3-ba7c-a5fb969676ba",
+      "page": {
+        "ref": "lampton",
+        "id": "00000000-0000-7000-8000-000000000031",
+        "title": "Lampton",
+        "type": "location",
+        "kind": "location.settlement",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "A city of lamps at the ford of the Test River."
+      },
+      "section": {
+        "id": "00000000-0000-7000-8000-000000000402",
+        "key": "history",
+        "heading": "History",
+        "exists": true,
+        "generated": false
+      },
+      "anchor": {
+        "status": "exact",
+        "quote": "The lamps of Lampton burn all night.",
+        "text": "The lamps of Lampton burn all night.",
+        "prefix": "",
+        "suffix": " Loïse and her daughters kept th",
+        "occurrence": 0
+      },
+      "status": "open",
+      "visibility": "restricted",
+      "body_md": "Still true after the fire of 1090?",
+      "author": {
+        "name": "Owner",
+        "via": "Owner",
+        "mine": true
+      },
+      "created_at": "2026-11-04T20:46:04.611137Z",
+      "edited_at": "2026-11-04T20:46:04.863616Z",
+      "updated_at": "2026-11-04T20:46:04.863616Z",
+      "resolved_at": null,
+      "resolved_by": null,
+      "replies": [
+        {
+          "id": "01a1a84f-cd70-7b85-90fa-6a9d68dac069",
+          "body_md": "Yes: the new lamps were lit in 1091.",
+          "visibility": "restricted",
+          "author": {
+            "name": "Owner",
+            "via": "Owner",
+            "mine": false
+          },
+          "created_at": "2026-11-04T20:46:04.649903Z",
+          "edited_at": null,
+          "can_edit": false,
+          "can_delete": false
+        }
+      ],
+      "version": 3,
+      "can_edit": true,
+      "can_delete": true,
+      "ui_url": "https://lore.example.test/wiki/lampton?comment=01a1a84f-cd4e-73a3-ba7c-a5fb969676ba"
+    },
+    {
+      "id": "01a1a84f-ce0f-71e1-8232-787fa691bd17",
+      "page": {
+        "ref": "lampton",
+        "id": "00000000-0000-7000-8000-000000000031",
+        "title": "Lampton",
+        "type": "location",
+        "kind": "location.settlement",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "A city of lamps at the ford of the Test River."
+      },
+      "section": {
+        "id": "00000000-0000-7000-8000-000000000402",
+        "key": "history",
+        "heading": "History",
+        "exists": true,
+        "generated": false
+      },
+      "anchor": {
+        "status": "exact",
+        "quote": "and her daughters",
+        "text": "and her daughters",
+        "prefix": "f Lampton burn all night. Loïse ",
+        "suffix": " kept them. In the summer of YV ",
+        "occurrence": 0
+      },
+      "status": "open",
+      "visibility": "restricted",
+      "body_md": "Name them?",
+      "author": {
+        "name": "Owner",
+        "via": "Owner",
+        "mine": true
+      },
+      "created_at": "2026-11-04T20:46:04.804445Z",
+      "edited_at": null,
+      "updated_at": "2026-11-04T20:46:04.804445Z",
+      "resolved_at": null,
+      "resolved_by": null,
+      "replies": [],
+      "version": 1,
+      "can_edit": true,
+      "can_delete": true,
+      "ui_url": "https://lore.example.test/wiki/lampton?comment=01a1a84f-ce0f-71e1-8232-787fa691bd17"
+    },
+    {
+      "id": "01a1a84f-cd9a-7f62-8c43-5f9d5c832671",
+      "page": {
+        "ref": "lampton",
+        "id": "00000000-0000-7000-8000-000000000031",
+        "title": "Lampton",
+        "type": "location",
+        "kind": "location.settlement",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "A city of lamps at the ford of the Test River."
+      },
+      "section": {
+        "id": "00000000-0000-7000-8000-000000000401",
+        "key": "lead",
+        "heading": null,
+        "exists": true,
+        "generated": false
+      },
+      "anchor": {
+        "status": "exact",
+        "quote": "Kingdom of Testmark",
+        "text": "Kingdom of Testmark",
+        "prefix": " Test Vale, and the seat of the ",
+        "suffix": ". Its lamps are kept by the Orde",
+        "occurrence": 0
+      },
+      "status": "open",
+      "visibility": "restricted",
+      "body_md": "Link the founding of the realm here.",
+      "author": {
+        "name": "Owner",
+        "via": "Owner",
+        "mine": false
+      },
+      "created_at": "2026-11-04T20:46:04.688567Z",
+      "edited_at": null,
+      "updated_at": "2026-11-04T20:46:04.688567Z",
+      "resolved_at": null,
+      "resolved_by": null,
+      "replies": [],
+      "version": 1,
+      "can_edit": false,
+      "can_delete": false,
+      "ui_url": "https://lore.example.test/wiki/lampton?comment=01a1a84f-cd9a-7f62-8c43-5f9d5c832671"
+    }
+  ],
+  "counts": {
+    "open": 4,
+    "resolved": 1
+  },
+  "next_cursor": null,
+  "ui_url": "https://lore.example.test/comments"
+}

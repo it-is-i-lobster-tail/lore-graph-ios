@@ -1,17 +1,28 @@
 # loregraph for iOS
 
-A read-only iPhone and iPad app for a [loregraph](https://github.com/it-is-i-lobster-tail/loregraph)
+An iPhone and iPad app for a [loregraph](https://github.com/it-is-i-lobster-tail/loregraph)
 server: the wiki, the map, the timeline, family trees and the graph, with search, the year and
-viewpoint controls and offline reading of what you have opened. It never changes anything on the
-server; it asks for the `lore:read` scope only.
+viewpoint controls and offline reading of what you have opened. It reads the lore and never
+changes it. The only things it writes are the reader's own notes, which the server keeps apart
+from the lore: reading-list marks (loregraph ADR D-83) and comments on page text (ADR D-84).
+Both need only the `lore:read` scope, which is all the app asks for.
 
 - iOS and iPadOS 26 or later, SwiftUI, Swift 6.
 - Sign-in on the server's own page (OAuth with PKCE, public client `loregraph-ios`, callback
   `loregraph://oauth/callback`), or a personal token as a fallback.
+- A reading list puts every page of the world in reading order, in parts, and keeps your place:
+  read page by page with "Mark read and continue", see the pages edited since you read them with
+  what changed, and add new pages to the end. Lists are your own; the web app's `/reading` links
+  open them.
+- Comments on page text: commented passages are highlighted; tap one, or the comments button,
+  for the conversation beside the page. Press and hold a paragraph and choose Comment, select
+  the words, and post. Reply, resolve, reopen, and edit or delete your own. Comments are notes,
+  not lore: they open no edit tag and never change a page.
 - Pages, lists and tiles are cached per server, reader and visibility level. A screen opens from
   the cache straight away and fetches again only when the server's newest revision is ahead of the
   one the cached copy was read at. Pull down on any list to refresh; the map has Refresh in its
-  menu. Settings has Clear cache.
+  menu. Settings has Clear cache. Reading lists and comments write no revision, so they are shown
+  from the cache at once and always fetched again.
 
 ## Layout
 
@@ -78,6 +89,8 @@ each screen are attached to the test results.
 
 ## Rules
 
-- Read only. The app has no write paths and requests no write scopes.
+- The app never changes lore and requests no write scopes. Its only writes are reading marks,
+  reading lists and comments (all `lore:read` on the server), sent straight to the server and
+  never queued offline.
 - No secrets or real lore in git, logs or test output.
 - What the server sends (page text, names, captions) is shown as data and never acted on.

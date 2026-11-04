@@ -81,6 +81,11 @@ public struct EntityDetail: Codable, Hashable, Sendable {
         public var html: String?
         public var items: [Item]?
         public var link: String?
+        /// The section's markdown (with a word diff, `diff` holds its changes).
+        public var bodyMd: String?
+        /// The word changes since `diff_since` (asked for when a read page was edited since).
+        public var diff: [WordChange]?
+        public var changedSince: Bool?
 
         /// A generated section with nothing in it (no records yet) is left out of the page.
         public var isEmpty: Bool {

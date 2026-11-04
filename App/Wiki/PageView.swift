@@ -1,9 +1,12 @@
 import LoreGraphKit
 import SwiftUI
 
-/// A wiki page (F-4.4 to F-4.9).
+/// A wiki page (F-4.4 to F-4.9), with its comments (ADR D-84): `showComments` opens the panel,
+/// on one comment when `focus` names it.
 struct PageView: View {
     let ref: String
+    var focus: String?
+    var showComments = false
     @Environment(AppModel.self) private var app
 
     var body: some View {
@@ -11,20 +14,45 @@ struct PageView: View {
             await m.load()
             if let card = m.card { app.visited(card) }
         }) { model in
-            PageContent(model: model)
+            PageContent(model: model, initialSheet: showComments ? .comments(focus: focus) : nil)
         }
     }
 }
 
-struct PageContent: View {
+/// What the page shows over itself: its comments, or a new comment on a section.
+enum PageSheet: Identifiable, Hashable {
+    case comments(focus: String?)
+    case compose(section: String?, select: String?)
+
+    var id: String {
+        switch self {
+        case .comments(let f): "comments-\(f ?? "")"
+        case .compose(let s, let t): "compose-\(s ?? "")-\(t ?? "")"
+        }
+    }
+}
+
+struct PageContent<Banner: View>: View {
     let model: PageModel
-    @Environment(Navigator.self) private var navigator
+    let initialSheet: PageSheet?
+    /// Shown above the page's title (the reading list's "changed since you read it").
+    let banner: () -> Banner
+    @Environment(\.openURL) private var openURL
+    @State private var sheet: PageSheet?
+    @State private var shownInitial = false
+
+    init(model: PageModel, initialSheet: PageSheet? = nil, @ViewBuilder banner: @escaping () -> Banner) {
+        self.model = model
+        self.initialSheet = initialSheet
+        self.banner = banner
+    }
 
     var body: some View {
         ScrollViewReader { proxy in
             ScrollView {
                 Loaded(loader: model.page) { page in
                     VStack(alignment: .leading, spacing: 18) {
+                        banner()
                         PageHeader(page: page)
                         ActionBar(actions: model.actions, ref: model.ref)
                         if let box = page.infobox, !box.isEmpty || page.infoboxImage != nil || page.locatorPoint != nil {
@@ -40,7 +68,12 @@ struct PageContent: View {
                             }
                         }
                         ForEach(page.shownSections) { s in
-                            SectionView(section: s, blocks: model.blocks(s)).id(s.id)
+                            let open = model.comments.open(in: s.key)
+                            SectionView(section: s, blocks: model.blocks(s), comments: open.count) {
+                                sheet = .comments(focus: open.first?.id)
+                            }
+                            .id(s.id)
+                            .environment(\.sectionKey, s.key)
                         }
                         if let cats = page.categories, !cats.isEmpty {
                             CategoryChips(categories: cats)
@@ -51,15 +84,62 @@ struct PageContent: View {
             }
             .refreshable { await model.refresh() }
         }
+        .environment(\.startComment, CommentStarter { key, text in sheet = .compose(section: key, select: text) })
+        .environment(\.openURL, OpenURLAction { url in
+            // a highlighted passage opens its comment; every other link goes on as before
+            if let id = Prose.commentID(url) {
+                sheet = .comments(focus: id)
+                return .handled
+            }
+            openURL(url)
+            return .handled
+        })
         .staleBanner(model.page)
         .navigationTitle(model.title)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
+                Button { sheet = .comments(focus: nil) } label: {
+                    let n = model.comments.openCount
+                    Label(n > 0 ? "\(n) comments" : "Comments", systemImage: n > 0 ? "text.bubble.fill" : "text.bubble")
+                        .labelStyle(.iconOnly)
+                        .overlay(alignment: .topTrailing) {
+                            if n > 0 {
+                                Text("\(n)").font(.caption2.weight(.bold)).monospacedDigit()
+                                    .padding(.horizontal, 4).background(Color.accentInk, in: Capsule())
+                                    .foregroundStyle(.white).offset(x: 8, y: -6)
+                            }
+                        }
+                }
+                .accessibilityLabel(model.comments.openCount > 0 ? "\(model.comments.openCount) open comments" : "Comments")
+                .accessibilityIdentifier("pageComments")
+            }
+            ToolbarItem(placement: .topBarTrailing) {
                 ShareLink(item: model.shareURL) { Image(systemName: "square.and.arrow.up") }
                     .accessibilityLabel("Share web link")
             }
         }
+        .sheet(item: $sheet) { s in
+            switch s {
+            case .comments(let focus):
+                CommentsSheet(page: model, focus: focus)
+            case .compose(let section, let select):
+                NavigationStack {
+                    CommentComposer(page: model, section: section, select: select) { sheet = nil }
+                }
+            }
+        }
+        .task(id: model.ref) {
+            guard !shownInitial else { return }
+            shownInitial = true
+            if let initialSheet { sheet = initialSheet }
+        }
+    }
+}
+
+extension PageContent where Banner == EmptyView {
+    init(model: PageModel, initialSheet: PageSheet? = nil) {
+        self.init(model: model, initialSheet: initialSheet, banner: { EmptyView() })
     }
 }
 
@@ -132,10 +212,13 @@ struct ActionBar: View {
     }
 }
 
-/// One section: heading, marks, generated rows and text (F-4.7, F-4.8).
+/// One section: heading, marks, generated rows and text (F-4.7, F-4.8), with how many open
+/// comments it has (a tap opens them).
 struct SectionView: View {
     let section: EntityDetail.Section
     let blocks: [Block]
+    var comments = 0
+    var onComments: (() -> Void)?
     @Environment(AppModel.self) private var app
     @Environment(Navigator.self) private var navigator
 
@@ -146,9 +229,15 @@ struct SectionView: View {
                     Text(h).font(.reading(.title2).weight(.semibold)).accessibilityAddTraits(.isHeader)
                     VisibilityChip(visibility: section.visibility, compact: true)
                     if section.authorCanon == true { Chip(text: "Author canon") }
+                    Spacer(minLength: 0)
+                    commentBadge
                 }
-            } else if section.visibility != .public {
-                VisibilityChip(visibility: section.visibility)
+            } else if section.visibility != .public || comments > 0 {
+                HStack {
+                    VisibilityChip(visibility: section.visibility)
+                    Spacer(minLength: 0)
+                    commentBadge
+                }
             }
             if let items = section.items, !items.isEmpty {
                 VStack(alignment: .leading, spacing: 8) {
@@ -168,6 +257,20 @@ struct SectionView: View {
             }
         }
         .visibilityEdge(section.visibility)
+    }
+
+    @ViewBuilder var commentBadge: some View {
+        if comments > 0, let onComments {
+            Button(action: onComments) {
+                Label("\(comments)", systemImage: "text.bubble")
+                    .font(.caption.weight(.semibold))
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 3)
+                    .background(Color.commentMark, in: Capsule())
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(comments == 1 ? "1 open comment" : "\(comments) open comments")
+        }
     }
 }
 

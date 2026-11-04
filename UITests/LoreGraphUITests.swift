@@ -118,6 +118,63 @@ final class LoreGraphUITests: XCTestCase {
         signOut()
     }
 
+    /// The reading list and comments (loregraph ADR D-83, D-84): build or open the list, read a
+    /// page and mark it read, then comment on a page, answer and resolve the comment.
+    @MainActor
+    func testReadingListAndComments() throws {
+        let env = try settings(needs: ["LG_SERVER", "LG_TOKEN"])
+        launch()
+        let server = app.textFields["server"]
+        XCTAssertTrue(server.waitForExistence(timeout: 10))
+        server.replaceText(env["LG_SERVER"]!)
+        app.descendants(matching: .any)["tokenDisclosure"].firstMatch.tap()
+        let token = app.secureTextFields["token"]
+        XCTAssertTrue(token.waitForExistence(timeout: 5))
+        token.tap()
+        token.typeText(env["LG_TOKEN"]!)
+        app.buttons["signInWithToken"].tap()
+        chooseWorldIfAsked()
+
+        let reading = app.buttons["readingList"].firstMatch
+        XCTAssertTrue(reading.waitForExistence(timeout: 30), "the wiki home has no reading list row")
+        reading.tap()
+        let build = app.buttons["buildReadingList"]
+        if build.waitForExistence(timeout: 5) { build.tap() }
+        let next = app.buttons["continueReading"].firstMatch
+        XCTAssertTrue(next.waitForExistence(timeout: 20), "the reading list has no page to read next")
+        snapshot("12-reading-list")
+        next.tap()
+        XCTAssertTrue(app.staticTexts["pageTitle"].waitForExistence(timeout: 20), "the page never opened")
+        let title = app.staticTexts["pageTitle"].label
+        snapshot("13-reading-page")
+        app.buttons["markReadAndContinue"].tap()
+        XCTAssertTrue(app.staticTexts["pageTitle"].waitForExistence(timeout: 20))
+        let moved = NSPredicate(format: "label != %@", title)
+        expectation(for: moved, evaluatedWith: app.staticTexts["pageTitle"])
+        waitForExpectations(timeout: 20)
+
+        // comment on the page now shown, on a whole section
+        app.buttons["pageComments"].firstMatch.tap()
+        let new = app.buttons["newComment"].firstMatch
+        XCTAssertTrue(new.waitForExistence(timeout: 10), "the comments panel has no New comment")
+        new.tap()
+        let text = app.textFields["commentText"].firstMatch.exists ? app.textFields["commentText"].firstMatch
+                                                                   : app.textViews["commentText"].firstMatch
+        XCTAssertTrue(text.waitForExistence(timeout: 10))
+        text.tap()
+        text.typeText("A note from the iOS journey.")
+        snapshot("14-new-comment")
+        app.buttons["postComment"].tap()
+        XCTAssertTrue(app.staticTexts["A note from the iOS journey."].waitForExistence(timeout: 20), "the comment never showed")
+        snapshot("15-comments")
+        let resolve = app.buttons["resolveComment"].firstMatch
+        XCTAssertTrue(resolve.waitForExistence(timeout: 10))
+        resolve.tap()
+        XCTAssertTrue(app.staticTexts["A note from the iOS journey."].waitForNonExistence(timeout: 20),
+                      "a resolved comment should leave the open list")
+    }
+
+
     // MARK: steps
 
     @MainActor

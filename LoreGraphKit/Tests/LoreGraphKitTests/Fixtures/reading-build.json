@@ -1,0 +1,100 @@
+{
+  "change_set_id": null,
+  "revision_ids": [],
+  "edit_tags_opened": [],
+  "checks_failing": [],
+  "live": true,
+  "dry_run": false,
+  "ui_url": "https://lore.example.test/reading?list=01a1a84f-cbd7-713e-a0e5-6837a283fd23",
+  "warnings": [],
+  "reading_list": {
+    "id": "01a1a84f-cbd7-713e-a0e5-6837a283fd23",
+    "title": "Second pass",
+    "visibility": "restricted",
+    "created_at": "2026-11-04T20:46:04.240970Z",
+    "updated_at": "2026-11-04T20:46:04.240970Z",
+    "options": {
+      "canon": [
+        "approved",
+        "author_canon"
+      ],
+      "types": [
+        "event",
+        "story",
+        "tale",
+        "faction",
+        "individual",
+        "location",
+        "item",
+        "misc"
+      ],
+      "include_rest": true,
+      "include_empty": true
+    },
+    "ui_url": "https://lore.example.test/reading?list=01a1a84f-cbd7-713e-a0e5-6837a283fd23",
+    "pages": 24,
+    "parts": [
+      {
+        "key": "places",
+        "title": "Places",
+        "note": "The world from its largest regions down; each place is followed by the places within it.",
+        "pages": 3,
+        "read": 0,
+        "words": 111,
+        "first": 1,
+        "minutes_left": 3
+      },
+      {
+        "key": "factions",
+        "title": "Peoples and powers",
+        "note": "Realms, orders and other groups; each is followed by the groups within it.",
+        "pages": 2,
+        "read": 0,
+        "words": 38,
+        "first": 4,
+        "minutes_left": 2
+      },
+      {
+        "key": "history",
+        "title": "History",
+        "note": "Events from the earliest; each is followed by the events within it.",
+        "pages": 3,
+        "read": 0,
+        "words": 116,
+        "first": 6,
+        "minutes_left": 3
+      },
+      {
+        "key": "people",
+        "title": "People",
+        "note": "Everyone with a page, from the earliest born.",
+        "pages": 3,
+        "read": 0,
+        "words": 105,
+        "first": 9,
+        "minutes_left": 3
+      },
+      {
+        "key": "accounts",
+        "title": "Stories and tales",
+        "note": "The world's own accounts: stories, then tales, by when they were told.",
+        "pages": 3,
+        "read": 0,
+        "words": 69,
+        "first": 12,
+        "minutes_left": 3
+      },
+      {
+        "key": "no-text",
+        "title": "Pages without prose",
+        "note": "Pages with no text yet: check that each needs a page, and what it should say.",
+        "pages": 10,
+        "read": 0,
+        "words": 0,
+        "first": 15,
+        "minutes_left": 10
+      }
+    ]
+  },
+  "added": 24
+}

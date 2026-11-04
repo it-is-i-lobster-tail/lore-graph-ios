@@ -1,0 +1,71 @@
+{
+  "change_set_id": null,
+  "revision_ids": [],
+  "edit_tags_opened": [],
+  "checks_failing": [],
+  "live": true,
+  "dry_run": false,
+  "ui_url": "https://lore.example.test/wiki/lampton?comment=01a1a84f-cd4e-73a3-ba7c-a5fb969676ba",
+  "warnings": [],
+  "comment": {
+    "id": "01a1a84f-cd4e-73a3-ba7c-a5fb969676ba",
+    "page": {
+      "ref": "lampton",
+      "id": "00000000-0000-7000-8000-000000000031",
+      "title": "Lampton",
+      "type": "location",
+      "kind": "location.settlement",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "A city of lamps at the ford of the Test River."
+    },
+    "section": {
+      "id": "00000000-0000-7000-8000-000000000402",
+      "key": "history",
+      "heading": "History",
+      "exists": true,
+      "generated": false
+    },
+    "anchor": {
+      "status": "exact",
+      "quote": "The lamps of Lampton burn all night.",
+      "text": "The lamps of Lampton burn all night.",
+      "prefix": "",
+      "suffix": " Loïse and her daughters kept th",
+      "occurrence": 0
+    },
+    "status": "open",
+    "visibility": "restricted",
+    "body_md": "Still true after the fire?",
+    "author": {
+      "name": "Owner",
+      "via": "Owner",
+      "mine": false
+    },
+    "created_at": "2026-11-04T20:46:04.611137Z",
+    "edited_at": null,
+    "updated_at": "2026-11-04T20:46:04.649903Z",
+    "resolved_at": null,
+    "resolved_by": null,
+    "replies": [
+      {
+        "id": "01a1a84f-cd70-7b85-90fa-6a9d68dac069",
+        "body_md": "Yes: the new lamps were lit in 1091.",
+        "visibility": "restricted",
+        "author": {
+          "name": "Owner",
+          "via": "Owner",
+          "mine": true
+        },
+        "created_at": "2026-11-04T20:46:04.649903Z",
+        "edited_at": null,
+        "can_edit": true,
+        "can_delete": true
+      }
+    ],
+    "version": 2,
+    "can_edit": false,
+    "can_delete": false,
+    "ui_url": "https://lore.example.test/wiki/lampton?comment=01a1a84f-cd4e-73a3-ba7c-a5fb969676ba"
+  }
+}

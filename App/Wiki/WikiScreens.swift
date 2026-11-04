@@ -26,8 +26,9 @@ struct HomeView: View {
                 if let error = app.worldError, app.about == nil {
                     Section { ErrorState(error: error) { await app.refresh() } }
                 }
+                ReadingSummarySection()
                 if !app.recentPages.isEmpty {
-                    Section("Continue reading") {
+                    Section("Recently read") {
                         ForEach(app.recentPages.prefix(8), id: \.ref) { card in
                             NavigationLink(value: Route.page(card.ref)) { EntityRow(card: card) }
                         }

@@ -18,11 +18,13 @@ public indirect enum Inline: Hashable, Sendable {
     case link(LinkTarget, [Inline])
     case lineBreak
     case image(src: String, alt: String)
+    /// A passage comments are on (their ids), highlighted in the text (ADR D-84).
+    case mark([String], [Inline])
 
     public var plainText: String {
         switch self {
         case .text(let s), .code(let s): s
-        case .emphasis(let c), .strong(let c), .strike(let c), .link(_, let c): c.map(\.plainText).joined()
+        case .emphasis(let c), .strong(let c), .strike(let c), .link(_, let c), .mark(_, let c): c.map(\.plainText).joined()
         case .lineBreak: "\n"
         case .image(_, let alt): alt
         }
@@ -59,7 +61,13 @@ public indirect enum Block: Hashable, Sendable {
 /// a page the reader cannot see arrives as plain text or a "missing" link, and is shown as text.
 public enum HTMLContent {
     public static func parse(_ html: String) -> [Block] {
-        let root = TreeBuilder.build(Tokenizer.tokens(html))
+        parse(html, highlights: [])
+    }
+
+    /// The blocks with the passages of comments highlighted (`Inline.mark`). A passage that is not
+    /// in the text is left out.
+    public static func parse(_ html: String, highlights: [Anchors.Highlight]) -> [Block] {
+        let root = TreeBuilder.build(Anchors.marked(Tokenizer.tokens(html), highlights))
         return blocks(root.children)
     }
 
@@ -161,6 +169,10 @@ public enum HTMLContent {
                 case "del", "s": out.append(.strike(inlines(e.children)))
                 case "code": out.append(.code(e.textContent))
                 case "br": out.append(.lineBreak)
+                case "mark":
+                    let ids = (e.attributes["data-comments"] ?? "").split(separator: " ").map(String.init)
+                    let content = inlines(e.children)
+                    if ids.isEmpty { out += content } else if !content.isEmpty { out.append(.mark(ids, content)) }
                 case "img": out.append(.image(src: e.attributes["src"] ?? "", alt: e.attributes["alt"] ?? ""))
                 case "a":
                     let content = inlines(e.children)

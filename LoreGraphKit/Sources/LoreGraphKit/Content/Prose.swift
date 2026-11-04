@@ -16,11 +16,14 @@ public struct ProseRun: Hashable, Sendable {
     public var text: String
     public var style: Style
     public var link: URL?
+    /// The comments whose passage this run is in (highlighted, ADR D-84).
+    public var comments: [String]
 
-    public init(_ text: String, style: Style = [], link: URL? = nil) {
+    public init(_ text: String, style: Style = [], link: URL? = nil, comments: [String] = []) {
         self.text = text
         self.style = style
         self.link = link
+        self.comments = comments
     }
 }
 
@@ -29,37 +32,53 @@ public enum Prose {
         URL(string: "loregraph://wiki/\(segment(slug))")!
     }
 
+    /// The link a highlighted passage opens: its comment (the page shows it).
+    public static func commentURL(_ id: String) -> URL {
+        URL(string: "loregraph://comment/\(segment(id))")!
+    }
+
+    /// The comment a `commentURL` names.
+    public static func commentID(_ url: URL) -> String? {
+        guard url.scheme == OAuthClient.callbackScheme, url.host == "comment" else { return nil }
+        let id = url.path.split(separator: "/").first.map(String.init)
+        return id.flatMap { $0.removingPercentEncoding }.flatMap { $0.isEmpty ? nil : $0 }
+    }
+
     /// Inline prose as runs; neighbouring runs with the same style and link are joined.
     public static func runs(_ inlines: [Inline]) -> [ProseRun] {
         var out: [ProseRun] = []
-        for inline in inlines { append(inline, style: [], link: nil, to: &out) }
+        for inline in inlines { append(inline, style: [], link: nil, comments: [], to: &out) }
         return out
     }
 
-    static func append(_ inline: Inline, style: ProseRun.Style, link: URL?, to out: inout [ProseRun]) {
+    static func append(_ inline: Inline, style: ProseRun.Style, link: URL?, comments: [String], to out: inout [ProseRun]) {
         func add(_ text: String, _ style: ProseRun.Style) {
             guard !text.isEmpty else { return }
-            if let last = out.last, last.style == style, last.link == link {
+            if let last = out.last, last.style == style, last.link == link, last.comments == comments {
                 out[out.count - 1].text += text
             } else {
-                out.append(ProseRun(text, style: style, link: link))
+                out.append(ProseRun(text, style: style, link: link, comments: comments))
             }
+        }
+        func each(_ c: [Inline], _ style: ProseRun.Style, _ link: URL?, _ comments: [String]) {
+            c.forEach { append($0, style: style, link: link, comments: comments, to: &out) }
         }
         switch inline {
         case .text(let s): add(s, style)
         case .code(let s): add(s, style.union(.code))
         case .lineBreak: add("\n", style)
         case .image(_, let alt): if !alt.isEmpty { add("[\(alt)]", style) }
-        case .emphasis(let c): c.forEach { append($0, style: style.union(.emphasis), link: link, to: &out) }
-        case .strong(let c): c.forEach { append($0, style: style.union(.strong), link: link, to: &out) }
-        case .strike(let c): c.forEach { append($0, style: style.union(.strike), link: link, to: &out) }
+        case .emphasis(let c): each(c, style.union(.emphasis), link, comments)
+        case .strong(let c): each(c, style.union(.strong), link, comments)
+        case .strike(let c): each(c, style.union(.strike), link, comments)
+        case .mark(let ids, let c): each(c, style, link, comments + ids.filter { !comments.contains($0) })
         case .link(let target, let c):
             let url: URL
             switch target {
             case .page(let slug): url = pageURL(slug)
             case .web(let u): url = u
             }
-            c.forEach { append($0, style: style, link: url, to: &out) }
+            each(c, style, url, comments)
         }
     }
 
@@ -72,7 +91,7 @@ public enum Prose {
                 case .link(.page(let slug), let c):
                     if !seen.contains(slug) { seen.append(slug) }
                     walk(c)
-                case .emphasis(let c), .strong(let c), .strike(let c), .link(_, let c): walk(c)
+                case .emphasis(let c), .strong(let c), .strike(let c), .link(_, let c), .mark(_, let c): walk(c)
                 default: break
                 }
             }

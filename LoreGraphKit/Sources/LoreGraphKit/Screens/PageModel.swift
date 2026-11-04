@@ -73,23 +73,30 @@ public final class PageModel {
     public let ref: String
     public let page: Loader<EntityDetail>
     public private(set) var backlinks: Loader<Backlinks>?
+    /// The page's comments: highlights in the text and the panel (ADR D-84).
+    public let comments: CommentsModel
     @ObservationIgnored public let context: ReadContext
-    @ObservationIgnored private var parsed: [String: (html: String, blocks: [Block])] = [:]
+    @ObservationIgnored private var parsed: [String: (html: String, marks: [Anchors.Highlight], blocks: [Block])] = [:]
 
     public init(ref: String, context: ReadContext) {
         self.ref = ref
         self.context = context
         self.page = context.loader(API.entity(ref))
+        self.comments = CommentsModel(ref: ref, context: context)
     }
 
     public func load() async {
+        async let comments: Void = comments.load()
         await page.load()
+        await comments
     }
 
-    /// Pull to refresh: the page and, if open, its links.
+    /// Pull to refresh: the page, its comments and, if open, its links.
     public func refresh() async {
+        async let comments: Void = comments.refresh()
         await page.refresh()
         if let backlinks { await backlinks.refresh() }
+        await comments
     }
 
     public func loadBacklinks() async {
@@ -97,13 +104,21 @@ public final class PageModel {
         await backlinks?.load()
     }
 
-    /// A section's text as blocks, parsed once for each version of its HTML.
+    /// A section's text as blocks with its open comments' passages highlighted, parsed once for
+    /// each version of its HTML and its comments.
     public func blocks(_ section: EntityDetail.Section) -> [Block] {
         let html = section.html ?? ""
-        if let hit = parsed[section.id], hit.html == html { return hit.blocks }
-        let blocks = HTMLContent.parse(html)
-        parsed[section.id] = (html, blocks)
+        let marks = comments.highlights(section.key)
+        if let hit = parsed[section.id], hit.html == html, hit.marks == marks { return hit.blocks }
+        let blocks = HTMLContent.parse(html, highlights: marks)
+        parsed[section.id] = (html, marks, blocks)
         return blocks
+    }
+
+    /// The sections a reader can comment on, in order: prose sections with text (a section drawn
+    /// from records takes a comment on the whole section).
+    public var commentableSections: [EntityDetail.Section] {
+        (page.value?.shownSections ?? []).filter { !($0.html ?? "").isEmpty || $0.generated == true }
     }
 
     public var title: String { page.value.map { $0.entity.displayTitle ?? $0.entity.title } ?? ref }
