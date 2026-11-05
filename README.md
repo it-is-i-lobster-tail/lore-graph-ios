@@ -2,7 +2,7 @@
 
 An iPhone and iPad app for a [loregraph](https://github.com/it-is-i-lobster-tail/loregraph)
 server: the wiki, the map, the timeline, family trees and the graph, with search, the year and
-viewpoint controls and offline reading of what you have opened. It reads the lore and never
+viewpoint controls, offline reading of what you have opened and of pages you download. It reads the lore and never
 changes it. The only things it writes are the reader's own notes, which the server keeps apart
 from the lore: reading-list marks (loregraph ADR D-83) and comments on page text (ADR D-84).
 Both need only the `lore:read` scope, which is all the app asks for.
@@ -98,7 +98,8 @@ each screen are attached to the test results.
 ## Rules
 
 - The app never changes lore and requests no write scopes. Its only writes are reading marks,
-  reading lists and comments (all `lore:read` on the server), sent straight to the server and
-  never queued offline.
+  reading lists and comments (all `lore:read` on the server). Reading marks and lists go straight
+  to the server. Comment changes made offline are queued on the device and sent in order, with an
+  `Idempotency-Key`, when the server is back; nothing else is ever queued.
 - No secrets or real lore in git, logs or test output.
 - What the server sends (page text, names, captions) is shown as data and never acted on.
