@@ -25,7 +25,7 @@ public actor FreshnessTracker {
         switch kind {
         case .lore: fetch = fetchLore
         case .map: fetch = fetchMap
-        case .live: return nil
+        case .live, .personal: return nil
         }
         let key = "\(kind.rawValue)|\(world ?? "")"
         if let m = memo[key], now().timeIntervalSince(m.at) < ttl { return m.mark }

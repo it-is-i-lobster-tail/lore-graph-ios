@@ -54,6 +54,9 @@ struct BlockView: View {
         }
     }
 
+    @Environment(\.startComment) private var startComment
+    @Environment(\.sectionKey) private var sectionKey
+
     @ViewBuilder func paragraph(_ inlines: [Inline]) -> some View {
         let runs = Prose.runs(inlines)
         let pages = Array(Set(runs.compactMap { run -> String? in
@@ -61,16 +64,29 @@ struct BlockView: View {
             return url.lastPathComponent
         })).sorted()
         let text = Text(attributed(runs)).font(.reading()).lineSpacing(3).fixedSize(horizontal: false, vertical: true)
-        if pages.isEmpty {
+        let commentable = startComment != nil && sectionKey != nil
+        if pages.isEmpty, commentable {
+            text.contextMenu {
+                commentButton(runs)
+            }
+        } else if pages.isEmpty {
             text
         } else {
             text.contextMenu {
+                if commentable { commentButton(runs) }
                 ForEach(pages, id: \.self) { slug in
                     PageLinkMenu(ref: slug, title: runs.first { $0.link?.lastPathComponent == slug }?.text ?? slug)
                 }
             } preview: {
                 LinkPreviewCard(ref: pages[0])
             }
+        }
+    }
+
+    /// "Comment…": a new comment on this paragraph's section, with the paragraph selected.
+    @ViewBuilder func commentButton(_ runs: [ProseRun]) -> some View {
+        if let startComment, let sectionKey {
+            Button("Comment…", systemImage: "text.bubble") { startComment(sectionKey, runs.map(\.text).joined()) }
         }
     }
 }
@@ -171,7 +187,26 @@ struct TableBlock: View {
     }
 }
 
-/// Prose runs as an attributed string SwiftUI's Text draws: italic, bold, code, links.
+/// Starts a comment on a section's text, with the words to select first (a paragraph's).
+struct CommentStarter: Sendable {
+    let start: @MainActor (_ section: String, _ text: String) -> Void
+    @MainActor func callAsFunction(_ section: String, _ text: String) { start(section, text) }
+}
+
+extension EnvironmentValues {
+    /// Set where pages take comments: paragraphs offer "Comment…" in their menus.
+    @Entry var startComment: CommentStarter? = nil
+    /// The section a paragraph is in.
+    @Entry var sectionKey: String? = nil
+}
+
+extension Color {
+    /// The highlight on a passage with comments.
+    static let commentMark = Color.yellow.opacity(0.35)
+}
+
+/// Prose runs as an attributed string SwiftUI's Text draws: italic, bold, code, links, and
+/// passages with comments highlighted (a tap opens the comment, unless the words are a link).
 func attributed(_ runs: [ProseRun]) -> AttributedString {
     var out = AttributedString()
     for r in runs {
@@ -185,6 +220,13 @@ func attributed(_ runs: [ProseRun]) -> AttributedString {
         if let link = r.link {
             a.link = link
             a.foregroundColor = .accentInk
+        }
+        if let first = r.comments.first {
+            a.backgroundColor = .commentMark
+            if r.link == nil {
+                a.link = Prose.commentURL(first)
+                a.foregroundColor = .primary
+            }
         }
         out += a
     }

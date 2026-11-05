@@ -1,0 +1,154 @@
+{
+  "change_set_id": null,
+  "revision_ids": [],
+  "edit_tags_opened": [],
+  "checks_failing": [],
+  "live": true,
+  "dry_run": false,
+  "ui_url": "https://lore.example.test/reading?list=01a1a84f-303b-7585-936f-87ffe9a4dc84&page=testmark",
+  "warnings": [],
+  "changed": 3,
+  "items": [
+    {
+      "n": 1,
+      "page": {
+        "ref": "test-vale",
+        "id": "00000000-0000-7000-8000-000000000030",
+        "title": "Test Vale",
+        "type": "location",
+        "kind": "location.region",
+        "visibility": "public",
+        "canon": "approved"
+      },
+      "part": "places",
+      "words": 21,
+      "read_at": "2026-11-04T20:46:04.259793Z",
+      "changed": false
+    },
+    {
+      "n": 2,
+      "page": {
+        "ref": "eastbrook",
+        "id": "00000000-0000-7000-8000-000000000033",
+        "title": "Eastbrook",
+        "type": "location",
+        "kind": "location.settlement",
+        "visibility": "public",
+        "canon": "approved"
+      },
+      "part": "places",
+      "words": 24,
+      "read_at": "2026-11-04T20:46:04.259793Z",
+      "changed": false
+    },
+    {
+      "n": 3,
+      "page": {
+        "ref": "lampton",
+        "id": "00000000-0000-7000-8000-000000000031",
+        "title": "Lampton",
+        "type": "location",
+        "kind": "location.settlement",
+        "visibility": "public",
+        "canon": "approved"
+      },
+      "part": "places",
+      "words": 66,
+      "read_at": "2026-11-04T20:46:04.259793Z",
+      "changed": false
+    }
+  ],
+  "progress": {
+    "pages": 24,
+    "read": 3,
+    "unread": 21,
+    "changed": 0,
+    "percent": 12,
+    "words": 439,
+    "words_read": 111,
+    "minutes_left": 21,
+    "last_read_at": "2026-11-04T20:46:04.259793Z"
+  },
+  "parts": [
+    {
+      "key": "places",
+      "title": "Places",
+      "note": "The world from its largest regions down; each place is followed by the places within it.",
+      "pages": 3,
+      "read": 3,
+      "words": 111,
+      "first": 1,
+      "minutes_left": 0
+    },
+    {
+      "key": "factions",
+      "title": "Peoples and powers",
+      "note": "Realms, orders and other groups; each is followed by the groups within it.",
+      "pages": 2,
+      "read": 0,
+      "words": 38,
+      "first": 4,
+      "minutes_left": 2
+    },
+    {
+      "key": "history",
+      "title": "History",
+      "note": "Events from the earliest; each is followed by the events within it.",
+      "pages": 3,
+      "read": 0,
+      "words": 116,
+      "first": 6,
+      "minutes_left": 3
+    },
+    {
+      "key": "people",
+      "title": "People",
+      "note": "Everyone with a page, from the earliest born.",
+      "pages": 3,
+      "read": 0,
+      "words": 105,
+      "first": 9,
+      "minutes_left": 3
+    },
+    {
+      "key": "accounts",
+      "title": "Stories and tales",
+      "note": "The world's own accounts: stories, then tales, by when they were told.",
+      "pages": 3,
+      "read": 0,
+      "words": 69,
+      "first": 12,
+      "minutes_left": 3
+    },
+    {
+      "key": "no-text",
+      "title": "Pages without prose",
+      "note": "Pages with no text yet: check that each needs a page, and what it should say.",
+      "pages": 10,
+      "read": 0,
+      "words": 0,
+      "first": 15,
+      "minutes_left": 10
+    }
+  ],
+  "up_next": {
+    "n": 4,
+    "page": {
+      "ref": "testmark",
+      "id": "00000000-0000-7000-8000-000000000010",
+      "title": "Kingdom of Testmark",
+      "type": "faction",
+      "kind": "faction.realm",
+      "visibility": "public",
+      "canon": "approved"
+    },
+    "part": "factions",
+    "words": 20,
+    "read_at": null,
+    "changed": false,
+    "minutes": 1,
+    "read_with": "get_entity(ref=\"testmark\", detail=\"full\")",
+    "then": "mark_read(refs=[\"testmark\"])",
+    "ui_url": "https://lore.example.test/reading?list=01a1a84f-303b-7585-936f-87ffe9a4dc84&page=testmark"
+  }
+}

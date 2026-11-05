@@ -92,6 +92,12 @@ public enum Route: Hashable, Sendable, Codable {
     case search(String)
     case trail(String)
     case savedView(String)
+    /// A reading list (nil: the reader's newest), or one of its pages read in order (ADR D-83).
+    case reading(list: String?, page: String?)
+    /// A page with its comments open, on one comment when `focus` is given (ADR D-84).
+    case pageComments(String, focus: String?)
+    /// Comments across the world: open (nil status: all of them).
+    case comments(PageComment.Status?)
 }
 
 /// A web link read into a route with its world and view.
@@ -166,13 +172,24 @@ public struct WebLink: Hashable, Sendable {
                                        place: lonLat(q["place"]), points: pts, measuring: q["tool"] == "measure",
                                        select: q["sel"]))
             case "search": return .search(q["q"] ?? "")
+            case "reading": return .reading(list: q["list"].flatMap { $0.isEmpty ? nil : $0 },
+                                            page: q["page"].flatMap { $0.isEmpty ? nil : $0 })
+            case "comments":
+                switch q["status"] {
+                case "all": return .comments(nil)
+                case "resolved": return .comments(.resolved)
+                default: return .comments(.open)
+                }
             case "family", "factions", "beliefs": return .home
             default: return nil
             }
         case 2:
             let ref = parts[1]
             switch parts[0] {
-            case "wiki": return .page(ref)
+            case "wiki":
+                if let c = q["comment"], !c.isEmpty { return .pageComments(ref, focus: c) }
+                if q["comments"] != nil { return .pageComments(ref, focus: nil) }
+                return .page(ref)
             case "records": return .record(ref)
             case "compare": return .compare(ref)
             case "beliefs": return .beliefs(ref)
@@ -257,6 +274,16 @@ public struct WebLink: Hashable, Sendable {
             if !text.isEmpty { q.append(("q", text)) }
         case .trail(let s): path = "/trails/\(esc(s))"
         case .savedView(let s): path = "/v/\(esc(s))"
+        case .reading(let list, let page):
+            path = "/reading"
+            if let list { q.append(("list", list)) }
+            if let page { q.append(("page", page)) }
+        case .pageComments(let r, let focus):
+            path = "/wiki/\(esc(r))"
+            if let focus { q.append(("comment", focus)) } else { q.append(("comments", "open")) }
+        case .comments(let status):
+            path = "/comments"
+            if status != .open { q.append(("status", status?.rawValue ?? "all")) }
         }
         if let world { q.append(("w", world)) }
         if let y = view.asOf { q.append(("y", ViewState.yearText(y))) }

@@ -92,6 +92,17 @@ public final class Loader<Value: Sendable> {
         }
     }
 
+    /// Shows a value the screen already has (the answer to a change it sent), without a fetch.
+    /// The next load checks it with the server as usual.
+    public func show(_ value: Value) {
+        generation += 1
+        let c = Cached(value: value, storedAt: Date(), mark: nil, fromCache: false)
+        apply(c)
+        isLoading = false
+        isStale = false
+        error = nil
+    }
+
     private func apply(_ c: Cached<Value>) {
         cached = c
         value = c.value

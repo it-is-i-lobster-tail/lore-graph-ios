@@ -1,0 +1,264 @@
+{
+  "entity": {
+    "id": "00000000-0000-7000-8000-000000000031",
+    "ref": "lampton",
+    "slug": "lampton",
+    "title": "Lampton",
+    "display_title": "Lampton",
+    "type": "location",
+    "kind": "location.settlement",
+    "kind_label": "Settlement",
+    "short_description": "A city of lamps at the ford of the Test River.",
+    "visibility": "public",
+    "canon": "approved",
+    "version": 1,
+    "lifespan": null,
+    "attributes": {
+      "size": "city"
+    },
+    "canonical_key": null,
+    "map_icon": null,
+    "map_portrait_id": null,
+    "map_portrait_url": null,
+    "map_key_city": false,
+    "deleted": false,
+    "breadcrumbs": [
+      {
+        "ref": "test-vale",
+        "title": "Test Vale"
+      }
+    ]
+  },
+  "names": [
+    {
+      "id": "01a1a84e-442e-772e-8dbd-0c72a574d799",
+      "name": "Lampton",
+      "kind": "primary",
+      "used_by": null,
+      "used_by_label": null,
+      "language": null,
+      "valid": null,
+      "era_label": null,
+      "tone": null,
+      "approval": "approved",
+      "locked": false,
+      "visibility": "public",
+      "note": null,
+      "version": 1
+    },
+    {
+      "id": "01a1a84e-447e-70a7-b3f1-3cdbe2a611e2",
+      "name": "Lamptun",
+      "kind": "former",
+      "used_by": null,
+      "used_by_label": null,
+      "language": null,
+      "valid": {
+        "from": 900.0,
+        "to": 1000.0,
+        "precision": "year",
+        "label": "YV 900 to 999",
+        "formatted": "YV 900 to 999"
+      },
+      "era_label": "the old form",
+      "tone": "archaic",
+      "approval": "approved",
+      "locked": false,
+      "visibility": "public",
+      "note": null,
+      "version": 1
+    },
+    {
+      "id": "01a1a84e-447d-7e12-ad4c-4a286735944e",
+      "name": "the Lamp City",
+      "kind": "epithet",
+      "used_by": null,
+      "used_by_label": "river sailors",
+      "language": null,
+      "valid": null,
+      "era_label": null,
+      "tone": null,
+      "approval": "approved",
+      "locked": false,
+      "visibility": "public",
+      "note": null,
+      "version": 1
+    }
+  ],
+  "details": {
+    "placement": "placed",
+    "anchor": {
+      "lon": 11.0,
+      "lat": 45.5,
+      "precision": "exact"
+    },
+    "elevation_m": null,
+    "parent_location": {
+      "ref": "test-vale",
+      "id": "00000000-0000-7000-8000-000000000030",
+      "title": "Test Vale",
+      "type": "location",
+      "kind": "location.region",
+      "visibility": "public",
+      "canon": "approved",
+      "short_description": "The vale of the Test River, heart of the kingdom."
+    },
+    "breadcrumbs": [
+      {
+        "ref": "test-vale",
+        "title": "Test Vale"
+      }
+    ]
+  },
+  "infobox": [
+    {
+      "label": "In",
+      "from": "parent",
+      "values": [
+        {
+          "text": "Test Vale",
+          "ref": "test-vale"
+        }
+      ]
+    },
+    {
+      "label": "Coordinates",
+      "from": "place",
+      "values": [
+        {
+          "ref": "test-vale",
+          "id": "00000000-0000-7000-8000-000000000030",
+          "title": "Test Vale",
+          "type": "location",
+          "kind": "location.region",
+          "visibility": "public",
+          "canon": "approved",
+          "short_description": "The vale of the Test River, heart of the kingdom.",
+          "text": "Test Vale"
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "00000000-0000-7000-8000-000000000401",
+      "key": "lead",
+      "section_type": "lead",
+      "heading": null,
+      "level": 2,
+      "position": 0.0,
+      "visibility": "public",
+      "canon": "approved",
+      "version": 1,
+      "word_count": 30,
+      "generated": false,
+      "in_world": true,
+      "author_canon": false,
+      "source_ref": null,
+      "body_md": "Lampton is a city on the [[test-river|Test River]] in the [[test-vale|Test Vale]], and the seat of the [[testmark|Kingdom of Testmark]]. Its lamps are kept by the [[order-of-the-lamp|Order of the Lamp]].",
+      "html": "<p>Lampton is a city on the <a class=\"wikilink\" href=\"/wiki/test-river\" data-entity=\"00000000-0000-7000-8000-000000000034\" data-slug=\"test-river\">Test River</a> in the <a class=\"wikilink\" href=\"/wiki/test-vale\" data-entity=\"00000000-0000-7000-8000-000000000030\" data-slug=\"test-vale\">Test Vale</a>, and the seat of the <a class=\"wikilink\" href=\"/wiki/testmark\" data-entity=\"00000000-0000-7000-8000-000000000010\" data-slug=\"testmark\">Kingdom of Testmark</a>. Its lamps are kept by the <a class=\"wikilink\" href=\"/wiki/order-of-the-lamp\" data-entity=\"00000000-0000-7000-8000-000000000011\" data-slug=\"order-of-the-lamp\">Order of the Lamp</a>.</p>\n",
+      "diff": [
+        {
+          "op": "equal",
+          "text": "Lampton is a city on the [[test-river|Test River]] in the [[test-vale|Test Vale]], and the seat of the [[testmark|Kingdom of Testmark]]. Its lamps are kept by the [[order-of-the-lamp|Order of the Lamp]]."
+        }
+      ],
+      "changed_since": false
+    },
+    {
+      "id": "00000000-0000-7000-8000-000000000402",
+      "key": "history",
+      "section_type": "history",
+      "heading": "History",
+      "level": 2,
+      "position": 10.0,
+      "visibility": "public",
+      "canon": "approved",
+      "version": 2,
+      "word_count": 39,
+      "generated": false,
+      "in_world": true,
+      "author_canon": false,
+      "source_ref": null,
+      "body_md": "The lamps of Lampton burn all night. Loïse and her daughters kept them. In the summer of YV 1020 the host of Testmark crossed the ford below the city and broke the [[eastmarch|Eastmarch]] at the [[battle-at-the-ford|Battle at the Ford]].",
+      "html": "<p>The lamps of Lampton burn all night. Loïse and her daughters kept them. In the summer of YV 1020 the host of Testmark crossed the ford below the city and broke the <a class=\"wikilink\" href=\"/wiki/eastmarch\" data-entity=\"00000000-0000-7000-8000-000000000012\" data-slug=\"eastmarch\">Eastmarch</a> at the <a class=\"wikilink\" href=\"/wiki/battle-at-the-ford\" data-entity=\"00000000-0000-7000-8000-000000000040\" data-slug=\"battle-at-the-ford\">Battle at the Ford</a>.</p>\n",
+      "diff": [
+        {
+          "op": "equal",
+          "text": "The lamps of Lampton burn all night. Loïse"
+        },
+        {
+          "op": "insert",
+          "text": " and her daughters"
+        },
+        {
+          "op": "equal",
+          "text": " kept them. In the summer of YV 1020 the host of Testmark crossed the ford below the city and broke the [[eastmarch|Eastmarch]] at the [[battle-at-the-ford|Battle at the Ford]]."
+        }
+      ],
+      "changed_since": true
+    }
+  ],
+  "edit_tag": {
+    "level": "minor",
+    "opened_at": "2026-11-04T20:46:04.487330Z",
+    "last_change_at": "2026-11-04T20:46:04.487330Z",
+    "change_count": 1,
+    "change_sets": [],
+    "banner": "Edit tag: minor. 1 change since 4 November. A lore review pass clears this tag."
+  },
+  "categories": [],
+  "statements": null,
+  "beliefs": null,
+  "accounts": null,
+  "shapes": [
+    {
+      "id": "01a1a84e-4465-735d-a71a-e975290c0e4e",
+      "entity": {
+        "ref": "lampton",
+        "id": "00000000-0000-7000-8000-000000000031",
+        "title": "Lampton",
+        "type": "location",
+        "kind": "location.settlement",
+        "visibility": "public",
+        "canon": "approved",
+        "short_description": "A city of lamps at the ford of the Test River."
+      },
+      "role": "point",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11,
+          45.5
+        ]
+      },
+      "valid": null,
+      "precision": "exact",
+      "uncertainty_m": null,
+      "according_to": null,
+      "generation": "current",
+      "replaces_id": null,
+      "label": null,
+      "min_zoom": null,
+      "max_zoom": null,
+      "rank": null,
+      "visibility": "public",
+      "canon": "approved",
+      "retired_at": null,
+      "version": 1,
+      "note": null,
+      "source_ref": null
+    }
+  ],
+  "history": null,
+  "media": [],
+  "external": null,
+  "pending": [],
+  "as_of": null,
+  "viewpoint": null,
+  "last_review": null,
+  "preview_change_set": null,
+  "preview": null,
+  "redirected_from": null,
+  "ui_url": "https://lore.example.test/wiki/lampton"
+}

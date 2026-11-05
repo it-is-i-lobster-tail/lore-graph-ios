@@ -1,0 +1,15 @@
+{
+  "type": "/api/v1/problems/validation",
+  "title": "The request breaks a rule",
+  "status": 422,
+  "code": "validation",
+  "detail": "the quote is not in the text of Lampton, History",
+  "hint": "Copy the passage as the page reads (the shown text of links, no markdown), or leave out quote to comment on the whole section.",
+  "errors": [
+    {
+      "field": "quote",
+      "message": "not in the section"
+    }
+  ],
+  "request_id": "F97F0F0932854C548C05926C33"
+}

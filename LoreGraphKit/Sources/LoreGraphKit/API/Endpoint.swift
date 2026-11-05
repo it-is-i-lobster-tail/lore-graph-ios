@@ -8,6 +8,9 @@ public enum Freshness: String, Sendable, Hashable, Codable {
     case map
     /// Never cached (who you are, the newest revision itself, typed dates).
     case live
+    /// The reader's own notes (reading marks, comments): they write no revision, so the lore mark
+    /// says nothing about them. Shown from the cache at once, then always fetched again.
+    case personal
 }
 
 /// A read: path under /api/v1, its query, and how it is cached.
@@ -254,4 +257,124 @@ public enum API {
     }
 
     static func coordinate(_ v: Double) -> String { String(format: "%.5f", v) }
+}
+
+/// A change sent to the server: a reading mark, a reading list, a comment. Only the reader's own
+/// bookkeeping and notes; the app never changes lore. Every one needs only `lore:read`.
+public struct Change<Response: Decodable & Sendable>: Sendable {
+    public var method: String
+    public var path: String
+    public var query: [URLQueryItem]
+    public var body: [String: JSONValue]?
+
+    public init(_ method: String, _ path: String, query: [URLQueryItem] = [], body: [String: JSONValue]? = nil) {
+        self.method = method
+        self.path = path
+        self.query = query
+        self.body = body
+    }
+
+    /// The full address in a world (changes take no view).
+    public func url(base: URL, world: String?) -> URL {
+        Endpoint<Response>(path, query: query, readsView: false, worldScoped: true).url(base: base, world: world, view: .default)
+    }
+
+    /// The JSON body, keys as given (snake_case) and sorted.
+    public var bodyData: Data? {
+        guard let body else { return nil }
+        let e = JSONEncoder()
+        e.outputFormatting = [.sortedKeys]
+        return try? e.encode(body)
+    }
+}
+
+/// Reading lists (loregraph ADR D-83) and comments on page text (ADR D-84).
+extension API {
+    /// The reader's reading list (the newest when `id` is nil), its progress, parts and pages.
+    public static func readingList(_ id: String? = nil, limit: Int = 5000, cursor: String? = nil) -> Endpoint<ReadingList> {
+        Endpoint(id.map { "/reading-lists/\(segment($0))" } ?? "/reading-lists",
+                 query: [item("limit", limit), item("cursor", cursor)].compactMap { $0 }, readsView: false,
+                 freshness: .personal)
+    }
+
+    /// Builds a reading list of the whole world in reading order (the server's defaults: approved
+    /// and author canon, all eight types, pages without prose last).
+    public static func buildReadingList(title: String? = nil) -> Change<ReadingBuildResult> {
+        var body: [String: JSONValue] = [:]
+        if let t = title?.trimmingCharacters(in: .whitespacesAndNewlines), !t.isEmpty { body["title"] = .string(t) }
+        return Change("POST", "/reading-lists", body: body)
+    }
+
+    /// Adds the pages made or approved since the list was built to its end, keeping every mark.
+    public static func addNewPages(to id: String) -> Change<ReadingBuildResult> {
+        Change("PUT", "/reading-lists/\(segment(id))", body: ["add_new": .bool(true)])
+    }
+
+    public static func renameReadingList(_ id: String, title: String) -> Change<ReadingBuildResult> {
+        Change("PUT", "/reading-lists/\(segment(id))", body: ["title": .string(title)])
+    }
+
+    public static func deleteReadingList(_ id: String) -> Change<ReadingBuildResult> {
+        Change("DELETE", "/reading-lists/\(segment(id))", query: [URLQueryItem(name: "confirm", value: "true")])
+    }
+
+    /// Marks pages of a list read (or unread again with `read: false`).
+    public static func markRead(list id: String, refs: [String], read: Bool = true) -> Change<ReadingMarkResult> {
+        Change("POST", "/reading-lists/\(segment(id))/read",
+               body: ["refs": .array(refs.map(JSONValue.string)), "read": .bool(read)])
+    }
+
+    /// One page's comments in reading order, open and resolved, with their replies.
+    public static func comments(on ref: String, viewAs: Visibility? = nil) -> Endpoint<CommentList> {
+        Endpoint("/comments", query: [URLQueryItem(name: "ref", value: ref), URLQueryItem(name: "status", value: "all"),
+                                      item("limit", 200), item("view_as", viewAs.flatMap { $0 == .designer ? nil : $0.rawValue })]
+                    .compactMap { $0 }, readsView: false, freshness: .personal)
+    }
+
+    /// Comments across the world, the latest activity first.
+    public static func allComments(status: PageComment.Status? = .open, cursor: String? = nil) -> Endpoint<CommentList> {
+        Endpoint("/comments", query: [item("status", status?.rawValue ?? "all"), item("limit", 50), item("cursor", cursor)]
+                    .compactMap { $0 }, readsView: false, freshness: .personal)
+    }
+
+    /// A comment on a passage of a section (`quote` as the page reads), or on the whole section.
+    public static func addComment(page ref: String, section: String, quote: String?, prefix: String? = nil,
+                                  suffix: String? = nil, body: String) -> Change<CommentResult> {
+        var b: [String: JSONValue] = ["ref": .string(ref), "section": .string(section), "body_md": .string(body)]
+        if let quote, !quote.isEmpty {
+            b["quote"] = .string(quote)
+            if let prefix, !prefix.isEmpty { b["prefix"] = .string(prefix) }
+            if let suffix, !suffix.isEmpty { b["suffix"] = .string(suffix) }
+        }
+        return Change("POST", "/comments", body: b)
+    }
+
+    public static func reply(to id: String, body: String, resolve: Bool = false) -> Change<CommentResult> {
+        Change("POST", "/comments/\(segment(id))/replies", body: ["body_md": .string(body), "resolve": .bool(resolve)])
+    }
+
+    /// Resolves a comment, or reopens it.
+    public static func resolveComment(_ id: String, resolved: Bool = true) -> Change<CommentResult> {
+        Change("POST", "/comments/\(segment(id))/\(resolved ? "resolve" : "reopen")")
+    }
+
+    /// New text for the reader's own comment, or for one of its replies.
+    public static func editComment(_ id: String, reply: String? = nil, body: String) -> Change<CommentResult> {
+        Change("PATCH", "/comments/\(segment(id))" + (reply.map { "/replies/\(segment($0))" } ?? ""),
+               body: ["body_md": .string(body)])
+    }
+
+    /// Deletes a comment with its replies, or one reply.
+    public static func deleteComment(_ id: String, reply: String? = nil) -> Change<CommentResult> {
+        Change("DELETE", "/comments/\(segment(id))" + (reply.map { "/replies/\(segment($0))" } ?? ""),
+               query: [URLQueryItem(name: "confirm", value: "true")])
+    }
+
+    /// A page with each section's word changes since a moment (a reading mark's time).
+    public static func entity(_ ref: String, diffSince: String) -> Endpoint<EntityDetail> {
+        var e = entity(ref)
+        e.query.append(URLQueryItem(name: "diff_since", value: diffSince))
+        e.freshness = .personal
+        return e
+    }
 }
