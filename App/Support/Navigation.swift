@@ -3,7 +3,7 @@ import SwiftUI
 
 /// The app's sections: tabs on iPhone, the sidebar on iPad (F-11.1).
 enum AppSection: String, CaseIterable, Hashable, Identifiable {
-    case wiki, map, timeline, family, graph, search
+    case wiki, map, family, search
 
     var id: String { rawValue }
 
@@ -11,9 +11,7 @@ enum AppSection: String, CaseIterable, Hashable, Identifiable {
         switch self {
         case .wiki: "Wiki"
         case .map: "Map"
-        case .timeline: "Timeline"
         case .family: "Family"
-        case .graph: "Graph"
         case .search: "Search"
         }
     }
@@ -22,9 +20,7 @@ enum AppSection: String, CaseIterable, Hashable, Identifiable {
         switch self {
         case .wiki: "book"
         case .map: "map"
-        case .timeline: "calendar.day.timeline.left"
         case .family: "figure.2.and.child.holdinghands"
-        case .graph: "circle.hexagongrid"
         case .search: "magnifyingglass"
         }
     }
@@ -33,9 +29,7 @@ enum AppSection: String, CaseIterable, Hashable, Identifiable {
     static func of(_ route: Route) -> AppSection {
         switch route {
         case .map: .map
-        case .timeline: .timeline
         case .family: .family
-        case .graph: .graph
         case .search: .search
         default: .wiki
         }
@@ -65,24 +59,17 @@ final class Navigation {
     var lastFamily: String?
     /// The search text handed over by a link.
     var pendingSearch: String?
-    /// iPhone has no Family tab (four tabs and Search fill its bar): trees open on the wiki's stack.
-    var hasFamilyTab = true
 
     func navigator(_ s: AppSection) -> Navigator { stacks[s]! }
 
     /// Opens a route in its own section's stack (shared links, F-11.2).
     func show(_ route: Route) {
-        if case .family = route, !hasFamilyTab {
-            section = .wiki
-            navigator(.wiki).open(route)
-            return
-        }
         let s = AppSection.of(route)
         section = s
         switch route {
         case .search(let text):
             pendingSearch = text
-        case .map, .timeline, .graph:
+        case .map:
             navigator(s).path = [route]
         default:
             navigator(s).open(route)
@@ -109,7 +96,9 @@ extension View {
 
     /// The destinations every stack can reach.
     func routeDestinations() -> some View {
-        navigationDestination(for: Route.self) { RouteView(route: $0).contextBanner() }
+        navigationDestination(for: Route.self) { route in
+            RouteView(route: route).contextBanner(atPresent: route.isMap)
+        }
     }
 }
 
@@ -132,8 +121,6 @@ struct RouteView: View {
         case .beliefTrace(let id): BeliefTraceView(id: id)
         case .faction(let ref): FactionView(ref: ref)
         case .family(let ref, let options): FamilyScreen(ref: ref, options: options)
-        case .graph(let options): GraphScreen(options: options)
-        case .timeline(let options): TimelineScreen(options: options)
         case .map(let options): MapScreen(options: options)
         case .search(let text): SearchScreen(initial: text, pushed: true)
         case .trail(let slug): TrailView(slug: slug)
@@ -143,5 +130,13 @@ struct RouteView: View {
         case .pageComments(let ref, let focus): PageView(ref: ref, focus: focus, showComments: true)
         case .comments(let status): AllCommentsView(status: status)
         }
+    }
+}
+
+extension Route {
+    /// Whether this is the map, which always shows the in-world present.
+    var isMap: Bool {
+        if case .map = self { return true }
+        return false
     }
 }

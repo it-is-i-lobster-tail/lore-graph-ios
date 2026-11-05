@@ -78,11 +78,8 @@ import Testing
         _ = try Fixture.decode(Suggestions.self, "resolve-lam")
         _ = try Fixture.decode(StatementDetail.self, "statement-one")
         _ = try Fixture.decode(WhoKnows.self, "who-knows")
-        _ = try Fixture.decode(Timeline.self, "timeline-dirk")
         _ = try Fixture.decode(FamilyTree.self, "family-cato")
         _ = try Fixture.decode(FamilyTree.self, "family-dirk.public")
-        _ = try Fixture.decode(Neighbourhood.self, "graph-dirk.public")
-        _ = try Fixture.decode(GraphPaths.self, "path")
         _ = try Fixture.decode(BeliefsOf.self, "beliefs-dirk")
         _ = try Fixture.decode(BeliefsOf.self, "beliefs-testmark")
         _ = try Fixture.decode(BeliefLineage.self, "lineage")
@@ -214,14 +211,7 @@ import Testing
         #expect(second.isOverridden && !first.isOverridden)
     }
 
-    @Test func timelinesAndPeople() throws {
-        let t = try Fixture.decode(Timeline.self, "timeline-lanes")
-        #expect(t.items[0].lane("faction") == "testmark")
-        #expect(t.items[0].lane("place") == nil)
-        #expect(t.items[0].lane("nothing") == nil)
-        var item = t.items[0]
-        item.claim = true
-        #expect(item.isClaim)
+    @Test func familyTrees() throws {
         let tree = try Fixture.decode(FamilyTree.self, "family-dirk")
         #expect(tree.parents.allSatisfy { $0.isBiological })
         var link = tree.parents[0]
@@ -230,10 +220,6 @@ import Testing
         link.kind = nil
         #expect(link.isBiological)
         #expect(tree.people[0].shownTitle == "Dirk")
-        let g = try Fixture.decode(Neighbourhood.self, "graph-dirk")
-        #expect(g.nodes[0].card.ref == g.nodes[0].ref)
-        #expect(g.nodes[0].shownTitle == g.nodes[0].displayTitle ?? g.nodes[0].title)
-        #expect(!g.edges[0].isClaim)
     }
 
     @Test func mapLayers() throws {
@@ -439,11 +425,11 @@ import Testing
         #expect(parse("https://lore.example.test/family/dirk?up=20&down=-1&mode=ancestors&account=x")?.route
             == .family("dirk", FamilyOptions(up: 10, down: 0, mode: .ancestors, account: "x")))
         #expect(parse("https://lore.example.test/family/dirk")?.route == .family("dirk", FamilyOptions()))
-        #expect(parse("https://lore.example.test/graph?focus=a,%20b&depth=9&path=a,c")?.route
-            == .graph(GraphOptions(focus: ["a", "b"], depth: 3, path: ["a", "c"])))
-        #expect(parse("https://lore.example.test/graph")?.route == .graph(GraphOptions()))
-        #expect(parse("https://lore.example.test/timeline?about=dirk&from=1000&to=1100&lanes=type&claims=yes")?.route
-            == .timeline(TimelineOptions(about: ["dirk"], from: "1000", to: "1100", lanes: "type", claims: true)))
+        // the app has no graph or timeline: their links open the page they were about
+        #expect(parse("https://lore.example.test/graph?focus=a,%20b&depth=9&path=a,c")?.route == .page("a"))
+        #expect(parse("https://lore.example.test/graph")?.route == .home)
+        #expect(parse("https://lore.example.test/timeline?about=dirk&from=1000&to=1100&lanes=type&claims=yes")?.route == .page("dirk"))
+        #expect(parse("https://lore.example.test/timeline")?.route == .home)
         let map = parse("https://lore.example.test/map?c=11.1,45.5&z=7.5&l=places,routes&base=relief&place=1,2&pts=1,2;3,4;bad;500,1&tool=measure&sel=lampton")?.route
         #expect(map == .map(MapOptions(centre: LonLat(11.1, 45.5), zoom: 7.5, layers: ["places", "routes"], base: .relief,
                                        place: LonLat(1, 2), points: [LonLat(1, 2), LonLat(3, 4)], measuring: true, select: "lampton")))
@@ -456,8 +442,6 @@ import Testing
             .home, .browse(type: nil), .browse(type: .event), .page("dirk"), .records("dirk"), .links("dirk"), .history("dirk"),
             .record("s1"), .compare("b"), .beliefs("fenn"), .beliefQuestion("ford:commander"), .beliefTrace("b1"), .faction("t"),
             .family("dirk", FamilyOptions()), .family("dirk", FamilyOptions(up: 3, down: 1, mode: .descendants, account: "x")),
-            .graph(GraphOptions()), .graph(GraphOptions(focus: ["a", "b"], depth: 2, path: ["a", "b"])),
-            .timeline(TimelineOptions()), .timeline(TimelineOptions(about: ["dirk"], from: "1000", to: "1100", lanes: "type", claims: true)),
             .map(MapOptions()), .search(""), .search("ford"), .trail("t"), .savedView("v"), .category("river", title: nil),
         ]
         for r in routes {

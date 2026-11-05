@@ -91,7 +91,7 @@ struct BlockView: View {
     }
 }
 
-/// Open page, Show on map, Open in graph and Copy web link for one linked page (F-4.6).
+/// Open page, Show on map and Copy web link for one linked page (F-4.6).
 struct PageLinkMenu: View {
     let ref: String
     let title: String
@@ -102,7 +102,6 @@ struct PageLinkMenu: View {
         Menu(title) {
             Button("Open page", systemImage: "doc.text") { navigator.open(.page(ref)) }
             Button("Show on map", systemImage: "map") { navigator.open(.map(MapOptions(select: ref))) }
-            Button("Open in graph", systemImage: "circle.hexagongrid") { navigator.open(.graph(GraphOptions(focus: [ref]))) }
             if let c = app.context {
                 Button("Copy web link", systemImage: "link") { UIPasteboard.general.url = c.shareURL(.page(ref)) }
             }

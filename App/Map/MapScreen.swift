@@ -1,7 +1,8 @@
 import LoreGraphKit
 import SwiftUI
 
-/// The map (F-7): the canvas with layers, the time slider, selection, what's here and measuring.
+/// The map (F-7): the canvas with layers, selection, what's here and measuring, always at the
+/// in-world present.
 struct MapScreen: View {
     let options: MapOptions
     var isTab = false
@@ -70,7 +71,6 @@ struct MapContent: View {
                 } else if sizeClass != .regular, model.selection != nil {
                     SelectionCard(model: model)
                 }
-                TimeSlider()
             }
             .padding(.horizontal)
             .padding(.bottom, 6)
@@ -170,113 +170,6 @@ struct LayerSheet: View {
             .navigationTitle("Layers")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
-        }
-    }
-}
-
-/// The year the map shows, from the early years to the present, with era bands and play (F-7.6).
-struct TimeSlider: View {
-    @Environment(AppModel.self) private var app
-    @State private var eras: Loader<Timeline>?
-    @State private var dragging: Double?
-    @State private var playing: Task<Void, Never>?
-
-    var body: some View {
-        let present = app.context?.present ?? 1131.25
-        let range = YearText.sliderRange(eras: eras?.value?.eras ?? [], present: present)
-        let year = dragging ?? app.view.asOf ?? present
-        VStack(spacing: 2) {
-            HStack(spacing: 10) {
-                Button {
-                    togglePlay(range: range)
-                } label: {
-                    Image(systemName: playing == nil ? "play.fill" : "pause.fill")
-                }
-                .accessibilityLabel(playing == nil ? "Play through the years" : "Pause")
-                VStack(spacing: 0) {
-                    EraBands(eras: eras?.value?.eras ?? [], range: range).frame(height: 4)
-                    Slider(value: Binding(get: { min(max(year, range.lowerBound), range.upperBound) }, set: { dragging = $0 }),
-                           in: range, step: 0.25) { editing in
-                        if !editing, let y = dragging {
-                            setYear(y, present: present)
-                            dragging = nil
-                        }
-                    }
-                    .accessibilityValue(YearText.label(year))
-                }
-                Text(dragging.map(YearText.label) ?? (app.view.asOf == nil ? "Present" : (app.view.asOfLabel ?? YearText.label(year))))
-                    .font(.caption.monospacedDigit())
-                    .frame(width: 104, alignment: .trailing)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
-            }
-        }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 6)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 16))
-        .task(id: app.context?.world) {
-            guard let c = app.context else { return }
-            let l = c.loader(API.eras())
-            eras = l
-            await l.load()
-        }
-        .onDisappear {
-            playing?.cancel()
-            playing = nil
-        }
-    }
-
-    func setYear(_ y: Double, present: Double) {
-        var v = app.view
-        if y >= present - 0.001 {
-            v.asOf = nil
-            v.asOfLabel = nil
-        } else {
-            v.asOf = y
-            v.asOfLabel = nil
-        }
-        app.setView(v)
-    }
-
-    func togglePlay(range: ClosedRange<Double>) {
-        if let p = playing {
-            p.cancel()
-            playing = nil
-            return
-        }
-        playing = Task { @MainActor in
-            var y = floor(app.view.asOf ?? range.lowerBound)
-            if y >= range.upperBound - 1 { y = range.lowerBound }
-            while !Task.isCancelled, y < range.upperBound {
-                y += 1
-                setYear(min(y, range.upperBound), present: range.upperBound)
-                try? await Task.sleep(for: .milliseconds(700))
-            }
-            playing = nil
-        }
-    }
-}
-
-struct EraBands: View {
-    let eras: [Timeline.Era]
-    let range: ClosedRange<Double>
-
-    var body: some View {
-        GeometryReader { geo in
-            ForEach(Array(eras.enumerated()), id: \.offset) { i, era in
-                if let r = era.span.drawnRange {
-                    let span = range.upperBound - range.lowerBound
-                    let lo = (max(r.lowerBound, range.lowerBound) - range.lowerBound) / span
-                    let hi = (min(r.upperBound, range.upperBound) - range.lowerBound) / span
-                    if hi > lo {
-                        RoundedRectangle(cornerRadius: 2)
-                            .fill(Color.accentInk.opacity(i % 2 == 0 ? 0.25 : 0.45))
-                            .frame(width: (hi - lo) * geo.size.width, height: 4)
-                            .offset(x: lo * geo.size.width)
-                            .accessibilityLabel(era.name)
-                    }
-                }
-            }
         }
     }
 }

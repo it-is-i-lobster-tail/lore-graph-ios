@@ -104,7 +104,7 @@ public final class MapModel {
         viewport.centre == MapProjection.toMap(LonLat(0, 45)) && viewport.zoom == 3
     }
 
-    /// Another year, viewpoint or world: tiles and features for it.
+    /// Another viewpoint or world: tiles and features for it.
     public func setContext(_ c: ReadContext) async {
         let worldChanged = c.world != context.world || c.server != context.server
         context = c
@@ -155,7 +155,16 @@ public final class MapModel {
 
     public var version: Int { layers.value?.mapVersion ?? 0 }
 
-    var year: Int { Int(floor(context.year)) }
+    /// The map always shows the in-world present: the reader's year (for pages) never moves it.
+    var year: Int { Int(floor(context.present)) }
+
+    /// The view the map reads with: the reader's viewpoint, calendar and level, at the present.
+    var view: ViewState { context.view.withoutYear }
+
+    /// A loader for a map read, at the present.
+    private func loader<T>(_ e: Endpoint<T>) -> Loader<T> {
+        context.repository.loader(e, world: context.world, view: view)
+    }
 
     var zoomBucket: Int { Int(floor(viewport.zoom)) }
 
@@ -461,12 +470,12 @@ public final class MapModel {
 
     /// A derived answer: the cached one if it is current, else the server's.
     private func read(_ e: Endpoint<GeoJSONCollection>, _ repo: Repository) async throws -> GeoJSONCollection {
-        let cached = await repo.cached(e, world: context.world, view: context.view)
-        if let fresh = try await repo.revalidate(e, world: context.world, view: context.view, cached: cached) {
+        let cached = await repo.cached(e, world: context.world, view: view)
+        if let fresh = try await repo.revalidate(e, world: context.world, view: view, cached: cached) {
             return fresh.value
         }
         if let cached { return cached.value }
-        return try await repo.fetch(e, world: context.world, view: context.view).value
+        return try await repo.fetch(e, world: context.world, view: view).value
     }
 
     // MARK: taps and selection
@@ -495,7 +504,7 @@ public final class MapModel {
         highlight = hit.highlight(palette)
         placesAt = nil
         if let ref = hit.target.info.entityRef ?? hit.target.info.entityId {
-            let p = context.loader(API.preview(ref))
+            let p = loader(API.preview(ref))
             preview = p
             await p.load()
         } else {
@@ -509,7 +518,7 @@ public final class MapModel {
             StyledGroup(style: MapStyler.selection(palette), rings: [], lines: [], points: [MapProjection.toMap(p)], halos: []),
         ], labels: [], hits: [])
         preview = nil
-        let l = context.loader(API.placesAt(lon: p.lon, lat: p.lat))
+        let l = loader(API.placesAt(lon: p.lon, lat: p.lat))
         placesAt = l
         await l.load()
     }
@@ -583,7 +592,7 @@ public final class MapModel {
         }
         let pts = measurePoints.map { String(format: "%.5f,%.5f", $0.lon, $0.lat) }
         let wanted = measurePoints
-        let answer = try? await context.repository.client.get(API.distance(pts), world: context.world, view: context.view).value
+        let answer = try? await context.repository.client.get(API.distance(pts), world: context.world, view: view).value
         guard wanted == measurePoints else { return }
         distance = answer
     }
@@ -598,8 +607,8 @@ public final class MapModel {
         case .feature(let info, _): select = info.entityRef
         case nil: break
         }
-        return context.shareURL(.map(MapOptions(centre: viewport.centreLonLat, zoom: viewport.zoom, layers: visible.sorted(),
-                                                base: baseMap, place: place, points: measurePoints, measuring: measuring,
-                                                select: select)))
+        let route = Route.map(MapOptions(centre: viewport.centreLonLat, zoom: viewport.zoom, layers: visible.sorted(),
+                                         base: baseMap, place: place, points: measurePoints, measuring: measuring, select: select))
+        return WebLink(route: route, world: context.world, view: view).url(server: context.server)
     }
 }
