@@ -242,12 +242,17 @@ public struct Change<Response: Decodable & Sendable>: Sendable {
     public var path: String
     public var query: [URLQueryItem]
     public var body: [String: JSONValue]?
+    /// Sent as `Idempotency-Key`: the server answers a replay of the same change with its first
+    /// answer instead of running it twice (a queued comment sent again after a lost answer).
+    public var idempotencyKey: String?
 
-    public init(_ method: String, _ path: String, query: [URLQueryItem] = [], body: [String: JSONValue]? = nil) {
+    public init(_ method: String, _ path: String, query: [URLQueryItem] = [], body: [String: JSONValue]? = nil,
+                idempotencyKey: String? = nil) {
         self.method = method
         self.path = path
         self.query = query
         self.body = body
+        self.idempotencyKey = idempotencyKey
     }
 
     /// The full address in a world (changes take no view).

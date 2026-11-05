@@ -174,6 +174,52 @@ final class LoreGraphUITests: XCTestCase {
     // MARK: steps
 
     @MainActor
+    /// Downloads a page for offline reading, finds it in Downloads and removes it again.
+    func testDownloadAPage() throws {
+        let env = try settings(needs: ["LG_SERVER", "LG_TOKEN"])
+        launch()
+        let server = app.textFields["server"]
+        XCTAssertTrue(server.waitForExistence(timeout: 10))
+        server.replaceText(env["LG_SERVER"]!)
+        app.descendants(matching: .any)["tokenDisclosure"].firstMatch.tap()
+        let token = app.secureTextFields["token"]
+        XCTAssertTrue(token.waitForExistence(timeout: 5))
+        token.tap()
+        token.typeText(env["LG_TOKEN"]!)
+        app.buttons["signInWithToken"].tap()
+        chooseWorldIfAsked()
+        XCTAssertTrue(app.buttons["browse-individual"].waitForExistence(timeout: 30), "the wiki home never loaded")
+
+        app.buttons["browse-individual"].tap()
+        let firstPage = app.buttons.matching(identifier: "pageRow").firstMatch
+        XCTAssertTrue(firstPage.waitForExistence(timeout: 20), "no page to download")
+        firstPage.tap()
+        XCTAssertTrue(app.staticTexts["pageTitle"].waitForExistence(timeout: 20), "the page never opened")
+        let title = app.staticTexts["pageTitle"].label
+        let download = app.buttons["downloadPage"].firstMatch
+        XCTAssertTrue(download.waitForExistence(timeout: 10), "the page has no download button")
+        download.tap()
+        XCTAssertTrue(app.descendants(matching: .any)["downloadNote"].firstMatch.waitForExistence(timeout: 30),
+                      "the page never showed as downloaded")
+        snapshot("16-downloaded-page")
+
+        // the home screen's Downloads lists it
+        for _ in 0..<4 where !app.buttons["downloads"].firstMatch.exists {
+            app.navigationBars.buttons.firstMatch.tap()
+            sleep(1)
+        }
+        let downloads = app.buttons["downloads"].firstMatch
+        XCTAssertTrue(downloads.waitForExistence(timeout: 10), "the wiki home has no Downloads row")
+        downloads.tap()
+        XCTAssertTrue(app.staticTexts[title].firstMatch.waitForExistence(timeout: 10), "Downloads doesn't list the page")
+        snapshot("17-downloads")
+
+        // and it can be removed with a swipe
+        app.staticTexts[title].firstMatch.swipeLeft()
+        app.buttons["Remove"].firstMatch.tap()
+        XCTAssertTrue(app.staticTexts[title].firstMatch.waitForNonExistence(timeout: 10), "the download was not removed")
+    }
+
     func signInWithOAuth(server address: String, email: String, password: String) {
         let server = app.textFields["server"]
         XCTAssertTrue(server.waitForExistence(timeout: 10))

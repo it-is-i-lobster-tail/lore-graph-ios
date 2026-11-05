@@ -84,6 +84,7 @@ public enum APIError: Error, Sendable, Hashable {
         case 404: return .notFound(problem)
         default:
             var p = problem
+            if p.status == nil { p.status = status }
             if p.title == nil { p.title = status >= 500 ? "The server had a problem" : "The server refused the request" }
             if p.detail == nil && status >= 500 { p.detail = "Try again in a moment." }
             return .problem(p)

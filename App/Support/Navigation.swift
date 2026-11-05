@@ -129,6 +129,7 @@ struct RouteView: View {
         case .reading(let list, let page?): ReadingPageView(list: list, ref: page)
         case .pageComments(let ref, let focus): PageView(ref: ref, focus: focus, showComments: true)
         case .comments(let status): AllCommentsView(status: status)
+        case .downloads: DownloadsView()
         }
     }
 }

@@ -511,6 +511,22 @@ struct ReadingSummarySection: View {
                 Label("Comments", systemImage: "text.bubble")
             }
             .accessibilityIdentifier("allComments")
+            if let offline = app.offline {
+                NavigationLink(value: Route.downloads) {
+                    HStack {
+                        Label("Downloads", systemImage: "arrow.down.circle")
+                        Spacer()
+                        let waiting = offline.pending(world: app.world?.key).count
+                        let pages = offline.downloads.filter { $0.world == app.world?.key }.count
+                        if waiting > 0 {
+                            Text(waiting == 1 ? "1 to send" : "\(waiting) to send").foregroundStyle(.orange)
+                        } else if pages > 0 {
+                            Text("\(pages)").foregroundStyle(.secondary)
+                        }
+                    }
+                }
+                .accessibilityIdentifier("downloads")
+            }
         }
         .task(id: app.context?.key) {
             guard let c = app.context else { return }
