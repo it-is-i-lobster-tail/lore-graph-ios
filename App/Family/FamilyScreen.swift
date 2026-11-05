@@ -17,7 +17,7 @@ struct FamilyTab: View {
     }
 }
 
-/// Picks a page by name, starting from pages read recently (family and graph tabs).
+/// Picks a page by name, starting from pages read recently (the Family tab, and Find a place on the map).
 struct PeoplePicker: View {
     let title: String
     let prompt: String

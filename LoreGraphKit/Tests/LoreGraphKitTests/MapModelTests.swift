@@ -125,10 +125,19 @@ private func tileZ(_ piece: ScenePiece) -> Int? {
         await m.refresh()
         #expect(stack.server.count("/map/layers") == layerReads + 1 && m.failedTiles == 0)
 
-        await m.setContext(stack.context(view: ViewState(asOf: 1020)))
-        #expect(m.neededTiles.allSatisfy { $0.year == 1020 })
+        // the map always shows the present: the reader's year (for pages) never moves it, while
+        // the viewpoint still applies
+        await m.setContext(stack.context(view: ViewState(asOf: 1020, viewpoint: .init(ref: "aldo", title: "Aldo"))))
+        let lore = m.neededTiles.filter { $0.layer == "places" }
+        #expect(!lore.isEmpty && lore.allSatisfy { $0.year == 1131 && $0.viewpoint == "aldo" })
         #expect(await eventually { m.neededTiles.allSatisfy { m.pieces[$0] != nil } })
-        #expect(stack.server.requests.contains { $0.url.path.hasSuffix(".mvt") && $0.query["year"] == ["1020"] })
+        #expect(stack.server.requests.contains { $0.url.path.hasSuffix(".mvt") && $0.query["viewpoint"] == ["aldo"] })
+        #expect(!stack.server.requests.contains { $0.query["year"] == ["1020"] || $0.query["as_of"] != nil })
+        await m.selectPoint(LonLat(11, 45.5))
+        #expect(await eventually { m.placesAt?.value != nil })
+        #expect(!stack.server.requests.contains { $0.query["as_of"] != nil })
+        let shared = m.shareURL.absoluteString
+        #expect(shared.contains("vp=aldo") && !shared.contains("y=1020"))
 
         await m.selectPoint(LonLat(11, 45.5))
         await m.setContext(stack.context(world: "elsewhere"))

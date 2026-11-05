@@ -4,12 +4,11 @@ import SwiftUI
 /// The tabs (iPhone) or sidebar (iPad), each with its own stack (F-11.1).
 struct MainView: View {
     @Environment(AppModel.self) private var app
-    @Environment(\.horizontalSizeClass) private var sizeClass
     @State private var nav = Navigation()
 
     var body: some View {
         TabView(selection: $nav.section) {
-            ForEach(AppSection.allCases.filter { $0 != .search && (nav.hasFamilyTab || $0 != .family) }) { s in
+            ForEach(AppSection.allCases.filter { $0 != .search }) { s in
                 Tab(s.title, systemImage: s.symbol, value: s) {
                     SectionStack(section: s)
                 }
@@ -19,12 +18,6 @@ struct MainView: View {
             }
         }
         .tabViewStyle(.sidebarAdaptable)
-        // an iPhone tab bar holds five items, Search included: there, family trees open from a
-        // person's page instead of a tab (the iPad sidebar keeps the Family tab)
-        .onChange(of: sizeClass, initial: true) { _, size in
-            nav.hasFamilyTab = size == .regular
-            if !nav.hasFamilyTab, nav.section == .family { nav.section = .wiki }
-        }
         .environment(nav)
         .onOpenURL { url in
             Task { if let route = await app.open(url) { nav.show(route) } }
@@ -53,7 +46,7 @@ struct SectionStack: View {
         @Bindable var navigator = nav.navigator(section)
         NavigationStack(path: $navigator.path) {
             root
-                .worldToolbar()
+                .worldToolbar(atPresent: section == .map)
                 .routeDestinations()
         }
         .environment(navigator)
@@ -64,9 +57,7 @@ struct SectionStack: View {
         switch section {
         case .wiki: HomeView()
         case .map: MapScreen(options: MapOptions(), isTab: true)
-        case .timeline: TimelineScreen(options: TimelineOptions())
         case .family: FamilyTab()
-        case .graph: GraphTab()
         case .search: SearchScreen(initial: nav.pendingSearch ?? "")
         }
     }
@@ -74,6 +65,8 @@ struct SectionStack: View {
 
 /// The world menu at the top of every tab (F-2.2) and the account button.
 struct WorldToolbar: ViewModifier {
+    /// The map's: it always shows the present, so the reader's year is left out.
+    var atPresent = false
     @Environment(AppModel.self) private var app
     @State private var showView = false
     @State private var showSettings = false
@@ -119,7 +112,7 @@ struct WorldToolbar: ViewModifier {
 
     /// "Spring YV 1131", "As of YV 1020 · Dirk".
     var viewLine: String {
-        let v = app.view
+        let v = atPresent ? app.view.withoutYear : app.view
         var parts: [String] = []
         if let y = v.asOf { parts.append(v.asOfLabel ?? YearText.label(y)) } else { parts.append(app.about?.present?.text ?? "The present") }
         if let vp = v.viewpoint { parts.append(vp.title) }
@@ -130,11 +123,14 @@ struct WorldToolbar: ViewModifier {
 
 /// The banner when the year, viewpoint or level isn't the default (F-3.5).
 struct ContextBanner: ViewModifier {
+    /// The map's: it always shows the present, so the reader's year is left out.
+    var atPresent = false
     @Environment(AppModel.self) private var app
 
     func body(content: Content) -> some View {
+        let view = atPresent ? app.view.withoutYear : app.view
         content.safeAreaInset(edge: .top, spacing: 0) {
-            if let sentence = app.view.banner(calendarName: app.about?.calendars?.first { $0.key == app.view.calendar }?.name) {
+            if let sentence = view.banner(calendarName: app.about?.calendars?.first { $0.key == view.calendar }?.name) {
                 HStack(spacing: 10) {
                     Image(systemName: "clock.arrow.circlepath").foregroundStyle(Color.accentInk)
                     Text(sentence).font(.footnote).frame(maxWidth: .infinity, alignment: .leading)
@@ -152,7 +148,9 @@ struct ContextBanner: ViewModifier {
 }
 
 extension View {
-    func worldToolbar() -> some View { modifier(WorldToolbar()).modifier(ContextBanner()) }
+    func worldToolbar(atPresent: Bool = false) -> some View {
+        modifier(WorldToolbar(atPresent: atPresent)).modifier(ContextBanner(atPresent: atPresent))
+    }
 
-    func contextBanner() -> some View { modifier(ContextBanner()) }
+    func contextBanner(atPresent: Bool = false) -> some View { modifier(ContextBanner(atPresent: atPresent)) }
 }

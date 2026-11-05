@@ -3,7 +3,7 @@ import Observation
 
 /// A way on from a page to another screen (F-4.9).
 public enum PageAction: String, Hashable, Sendable, CaseIterable, Identifiable {
-    case records, links, family, faction, graph, timeline, map, accounts, beliefs
+    case records, links, family, faction, map, accounts, beliefs
 
     public var id: String { rawValue }
 
@@ -13,8 +13,6 @@ public enum PageAction: String, Hashable, Sendable, CaseIterable, Identifiable {
         case .links: "What links here"
         case .family: "Family tree"
         case .faction: "Faction tree"
-        case .graph: "Graph"
-        case .timeline: "Timeline"
         case .map: "Map"
         case .accounts: "Compare accounts"
         case .beliefs: "Beliefs"
@@ -27,8 +25,6 @@ public enum PageAction: String, Hashable, Sendable, CaseIterable, Identifiable {
         case .links: "arrow.uturn.backward"
         case .family: "figure.2.and.child.holdinghands"
         case .faction: "point.3.connected.trianglepath.dotted"
-        case .graph: "circle.hexagongrid"
-        case .timeline: "calendar.day.timeline.left"
         case .map: "map"
         case .accounts: "text.book.closed"
         case .beliefs: "brain.head.profile"
@@ -42,8 +38,6 @@ public enum PageAction: String, Hashable, Sendable, CaseIterable, Identifiable {
         case .links: .links(ref)
         case .family: .family(ref, FamilyOptions())
         case .faction: .faction(ref)
-        case .graph: .graph(GraphOptions(focus: [ref]))
-        case .timeline: .timeline(TimelineOptions(about: [ref]))
         case .map: .map(MapOptions(select: ref))
         case .accounts: .compare(ref)
         case .beliefs: .beliefs(ref)
@@ -57,8 +51,6 @@ public enum PageAction: String, Hashable, Sendable, CaseIterable, Identifiable {
         if type == .individual { out.append(.family) }
         if type == .faction { out.append(.faction) }
         if type == .location || page.locatorPoint != nil || !(page.shapes ?? []).isEmpty { out.append(.map) }
-        out.append(.timeline)
-        out.append(.graph)
         if type == .event { out.append(.accounts) }
         if [.individual, .faction, .location].contains(type) { out.append(.beliefs) }
         out += [.records, .links]

@@ -16,34 +16,6 @@ public struct FamilyOptions: Hashable, Sendable, Codable {
     }
 }
 
-public struct GraphOptions: Hashable, Sendable, Codable {
-    public var focus: [String]
-    public var depth: Int
-    public var path: [String]
-
-    public init(focus: [String] = [], depth: Int = 1, path: [String] = []) {
-        self.focus = focus
-        self.depth = depth
-        self.path = path
-    }
-}
-
-public struct TimelineOptions: Hashable, Sendable, Codable {
-    public var about: [String]
-    public var from: String?
-    public var to: String?
-    public var lanes: String?
-    public var claims: Bool
-
-    public init(about: [String] = [], from: String? = nil, to: String? = nil, lanes: String? = nil, claims: Bool = false) {
-        self.about = about
-        self.from = from
-        self.to = to
-        self.lanes = lanes
-        self.claims = claims
-    }
-}
-
 public struct MapOptions: Hashable, Sendable, Codable {
     public var centre: LonLat?
     public var zoom: Double?
@@ -86,8 +58,6 @@ public enum Route: Hashable, Sendable, Codable {
     case beliefTrace(String)
     case faction(String)
     case family(String, FamilyOptions)
-    case graph(GraphOptions)
-    case timeline(TimelineOptions)
     case map(MapOptions)
     case search(String)
     case trail(String)
@@ -159,12 +129,9 @@ public struct WebLink: Hashable, Sendable {
         case 1:
             switch parts[0] {
             case "wiki": return .browse(type: q["type"].flatMap(EntityType.init(rawValue:)))
-            case "graph":
-                return .graph(GraphOptions(focus: list(q["focus"]), depth: q["depth"].flatMap(Int.init).map { max(1, min(3, $0)) } ?? 1,
-                                           path: list(q["path"])))
-            case "timeline":
-                return .timeline(TimelineOptions(about: list(q["about"]), from: q["from"], to: q["to"], lanes: q["lanes"],
-                                                 claims: ["1", "true", "yes"].contains((q["claims"] ?? "").lowercased())))
+            // the app has no graph or timeline: their links open the page they were about
+            case "graph": return list(q["focus"]).first.map(Route.page) ?? .home
+            case "timeline": return list(q["about"]).first.map(Route.page) ?? .home
             case "map":
                 let pts = (q["pts"] ?? "").split(separator: ";").compactMap { lonLat(String($0)) }
                 return .map(MapOptions(centre: lonLat(q["c"]), zoom: q["z"].flatMap(Double.init),
@@ -246,18 +213,6 @@ public struct WebLink: Hashable, Sendable {
             if o.down != 2 { q.append(("down", String(o.down))) }
             if o.mode != .hourglass { q.append(("mode", o.mode.rawValue)) }
             if let a = o.account { q.append(("account", a)) }
-        case .graph(let o):
-            path = "/graph"
-            if !o.focus.isEmpty { q.append(("focus", o.focus.joined(separator: ","))) }
-            if o.depth != 1 { q.append(("depth", String(o.depth))) }
-            if !o.path.isEmpty { q.append(("path", o.path.joined(separator: ","))) }
-        case .timeline(let o):
-            path = "/timeline"
-            if !o.about.isEmpty { q.append(("about", o.about.joined(separator: ","))) }
-            if let f = o.from { q.append(("from", f)) }
-            if let t = o.to { q.append(("to", t)) }
-            if let l = o.lanes { q.append(("lanes", l)) }
-            if o.claims { q.append(("claims", "1")) }
         case .map(let o):
             path = "/map"
             func ll(_ p: LonLat) -> String { String(format: "%.4f,%.4f", p.lon, p.lat) }

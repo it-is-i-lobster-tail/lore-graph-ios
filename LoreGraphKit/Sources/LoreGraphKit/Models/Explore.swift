@@ -86,47 +86,6 @@ public struct DateConversion: Codable, Hashable, Sendable {
     public var calendars: [Calendar]?
 }
 
-/// `GET /api/v1/timeline` (F-6).
-public struct Timeline: Codable, Hashable, Sendable {
-    public struct Item: Codable, Hashable, Sendable, Identifiable {
-        public var kind: String
-        public var id: String
-        public var ref: String?
-        public var title: String
-        public var predicate: String?
-        public var family: String?
-        public var date: DateSpan
-        public var visibility: Visibility
-        public var canon: Canon?
-        public var claim: Bool?
-        public var accordingTo: EntityCard?
-        public var claimRelation: String?
-        public var lanes: [String: String?]?
-        public var uiUrl: String?
-
-        public var isClaim: Bool { claim == true || accordingTo != nil }
-
-        /// The lane this item sits in under a lane scheme (type, faction, place, person).
-        public func lane(_ scheme: String) -> String? {
-            guard let value = lanes?[scheme] else { return nil }
-            return value
-        }
-    }
-
-    public struct Era: Codable, Hashable, Sendable, Identifiable {
-        public var id: String
-        public var name: String
-        public var scheme: String?
-        public var span: DateSpan
-        public var description: String?
-        public var visibility: Visibility?
-    }
-
-    public var items: [Item]
-    public var eras: [Era]?
-    public var nextCursor: String?
-}
-
 /// `GET /api/v1/people/{ref}/family-tree` (F-8).
 public struct FamilyTree: Codable, Hashable, Sendable {
     public struct Person: Codable, Hashable, Sendable, Identifiable {
@@ -190,86 +149,6 @@ public struct Kinship: Codable, Hashable, Sendable {
     public var via: String?
     public var commonAncestors: [EntityCard]?
     public var path: [EntityCard]?
-}
-
-/// `GET /api/v1/graph/neighbourhood` (F-9.1).
-public struct Neighbourhood: Codable, Hashable, Sendable {
-    public struct Node: Codable, Hashable, Sendable, Identifiable {
-        public struct Span: Codable, Hashable, Sendable {
-            public var from: Double?
-            public var to: Double?
-        }
-
-        public var ref: String
-        public var id: String
-        public var title: String
-        public var displayTitle: String?
-        public var type: EntityType
-        public var kind: String?
-        public var visibility: Visibility
-        public var canon: Canon?
-        public var shortDescription: String?
-        public var depth: Int?
-        public var degree: Int?
-        public var exists: Bool?
-        public var span: Span?
-        public var more: Int?
-
-        public var shownTitle: String { displayTitle ?? title }
-        public var card: EntityCard {
-            EntityCard(ref: ref, id: id, title: title, type: type, kind: kind, visibility: visibility, canon: canon,
-                       shortDescription: shortDescription)
-        }
-    }
-
-    public struct Edge: Codable, Hashable, Sendable, Identifiable {
-        public var id: String
-        public var source: String
-        public var target: String
-        public var sourceRef: String?
-        public var targetRef: String?
-        public var predicate: String
-        public var label: String?
-        public var inverseLabel: String?
-        public var family: String?
-        public var symmetric: Bool?
-        public var role: String?
-        public var valid: DateSpan?
-        public var accordingTo: EntityCard?
-        public var claimRelation: String?
-        public var certainty: String?
-        public var visibility: Visibility
-        public var canon: Canon?
-
-        public var isClaim: Bool { accordingTo != nil }
-    }
-
-    public var nodes: [Node]
-    public var edges: [Edge]
-    public var truncated: Bool?
-    public var uiUrl: String?
-}
-
-/// `GET /api/v1/graph/path` (F-9.5).
-public struct GraphPaths: Codable, Hashable, Sendable {
-    public struct Path: Codable, Hashable, Sendable {
-        public struct Step: Codable, Hashable, Sendable {
-            public var from: String
-            public var to: String
-            public var statementId: String?
-            public var predicate: String?
-            public var label: String?
-            public var visibility: Visibility?
-            public var accordingTo: EntityCard?
-        }
-
-        public var length: Int
-        public var steps: [Step]
-        public var sentence: String?
-    }
-
-    public var paths: [Path]
-    public var length: Int?
 }
 
 /// `GET /api/v1/map/layers` (F-7.5).

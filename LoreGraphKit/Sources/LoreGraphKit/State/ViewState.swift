@@ -38,6 +38,14 @@ public struct ViewState: Codable, Hashable, Sendable {
     /// Whether anything differs from the plain view, so the banner shows (F-3.5).
     public var isDefault: Bool { asOf == nil && viewpoint == nil && calendar == nil && viewAs == nil }
 
+    /// The same view with no year: the map's, which always shows the in-world present.
+    public var withoutYear: ViewState {
+        var v = self
+        v.asOf = nil
+        v.asOfLabel = nil
+        return v
+    }
+
     /// The query items every read carries.
     public var queryItems: [URLQueryItem] {
         var q: [URLQueryItem] = []
