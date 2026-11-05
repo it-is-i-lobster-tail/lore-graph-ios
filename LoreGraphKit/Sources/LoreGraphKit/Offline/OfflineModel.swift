@@ -21,6 +21,19 @@ public final class OfflineModel {
     public private(set) var downloadBytes = 0
     /// A download that failed, with the reason.
     public var downloadError: APIError?
+    /// The worlds kept downloaded whole, with the view they are read through ("" for no world key).
+    public private(set) var wholeWorlds: [String: ViewState] = [:]
+    /// A whole world being downloaded.
+    public private(set) var bulk: BulkProgress?
+
+    public struct BulkProgress: Hashable, Sendable {
+        public var world: String?
+        /// Pages looked at so far (already downloaded, saved or failed) of `total` (0 while the
+        /// list of pages is read).
+        public var done = 0
+        public var total = 0
+        public var failed = 0
+    }
 
     @ObservationIgnored public let repository: Repository
     @ObservationIgnored public let store: DownloadStore
@@ -35,6 +48,7 @@ public final class OfflineModel {
     @ObservationIgnored let syncInterval: TimeInterval
     @ObservationIgnored private var watchers: [WeakComments] = []
     @ObservationIgnored private var prepared = false
+    @ObservationIgnored private var bulkCancelled = false
 
     private struct WeakComments {
         weak var model: CommentsModel?
@@ -98,9 +112,75 @@ public final class OfflineModel {
     }
 
     public func removeAll() async {
+        bulkCancelled = true
         await store.removeAll()
         await reload()
     }
+
+    // MARK: a whole world
+
+    public func keepsWholeWorld(_ world: String?) -> Bool { wholeWorlds[world ?? ""] != nil }
+
+    /// Keeps every page of a world downloaded (through a view), new pages included, or stops.
+    /// Turning it off keeps the pages already downloaded.
+    public func keepWholeWorld(_ world: String?, view: ViewState, on: Bool) async {
+        await store.setWhole(world: world, view: on ? view : nil)
+        await reload()
+        if on {
+            await downloadAll(world: world, view: view)
+        } else if bulk?.world == world {
+            bulkCancelled = true
+        }
+    }
+
+    /// Stops a whole-world download for now; the next sync goes on with it.
+    public func stopBulk() { bulkCancelled = true }
+
+    /// Downloads every page of a world not downloaded yet. Pages the server refuses are counted
+    /// and left out; it stops when the server is out of reach (returns false) or it is stopped.
+    @discardableResult
+    public func downloadAll(world: String?, view: ViewState) async -> Bool {
+        guard bulk == nil else { return true }
+        bulkCancelled = false
+        var progress = BulkProgress(world: world)
+        bulk = progress
+        defer { bulk = nil }
+        var items: [EntityListItem] = []
+        var cursor: String?
+        repeat {
+            do {
+                let page = try await repository.client.get(API.entities(cursor: cursor, limit: 200), world: world, view: view).value
+                items += page.items
+                cursor = page.nextCursor
+            } catch {
+                return !Self.unreachable(error)
+            }
+            if bulkCancelled { return true }
+        } while cursor != nil
+        progress.total = items.count
+        bulk = progress
+        var reached = true
+        for item in items {
+            if bulkCancelled { break }
+            if download(ref: item.ref, entityId: item.id, world: world, view: view) == nil {
+                let key = Self.pendingKey(ref: item.ref, world: world, view: view)
+                working.insert(key)
+                do {
+                    _ = try await save(refs: [item.ref], world: world, view: view, existing: nil)
+                } catch {
+                    if Self.unreachable(error) { reached = false } else { progress.failed += 1 }
+                }
+                working.remove(key)
+                if !reached { break }
+            }
+            progress.done += 1
+            bulk = progress
+            if progress.done % 10 == 0 { await reload() }
+        }
+        await reload()
+        return reached
+    }
+
 
     /// Checks every downloaded page with the server and fetches again the ones the world has moved
     /// past (`force`: every page). Stops at the first sign the server is out of reach.
@@ -362,7 +442,11 @@ public final class OfflineModel {
             lastSyncOffline = true
             return
         }
-        let reached = await refreshDownloads(force: false)
+        var reached = await refreshDownloads(force: false)
+        // whole worlds: pages made since the last check
+        for (key, view) in wholeWorlds.sorted(by: { $0.key < $1.key }) where reached {
+            reached = await downloadAll(world: key.isEmpty ? nil : key, view: view)
+        }
         lastSyncOffline = !reached
         if reached { lastSync = now() }
     }
@@ -371,6 +455,7 @@ public final class OfflineModel {
         downloads = await store.all.sorted { $0.title.localizedCaseInsensitiveCompare($1.title) == .orderedAscending }
         downloadBytes = await store.totalBytes
         pending = await outbox.all
+        wholeWorlds = await store.wholeWorlds
     }
 
     // MARK: errors

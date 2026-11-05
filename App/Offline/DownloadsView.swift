@@ -5,6 +5,7 @@ import SwiftUI
 struct DownloadsView: View {
     @Environment(AppModel.self) private var app
     @State private var confirmRemoveAll = false
+    @State private var confirmWhole = false
 
     var body: some View {
         Group {
@@ -24,6 +25,7 @@ struct DownloadsView: View {
         let elsewhere = offline.downloads.count - pages.count
         let waiting = offline.pending(world: world)
         return List {
+            WholeWorldSection(offline: offline, world: world, confirm: $confirmWhole)
             if !waiting.isEmpty {
                 Section {
                     ForEach(waiting) { c in WaitingRow(change: c, offline: offline) }
@@ -88,12 +90,68 @@ struct DownloadsView: View {
                 .accessibilityLabel("Downloads options")
             }
         }
+        .confirmationDialog(wholeTitle, isPresented: $confirmWhole, titleVisibility: .visible) {
+            Button("Download every page") {
+                let view = app.view
+                Task { await offline.keepWholeWorld(world, view: view, on: true) }
+            }
+        } message: {
+            Text("Every page of \(app.world?.name ?? "this world") is downloaded with its comments and pictures, then kept up to date, with new pages added as they appear. This can take a while and use a lot of storage, so Wi-Fi is best.")
+        }
         .confirmationDialog("Remove all downloads?", isPresented: $confirmRemoveAll, titleVisibility: .visible) {
             Button("Remove all downloads", role: .destructive) { Task { await offline.removeAll() } }
         } message: {
-            Text("Downloaded pages in every world are deleted from this device. Comments waiting to be sent are kept.")
+            Text("Downloaded pages in every world are deleted from this device, and no world is kept downloaded whole. Comments waiting to be sent are kept.")
         }
         .task { await offline.sync() }
+    }
+
+    var wholeTitle: String {
+        if let n = app.about?.counts?.totalPages, n > 0 { return "Download all \(n) pages?" }
+        return "Download every page?"
+    }
+}
+
+/// The switch that keeps a whole world downloaded, with the download's progress.
+struct WholeWorldSection: View {
+    let offline: OfflineModel
+    let world: String?
+    @Binding var confirm: Bool
+    @Environment(AppModel.self) private var app
+
+    var body: some View {
+        Section {
+            Toggle(isOn: Binding(get: { offline.keepsWholeWorld(world) }, set: { on in
+                if on {
+                    confirm = true
+                } else {
+                    let view = app.view
+                    Task { await offline.keepWholeWorld(world, view: view, on: false) }
+                }
+            })) {
+                Text("Keep every page downloaded")
+            }
+            .accessibilityIdentifier("downloadWholeWorld")
+            if let b = offline.bulk, b.world == world {
+                VStack(alignment: .leading, spacing: 6) {
+                    ProgressView(value: Double(b.done), total: Double(max(b.total, 1)))
+                    HStack {
+                        Text(b.total == 0 ? "Finding the pages…" : "Downloading \(b.done) of \(b.total)")
+                            .monospacedDigit()
+                        Spacer()
+                        Button("Stop for now") { offline.stopBulk() }.buttonStyle(.borderless)
+                    }
+                    .font(.caption)
+                }
+                .accessibilityIdentifier("wholeWorldProgress")
+            }
+        } header: {
+            Text(app.world?.name ?? "This world")
+        } footer: {
+            Text(offline.keepsWholeWorld(world)
+                 ? "Every page is downloaded and kept up to date, and new pages are added whenever the app checks. A page you remove comes back at the next check; turn this off to keep only the pages you choose. Stopping a download goes on at the next check."
+                 : "Download every page of this world for reading offline, with comments and pictures, and keep it that way as pages are added.")
+        }
     }
 }
 

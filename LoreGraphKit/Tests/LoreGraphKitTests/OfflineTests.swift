@@ -320,6 +320,95 @@ struct OfflineStack {
 }
 
 @MainActor
+@Suite struct WholeWorldTests {
+    /// The Testmark list routes five of its 28 pages; the rest answer 404.
+    let routed: Set<String> = ["dirk", "lampton", "battle-at-the-ford", "testmark", "testmark-chronicle"]
+
+    @Test func keepsEveryPageOfAWorldDownloaded() async throws {
+        let s = OfflineStack()
+        #expect(!s.offline.keepsWholeWorld("main"))
+        await s.offline.keepWholeWorld("main", view: .default, on: true)
+        #expect(s.offline.keepsWholeWorld("main") && s.offline.bulk == nil)
+        #expect(Set(s.offline.downloads.map(\.ref)) == routed)
+        #expect(s.requests("/entities").first?.query["limit"] == ["200"])
+
+        // a new page on the server comes down at the next sync; those already there are not fetched again
+        let reads = s.requests("/entities/dirk").count
+        var list = try Fixture.decode(Page<EntityListItem>.self, "entities-list")
+        var extra = list.items[0]
+        extra.ref = "edwin"
+        extra.id = "edwin-id"
+        list.items = [extra] + list.items
+        s.server.json("/entities", value: list)
+        var edwin = try Fixture.decode(EntityDetail.self, "entity-dirk")
+        edwin.entity.id = "edwin-id"
+        edwin.entity.ref = "edwin"
+        edwin.entity.slug = "edwin"
+        s.server.json("/entities/edwin", value: edwin)
+        await s.offline.sync(force: true)
+        #expect(s.offline.downloads.count == routed.count + 1 && s.requests("/entities/dirk").count == reads)
+
+        // the same phone tomorrow still keeps the world whole
+        let next = s.relaunched()
+        await next.offline.prepare()
+        #expect(next.offline.keepsWholeWorld("main") && !next.offline.keepsWholeWorld(nil))
+
+        // off: the pages stay, new ones no longer come
+        await s.offline.keepWholeWorld("main", view: .default, on: false)
+        #expect(!s.offline.keepsWholeWorld("main") && s.offline.downloads.count == routed.count + 1)
+        // Remove all turns it off too
+        await s.offline.keepWholeWorld("main", view: .default, on: true)
+        await s.offline.removeAll()
+        #expect(!s.offline.keepsWholeWorld("main") && s.offline.downloads.isEmpty)
+    }
+
+    @Test func stopsWhenOfflineOrStoppedAndGoesOnLater() async throws {
+        let s = OfflineStack()
+        s.net.online = false
+        #expect(await s.offline.downloadAll(world: "main", view: .default) == false)
+        s.net.online = true
+        // the server failing for now part way through
+        s.server.status("/entities/lampton", 503)
+        #expect(await s.offline.downloadAll(world: "main", view: .default) == false)
+        let partial = s.offline.downloads.count
+        #expect(partial < routed.count && s.offline.bulk == nil)
+        // a refused list says nothing is out of reach
+        s.server.status("/entities", 403, body: Fixture.data("problem-422"))
+        #expect(await s.offline.downloadAll(world: "main", view: .default))
+        s.server.json("/entities", "entities-list")
+        s.server.json("/entities/lampton", "entity-lampton")
+        // stopped by the reader as soon as a page is on its way
+        s.server.on("/entities/aldo") { _ in
+            Task { @MainActor in s.offline.stopBulk() }
+            Thread.sleep(forTimeInterval: 0.05)
+            return HTTPResponse(status: 404, body: Fixture.data("not-found"))
+        }
+        #expect(await s.offline.downloadAll(world: "main", view: .default))
+        #expect(s.offline.downloads.count == partial)
+        // and the rest come down at the next run
+        s.server.status("/entities/aldo", 404, body: Fixture.data("not-found"))
+        #expect(await s.offline.downloadAll(world: "main", view: .default))
+        #expect(Set(s.offline.downloads.map(\.ref)) == routed)
+    }
+
+    @Test func turningItOffStopsARunningDownload() async throws {
+        let s = OfflineStack()
+        await s.store.setWhole(world: "main", view: .default)
+        s.server.on("/entities/aldo") { _ in
+            Task { @MainActor in await s.offline.keepWholeWorld("main", view: .default, on: false) }
+            Thread.sleep(forTimeInterval: 0.05)
+            return HTTPResponse(status: 404, body: Fixture.data("not-found"))
+        }
+        await s.offline.prepare()
+        #expect(await s.offline.downloadAll(world: "main", view: .default))
+        #expect(await eventually { !s.offline.keepsWholeWorld("main") })
+        #expect(s.offline.downloads.isEmpty)
+        // it can run again by hand
+        #expect(await s.offline.downloadAll(world: "main", view: .default))
+    }
+}
+
+@MainActor
 @Suite struct CommentQueueTests {
     let picked = Anchors.Picked(quote: "The lamps of Lampton burn all night.", prefix: "", suffix: " Loïse and her daughters kept th")
 

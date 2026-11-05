@@ -52,6 +52,7 @@ public actor DownloadStore {
     let files: DiskCache
     let now: @Sendable () -> Date
     private var manifest: [Download]?
+    private var whole: [String: ViewState]?
 
     public init(directory: URL, now: @escaping @Sendable () -> Date = Date.init) {
         self.directory = directory
@@ -109,8 +110,28 @@ public actor DownloadStore {
         await dropUnused(Set(gone.keys + gone.media))
     }
 
+    /// The worlds kept downloaded whole (by world key, "" for none), with the view they are read
+    /// through: every page, and new ones as they appear.
+    public var wholeWorlds: [String: ViewState] {
+        if whole == nil {
+            whole = (try? Data(contentsOf: wholeURL)).flatMap { try? JSONDecoder().decode([String: ViewState].self, from: $0) } ?? [:]
+        }
+        return whole ?? [:]
+    }
+
+    /// Keeps a world downloaded whole through a view, or stops (nil).
+    public func setWhole(world: String?, view: ViewState?) {
+        var w = wholeWorlds
+        w[world ?? ""] = view
+        whole = w
+        try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        Self.excludeFromBackup(directory)
+        if let data = try? JSONEncoder().encode(w) { try? data.write(to: wholeURL, options: .atomic) }
+    }
+
     public func removeAll() async {
         manifest = []
+        whole = [:]
         await files.clear()
         try? FileManager.default.removeItem(at: directory)
     }
@@ -126,6 +147,7 @@ public actor DownloadStore {
     }
 
     private var manifestURL: URL { directory.appendingPathComponent("manifest.json") }
+    private var wholeURL: URL { directory.appendingPathComponent("whole-worlds.json") }
 
     private func load() {
         guard manifest == nil else { return }

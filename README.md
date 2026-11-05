@@ -29,7 +29,9 @@ Both need only the `lore:read` scope, which is all the app asks for.
   connection comes back it checks them, and fetches again any page the world has moved past since
   it was saved, or that is a day old. Comments, replies, resolves and edits made offline are kept
   on the device, shown as "Waiting to send", and sent in order when the server is back, each with
-  an `Idempotency-Key` so a resend never makes one twice. The wiki home's Downloads lists both.
+  an `Idempotency-Key` so a resend never makes one twice. The wiki home's Downloads lists both,
+  and its "Keep every page downloaded" switch downloads a whole world and adds new pages as they
+  appear.
 
 ## Layout
 
