@@ -1,7 +1,7 @@
 # loregraph for iOS
 
 An iPhone and iPad app for a [loregraph](https://github.com/it-is-i-lobster-tail/loregraph)
-server: the wiki, the map, the timeline, family trees and the graph, with search, the year and
+server: the wiki, the map (always at the in-world present) and family trees, with search, the year and
 viewpoint controls, offline reading of what you have opened and of pages you download. It reads the lore and never
 changes it. The only things it writes are the reader's own notes, which the server keeps apart
 from the lore: reading-list marks (loregraph ADR D-83) and comments on page text (ADR D-84).
@@ -37,7 +37,7 @@ Both need only the `lore:read` scope, which is all the app asks for.
 lore-graph-ios/
 ├── App/                    # the SwiftUI app: screens and drawing only
 │   ├── Root/               # sign-in, tabs, settings, the year and viewpoint sheet, lock
-│   ├── Wiki/ Search/ Timeline/ Family/ Graph/ Map/
+│   ├── Wiki/ Search/ Family/ Map/
 │   ├── Support/            # theme, loading and error views, navigation
 │   └── Assets.xcassets
 ├── Config/Info.plist       # URL scheme and local-network transport only; the rest is generated
@@ -46,7 +46,7 @@ lore-graph-ios/
 │   │   ├── API/ Auth/ Cache/        # client, OAuth and Keychain, disk cache and freshness
 │   │   ├── Offline/                 # downloaded pages and comments waiting to be sent
 │   │   ├── Models/ Content/         # Codable models, page HTML to blocks
-│   │   ├── Layout/                  # timeline, family tree and force layouts
+│   │   ├── Layout/                  # family tree layout
 │   │   ├── Map/                     # projection, vector tile decoder, styles, labels, tile store
 │   │   ├── Screens/ State/          # the screen models and the app model
 │   │   └── Links/                   # web links to routes and back

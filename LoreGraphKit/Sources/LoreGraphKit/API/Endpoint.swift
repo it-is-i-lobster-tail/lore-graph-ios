@@ -181,18 +181,6 @@ public enum API {
         Endpoint("/memberships", query: [URLQueryItem(name: "group", value: group), URLQueryItem(name: "limit", value: "200")])
     }
 
-    public static func timeline(about: [String] = [], from: String? = nil, to: String? = nil, lanes: String? = nil,
-                                claims: Bool = false, cursor: String? = nil) -> Endpoint<Timeline> {
-        Endpoint("/timeline", query: items("about", about) + [item("from", from), item("to", to), item("lanes", lanes),
-                                                             item("claims", claims), item("limit", 500),
-                                                             item("cursor", cursor)].compactMap { $0 })
-    }
-
-    /// The world's eras (the timeline's first item only), for the map's time slider.
-    public static func eras() -> Endpoint<Timeline> {
-        Endpoint("/timeline", query: [URLQueryItem(name: "limit", value: "1")])
-    }
-
     public static func familyTree(_ ref: String, up: Int = 2, down: Int = 2, mode: String = "hourglass",
                                   account: String? = nil) -> Endpoint<FamilyTree> {
         Endpoint("/people/\(segment(ref))/family-tree", query: [item("up", up), item("down", down), item("mode", mode),
@@ -201,18 +189,6 @@ public enum API {
 
     public static func kinship(_ a: String, _ b: String) -> Endpoint<Kinship> {
         Endpoint("/people/kinship", query: [URLQueryItem(name: "a", value: a), URLQueryItem(name: "b", value: b)])
-    }
-
-    public static func neighbourhood(roots: [String], depth: Int = 1, families: [String] = [], types: [EntityType] = [],
-                                     claims: Bool = false, maxNodes: Int = 60) -> Endpoint<Neighbourhood> {
-        Endpoint("/graph/neighbourhood", query: items("roots", roots) + [item("depth", depth)] .compactMap { $0 }
-                    + items("families", families) + items("types", types.map(\.rawValue))
-                    + [item("claims", claims ? "all" : nil), item("max_nodes", maxNodes)].compactMap { $0 })
-    }
-
-    public static func paths(from a: String, to b: String) -> Endpoint<GraphPaths> {
-        Endpoint("/graph/path", query: [URLQueryItem(name: "from", value: a), URLQueryItem(name: "to", value: b),
-                                        URLQueryItem(name: "limit", value: "5")])
     }
 
     public static func mapLayers() -> Endpoint<MapLayers> { Endpoint("/map/layers", readsView: false, freshness: .map) }

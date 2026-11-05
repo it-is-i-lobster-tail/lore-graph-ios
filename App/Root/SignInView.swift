@@ -20,7 +20,7 @@ struct SignInView: View {
                         Image(systemName: "book.pages")
                             .font(.system(size: 40))
                             .foregroundStyle(Color.accentInk)
-                        Text("Read your worlds: the wiki, the map, the timeline, family trees and the graph.")
+                        Text("Read your worlds: the wiki, the map and family trees.")
                             .foregroundStyle(.secondary)
                     }
                     .padding(.vertical, 6)

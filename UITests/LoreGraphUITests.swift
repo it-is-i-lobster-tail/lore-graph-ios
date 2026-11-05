@@ -85,20 +85,16 @@ final class LoreGraphUITests: XCTestCase {
             XCTAssertTrue(app.staticTexts["pageTitle"].waitForExistence(timeout: 20))
         }
 
-        for (tab, name) in [("Map", "06-map"), ("Timeline", "07-timeline"), ("Family", "08-family"), ("Graph", "09-graph")] {
-            if tab == "Family", !isPad {
-                // iPhone has no Family tab: open the tree from the page read above
-                openTab("Wiki")
-                let action = app.buttons["action-family"].firstMatch
-                XCTAssertTrue(action.waitForExistence(timeout: 10), "the page has no Family tree action")
-                action.tap()
-                sleep(4)
-                snapshot(name)
-                continue
-            }
+        // the graph and timeline are gone; the map always shows the present, with no time slider
+        XCTAssertFalse(app.tabBars.buttons["Timeline"].exists || app.buttons["Timeline"].exists, "the Timeline tab is still there")
+        XCTAssertFalse(app.tabBars.buttons["Graph"].exists || app.buttons["Graph"].exists, "the Graph tab is still there")
+        for (tab, name) in [("Map", "06-map"), ("Family", "08-family")] {
             openTab(tab)
-            if tab == "Family" || tab == "Graph" {
-                // these open on a picker; draw the page read above, from its recently read row
+            if tab == "Map" {
+                XCTAssertFalse(app.buttons["Play through the years"].exists, "the map still has a time slider")
+            }
+            if tab == "Family" {
+                // it opens on a picker; draw the page read above, from its recently read row
                 let recent = app.collectionViews.buttons.firstMatch
                 if recent.waitForExistence(timeout: 5) { recent.tap() }
             }
@@ -330,8 +326,6 @@ final class LoreGraphUITests: XCTestCase {
             button.tap()
         }
     }
-
-    @MainActor var isPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
 
     /// The Search tab: in the tab bar on iPhone, among the navigation bar's buttons on iPad.
     @MainActor

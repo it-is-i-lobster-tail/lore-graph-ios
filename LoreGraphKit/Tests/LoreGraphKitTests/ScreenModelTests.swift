@@ -14,11 +14,11 @@ extension FakeServer {
     @Test func actionsFitThePage() async {
         let stack = Stack()
         let expected: [String: [PageAction]] = [
-            "dirk": [.family, .timeline, .graph, .beliefs, .records, .links],
-            "lampton": [.map, .timeline, .graph, .beliefs, .records, .links],
-            "battle-at-the-ford": [.map, .timeline, .graph, .accounts, .records, .links],
-            "testmark": [.faction, .timeline, .graph, .beliefs, .records, .links],
-            "testmark-chronicle": [.timeline, .graph, .records, .links],
+            "dirk": [.family, .beliefs, .records, .links],
+            "lampton": [.map, .beliefs, .records, .links],
+            "battle-at-the-ford": [.map, .accounts, .records, .links],
+            "testmark": [.faction, .beliefs, .records, .links],
+            "testmark-chronicle": [.records, .links],
         ]
         for (ref, actions) in expected {
             let model = PageModel(ref: ref, context: stack.context())
@@ -32,8 +32,6 @@ extension FakeServer {
         #expect(PageAction.links.route("dirk") == .links("dirk"))
         #expect(PageAction.family.route("dirk") == .family("dirk", FamilyOptions()))
         #expect(PageAction.faction.route("testmark") == .faction("testmark"))
-        #expect(PageAction.graph.route("dirk") == .graph(GraphOptions(focus: ["dirk"])))
-        #expect(PageAction.timeline.route("dirk") == .timeline(TimelineOptions(about: ["dirk"])))
         #expect(PageAction.map.route("lampton") == .map(MapOptions(select: "lampton")))
         #expect(PageAction.accounts.route("battle-at-the-ford") == .compare("battle-at-the-ford"))
         #expect(PageAction.beliefs.route("dirk") == .beliefs("dirk"))
@@ -184,45 +182,6 @@ extension FakeServer {
     }
 }
 
-@Suite @MainActor struct TimelineModelTests {
-    @Test func laysOutZoomsAndPans() async throws {
-        let stack = Stack()
-        let model = TimelineModel(options: TimelineOptions(), context: stack.context())
-        #expect(model.layout == nil && model.shownWindow == nil && model.item == nil)
-        model.zoom(by: 2, around: 1000)
-        model.pan(by: 10)
-        #expect(model.window == nil)
-
-        await model.load()
-        let layout = try #require(model.layout)
-        #expect(model.layout?.extent == layout.extent)
-        #expect(model.shownWindow == layout.extent)
-        let mid = (layout.extent.from + layout.extent.to) / 2
-        model.zoom(by: 4, around: mid)
-        let zoomed = try #require(model.window)
-        #expect(zoomed.to - zoomed.from < layout.extent.to - layout.extent.from)
-        model.pan(by: -5)
-        let panned = try #require(model.window)
-        #expect(panned.from <= zoomed.from)
-
-        let first = try #require(model.loader.value?.items.first)
-        model.selected = first.id
-        #expect(model.item?.id == first.id)
-        #expect(TimelineModel.Display.list.label == "List" && TimelineModel.Display.strip.label == "Strip")
-        #expect(TimelineModel.Display.allCases.map(\.id) == ["list", "strip"])
-
-        await model.set(TimelineOptions())
-        #expect(model.window != nil)
-        await model.set(TimelineOptions(lanes: "type"))
-        #expect(model.window == nil && model.options.lanes == "type")
-        #expect(model.layout != nil)
-        let count = stack.server.count("/timeline")
-        await model.refresh()
-        #expect(stack.server.count("/timeline") == count + 1)
-        #expect(model.shareURL.absoluteString.contains("timeline"))
-    }
-}
-
 @Suite @MainActor struct FamilyModelTests {
     @Test func drawsTheTreeAndTheKinship() async throws {
         let stack = Stack()
@@ -297,86 +256,6 @@ private let expansion = """
   {"id": "e-dangling", "source": "m-1", "target": "nobody", "predicate": "knows", "family": "social", "visibility": "public"}],
  "truncated": true}
 """
-
-@Suite @MainActor struct GraphModelTests {
-    let dirk = "00000000-0000-7000-8000-000000000023"
-    let cato = "00000000-0000-7000-8000-000000000022"
-
-    @Test func nothingInFocusDrawsNothing() async {
-        let stack = Stack()
-        let model = GraphModel(options: GraphOptions(), context: stack.context())
-        await model.load()
-        #expect(model.loader == nil && model.nodes.isEmpty && model.edges.isEmpty && model.positions.isEmpty)
-        #expect(!model.truncated && model.selectedEdges.isEmpty)
-        await model.refresh()
-        #expect(stack.server.requests.isEmpty)
-    }
-
-    @Test func loadsLaysOutAndFilters() async {
-        let stack = Stack()
-        let model = GraphModel(options: GraphOptions(focus: ["dirk"], path: ["fenn", "dirk"]), context: stack.context())
-        await model.load()
-        #expect(model.nodes.count == 7 && model.edges.count == 7)
-        #expect(model.positions.count == 7 && !model.isLayingOut)
-        #expect(model.paths?.value?.paths.isEmpty == false)
-        #expect(!model.truncated)
-        model.selected = dirk
-        #expect(model.selectedEdges.count == 6)
-
-        await model.set(families: ["kinship"])
-        #expect(model.selected == nil)
-        #expect(model.edges.map(\.family) == ["kinship", "kinship"])
-        #expect(stack.server.requests.last { $0.url.path.hasSuffix("/neighbourhood") }?.query["families"] == ["kinship"])
-        await model.set(depth: 9)
-        #expect(model.options.depth == 3)
-        await model.set(depth: 0)
-        #expect(model.options.depth == 1)
-        await model.set(focus: ["cato"])
-        #expect(model.options.focus == ["cato"])
-
-        model.clearPaths()
-        #expect(model.paths == nil && model.options.path.isEmpty)
-        await model.findPaths(from: "fenn", to: "dirk")
-        #expect(model.options.path == ["fenn", "dirk"] && model.paths?.value != nil)
-        #expect(model.shareURL.absoluteString.contains("graph"))
-    }
-
-    @Test func expandsNodesAndShowsClaimsWhenAsked() async {
-        let stack = Stack()
-        stack.raw("/graph/neighbourhood", expansion, query: ["roots": "cato"])
-        let model = GraphModel(options: GraphOptions(focus: ["dirk"]), context: stack.context())
-        await model.load()
-        let placed = model.positions
-        await model.expand("nobody")
-        #expect(model.expansions.isEmpty)
-        await model.expand(cato)
-        #expect(model.nodes.count == 8 && model.truncated)
-        #expect(model.edges.contains { $0.id == "e-plain" })
-        #expect(!model.edges.contains { $0.id == "e-claim" || $0.id == "e-dangling" })
-        #expect(model.positions.count == 8)
-        #expect(model.positions[dirk] == placed[dirk])
-
-        await model.set(claims: true)
-        #expect(model.claims && model.expansions.isEmpty)
-        await model.expand(cato)
-        #expect(model.edges.contains { $0.id == "e-claim" })
-
-        await model.refresh()
-        #expect(model.expansions.isEmpty && model.nodes.count == 7)
-    }
-
-    @Test func aFailedExpansionIsShown() async {
-        let stack = Stack()
-        stack.status("/graph/neighbourhood", 500, query: ["roots": "cato"])
-        let model = GraphModel(options: GraphOptions(focus: ["dirk"]), context: stack.context())
-        await model.load()
-        await model.expand(cato)
-        #expect(model.expandError != nil && model.expansions.isEmpty)
-        stack.raw("/graph/neighbourhood", expansion, query: ["roots": "cato"])
-        await model.expand(cato)
-        #expect(model.expandError == nil && model.expansions.count == 1)
-    }
-}
 
 extension Stack {
     func status(_ path: String, _ status: Int, query: [String: String] = [:]) { server.status(path, status, query: query) }
