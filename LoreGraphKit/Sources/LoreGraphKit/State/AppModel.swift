@@ -8,6 +8,9 @@ public struct AppEnvironment: Sendable {
     public var defaults: KeyValueStore
     /// The folder holding every reader's cache (inside the app's Caches folder).
     public var cacheRoot: URL
+    /// The folder holding every reader's downloaded pages and unsent comments (Application
+    /// Support in the app: never purged by iOS, and not under the cache, so Clear cache keeps them).
+    public var offlineRoot: URL
     public var cacheLimitBytes: Int
     public var tileCacheLimitBytes: Int
     /// How long a freshness mark is trusted before the server is asked again.
@@ -15,12 +18,14 @@ public struct AppEnvironment: Sendable {
     public var now: @Sendable () -> Date
 
     public init(transport: HTTPTransport, tokenStore: TokenStore, defaults: KeyValueStore, cacheRoot: URL,
-                cacheLimitBytes: Int = 150_000_000, tileCacheLimitBytes: Int = 300_000_000, freshnessTTL: TimeInterval = 30,
+                offlineRoot: URL? = nil, cacheLimitBytes: Int = 150_000_000, tileCacheLimitBytes: Int = 300_000_000, freshnessTTL: TimeInterval = 30,
                 now: @escaping @Sendable () -> Date = Date.init) {
         self.transport = transport
         self.tokenStore = tokenStore
         self.defaults = defaults
         self.cacheRoot = cacheRoot
+        self.offlineRoot = offlineRoot ?? cacheRoot.deletingLastPathComponent()
+            .appendingPathComponent(cacheRoot.lastPathComponent + "-offline", isDirectory: true)
         self.cacheLimitBytes = cacheLimitBytes
         self.tileCacheLimitBytes = tileCacheLimitBytes
         self.freshnessTTL = freshnessTTL
@@ -37,9 +42,12 @@ public struct ReadContext: Sendable {
     public let view: ViewState
     public let present: Double
     public let ceiling: Visibility
+    /// Downloaded pages and comments waiting to be sent (nil in previews).
+    public let offline: OfflineModel?
 
     public init(repository: Repository, tiles: TileStore, server: URL, world: String?, view: ViewState, present: Double,
-                ceiling: Visibility) {
+                ceiling: Visibility, offline: OfflineModel? = nil) {
+        self.offline = offline
         self.repository = repository
         self.tiles = tiles
         self.server = server
@@ -97,6 +105,8 @@ public final class AppModel {
     public private(set) var isLocked = false
     public private(set) var cacheBytes = 0
     public private(set) var context: ReadContext?
+    /// The reader's downloaded pages and unsent comments.
+    public private(set) var offline: OfflineModel?
 
     @ObservationIgnored let env: AppEnvironment
     @ObservationIgnored public let auth: AuthSession
@@ -131,8 +141,10 @@ public final class AppModel {
         }
         isLocked = settings.requireUnlock
         become(saved)
+        await offline?.prepare()
         await checkReader()
         await loadWorld()
+        await offline?.sync(force: true)
     }
 
     /// Checks an address and builds the browser sheet's address (F-1.2).
@@ -179,13 +191,17 @@ public final class AppModel {
         self.me = me
         signInMessage = nil
         become(ReaderIdentity(server: creds.server, id: me.id, name: me.displayName ?? me.email, ceiling: me.ceiling))
+        await offline?.prepare()
         await loadWorld()
+        await offline?.sync(force: true)
     }
 
-    /// Signs out, revokes the tokens and forgets the cache (F-1.7).
+    /// Signs out, revokes the tokens and forgets the cache, the downloads and any comment not
+    /// sent yet (F-1.7).
     public func signOut() async {
         await auth.signOut()
         try? FileManager.default.removeItem(at: env.cacheRoot)
+        try? FileManager.default.removeItem(at: env.offlineRoot)
         if let reader { env.defaults.set(nil, forKey: Keys.state(reader)) }
         env.defaults.set(nil, forKey: Keys.reader)
         reset(to: .signedOut)
@@ -211,6 +227,7 @@ public final class AppModel {
         apiCache = nil
         tileCache = nil
         context = nil
+        offline = nil
         cacheBytes = 0
         isLocked = false
     }
@@ -226,12 +243,17 @@ public final class AppModel {
         let freshness = FreshnessTracker(ttl: env.freshnessTTL, now: env.now,
                                          lore: { world in try await client.get(API.historyHead(), world: world).value.newest?.id ?? 0 },
                                          map: { world in Int64(try await client.get(API.mapVersion(), world: world).value.version) })
+        let offlineFolder = env.offlineRoot.appendingPathComponent(r.folder, isDirectory: true)
+        let downloads = DownloadStore(directory: offlineFolder.appendingPathComponent("downloads", isDirectory: true), now: env.now)
         reader = r
         env.defaults.setValue(r, forKey: Keys.reader)
         state = env.defaults.value(ReadingState.self, forKey: Keys.state(r)) ?? ReadingState()
         self.apiCache = apiCache
         self.tileCache = tileCache
-        repository = Repository(client: client, cache: apiCache, freshness: freshness, now: env.now)
+        let repository = Repository(client: client, cache: apiCache, freshness: freshness, downloads: downloads, now: env.now)
+        self.repository = repository
+        offline = OfflineModel(repository: repository, store: downloads,
+                               outbox: Outbox(file: offlineFolder.appendingPathComponent("outbox.json")), now: env.now)
         tiles = TileStore(client: client, cache: tileCache)
         phase = .signedIn
         rebuildContext()
@@ -360,8 +382,8 @@ public final class AppModel {
             return
         }
         let next = ReadContext(repository: repository, tiles: tiles, server: reader.server, world: state.world, view: view,
-                               present: about?.presentYear ?? 1131.25, ceiling: reader.ceiling)
-        if context?.key != next.key { context = next }
+                               present: about?.presentYear ?? 1131.25, ceiling: reader.ceiling, offline: offline)
+        if context?.key != next.key || context?.offline !== next.offline { context = next }
     }
 
     // MARK: recent pages and searches
@@ -432,6 +454,20 @@ public final class AppModel {
         let a = await apiCache?.totalBytes ?? 0
         let t = await tileCache?.totalBytes ?? 0
         cacheBytes = a + t
+    }
+
+    // MARK: offline
+
+    /// The app came to the front: send waiting comments and refresh stale downloads.
+    public func didBecomeActive() async {
+        guard phase == .signedIn else { return }
+        await offline?.sync()
+    }
+
+    /// The phone's connection changed. Back online, everything waiting goes out.
+    public func connectivityChanged(online: Bool) async {
+        guard online, phase == .signedIn else { return }
+        await offline?.sync(force: true)
     }
 
     // MARK: the lock

@@ -54,6 +54,7 @@ struct PageContent<Banner: View>: View {
                     VStack(alignment: .leading, spacing: 18) {
                         banner()
                         PageHeader(page: page)
+                        if let d = model.download { DownloadNote(download: d) }
                         ActionBar(actions: model.actions, ref: model.ref)
                         if let box = page.infobox, !box.isEmpty || page.infoboxImage != nil || page.locatorPoint != nil {
                             InfoboxView(page: page)
@@ -113,6 +114,9 @@ struct PageContent<Banner: View>: View {
                 }
                 .accessibilityLabel(model.comments.openCount > 0 ? "\(model.comments.openCount) open comments" : "Comments")
                 .accessibilityIdentifier("pageComments")
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                DownloadButton(model: model)
             }
             ToolbarItem(placement: .topBarTrailing) {
                 ShareLink(item: model.shareURL) { Image(systemName: "square.and.arrow.up") }

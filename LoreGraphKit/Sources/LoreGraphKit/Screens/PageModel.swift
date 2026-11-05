@@ -83,6 +83,37 @@ public final class PageModel {
         self.context = context
         self.page = context.loader(API.entity(ref))
         self.comments = CommentsModel(ref: ref, context: context)
+        comments.describe = { [weak self] key in
+            guard let page = self?.page.value else { return (nil, nil) }
+            let heading = key.flatMap { k in page.sections?.first { $0.key == k } }.map { $0.heading ?? ($0.key == "lead" ? "Introduction" : $0.key) }
+            return (page.entity.displayTitle ?? page.entity.title, heading)
+        }
+    }
+
+    // MARK: downloads
+
+    /// The page's download, when it is kept on the phone (as seen through this view).
+    public var download: Download? {
+        context.offline?.download(ref: ref, entityId: page.value?.entity.id, world: context.world, view: context.view)
+    }
+
+    public var isDownloading: Bool {
+        context.offline?.isWorking(ref: ref, entityId: page.value?.entity.id, world: context.world, view: context.view) ?? false
+    }
+
+    public var canDownload: Bool { context.offline != nil }
+
+    /// Keeps the page on the phone with its comments and images, or removes it. Returns why a
+    /// download failed.
+    @discardableResult
+    public func toggleDownload() async -> APIError? {
+        guard let offline = context.offline else { return nil }
+        if let d = download {
+            await offline.remove(d)
+            return nil
+        }
+        if await offline.download(ref: ref, world: context.world, view: context.view) != nil { return nil }
+        return offline.downloadError
     }
 
     public func load() async {

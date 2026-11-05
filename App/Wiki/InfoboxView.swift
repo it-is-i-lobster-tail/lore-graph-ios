@@ -81,7 +81,8 @@ struct InfoboxValue: View {
     }
 }
 
-/// An image from the server, sent with the reader's token and kept in the cache.
+/// An image from the server, sent with the reader's token and kept in the cache (or with the
+/// page's download).
 struct RemoteImage: View {
     let url: URL
     var contentMode: ContentMode = .fit
@@ -102,19 +103,10 @@ struct RemoteImage: View {
         }
         .task(id: url) {
             guard let c = app.context else { return }
-            let key = "media|" + url.absoluteString
-            if let entry = await c.repository.cache.entry(for: key), let img = UIImage(data: entry.data) {
-                image = img
-                return
-            }
+            // a downloaded page's images come from the device; others from the cache or the server
             do {
-                let data = try await c.repository.client.bytes(at: url)
-                if let img = UIImage(data: data) {
-                    image = img
-                    await c.repository.cache.store(data, for: key, mark: nil)
-                } else {
-                    failed = true
-                }
+                let data = try await c.repository.media(url)
+                if let img = UIImage(data: data) { image = img } else { failed = true }
             } catch {
                 failed = true
             }

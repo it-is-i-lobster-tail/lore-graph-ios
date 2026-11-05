@@ -98,6 +98,9 @@ public enum Route: Hashable, Sendable, Codable {
     case pageComments(String, focus: String?)
     /// Comments across the world: open (nil status: all of them).
     case comments(PageComment.Status?)
+    /// The pages downloaded for reading offline, and comments waiting to be sent (the app's own:
+    /// shared as the wiki home).
+    case downloads
 }
 
 /// A web link read into a route with its world and view.
@@ -225,7 +228,7 @@ public struct WebLink: Hashable, Sendable {
         var q: [(String, String)] = []
         func esc(_ s: String) -> String { segment(s) }
         switch route {
-        case .home: path = "/"
+        case .home, .downloads: path = "/"
         case .browse(let type):
             path = "/wiki"
             if let type { q.append(("type", type.rawValue)) }
