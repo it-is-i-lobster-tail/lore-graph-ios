@@ -18,6 +18,14 @@ struct CommentsSheet: View {
                     if let e = model.actionError {
                         Section { ActionErrorRow(error: e) { model.actionError = nil } }
                     }
+                    if model.all.contains(where: { $0.queued != nil || $0.replies.contains { $0.queued != nil } }) {
+                        Section {
+                            Label("Comments marked Waiting to send are kept on this device and go to the server when it's back online.",
+                                  systemImage: "icloud.and.arrow.up")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
                     Loaded(loader: model.loader) { _ in
                         if model.shown.isEmpty {
                             ContentUnavailableView {
@@ -112,13 +120,17 @@ struct CommentCard: View {
             PassageQuote(anchor: comment.anchor, sectionExists: comment.section.exists)
             message(author: comment.author, at: comment.createdAt, edited: comment.editedAt != nil,
                     visibility: comment.visibility, body: comment.bodyMd)
+            if let q = comment.queued { QueuedNote(mark: q, offline: model.context.offline) }
             if !comment.isOpen {
                 Label("Resolved" + (comment.resolvedBy.map { " by \($0)" } ?? ""), systemImage: "checkmark.circle.fill")
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(.green)
             }
             ForEach(comment.replies) { r in
-                message(author: r.author, at: r.createdAt, edited: r.editedAt != nil, visibility: r.visibility, body: r.bodyMd)
+                VStack(alignment: .leading, spacing: 4) {
+                    message(author: r.author, at: r.createdAt, edited: r.editedAt != nil, visibility: r.visibility, body: r.bodyMd)
+                    if let q = r.queued { QueuedNote(mark: q, offline: model.context.offline) }
+                }
                     .padding(.leading, 14)
                     .overlay(alignment: .leading) { Rectangle().fill(.quaternary).frame(width: 2) }
                     .contextMenu {
@@ -360,7 +372,7 @@ struct CommentComposer: View {
                     .accessibilityIdentifier("commentText")
             }
             Section {
-                Text("Comments are notes for the team: they don't change the page. They're restricted by default.")
+                Text("Comments are notes for the team: they don't change the page. They're restricted by default. Offline, a comment is kept on this device and sent when you're back online.")
                     .font(.footnote).foregroundStyle(.secondary)
             }
         }

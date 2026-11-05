@@ -35,7 +35,8 @@ public struct APIClient: Sendable {
     /// Sends a change (a reading mark, a comment) in a world. Never cached; the answer is decoded.
     public func send<T>(_ change: Change<T>, world: String?) async throws -> T {
         let url = change.url(base: server, world: world)
-        let response = try await send(url: url, accept: "application/json", method: change.method, body: change.bodyData)
+        let response = try await send(url: url, accept: "application/json", method: change.method, body: change.bodyData,
+                                      extra: change.idempotencyKey.map { ["Idempotency-Key": $0] } ?? [:])
         guard (200..<300).contains(response.status) else {
             throw APIError.from(status: response.status, body: response.body)
         }
@@ -66,28 +67,30 @@ public struct APIClient: Sendable {
         return response.body
     }
 
-    private func send(url: URL, accept: String, method: String = "GET", body: Data? = nil) async throws -> HTTPResponse {
+    private func send(url: URL, accept: String, method: String = "GET", body: Data? = nil,
+                      extra: [String: String] = [:]) async throws -> HTTPResponse {
         do {
-            return try await sendSigned(url: url, accept: accept, method: method, body: body)
+            return try await sendSigned(url: url, accept: accept, method: method, body: body, extra: extra)
         } catch APIError.signedOut {
             onSignedOut?()
             throw APIError.signedOut
         }
     }
 
-    private func sendSigned(url: URL, accept: String, method: String, body: Data?) async throws -> HTTPResponse {
+    private func sendSigned(url: URL, accept: String, method: String, body: Data?, extra: [String: String]) async throws -> HTTPResponse {
         let token = try await auth.accessToken()
-        var response = try await transportSend(request(url, token: token, accept: accept, method: method, body: body))
+        var response = try await transportSend(request(url, token: token, accept: accept, method: method, body: body, extra: extra))
         if response.status == 401 {
             let fresh = try await auth.tokenAfterUnauthorized(token)
-            response = try await transportSend(request(url, token: fresh, accept: accept, method: method, body: body))
+            response = try await transportSend(request(url, token: fresh, accept: accept, method: method, body: body, extra: extra))
             if response.status == 401 { throw APIError.signedOut }
         }
         return response
     }
 
-    private func request(_ url: URL, token: String, accept: String, method: String = "GET", body: Data? = nil) -> HTTPRequest {
-        var headers = ["Authorization": "Bearer \(token)", "Accept": accept]
+    private func request(_ url: URL, token: String, accept: String, method: String = "GET", body: Data? = nil,
+                         extra: [String: String] = [:]) -> HTTPRequest {
+        var headers = extra.merging(["Authorization": "Bearer \(token)", "Accept": accept]) { _, new in new }
         if body != nil { headers["Content-Type"] = "application/json" }
         return HTTPRequest(method: method, url: url, headers: headers, body: body)
     }

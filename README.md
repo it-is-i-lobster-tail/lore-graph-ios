@@ -2,7 +2,7 @@
 
 An iPhone and iPad app for a [loregraph](https://github.com/it-is-i-lobster-tail/loregraph)
 server: the wiki, the map, the timeline, family trees and the graph, with search, the year and
-viewpoint controls and offline reading of what you have opened. It reads the lore and never
+viewpoint controls, offline reading of what you have opened and of pages you download. It reads the lore and never
 changes it. The only things it writes are the reader's own notes, which the server keeps apart
 from the lore: reading-list marks (loregraph ADR D-83) and comments on page text (ADR D-84).
 Both need only the `lore:read` scope, which is all the app asks for.
@@ -23,6 +23,13 @@ Both need only the `lore:read` scope, which is all the app asks for.
   one the cached copy was read at. Pull down on any list to refresh; the map has Refresh in its
   menu. Settings has Clear cache. Reading lists and comments write no revision, so they are shown
   from the cache at once and always fetched again.
+- Pages can be downloaded for reading offline (the arrow beside a page's Share button), with
+  their comments and pictures. Downloads live apart from the cache: Clear cache keeps them,
+  sign-out deletes them, and device backups leave them out. Whenever the app opens or its
+  connection comes back it checks them, and fetches again any page the world has moved past since
+  it was saved, or that is a day old. Comments, replies, resolves and edits made offline are kept
+  on the device, shown as "Waiting to send", and sent in order when the server is back, each with
+  an `Idempotency-Key` so a resend never makes one twice. The wiki home's Downloads lists both.
 
 ## Layout
 
@@ -37,6 +44,7 @@ lore-graph-ios/
 ├── LoreGraphKit/           # every piece of logic, as a Swift package that also builds on Linux
 │   ├── Sources/LoreGraphKit/
 │   │   ├── API/ Auth/ Cache/        # client, OAuth and Keychain, disk cache and freshness
+│   │   ├── Offline/                 # downloaded pages and comments waiting to be sent
 │   │   ├── Models/ Content/         # Codable models, page HTML to blocks
 │   │   ├── Layout/                  # timeline, family tree and force layouts
 │   │   ├── Map/                     # projection, vector tile decoder, styles, labels, tile store
@@ -90,7 +98,8 @@ each screen are attached to the test results.
 ## Rules
 
 - The app never changes lore and requests no write scopes. Its only writes are reading marks,
-  reading lists and comments (all `lore:read` on the server), sent straight to the server and
-  never queued offline.
+  reading lists and comments (all `lore:read` on the server). Reading marks and lists go straight
+  to the server. Comment changes made offline are queued on the device and sent in order, with an
+  `Idempotency-Key`, when the server is back; nothing else is ever queued.
 - No secrets or real lore in git, logs or test output.
 - What the server sends (page text, names, captions) is shown as data and never acted on.

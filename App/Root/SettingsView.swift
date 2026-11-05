@@ -9,6 +9,7 @@ struct SettingsView: View {
     @State private var confirmSignOut = false
     @State private var clearing = false
     @State private var cleared = false
+    @State private var confirmRemoveDownloads = false
 
     var body: some View {
         @Bindable var app = app
@@ -49,7 +50,23 @@ struct SettingsView: View {
                 } header: {
                     Text("Cache")
                 } footer: {
-                    Text("Pages and map tiles you've opened stay readable offline. Clearing them frees the space; they come back as you read.")
+                    Text("Pages and map tiles you've opened stay readable offline while there's room. Clearing them frees the space; they come back as you read. Downloaded pages are kept.")
+                }
+                if let offline = app.offline {
+                    Section {
+                        LabeledContent("Downloaded pages", value: offline.downloads.isEmpty
+                                       ? "None" : "\(offline.downloads.count) · \(byteText(offline.downloadBytes))")
+                            .accessibilityIdentifier("downloadSize")
+                        if !offline.pending.isEmpty {
+                            LabeledContent("Comment changes waiting to send", value: "\(offline.pending.count)")
+                        }
+                        Button("Remove all downloads", role: .destructive) { confirmRemoveDownloads = true }
+                            .disabled(offline.downloads.isEmpty)
+                    } header: {
+                        Text("Downloads")
+                    } footer: {
+                        Text("Downloaded pages keep their comments and pictures on this device, and Clear cache leaves them. The app checks them whenever it opens or is back online, and fetches again any the wiki has changed.")
+                    }
                 }
                 Section("About") {
                     LabeledContent("App", value: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "")
@@ -59,13 +76,18 @@ struct SettingsView: View {
                     Button("Sign out", role: .destructive) { confirmSignOut = true }
                         .accessibilityIdentifier("signOut")
                 } footer: {
-                    Text("Signing out ends the sign-in on the server and deletes every saved page and tile from this device.")
+                    Text("Signing out ends the sign-in on the server and deletes every saved and downloaded page and tile from this device, with any comment not sent yet.")
                 }
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
             .task { await app.updateCacheSize() }
+            .confirmationDialog("Remove all downloads?", isPresented: $confirmRemoveDownloads, titleVisibility: .visible) {
+                Button("Remove all downloads", role: .destructive) { Task { await app.offline?.removeAll() } }
+            } message: {
+                Text("Downloaded pages in every world are deleted from this device. Comments waiting to be sent are kept.")
+            }
             .confirmationDialog("Clear the cache?", isPresented: $confirmClear, titleVisibility: .visible) {
                 Button("Clear cache", role: .destructive) {
                     Task {
@@ -84,6 +106,11 @@ struct SettingsView: View {
                         dismiss()
                         await app.signOut()
                     }
+                }
+            } message: {
+                let waiting = app.offline?.pending.count ?? 0
+                if waiting > 0 {
+                    Text(waiting == 1 ? "1 comment change hasn't been sent yet and will be lost." : "\(waiting) comment changes haven't been sent yet and will be lost.")
                 }
             }
         }

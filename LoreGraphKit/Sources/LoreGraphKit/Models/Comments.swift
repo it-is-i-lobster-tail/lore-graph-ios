@@ -80,6 +80,26 @@ public struct PageComment: Codable, Hashable, Sendable, Identifiable {
         public var editedAt: String?
         public var canEdit: Bool
         public var canDelete: Bool
+        /// Written on this phone and not sent yet.
+        public var queued: QueueMark? = nil
+    }
+
+    /// A change made on this phone that the server has not had yet.
+    public struct QueueMark: Codable, Hashable, Sendable {
+        /// The queued change (`QueuedChange.id`).
+        public var id: String
+        public var summary: String
+        /// Why the server refused it, when it did.
+        public var problem: String?
+        /// A new comment on a passage: it can go on the whole section instead.
+        public var onPassage: Bool
+
+        public init(_ c: QueuedChange) {
+            id = c.id
+            summary = c.summary
+            problem = c.problem
+            onPassage = c.kind == .add && c.quote != nil
+        }
     }
 
     public var id: String
@@ -100,6 +120,8 @@ public struct PageComment: Codable, Hashable, Sendable, Identifiable {
     public var canEdit: Bool
     public var canDelete: Bool
     public var uiUrl: String?
+    /// Written, or changed, on this phone and not sent yet.
+    public var queued: QueueMark? = nil
 
     public var isOpen: Bool { status == .open }
 }
